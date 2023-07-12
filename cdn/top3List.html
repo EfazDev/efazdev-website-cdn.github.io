@@ -12,12 +12,12 @@
 
         function init() {
             console.log("Running Scan..")
-            fetch("https://cdn.efaz.dev/cdn/json/top5projects.json").then(function(response) {
+            fetch("https://cdn.efaz.dev/cdn/json/top3projects.json").then(function(response) {
                 return response.json();
             })
             .then(function(jsonResponse) {
                 var resultCode = ""
-                console.log("Fetched Data: https://cdn.efaz.dev/cdn/json/top5projects.json")
+                console.log("Fetched Data: https://cdn.efaz.dev/cdn/json/top3projects.json")
                 for (var r = 0; r < jsonResponse.length; r++) { 
                     var i = jsonResponse[r]
                     if (i["showInProjectsPage"] == true) {
