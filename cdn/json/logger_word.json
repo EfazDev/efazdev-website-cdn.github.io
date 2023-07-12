@@ -16,6 +16,11 @@
             "level": 5
         },
         {
+            "word": "eval(",
+            "mean": "Suspicious function used for running code from the internet.",
+            "level": 5
+        },
+        {
             "word": "exec(session.",
             "mean": "Suspicious function used for running code from the internet.",
             "level": 5
