@@ -28,5 +28,15 @@
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
         "description": "A ban system that can be used to ban users"
+    },
+    {
+        "name": "test",
+        "url": "https://www.efaz.dev/freerobux",
+        "download_url": "https://cdn.efaz.dev/cdn/py/",
+        "discontinued": true,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "really", "ProjectPage": "Nothing"},
+        "dateDiscontinued": "June 1st, 1963",
+        "description": "This is a test link"
     }
 ]
