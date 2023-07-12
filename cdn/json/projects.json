@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Merch Code System",
+        "url": "https://www.efaz.dev/merch-code-system",
+        "download_url": "https://github.com/EfazDev/merch-code-system",
+        "discontinued": false,
+        "dateDiscontinued": "None"
+    },
+    {
+        "name": "Item Fixer",
+        "url": "https://www.efaz.dev/item-fixer",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=ItemFixer-v1.5.1.py",
+        "discontinued": false,
+        "dateDiscontinued": "None"
+    },
+    {
+        "name": "Ban Service",
+        "url": "https://www.efaz.dev/banservice",
+        "download_url": "https://cdn.efaz.dev/cdn/rbxm/download.html?fileName=BanService.rbxm",
+        "discontinued": false,
+        "dateDiscontinued": "None"
+    },
+    {
+        "name": "Logger Detector",
+        "url": "https://www.efaz.dev/logger-detector",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=LoggerDetector.py",
+        "discontinued": false,
+        "dateDiscontinued": "None"
+    },
+    {
+        "name": "Logger Detector (JSON)",
+        "url": "https://www.efaz.dev/logger-detector",
+        "download_url": "https://cdn.efaz.dev/cdn/json/download.html?fileName=logger_word.json",
+        "discontinued": false,
+        "dateDiscontinued": "None"
+    },
+    {
+        "name": "Fake Mewt UI",
+        "url": "https://www.efaz.dev/fakeMewtUI",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=fakeMewtUI.py",
+        "discontinued": true,
+        "dateDiscontinued": "July 10th, 2023"
+    },
+    {
+        "name": "Mewt Webhook Spammer",
+        "url": "https://www.efaz.dev/mewt-webhook-spammer",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=spamMewtWebhook.py",
+        "discontinued": true,
+        "dateDiscontinued": "July 10th, 2023"
+    },
+    {
+        "name": "JavaAutomation for Linux",
+        "url": "https://www.efaz.dev/java-automation",
+        "download_url": "https://efaz.dev/cdn/py/download.html?fileName=JavaAutomation.py",
+        "discontinued": true,
+        "dateDiscontinued": "July 10th, 2023"
+    }
+]
