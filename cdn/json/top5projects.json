@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Merch Code System",
+        "url": "https://www.efaz.dev/merch-code-system",
+        "download_url": "https://github.com/EfazDev/merch-code-system",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "A Discord Bot that allows users to redeem codes for rewards!"
+    },
+    {
+        "name": "Item Fixer",
+        "url": "https://www.efaz.dev/item-fixer",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=ItemFixer-v1.5.1.py",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Fix Roblox UGC Items bugged and cannot be put on-sale."
+    },
+    {
+        "name": "Ban Service",
+        "url": "https://www.efaz.dev/banservice",
+        "download_url": "https://cdn.efaz.dev/cdn/rbxm/download.html?fileName=BanService.rbxm",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "A ban system that can be used to ban users"
+    }
+]
