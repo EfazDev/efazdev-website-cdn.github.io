@@ -2,7 +2,7 @@
     {
         "name": "Merch Code System",
         "url": "https://www.efaz.dev/merch-code-system",
-        "download_url": "https://github.com/EfazDev/merch-code-system",
+        "download_url": "https://codeload.github.com/EfazDev/merch-code-system/zip/refs/heads/main",
         "discontinued": false,
         "showInProjectsPage": true,
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
