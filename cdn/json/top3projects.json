@@ -30,13 +30,13 @@
         "description": "A ban system that can be used to ban users"
     },
     {
-        "name": "test",
+        "name": "???",
         "url": "https://www.efaz.dev/freerobux",
-        "download_url": "https://cdn.efaz.dev/cdn/py/",
+        "download_url": "https://www.youtube.com/watch?v=xvFZjo5PgG0",
         "discontinued": true,
         "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "really", "ProjectPage": "Nothing"},
+        "buttonText": {"ProjectsPage": "???", "ProjectPage": "???"},
         "dateDiscontinued": "June 1st, 1963",
-        "description": "This is a test link"
+        "description": "????"
     }
 ]
