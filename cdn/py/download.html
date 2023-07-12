@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            var url = "https://cdn.efaz.dev/cdn/py/" + urlParams.get('fileName')
+            console.log("Loaded URL: " + url)
+
+            window.onload = init;
+
+            function init(){
+                const object = document.getElementById("downloadbutton")
+                object.href = url
+                object.click()
+            }
+        </script>
+    </head>
+    <body>
+        <p>Redirecting you soon!</p>
+        <a href="https://cdn.efaz.dev" download id="downloadbutton"></a>
+    </body>
+</html>
