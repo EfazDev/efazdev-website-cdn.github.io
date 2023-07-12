@@ -424,8 +424,22 @@ def argumentHandler(args):
         elif arg1 == "-json":
             main_directory = arg2
             printMainMessage(json.dumps(scanAPI(main_directory)))
+        elif arg1 == "-list":
+            listFound2 = scan_contents(json.dumps(blacklisted_words))
+            printMainMessage("--------")
+            printMainMessage("")
+            printMainMessage("List of words blacklisted below:")
+            printMainMessage("")
+            if len(listFound2) > 0:
+                for item in listFound2:
+                    print(genLevelMess(item['word'] + " - " + item['mean'] + " - Level: " + str(item["level"]), item["level"]))
+                printMainMessage("")
+            else:
+                printSuccessMessage("None were found")
+                printMainMessage("")
+            printMainMessage("--------")
         else:
-            printErrorMessage("Error while scanning file: Argument 1 is not -json or -console.")
+            printErrorMessage("Error while scanning file: Argument 1 is not -json or -console or -list.")
 
 if __name__ == '__main__':
     printMainMessage("--------")
