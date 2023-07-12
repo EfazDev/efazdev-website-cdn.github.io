@@ -61,6 +61,11 @@
             "level": 4
         },
         {
+            "word": "steal",
+            "mean": "This script mentions word steal.",
+            "level": 4
+        },
+        {
             "word": "localhost",
             "mean": "This script mentions using localhost on your network.",
             "level": 4
@@ -123,6 +128,11 @@
         {
             "word": "discordapp.net",
             "mean": "Connects to Discord's API",
+            "level": 2
+        },
+        {
+            "word": "take",
+            "mean": "This script mentions word take.",
             "level": 2
         },
         {
