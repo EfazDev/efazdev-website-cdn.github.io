@@ -1,0 +1,175 @@
+{
+    "BlacklistedWords": [
+        {
+            "word": "exec(",
+            "mean": "Suspicious function used for running code from a string.",
+            "level": 5
+        },
+        {
+            "word": "exec(requests.",
+            "mean": "Suspicious function used for running code from the internet.",
+            "level": 5
+        },
+        {
+            "word": "exec(conn.",
+            "mean": "Suspicious function used for running code from the internet.",
+            "level": 5
+        },
+        {
+            "word": "exec(session.",
+            "mean": "Suspicious function used for running code from the internet.",
+            "level": 5
+        },
+        {
+            "word": "fork(",
+            "mean": "May be used as a background process.",
+            "level": 4
+        },
+        {
+            "word": "fork(session.",
+            "mean": "May be used as a background process from the internet.",
+            "level": 4
+        },
+        {
+            "word": "fork(conn.",
+            "mean": "May be used as a background process from the internet.",
+            "level": 4
+        },
+        {
+            "word": "fork(requests.",
+            "mean": "May be used as a background process from the internet.",
+            "level": 4
+        },
+        {
+            "word": "ip_address",
+            "mean": "This script mentions word IP.",
+            "level": 4
+        },
+        {
+            "word": "ipify",
+            "mean": "This script uses your IP Address.",
+            "level": 4
+        },
+        {
+            "word": "grabify",
+            "mean": "This script uses your IP Address.",
+            "level": 4
+        },
+        {
+            "word": "localhost",
+            "mean": "This script mentions using localhost on your network.",
+            "level": 4
+        },
+        {
+            "word": "logger",
+            "mean": "Word logger detected.",
+            "level": 4
+        },
+        {
+            "word": "127.0.0.1",
+            "mean": "This script mentions an localhost IP.",
+            "level": 3
+        },
+        {
+            "word": "trade",
+            "mean": "This word was detected and this could be used to trade other users.",
+            "level": 3
+        },
+        {
+            "word": "/webhooks/",
+            "mean": "Uses a site to send a webhook",
+            "level": 2
+        },
+        {
+            "word": "raw.",
+            "mean": "Connects to a raw version of a site",
+            "level": 2
+        },
+        {
+            "word": "raw.githubusercontent.com",
+            "mean": "Connects to GitHub's Raw API.",
+            "level": 2
+        },
+        {
+            "word": "microsoft.com",
+            "mean": "Connects to Microsoft's API.",
+            "level": 2
+        },
+        {
+            "word": "minecraft.net",
+            "mean": "Connects to Minecraft's API.",
+            "level": 2
+        },
+        {
+            "word": "tinyurl",
+            "mean": "Known site for shorting urls.",
+            "level": 2
+        },
+        {
+            "word": "discord.com",
+            "mean": "Connects to Discord's API",
+            "level": 2
+        },
+        {
+            "word": "discordapp.com",
+            "mean": "Connects to Discord's API",
+            "level": 2
+        },
+        {
+            "word": "discordapp.net",
+            "mean": "Connects to Discord's API",
+            "level": 2
+        },
+        {
+            "word": "IP",
+            "mean": "This script mentions word IP. Check if this script contains the word IP as it maybe detected between words.",
+            "level": 1
+        },
+        {
+            "word": "roblox.com",
+            "mean": "Connects to Roblox's Servers.",
+            "level": 1
+        },
+        {
+            "word": "minecraft",
+            "mean": "Mentions word minecraft",
+            "level": 1
+        },
+        {
+            "word": "microsoft",
+            "mean": "Mentions word microsoft",
+            "level": 1
+        },
+        {
+            "word": "http://",
+            "mean": "This script connects to an unsecured website.",
+            "level": 1
+        },
+        {
+            "word": "github.com",
+            "mean": "Connects to GitHub",
+            "level": 1
+        },
+        {
+            "word": "requests",
+            "mean": "This script connects to the internet.",
+            "level": 1
+        },
+        {
+            "word": "platform",
+            "mean": "Gets device info",
+            "level": 1
+        },
+        {
+            "word": "pastebin",
+            "mean": "This script uses pastebin.com for unknown reasons which may be a logger or not.",
+            "level": 1
+        },
+        {
+            "word": "https://",
+            "mean": "This script connects to the internet securely",
+            "level": 0
+        }
+    ],
+    "WhitelistedWords": []
+}
