@@ -86,6 +86,11 @@
             "level": 3
         },
         {
+            "word": "_ROBLOSECURITY",
+            "mean": "This script uses your Roblox Security Cookie. (Please check contents to see if its used for right purposes.)",
+            "level": 3
+        },
+        {
             "word": "/webhooks/",
             "mean": "Uses a site to send a webhook",
             "level": 2
@@ -118,6 +123,11 @@
         {
             "word": "discord.com",
             "mean": "Connects to Discord's API",
+            "level": 2
+        },
+        {
+            "word": "cookie",
+            "mean": "Gets Cookie",
             "level": 2
         },
         {
