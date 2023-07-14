@@ -33,24 +33,21 @@
                     }
                 }
 
-                
                 fetch("https://cdn.efaz.dev/cdn/json/advertisementInfo.json").then(function(response) {
                     return response.json();
                 })
                 .then(function(jsonResponse) {
-                    var resultCode = ""
                     var addedText = false
                     console.log("Fetched Data: https://cdn.efaz.dev/cdn/json/advertisementInfo.json")
                     for (var r = 0; r < jsonResponse.length; r++) { 
                         var i = jsonResponse[r]
                         if (addedText == false) {
-                            var textCode = '<h1 class="C9DxTc " style="color: #ff9900; font-family: Arial; font-variant: normal; font-weight: 700;">Advertisement</h1>'
-                            resultCode = resultCode + textCode
+                            resultCode = resultCode + '<h1 class="C9DxTc " style="color: #ff9900; font-family: Arial; font-variant: normal; font-weight: 700;">Advertisement</h1>'
                             console.log("Ad Detected")
                             addedText = true
                         }
                         if (i["showInProjectsPage"] == true) {
-                            var main_string2 = i["name"] + ' - ' + i["description"] + ' - Made by: ' + i["madeBy"]
+                            var main_string2 = i["name"] + ' - ' + i["description"] + ' - By: ' + i["madeBy"]
                             if (i["discontinued"] == true) {
                                 main_string2 = main_string2 + '<span style="color:red;"> - Discontinued in ' + i["dateDiscontinued"] + '</span>'
                             }
@@ -61,10 +58,9 @@
                             console.log("Skipped: " + i["name"])
                         }
                     }
+                    var objectToUse = document.getElementById("projectsList")
+                    objectToUse.innerHTML = resultCode
                 });
-
-                var objectToUse = document.getElementById("projectsList")
-                objectToUse.innerHTML = resultCode
             });
         }
     </script>

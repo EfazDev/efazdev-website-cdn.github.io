@@ -8,6 +8,6 @@
         "showInProjectsPage": true,
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
-        "description": "An extension designed for Mewt sniper, providing many useful commands (50+) in addition to the ones already provided."
+        "description": "A mewt sniper extension."
     }
 ]
