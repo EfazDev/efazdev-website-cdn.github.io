@@ -45,17 +45,18 @@
                         var i = jsonResponse[r]
                         if (addedText == false) {
                             var textCode = '<h1 class="C9DxTc " style="color: #ff9900; font-family: Arial; font-variant: normal; font-weight: 700;">Advertisement</h1>'
-                            resultCode = resultCode + code
-                            console.log("Ad Added: " + i["name"])
+                            resultCode = resultCode + textCode
+                            console.log("Ad Detected")
+                            addedText = true
                         }
                         if (i["showInProjectsPage"] == true) {
-                            var main_string = i["name"] + ' - ' + i["description"] + ' - Made by: ' + i["madeBy"]
+                            var main_string2 = i["name"] + ' - ' + i["description"] + ' - Made by: ' + i["madeBy"]
                             if (i["discontinued"] == true) {
-                                main_string = main_string + '<span style="color:red;"> - Discontinued in ' + i["dateDiscontinued"] + '</span>'
+                                main_string2 = main_string2 + '<span style="color:red;"> - Discontinued in ' + i["dateDiscontinued"] + '</span>'
                             }
-                            var code = '<div class="oKdM2c ZZyype"><div id="h.2122117deb06453_44" class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec"><div class="jXK9ad-SmKAyb"><div class="tyJCtd mGzaTb Depvyb baZpAe" style="background-color:#F1EAE4;"><p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="font-variant: normal;">' + main_string + '</span></p></div></div></div></div><div class="oKdM2c ZZyype"><div id="h.2122117deb06453_46" class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec"><div class="jXK9ad-SmKAyb"><div class="tyJCtd N0neUc baZpAe"><div class="axx72"><div role="presentation" class="U26fgb L7IXhc htnAL QmpIrf M9Bg4d" jscontroller="VXdfxd" jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;" jsshadow="" aria-label="' + i["buttonText"]["ProjectsPage"] + '" aria-disabled="false" data-tooltip="' + i["buttonText"]["ProjectsPage"] + '" data-tooltip-vertical-offset="-12" data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d QmpIrf" href="' + i["url"] + '" target="_blank" aria-label="' + i["buttonText"]["ProjectsPage"] + '"><div class="NsaAfc"><p>' + i["buttonText"]["ProjectsPage"] + '</p></div><div class="wvnY3c" jsname="ksKsZd"></div></a></div></div></div></div></div></div>'
-                            resultCode = resultCode + code
-                            console.log("Finished Item: " + i["name"])
+                            var adcode = '<div class="oKdM2c ZZyype"><div id="h.2122117deb06453_44" class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec"><div class="jXK9ad-SmKAyb"><div class="tyJCtd mGzaTb Depvyb baZpAe" style="background-color:#F1EAE4;"><p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="font-variant: normal;">' + main_string2 + '</span></p></div></div></div></div><div class="oKdM2c ZZyype"><div id="h.2122117deb06453_46" class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec"><div class="jXK9ad-SmKAyb"><div class="tyJCtd N0neUc baZpAe"><div class="axx72"><div role="presentation" class="U26fgb L7IXhc htnAL QmpIrf M9Bg4d" jscontroller="VXdfxd" jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;" jsshadow="" aria-label="' + i["buttonText"]["ProjectsPage"] + '" aria-disabled="false" data-tooltip="' + i["buttonText"]["ProjectsPage"] + '" data-tooltip-vertical-offset="-12" data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d QmpIrf" href="' + i["url"] + '" target="_blank" aria-label="' + i["buttonText"]["ProjectsPage"] + '"><div class="NsaAfc"><p>' + i["buttonText"]["ProjectsPage"] + '</p></div><div class="wvnY3c" jsname="ksKsZd"></div></a></div></div></div></div></div></div>'
+                            resultCode = resultCode + adcode
+                            console.log("Finished Ad Item: " + i["name"])
                         } else {
                             console.log("Skipped: " + i["name"])
                         }
