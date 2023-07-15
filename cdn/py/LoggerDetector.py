@@ -98,7 +98,7 @@ else:
             "level": 3,
         },
         {
-            "word": "_ROBLOSECURITY",
+            "word": ".ROBLOSECURITY",
             "mean": "This script uses your Roblox Security Cookie. (Please check contents to see if its used for right purposes.)",
             "level": 3,
         },
