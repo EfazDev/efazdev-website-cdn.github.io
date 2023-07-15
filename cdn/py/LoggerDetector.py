@@ -268,7 +268,7 @@ def testIfURL(text):
                 enabled = False
 
     if enabled == False:
-        return {"success": False, "statement": "Not a valid URL"}
+        return {"success": False, "statement": "URL Scanning is Disabled"}
 
     try:
         if text.startswith("https://"):
