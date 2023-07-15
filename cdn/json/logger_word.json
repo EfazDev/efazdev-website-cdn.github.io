@@ -196,5 +196,7 @@
             "level": 0
         }
     ],
-    "WhitelistedWords": []
+    "WhitelistedWords": [],
+    "UseOnlineJSON": false,
+    "ScanForOnlineLinks": true
 }
