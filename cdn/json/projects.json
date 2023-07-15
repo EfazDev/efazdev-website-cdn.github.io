@@ -50,6 +50,16 @@
         "description": "Detect a logger in Python scripts"
     },
     {
+        "name": "Logger Detector (Combined)",
+        "url": "https://www.efaz.dev/logger-detector",
+        "download_url": "https://cdn.efaz.dev/cdn/zip/download.html?fileName=LoggerDetector.zip",
+        "discontinued": false,
+        "showInProjectsPage": false,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Both!"},
+        "dateDiscontinued": "None",
+        "description": "Detect a logger in Python scripts"
+    },
+    {
         "name": "Fake Mewt UI",
         "url": "https://www.efaz.dev/fakeMewtUI",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=fakeMewtUI.py",

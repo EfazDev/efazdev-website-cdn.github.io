@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script>
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            var url = "https://raw.githubusercontent.com/EfazDev/efazdev-website-cdn.github.io/main/cdn/zip/" + urlParams.get('fileName')
+            console.log("Loaded URL: " + url)
+
+            window.onload = init;
+
+            function init(){
+                const object = document.getElementById("downloadbutton")
+                object.href = url
+                object.click()
+            }
+        </script>
+    </head>
+    <body>
+        <p>Redirecting you to GitHub's Raw Server!</p>
+        <a href="https://cdn.efaz.dev" download id="downloadbutton"></a>
+    </body>
+</html>
