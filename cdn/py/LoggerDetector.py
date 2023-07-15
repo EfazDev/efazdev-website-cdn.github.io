@@ -24,6 +24,8 @@ if os.path.exists("logger_word.json"):
             result = result.json()
             blacklisted_words = result["BlacklistedWords"]
             whitelisted_words = result["WhitelistedWords"]
+            if __name__ == "__main__" and hideBackgroundConsole == False:
+                print("Loaded Online JSON..")
         else:
             blacklisted_words = data["BlacklistedWords"]
             whitelisted_words = data["WhitelistedWords"]
