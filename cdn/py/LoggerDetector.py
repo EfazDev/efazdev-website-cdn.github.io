@@ -4,13 +4,13 @@ import requests
 import json
 
 os.system("cls" if os.name == "nt" else "clear")
+version = "v1.0.6"
 hideBackgroundConsole = True
 
 if __name__ == "__main__" and hideBackgroundConsole == False:
     print("--------")
     print("Clearing Previous Console messages..")
     print("Loading Blacklisted Words..")
-
 
 if os.path.exists("logger_word.json"):
     with open("logger_word.json") as f:
@@ -155,22 +155,17 @@ else:
 if __name__ == "__main__" and hideBackgroundConsole == False:
     print("Loading Color Module..")
 
-
 def printMainMessage(mes):
     print(f"\x1b[38;2;255;255;255m{mes}\033[38;5;231m")
-
 
 def printErrorMessage(mes):
     print(f"\x1b[38;2;255;0;0m{mes}\033[38;5;231m")
 
-
 def printSuccessMessage(mes):
     print(f"\x1b[38;2;0;255;0m{mes}\033[38;5;231m")
 
-
 def printWarnMessage(mes):
     print(f"\x1b[38;2;255;75;0m{mes}\033[38;5;231m")
-
 
 def genLevelMess(message, level):
     if level == 1:
@@ -186,7 +181,6 @@ def genLevelMess(message, level):
     else:
         return f"\x1b[38;2;0;255;0m{message}\033[38;5;231m"
 
-
 def genoption(level):
     if level == 1:
         return f"\x1b[38;2;255;255;0mThis script is maybe safe\033[38;5;231m"
@@ -200,7 +194,6 @@ def genoption(level):
         return f"\x1b[38;2;0;0;255mThis script is 100% a logger\033[38;5;231m"
     else:
         return f"\x1b[38;2;0;255;0mThis script is safe\033[38;5;231m"
-
 
 def scan_contents(content):
     contentsFound = []
@@ -265,7 +258,6 @@ def scan_contents(content):
                 contentsFound.append(json_use)
         return contentsFound
 
-
 def testIfURL(text):
     enabled = True
     if os.path.exists("logger_word.json"):
@@ -320,7 +312,6 @@ def testIfURL(text):
     except Exception as e:
         return {"success": False, "statement": str(e)}
 
-
 def scanAPI(dir):
     URLTest = testIfURL(dir)
     result = ["", 1]
@@ -359,7 +350,6 @@ def scanAPI(dir):
     }
     return json
 
-
 def deleteDirectory(dir):
     if os.path.exists(dir):
         try:
@@ -369,7 +359,17 @@ def deleteDirectory(dir):
             return {"success": False}
     else:
         return {"success": False}
-
+    
+def getItemData(item_name):
+    itemFound = {
+        "word": item_name,
+        "mean": "Item is not found in blacklisted words.",
+        "level": 0
+    }
+    for i in blacklisted_words:
+        if i["word"] == item_name:
+            itemFound = i
+    return itemFound
 
 def argumentHandler(args):
     if len(args) > 2:
@@ -460,11 +460,31 @@ def argumentHandler(args):
                 printSuccessMessage("None were found")
                 printMainMessage("")
             printMainMessage("--------")
+            printMainMessage("")
+            printMainMessage("List of words whitelisted below:")
+            printMainMessage("")
+            if len(whitelisted_words) > 0:
+                for item in whitelisted_words:
+                    item_data = getItemData(item)
+                    print(
+                        genLevelMess(
+                            item_data["word"]
+                            + " - "
+                            + item_data["mean"]
+                            + " - Level: "
+                            + str(item_data["level"]),
+                            item_data["level"],
+                        )
+                    )    
+                printMainMessage("")
+            else:
+                printSuccessMessage("None were found")
+                printMainMessage("")
+            printMainMessage("--------")
         else:
             printErrorMessage(
                 "Error while scanning file: Argument 1 is not -json or -console or -list."
             )
-
 
 if __name__ == "__main__":
     printMainMessage("--------")
@@ -475,7 +495,7 @@ if __name__ == "__main__":
     printWarnMessage(
         "If you find a level 3, this means the script is using forbidden words that are dangerous."
     )
-    printWarnMessage("Script Version v1.0.5")
+    printWarnMessage(f"Script Version {version}")
 
     def mainScript(dir):
         directory = ""
