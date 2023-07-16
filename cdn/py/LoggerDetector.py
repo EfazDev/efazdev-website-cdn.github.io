@@ -673,10 +673,11 @@ def argumentHandler(args):
                 if api_result["typeOfDirectory"] == 2:
                     printErrorMessage("Failed to run script: Script is online and cannot be downloaded.")
                 elif api_result["highestLevel"] > 2:
-                    printWarnMessage("WARNING!")
-                    printWarnMessage("Script has been detected above the dangerous zone!")
+                    printErrorMessage("WARNING!")
+                    printErrorMessage("Script has been detected above the dangerous zone!")
+                    printMainMessage("Highest Level: " + genLevelMess("Level: " + str(api_result["highestLevel"]), api_result["highestLevel"]))
                     printMainMessage("-----------")
-                    printWarnMessage("Following Items:")
+                    printMainMessage("Following Items:")
 
                     for i in api_result["itemList"]:
                         if i["level"] > 2:
@@ -689,12 +690,12 @@ def argumentHandler(args):
                                 i["level"],
                             ))
                     printMainMessage("-----------")
-                    printWarnMessage("Please choose from the following options:")
-                    printWarnMessage("")
+                    printMainMessage("Please choose from the following options:")
+                    printMainMessage("")
                     printSuccessMessage("1 - Delete File from System")
                     printErrorMessage("2 - Run Script Anyway")
                     printWarnMessage("3 - Ignore and don't run the script.")
-                    printWarnMessage("")
+                    printMainMessage("")
                     selectionInput = input(">> ")
                     if selectionInput == "1":
                         res = deleteDirectory(main_directory)
