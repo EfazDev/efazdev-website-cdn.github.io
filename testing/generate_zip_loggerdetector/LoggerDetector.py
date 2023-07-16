@@ -669,17 +669,33 @@ def argumentHandler(args):
             if api_result.get("error"):
                 printErrorMessage(f"Error while loading script: {api_result['error']} ({str(api_result['code'])})")
             else:
+                printMainMessage("-----------")
                 if api_result["typeOfDirectory"] == 2:
                     printErrorMessage("Failed to run script: Script is online and cannot be downloaded.")
                 elif api_result["highestLevel"] > 2:
-                    printWarnMessage("WARNING!")
-                    printWarnMessage("Script has been detected above the dangerous zone!")
-                    printWarnMessage("Please choose from the following options:")
-                    printWarnMessage("")
+                    printErrorMessage("WARNING!")
+                    printErrorMessage("Script has been detected above the dangerous zone!")
+                    printMainMessage("Highest Level: " + genLevelMess("Level: " + str(api_result["highestLevel"]), api_result["highestLevel"]))
+                    printMainMessage("-----------")
+                    printMainMessage("Following Items:")
+
+                    for i in api_result["itemList"]:
+                        if i["level"] > 2:
+                            print(genLevelMess(
+                                i["word"]
+                                + " - "
+                                + i["mean"]
+                                + " - Level: "
+                                + str(i["level"]),
+                                i["level"],
+                            ))
+                    printMainMessage("-----------")
+                    printMainMessage("Please choose from the following options:")
+                    printMainMessage("")
                     printSuccessMessage("1 - Delete File from System")
                     printErrorMessage("2 - Run Script Anyway")
                     printWarnMessage("3 - Ignore and don't run the script.")
-                    printWarnMessage("")
+                    printMainMessage("")
                     selectionInput = input(">> ")
                     if selectionInput == "1":
                         res = deleteDirectory(main_directory)
