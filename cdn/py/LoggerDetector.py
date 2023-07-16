@@ -675,7 +675,7 @@ def argumentHandler(args):
                 elif api_result["highestLevel"] > 2:
                     printErrorMessage("WARNING!")
                     printErrorMessage("Script has been detected above the dangerous zone!")
-                    printMainMessage("Highest Level: " + genLevelMess("Level: " + str(api_result["highestLevel"]), api_result["highestLevel"]))
+                    printMainMessage("Highest Level: " + genLevelMess(str(api_result["highestLevel"]), api_result["highestLevel"]))
                     printMainMessage("-----------")
                     printMainMessage("Following Items:")
 
