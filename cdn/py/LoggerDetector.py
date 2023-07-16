@@ -669,6 +669,7 @@ def argumentHandler(args):
             if api_result.get("error"):
                 printErrorMessage(f"Error while loading script: {api_result['error']} ({str(api_result['code'])})")
             else:
+                printMainMessage("-----------")
                 if api_result["typeOfDirectory"] == 2:
                     printErrorMessage("Failed to run script: Script is online and cannot be downloaded.")
                 elif api_result["highestLevel"] > 2:
