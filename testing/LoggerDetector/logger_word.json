@@ -266,6 +266,11 @@
             "level": 2
         },
         {
+            "word": "ctypes",
+            "mean": "Known module for checking if python script is using administrator permissions.",
+            "level": 2
+        },
+        {
             "word": "discordapp.com",
             "mean": "Connects to Discord's API",
             "level": 2
@@ -311,6 +316,11 @@
             "level": 1
         },
         {
+            "word": "subprocess",
+            "mean": "Create an another process from Python script.",
+            "level": 1
+        },
+        {
             "word": "requests",
             "mean": "This script connects to the internet.",
             "level": 1
@@ -338,5 +348,7 @@
     ],
     "WhitelistedWords": [],
     "UseOnlineJSON": false,
-    "ScanForOnlineLinks": true
+    "ScanForOnlineLinks": true,
+    "AuthorizedFilesOrDirectorys": [],
+    "EnabledAuthorizedFiles": false
 }

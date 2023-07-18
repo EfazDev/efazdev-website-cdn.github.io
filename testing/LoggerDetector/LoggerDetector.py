@@ -5,13 +5,18 @@ import subprocess
 import json
 
 os.system("cls" if os.name == "nt" else "clear")
-version = "v1.1.0"
+version = "v1.1.5"
 hideBackgroundConsole = True
+console_logs = []
 
-if __name__ == "__main__" and hideBackgroundConsole == False:
-    print("--------")
-    print("Clearing Previous Console messages..")
-    print("Loading Blacklisted Words..")
+def printBackgroundConsole(message):
+    if hideBackgroundConsole == False and __name__ == "__main__":
+        print(message)
+        console_logs.append(message)
+
+printBackgroundConsole("--------")
+printBackgroundConsole("Clearing Previous Console messages..")
+printBackgroundConsole("Loading Blacklisted Words..")
 
 if os.path.exists("logger_word.json"):
     with open("logger_word.json") as f:
@@ -25,16 +30,36 @@ if os.path.exists("logger_word.json"):
             result = result.json()
             blacklisted_words = result["BlacklistedWords"]
             whitelisted_words = result["WhitelistedWords"]
-            if __name__ == "__main__" and hideBackgroundConsole == False:
-                print("Loaded Online JSON..")
+            if result.get("AuthorizedFilesOrDirectorys"):
+                if result.get("EnabledAuthorizedFiles") and result["EnabledAuthorizedFiles"] == True:
+                    authorized_files = result["AuthorizedFilesOrDirectorys"]
+                else:
+                    authorized_files = []
+            else:
+                authorized_files = []
+            printBackgroundConsole("Loaded Online JSON..")
         else:
             blacklisted_words = data["BlacklistedWords"]
             whitelisted_words = data["WhitelistedWords"]
+            if data.get("AuthorizedFilesOrDirectorys"):
+                if data.get("EnabledAuthorizedFiles") and data["EnabledAuthorizedFiles"] == True:
+                    authorized_files = data["AuthorizedFilesOrDirectorys"]
+                else:
+                    authorized_files = []
+            else:
+                authorized_files = []
+            printBackgroundConsole("Loaded JSON File.")
     else:
         blacklisted_words = data["BlacklistedWords"]
         whitelisted_words = data["WhitelistedWords"]
-    if __name__ == "__main__" and hideBackgroundConsole == False:
-        print("Loaded JSON File.")
+        if data.get("AuthorizedFilesOrDirectorys"):
+            if data.get("EnabledAuthorizedFiles") and data["EnabledAuthorizedFiles"] == True:
+                authorized_files = data["AuthorizedFilesOrDirectorys"]
+            else:
+                authorized_files = []
+        else:
+            authorized_files = []
+        printBackgroundConsole("Loaded JSON File.")
 else:
     blacklisted_words = [
         {
@@ -303,6 +328,11 @@ else:
             "level": 2
         },
         {
+            "word": "ctypes",
+            "mean": "Known module for checking if python script is using administrator permissions.",
+            "level": 2
+        },
+        {
             "word": "discordapp.com",
             "mean": "Connects to Discord's API",
             "level": 2
@@ -363,6 +393,11 @@ else:
             "level": 1
         },
         {
+            "word": "subprocess",
+            "mean": "Create an another process from Python script.",
+            "level": 1
+        },
+        {
             "word": "pastebin",
             "mean": "This script uses pastebin.com for unknown reasons which may be a logger or not.",
             "level": 1
@@ -374,51 +409,10 @@ else:
         }
     ]
     whitelisted_words = []
-    if __name__ == "__main__" and hideBackgroundConsole == False:
-        print("Loaded filled JSON in Script")
+    authorized_files = []
+    printBackgroundConsole("Loaded filled JSON in Script")
 
-if __name__ == "__main__" and hideBackgroundConsole == False:
-    print("Loading Color Module..")
-
-def printMainMessage(mes):
-    print(f"\x1b[38;2;255;255;255m{mes}\033[38;5;231m")
-
-def printErrorMessage(mes):
-    print(f"\x1b[38;2;255;0;0m{mes}\033[38;5;231m")
-
-def printSuccessMessage(mes):
-    print(f"\x1b[38;2;0;255;0m{mes}\033[38;5;231m")
-
-def printWarnMessage(mes):
-    print(f"\x1b[38;2;255;75;0m{mes}\033[38;5;231m")
-
-def genLevelMess(message, level):
-    if level == 1:
-        return f"\x1b[38;2;255;255;0m{message}\033[38;5;231m"
-    elif level == 2:
-        return f"\x1b[38;2;255;75;0m{message}\033[38;5;231m"
-    elif level == 3:
-        return f"\x1b[38;2;255;0;0m{message}\033[38;5;231m"
-    elif level == 4:
-        return f"\x1b[38;2;255;0;255m{message}\033[38;5;231m"
-    elif level == 5:
-        return f"\x1b[38;2;0;0;255m{message}\033[38;5;231m"
-    else:
-        return f"\x1b[38;2;0;255;0m{message}\033[38;5;231m"
-
-def genoption(level):
-    if level == 1:
-        return f"\x1b[38;2;255;255;0mThis script is maybe safe\033[38;5;231m"
-    elif level == 2:
-        return f"\x1b[38;2;255;75;0mThis script is maybe a logger\033[38;5;231m"
-    elif level == 3:
-        return f"\x1b[38;2;255;0;0mThis script is maybe 50% a logger\033[38;5;231m"
-    elif level == 4:
-        return f"\x1b[38;2;255;0;255mThis script is 75% a logger\033[38;5;231m"
-    elif level == 5:
-        return f"\x1b[38;2;0;0;255mThis script is 100% a logger\033[38;5;231m"
-    else:
-        return f"\x1b[38;2;0;255;0mThis script is safe\033[38;5;231m"
+printBackgroundConsole("Loading Color Module..")
 
 def scan_contents(content):
     contentsFound = []
@@ -537,6 +531,57 @@ def testIfURL(text):
     except Exception as e:
         return {"success": False, "statement": str(e)}
 
+def printErrorMessage(mes):
+    print(f"\x1b[38;2;255;0;0m{mes}\033[38;5;231m")
+    console_logs.append(mes + " - ERROR")
+
+def printMainMessage(mes):
+    print(f"\x1b[38;2;255;255;255m{mes}\033[38;5;231m")
+    console_logs.append(mes + " - Main")
+
+def printSuccessMessage(mes):
+    print(f"\x1b[38;2;0;255;0m{mes}\033[38;5;231m")
+    console_logs.append(mes + " - SUCCESS")
+
+def printWarnMessage(mes):
+    print(f"\x1b[38;2;255;75;0m{mes}\033[38;5;231m")
+    console_logs.append(mes + " - WARN")
+
+def checkFileAuthorized(dir):
+    found = False
+    for file in authorized_files:
+        if not file.find(dir) == -1:
+            found = True
+    return found
+
+def genLevelMess(message, level):
+    if level == 1:
+        return f"\x1b[38;2;255;255;0m{message}\033[38;5;231m"
+    elif level == 2:
+        return f"\x1b[38;2;255;75;0m{message}\033[38;5;231m"
+    elif level == 3:
+        return f"\x1b[38;2;255;0;0m{message}\033[38;5;231m"
+    elif level == 4:
+        return f"\x1b[38;2;255;0;255m{message}\033[38;5;231m"
+    elif level == 5:
+        return f"\x1b[38;2;0;0;255m{message}\033[38;5;231m"
+    else:
+        return f"\x1b[38;2;0;255;0m{message}\033[38;5;231m"
+
+def genoption(level):
+    if level == 1:
+        return f"\x1b[38;2;255;255;0mThis script is maybe safe\033[38;5;231m"
+    elif level == 2:
+        return f"\x1b[38;2;255;75;0mThis script is maybe a logger\033[38;5;231m"
+    elif level == 3:
+        return f"\x1b[38;2;255;0;0mThis script is maybe 50% a logger\033[38;5;231m"
+    elif level == 4:
+        return f"\x1b[38;2;255;0;255mThis script is 75% a logger\033[38;5;231m"
+    elif level == 5:
+        return f"\x1b[38;2;0;0;255mThis script is 100% a logger\033[38;5;231m"
+    else:
+        return f"\x1b[38;2;0;255;0mThis script is safe\033[38;5;231m"
+
 def scanAPI(dir):
     URLTest = testIfURL(dir)
     result = ["", 1]
@@ -560,7 +605,16 @@ def scanAPI(dir):
         printErrorMessage("Script brought an invalid type of directory.")
         file_contents = ""
 
-    listFound = scan_contents(file_contents)
+    if checkFileAuthorized(dir):
+        listFound = [
+            {
+                "word": "Whitelisted or Authorized File",
+                "mean": "This file was whitelisted as having no viruses. If you think you never added it to your list, remove it from your list ASAP!",
+                "level": 0
+            }
+        ]
+    else:
+        listFound = scan_contents(file_contents)
     highestLevel = 0
     for item in listFound:
         if item["level"] > highestLevel:
@@ -574,16 +628,6 @@ def scanAPI(dir):
         "safeLevelMessage": f"Safe Level: {genoption(highestLevel)} (Level: {genLevelMess(str(highestLevel), highestLevel)})",
     }
     return json
-
-def deleteDirectory(dir):
-    if os.path.exists(dir):
-        try:
-            os.remove(dir)
-            return {"success": True}
-        except Exception as e:
-            return {"success": False}
-    else:
-        return {"success": False}
     
 def getItemData(item_name):
     itemFound = {
@@ -596,170 +640,6 @@ def getItemData(item_name):
             itemFound = i
     return itemFound
 
-def argumentHandler(args):
-    if len(args) > 2:
-        arg1 = args[1]
-        arg2 = args[2]
-
-        main_directory = ""
-
-        if arg1 == "-console":
-            main_directory = arg2
-            listFound2 = scanAPI(main_directory)
-            if listFound2.get("error"):
-                printErrorMessage(
-                    f"Error while scanning file: {listFound2['error']} ({str(listFound2['code'])})"
-                )
-            else:
-                printMainMessage("--------")
-                printMainMessage("")
-                printMainMessage("Scan Finished!")
-                printMainMessage("Results are below:")
-                printMainMessage("")
-                printMainMessage("Directory: " + main_directory)
-                printMainMessage(
-                    f"Safe Level: {genoption(listFound2['highestLevel'])} (Level: {genLevelMess(str(listFound2['highestLevel']), listFound2['highestLevel'])})"
-                )
-                if len(listFound2["itemList"]) > 0:
-                    printMainMessage("Items that were found in the script:")
-                    printMainMessage("")
-                    for item in listFound2["itemList"]:
-                        print(
-                            genLevelMess(
-                                item["word"]
-                                + " - "
-                                + item["mean"]
-                                + " - Level: "
-                                + str(item["level"]),
-                                item["level"],
-                            )
-                        )
-                    printMainMessage("")
-                else:
-                    printMainMessage("Items that were found in the script:")
-                    printMainMessage("")
-                    printSuccessMessage("None were found")
-                    printMainMessage("")
-                printMainMessage("--------")
-                if (
-                    listFound2["highestLevel"] > 2
-                    and listFound2["typeOfDirectory"] == 1
-                ):
-                    printMainMessage(
-                        "Would you like to delete the file as its 50% or more untrusted? (y/n): "
-                    )
-                    if input(">> ").lower() == "y":
-                        res = deleteDirectory(main_directory)
-                        if res["success"] == True:
-                            printSuccessMessage(
-                                "Successfully deleted the file from system: "
-                                + main_directory
-                            )
-                        else:
-                            printErrorMessage(
-                                "Failed to delete the file from your system."
-                            )
-        elif arg1 == "-json":
-            main_directory = arg2
-            printMainMessage(json.dumps(scanAPI(main_directory)))
-        elif arg1 == "-scanrun":
-            main_directory = arg2
-            api_result = scanAPI(main_directory)
-
-            if api_result.get("error"):
-                printErrorMessage(f"Error while loading script: {api_result['error']} ({str(api_result['code'])})")
-            else:
-                printMainMessage("-----------")
-                if api_result["typeOfDirectory"] == 2:
-                    printErrorMessage("Failed to run script: Script is online and cannot be downloaded.")
-                elif api_result["highestLevel"] > 2:
-                    printErrorMessage("WARNING!")
-                    printErrorMessage("Script has been detected above the dangerous zone!")
-                    printMainMessage("Highest Level: " + genLevelMess(str(api_result["highestLevel"]), api_result["highestLevel"]))
-                    printMainMessage("-----------")
-                    printMainMessage("Following Items:")
-
-                    for i in api_result["itemList"]:
-                        if i["level"] > 2:
-                            print(genLevelMess(
-                                i["word"]
-                                + " - "
-                                + i["mean"]
-                                + " - Level: "
-                                + str(i["level"]),
-                                i["level"],
-                            ))
-                    printMainMessage("-----------")
-                    printMainMessage("Please choose from the following options:")
-                    printMainMessage("")
-                    printSuccessMessage("1 - Delete File from System")
-                    printErrorMessage("2 - Run Script Anyway")
-                    printWarnMessage("3 - Ignore and don't run the script.")
-                    printMainMessage("")
-                    selectionInput = input(">> ")
-                    if selectionInput == "1":
-                        res = deleteDirectory(main_directory)
-                        if res["success"] == True:
-                            printSuccessMessage("File has been deleted from the system.")
-                        else:
-                            printErrorMessage("File was unable to be deleted.")
-                    elif selectionInput == "2":
-                        printErrorMessage("Running script under dangerous zone.")
-                        subprocess.Popen([sys.executable, main_directory])
-                    else:
-                        printWarnMessage("Ignored Script and not ran.")
-                else:
-                    printSuccessMessage("Script is under dangerous mode. Running script..")
-                    subprocess.Popen([sys.executable, main_directory])
-        elif arg1 == "-list":
-            listFound2 = scan_contents(json.dumps(blacklisted_words))
-            printMainMessage("--------")
-            printMainMessage("")
-            printMainMessage("List of words blacklisted below:")
-            printMainMessage("")
-            if len(listFound2) > 0:
-                for item in listFound2:
-                    print(
-                        genLevelMess(
-                            item["word"]
-                            + " - "
-                            + item["mean"]
-                            + " - Level: "
-                            + str(item["level"]),
-                            item["level"],
-                        )
-                    )
-                printMainMessage("")
-            else:
-                printSuccessMessage("None were found")
-                printMainMessage("")
-            printMainMessage("--------")
-            printMainMessage("")
-            printMainMessage("List of words whitelisted below:")
-            printMainMessage("")
-            if len(whitelisted_words) > 0:
-                for item in whitelisted_words:
-                    item_data = getItemData(item)
-                    print(
-                        genLevelMess(
-                            item_data["word"]
-                            + " - "
-                            + item_data["mean"]
-                            + " - Level: "
-                            + str(item_data["level"]),
-                            item_data["level"],
-                        )
-                    )    
-                printMainMessage("")
-            else:
-                printSuccessMessage("None were found")
-                printMainMessage("")
-            printMainMessage("--------")
-        else:
-            printErrorMessage(
-                "Error while scanning file: Argument 1 is not -json, -console, -list or -scanrun."
-            )
-
 if __name__ == "__main__":
     printMainMessage("--------")
     printWarnMessage("Welcome to Efaz's Logger Detector!")
@@ -770,6 +650,214 @@ if __name__ == "__main__":
         "If you find a level 3, this means the script is using forbidden words that are dangerous."
     )
     printWarnMessage(f"Script Version {version}")
+
+    # Secured within this script only and can't be used within the module.
+
+    def deleteDirectory(dir):
+        if os.path.exists(dir):
+            try:
+                os.remove(dir)
+                return {"success": True}
+            except Exception as e:
+                return {"success": False}
+        else:
+            return {"success": False}
+
+    def argumentHandler(args):
+        if len(args) > 2:
+            arg1 = args[1]
+            arg2 = args[2]
+
+            main_directory = ""
+
+            if arg1 == "-console":
+                main_directory = arg2
+                listFound2 = scanAPI(main_directory)
+                if listFound2.get("error"):
+                    printErrorMessage(
+                        f"Error while scanning file: {listFound2['error']} ({str(listFound2['code'])})"
+                    )
+                else:
+                    printMainMessage("--------")
+                    printMainMessage("")
+                    printMainMessage("Scan Finished!")
+                    printMainMessage("Results are below:")
+                    printMainMessage("")
+                    printMainMessage("Directory: " + main_directory)
+                    printMainMessage(
+                        f"Safe Level: {genoption(listFound2['highestLevel'])} (Level: {genLevelMess(str(listFound2['highestLevel']), listFound2['highestLevel'])})"
+                    )
+                    if len(listFound2["itemList"]) > 0:
+                        printMainMessage("Items that were found in the script:")
+                        printMainMessage("")
+                        for item in listFound2["itemList"]:
+                            print(
+                                genLevelMess(
+                                    item["word"]
+                                    + " - "
+                                    + item["mean"]
+                                    + " - Level: "
+                                    + str(item["level"]),
+                                    item["level"],
+                                )
+                            )
+                            console_logs.append(genLevelMess(
+                                item["word"]
+                                + " - "
+                                + item["mean"]
+                                + " - Level: "
+                                + str(item["level"]),
+                                item["level"],
+                            ))
+                        printMainMessage("")
+                    else:
+                        printMainMessage("Items that were found in the script:")
+                        printMainMessage("")
+                        printSuccessMessage("None were found")
+                        printMainMessage("")
+                    printMainMessage("--------")
+                    if (
+                        listFound2["highestLevel"] > 2
+                        and listFound2["typeOfDirectory"] == 1
+                    ):
+                        printMainMessage(
+                            "Would you like to delete the file as its 50% or more untrusted? (y/n): "
+                        )
+                        if input(">> ").lower() == "y":
+                            res = deleteDirectory(main_directory)
+                            if res["success"] == True:
+                                printSuccessMessage(
+                                    "Successfully deleted the file from system: "
+                                    + main_directory
+                                )
+                            else:
+                                printErrorMessage(
+                                    "Failed to delete the file from your system."
+                                )
+            elif arg1 == "-json":
+                main_directory = arg2
+                printMainMessage(json.dumps(scanAPI(main_directory)))
+            elif arg1 == "-scanrun":
+                main_directory = arg2
+                api_result = scanAPI(main_directory)
+
+                if api_result.get("error"):
+                    printErrorMessage(f"Error while loading script: {api_result['error']} ({str(api_result['code'])})")
+                else:
+                    printMainMessage("-----------")
+                    if api_result["typeOfDirectory"] == 2:
+                        printErrorMessage("Failed to run script: Script is online and cannot be downloaded.")
+                    elif api_result["highestLevel"] > 2:
+                        printErrorMessage("WARNING!")
+                        printErrorMessage("Script has been detected above the dangerous zone!")
+                        printMainMessage("Highest Level: " + genLevelMess(str(api_result["highestLevel"]), api_result["highestLevel"]))
+                        printMainMessage("-----------")
+                        printMainMessage("Following Items:")
+
+                        for i in api_result["itemList"]:
+                            if i["level"] > 2:
+                                print(genLevelMess(
+                                    i["word"]
+                                    + " - "
+                                    + i["mean"]
+                                    + " - Level: "
+                                    + str(i["level"]),
+                                    i["level"],
+                                ))
+                                console_logs.append(genLevelMess(
+                                    i["word"]
+                                    + " - "
+                                    + i["mean"]
+                                    + " - Level: "
+                                    + str(i["level"]),
+                                    i["level"],
+                                ))
+                        printMainMessage("-----------")
+                        printMainMessage("Please choose from the following options:")
+                        printMainMessage("")
+                        printSuccessMessage("1 - Delete File from System")
+                        printErrorMessage("2 - Run Script Anyway")
+                        printWarnMessage("3 - Ignore and don't run the script.")
+                        printMainMessage("")
+                        selectionInput = input(">> ")
+                        if selectionInput == "1":
+                            res = deleteDirectory(main_directory)
+                            if res["success"] == True:
+                                printSuccessMessage("File has been deleted from the system.")
+                            else:
+                                printErrorMessage("File was unable to be deleted.")
+                        elif selectionInput == "2":
+                            printErrorMessage("Running script under dangerous zone.")
+                            subprocess.Popen([sys.executable, main_directory])
+                        else:
+                            printWarnMessage("Ignored Script and not ran.")
+                    else:
+                        printSuccessMessage("Script is under dangerous mode. Running script..")
+                        subprocess.Popen([sys.executable, main_directory])
+            elif arg1 == "-list":
+                listFound2 = scan_contents(json.dumps(blacklisted_words))
+                printMainMessage("--------")
+                printMainMessage("")
+                printMainMessage("List of words blacklisted below:")
+                printMainMessage("")
+                if len(listFound2) > 0:
+                    for item in listFound2:
+                        print(
+                            genLevelMess(
+                                item["word"]
+                                + " - "
+                                + item["mean"]
+                                + " - Level: "
+                                + str(item["level"]),
+                                item["level"],
+                            )
+                        )
+                        console_logs.append(genLevelMess(
+                            item["word"]
+                            + " - "
+                            + item["mean"]
+                            + " - Level: "
+                            + str(item["level"]),
+                            item["level"],
+                        ))
+                    printMainMessage("")
+                else:
+                    printSuccessMessage("None were found")
+                    printMainMessage("")
+                printMainMessage("--------")
+                printMainMessage("")
+                printMainMessage("List of words whitelisted below:")
+                printMainMessage("")
+                if len(whitelisted_words) > 0:
+                    for item in whitelisted_words:
+                        item_data = getItemData(item)
+                        print(
+                            genLevelMess(
+                                item_data["word"]
+                                + " - "
+                                + item_data["mean"]
+                                + " - Level: "
+                                + str(item_data["level"]),
+                                item_data["level"],
+                            )
+                        )    
+                        console_logs.append(genLevelMess(
+                                item_data["word"]
+                                + " - "
+                                + item_data["mean"]
+                                + " - Level: "
+                                + str(item_data["level"]),
+                                item_data["level"],
+                            ))
+                    printMainMessage("")
+                else:
+                    printSuccessMessage("None were found")
+                    printMainMessage("")
+                printMainMessage("--------")
+            else:
+                printErrorMessage(
+                    "Error while scanning file: Argument 1 is not -json, -console, -list or -scanrun."
+                )
 
     def mainScript(dir):
         directory = ""
@@ -819,7 +907,17 @@ if __name__ == "__main__":
         else:
             printErrorMessage("Script brought an invalid type of directory.")
             file_contents = ""
-        listFound = scan_contents(file_contents)
+
+        if checkFileAuthorized(dir):
+            listFound = [
+                {
+                    "word": "Whitelisted or Authorized File",
+                    "mean": "This file was whitelisted as having no viruses. If you think you never added it to your list, remove it from your list ASAP!",
+                    "level": 0
+                }
+            ]
+        else:
+            listFound = scan_contents(file_contents)
         highestLevel = 0
         for item in listFound:
             if item["level"] > highestLevel:
@@ -847,6 +945,14 @@ if __name__ == "__main__":
                         item["level"],
                     )
                 )
+                console_logs.append(genLevelMess(
+                        item["word"]
+                        + " - "
+                        + item["mean"]
+                        + " - Level: "
+                        + str(item["level"]),
+                        item["level"],
+                    ))
             printMainMessage("")
         else:
             printMainMessage("Items that were found in the script:")
@@ -882,3 +988,17 @@ if __name__ == "__main__":
         argumentHandler(sys.argv)
     else:
         mainScript("")
+else:
+    def getConsoleLogs():
+        return console_logs
+    
+    def logger_detector_info():
+        return {
+            "version": version,
+            "backgroundConsoleHidden": hideBackgroundConsole
+        }
+    
+    if hideBackgroundConsole == False:
+        printMainMessage("Mode Detected: " + __name__)
+        printMainMessage("File Ran: " + __file__)
+        printSuccessMessage("Activated Module Mode.")
