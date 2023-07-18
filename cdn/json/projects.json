@@ -60,6 +60,16 @@
         "description": "Detect a logger in Python scripts"
     },
     {
+        "name": "Discord Bot Login",
+        "url": "https://www.efaz.dev/discordbotlogin",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=DiscordBotLogin.py",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Login to your Discord Bot using your Python console!"
+    },
+    {
         "name": "Fake Mewt UI",
         "url": "https://www.efaz.dev/fakeMewtUI",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=fakeMewtUI.py",
