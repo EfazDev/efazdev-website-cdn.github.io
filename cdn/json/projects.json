@@ -64,7 +64,7 @@
         "url": "https://www.efaz.dev/discordbotlogin",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=DiscordBotLogin.py",
         "discontinued": false,
-        "showInProjectsPage": true,
+        "showInProjectsPage": false,
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
         "description": "Login to your Discord Bot using your Python console!"
