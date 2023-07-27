@@ -237,7 +237,7 @@ async function code_redeem(codeToUse, username, index, listOfCodes) {
                         });
                         console.log("Success Code Reach: " + jsonRes["message"] + " | Code: " + codeToUse)
                         messageGenerator("Success Code Reach: " + jsonRes["message"] + " | Code: " + codeToUse)
-                        if (index == listOfCodes.length - 1) {
+                        if (results.length == listOfCodes.length) {
                             sleep(5000)
                             on_finished(username)
                         }
