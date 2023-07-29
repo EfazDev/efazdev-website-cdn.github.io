@@ -100,6 +100,16 @@
         "description": "Spam a Discord Webhook with Mewt Payload"
     },
     {
+        "name": "Efaz's Cookie Destroyer",
+        "url": "https://www.efaz.dev/cookiedestroyer",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=CookieDestroyer.py",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Destroy a Roblox Cookie in just a few moments!"
+    },
+    {
         "name": "discord.gg Redirect",
         "url": "https://www.efaz.dev/discord-gg",
         "download_url": "https://www.efaz.dev/discord-gg",
