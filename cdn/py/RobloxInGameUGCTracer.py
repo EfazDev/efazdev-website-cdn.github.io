@@ -118,8 +118,11 @@ if __name__ == "__main__":
                                 print(f"---------------")
                             if showrestart:
                                 printWarnMessage("Do you want to try again with another item?")
-                                if input(">> ").lower() == "y":
+                                mai = input(">> ")
+                                if mai.lower() == "y":
                                     printWarnMessage("Restarting System..")
+                                elif testIfInt(mai):
+                                    run(int(mai), showrestart)
                                 else:
                                     exit()
                     else:
