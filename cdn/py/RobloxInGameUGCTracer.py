@@ -5,7 +5,7 @@ import subprocess
 import json
 
 os.system("cls" if os.name == "nt" else "clear")
-version = "v1.0.0"
+version = "v1.0.1"
 hideBackgroundConsole = True
 console_logs = []
 
@@ -25,7 +25,7 @@ def printErrorMessage(mes):
 def testIfInt(value):
     try:
         new_int = int(value)
-        if new_int < 15:
+        if new_int < 3000:
             return False
         return True
     except Exception as e:
@@ -59,7 +59,17 @@ if __name__ == "__main__":
             res = requests.get(url1)
             main_json = res.json()
             if main_json.get("errors"):
-                printErrorMessage("Error while getting request. Restarting form..")
+                printErrorMessage("Error while getting request. More information is below:")
+                print(f"---------------")
+                print(f"Request #1")
+                print(f"URL: {url1}")
+                print(f"Status Code: {res.status_code}")
+                print(f"---------------")
+                for i in main_json["errors"]:
+                    print(f"Code: {i['code']}")
+                    print(f"Message: {i['message']}")
+                    print(f"---------------")
+                printErrorMessage("Restarting Form..")
             else:
                 if main_json.get("SaleLocation"):
                     if main_json["SaleLocation"].get("UniverseIds"):
@@ -74,7 +84,17 @@ if __name__ == "__main__":
                         main_json2 = res2.json()
 
                         if main_json2.get("errors"):
-                            printErrorMessage("Error while getting request. Restarting form..")
+                            printErrorMessage("Error while getting request. More information is below:")
+                            print(f"---------------")
+                            print(f"Request #2")
+                            print(f"URL: {generated_string}")
+                            print(f"Status Code: {res2.status_code}")
+                            print(f"---------------")
+                            for i in main_json2["errors"]:
+                                print(f"Code: {i['code']}")
+                                print(f"Message: {i['message']}")
+                                print(f"---------------")
+                            printErrorMessage("Restarting Form..")
                         else:
                             listOfGames = main_json2["data"]
                             printSuccessMessage(f"Successfully grabbed info of item!")
@@ -92,6 +112,8 @@ if __name__ == "__main__":
                                 print(f"Root Game ID: {i['rootPlaceId']}")
                                 print(f"Root Game Link: https://www.roblox.com/games/{i['rootPlaceId']}")
                                 print(f"Universe ID: {i['id']}")
+                                print(f"Max Players Per Server: {i['maxPlayers']}")
+                                print(f"Can Create Private Servers: {i['createVipServersAllowed']}")
                                 print(f"Total Players Playing: {i['playing']}")
                                 print(f"---------------")
                             if showrestart:
@@ -101,9 +123,9 @@ if __name__ == "__main__":
                                 else:
                                     exit()
                     else:
-                        printErrorMessage("This item doesn't have a set Experience ID.")
+                        printErrorMessage("This asset doesn't have a set Experience ID.")
                 else:
-                    printErrorMessage("This item doesn't have a set sale location.")
+                    printErrorMessage("This asset doesn't have a set sale location.")
         except Exception as e:
             printErrorMessage("Error while getting games linked to this item: " + str(e))
 
@@ -124,7 +146,7 @@ if __name__ == "__main__":
                     )
             else:
                 printErrorMessage(
-                    "Error while getting item info: Invalid Mode."
+                    "Error while getting asset info: Invalid Mode."
                 )
 
     def loop():
@@ -132,6 +154,11 @@ if __name__ == "__main__":
 
         def fulfillVariables():
             inputs = [input("Enter your Roblox Item ID to use: ")]
+
+            if inputs[0] == "exit":
+                exit()
+            elif inputs[0] == "quit":
+                quit()
 
             if testIfInt(inputs[0]) == True:
                 generatedSettings["id"] = int(inputs[0])
