@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrQAUBPxdTSe5SAzHqQfynUN5CR9WE8xpcCguJwBbtFw1o0LiQqRZhLk_xzkNaAX7IFrc&usqp=CAU");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: "Arial Rounded MT Bold";
+            color: white;
+        }
+
+        div {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: fixed;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid white;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var serverStatus = 1
+        function updateObject() {
+            var object = document.getElementById("status")
+            if (serverStatus == 0) {
+                object.innerHTML = "Current Status: 🟢 - Server Active - 0"
+            } else if (serverStatus == 1) {
+                object.innerHTML = "Current Status: 🟡 - Awaiting from server - 1"
+            } else {
+                object.innerHTML = "Current Status: 🔴 - Server Failed - 2"
+            }
+        }
+        function setStatus(num) {
+            serverStatus = num
+            updateObject()
+        }
+        async function scan() {
+            fetch("https://api.efaz.dev/api/revive").then(res => {
+                res.json().then(new_json => {
+                    if (new_json["success"] == true) {
+                        setStatus(0)
+                    } else {
+                        setStatus(2)
+                    }
+                }).catch(err => {
+                    setStatus(2)
+                    console.warn(err)
+                })
+            }).catch(err => {
+                setStatus(2)
+                console.warn(err)
+            })
+        }
+        async function main() {
+            setStatus(1)
+            await scan()
+            setTimeout(() => {  main(); }, 300000);
+        }
+        window.onload = main
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1 style="text-align: center;">Server Status: <span style="color: #0000ff;"><a style="color: #0000ff;"
+                    href="https://api.efaz.dev">api.efaz.dev</a></span></h1>
+        <h2 style="text-align: center;" id="status">Current Status: 🟡 - Connecting - 1</h2>
+        <table style="margin-left: auto; margin-right: auto; height: 54px;">
+            <tbody>
+                <tr style="height: 30px;">
+                    <td style="height: 18px; width: 30px;">0</td>
+                    <td style="height: 18px; width: 120px;">Success</td>
+                </tr>
+                <tr style="height: 30px;">
+                    <td style="height: 18px; width: 30px;">1</td>
+                    <td style="height: 18px; width: 120px;">Awaiting Request</td>
+                </tr>
+                <tr style="height: 30px;">
+                    <td style="height: 18px; width: 30px;">2</td>
+                    <td style="height: 18px; width: 120px;">Failed</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&nbsp;</p>
+    </div>
+</body>
+
+</html>
