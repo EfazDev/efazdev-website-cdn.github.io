@@ -44,21 +44,22 @@
         }
         async function scan() {
             fetch("https://api.efaz.dev/api/revive", {
-                mode: "no-cors", method: "GET", headers: {
+                method: "GET",
+                headers: {
                     "Content-Type": "application/json"
                 }
             })
-            .then(response => response.json())
-            .then(new_json => {
-                if (new_json["success"] == true) {
-                    setStatus(0)
-                } else {
+                .then(response => response.json())
+                .then(new_json => {
+                    if (new_json["success"] == true) {
+                        setStatus(0)
+                    } else {
+                        setStatus(2)
+                    }
+                }).catch(err => {
                     setStatus(2)
-                }
-            }).catch(err => {
-                setStatus(2)
-                console.warn(err)
-            })
+                    console.warn(err)
+                })
         }
         async function main() {
             setStatus(1)
