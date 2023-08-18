@@ -43,7 +43,7 @@
             updateObject()
         }
         async function scan() {
-            fetch("https://api.efaz.dev/api/revive").then(res => {
+            fetch("https://api.efaz.dev/api/revive", {mode: "no-cors"}).then(res => {
                 res.json().then(new_json => {
                     if (new_json["success"] == true) {
                         setStatus(0)
