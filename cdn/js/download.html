@@ -3,7 +3,7 @@
         <script>
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            var url = "https://raw.githubusercontent.com/EfazDev/efazdev-website-cdn.github.io/main/cdn/js/" + urlParams.get('fileName')
+            var url = "https://api.efaz.dev/api/projects/download/js/" + urlParams.get('fileName')
             console.log("Loaded URL: " + url)
 
             window.onload = init;
