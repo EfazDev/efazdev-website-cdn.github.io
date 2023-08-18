@@ -28,6 +28,8 @@
     </style>
     <script>
         var serverStatus = 1
+        var latest = new Date().getTime()
+        var countdown_total = 60
         function updateObject() {
             var object = document.getElementById("status")
             if (serverStatus == 0) {
@@ -38,12 +40,19 @@
                 object.innerHTML = "Current Status: 🔴 - Server Failed - 2"
             }
         }
+        async function setTimer(time) {
+            var inner = 'Updating in: ' + time + ' : <span style="color: #0080ff;"><a style="color: #0080ff;"href="/cdn/other/serverstatus.html">Update Now</a></span>'
+            var object2 = document.getElementById("time")
+            object2.innerHTML = inner
+        }
         function setStatus(num) {
             serverStatus = num
             updateObject()
         }
         async function scan() {
-            fetch("https://api.efaz.dev/api/revive", {
+            latest = new Date().getTime()
+            setTimer(60)
+            fetch("https://api.efaz.dev", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -64,8 +73,14 @@
         async function main() {
             setStatus(1)
             await scan()
-            setTimeout(() => { main(); }, 300000);
+            setTimeout(() => { main(); }, countdown_total * 1000);
         }
+        var update = setInterval(function () {
+            var now = new Date().getTime();
+            var diff = now - latest;
+            var seconds = Math.round(diff / 1000)
+            setTimer(countdown_total - seconds)
+        }, 1000);
         window.onload = main
     </script>
 </head>
@@ -75,6 +90,8 @@
         <h1 style="text-align: center;">Server Status: <span style="color: #0080ff;"><a style="color: #0080ff;"
                     href="https://api.efaz.dev">api.efaz.dev</a></span></h1>
         <h2 style="text-align: center;" id="status">Current Status: 🟡 - Connecting - 1</h2>
+        <p style="text-align: center;" id="time">Updating in: 0 : <span style="color: #0080ff;"><a
+                    style="color: #0080ff;" href="serverstatus.html">Update Now</a></span></p>
         <table style="margin-left: auto; margin-right: auto; height: 54px;">
             <tbody>
                 <tr style="height: 30px;">
