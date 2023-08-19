@@ -1,25 +1,29 @@
 <html>
-    <head>
-        <script>
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            var url = "https://api.efaz.dev/api/projects/download/json/" + urlParams.get('fileName')
-            console.log("Loaded URL: " + url)
 
-            window.onload = init;
+<head>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        var url = "https://api.efaz.dev/api/projects/download/json/" + urlParams.get('fileName')
+        console.log("Loaded URL: " + url)
 
-            function init(){
-                const object = document.getElementById("downloadbutton")
-                object.href = url
-                object.click()
+        window.onload = init;
 
+        function init() {
+            const object = document.getElementById("downloadbutton")
+            object.href = url
+            object.click()
+            setTimeout(() => {
                 object.href = "https://www.efaz.dev/thanks"
                 object.click()
-            }
-        </script>
-    </head>
-    <body>
-        <p>Redirecting you to GitHub's Raw Server!</p>
-        <a href="https://cdn.efaz.dev" download id="downloadbutton"></a>
-    </body>
+            }, "2000");
+        }
+    </script>
+</head>
+
+<body>
+    <p>Redirecting you to GitHub's Raw Server!</p>
+    <a href="https://cdn.efaz.dev" download id="downloadbutton"></a>
+</body>
+
 </html>
