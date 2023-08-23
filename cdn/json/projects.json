@@ -120,6 +120,16 @@
         "description": "Get Game IDs and Link of an In-Game Limited!"
     },
     {
+        "name": "Efaz's Roblox Account Bulk Verifier",
+        "url": "https://www.efaz.dev/bulkrobloxverifier",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=VerifyAllRobloxAccounts.py",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Bulk Verify Roblox accounts with just a valid cookie!"
+    },
+    {
         "name": "discord.gg Redirect",
         "url": "https://www.efaz.dev/discord-gg",
         "download_url": "https://www.efaz.dev/discord-gg",
