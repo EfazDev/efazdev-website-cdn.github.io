@@ -3,24 +3,47 @@
         <script>
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            var url = "https://api.efaz.dev/api/projects/download/js/" + urlParams.get('fileName')
-            console.log("Loaded URL: " + url)
+            const folder = "js"
 
             window.onload = init;
 
             function init(){
-                const object = document.getElementById("downloadbutton")
-                object.href = url
-                object.click()
-                setTimeout(() => {
-                object.href = "https://www.efaz.dev/thanks"
-                object.click()
-            }, "2000");
+                var url = "https://api.efaz.dev/api/projects/download/" + folder + "/" + urlParams.get('fileName')
+                console.log("Loaded URL: " + url)
+
+                fetch("https://api.efaz.dev")
+                .then(res => {
+                    if (res.ok) {
+                        return res.json()
+                    } else {
+                        return {"success": false}
+                    }
+                })
+                .then(new_json => {
+                    if (new_json["success"] == true) {
+                        const object = document.getElementById("downloadbutton")
+                        object.href = url
+                        object.click()
+
+                        setTimeout(() => {
+                            object.href = "https://www.efaz.dev/thanks"
+                            object.click()
+                        }, "4000");
+                    } else {
+                        document.getElementById("message").innerHTML = "Server may be down. Try again later!"
+
+                    }
+                })
+                .catch(err => {
+                    document.getElementById("message").innerHTML = "Server may be down. Try again later!"
+                })
             }
         </script>
     </head>
     <body>
-        <p>Redirecting you to GitHub's Raw Server!</p>
+        <p id="message">Redirecting you to Download System!</p>
         <a href="https://cdn.efaz.dev" download id="downloadbutton"></a>
+        <br>
+        <button type="button" onclick="init()">Click to retry download.</button>
     </body>
 </html>
