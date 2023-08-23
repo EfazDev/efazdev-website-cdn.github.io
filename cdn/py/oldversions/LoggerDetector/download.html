@@ -11,6 +11,7 @@
                 var url = "https://raw.githubusercontent.com/EfazDev/efazdev-website-cdn.github.io/main/cdn/py/oldversions/LoggerDetector/v" + urlParams.get('versionNumber') + "/LoggerDetector.py"
                 console.log("Loaded URL: " + url)
 
+                document.getElementById("message").innerHTML = "Awaiting server.."
                 fetch("https://api.efaz.dev")
                 .then(res => {
                     if (res.ok) {

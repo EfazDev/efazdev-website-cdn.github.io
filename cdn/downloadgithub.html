@@ -11,6 +11,7 @@
                 var url = "https://github.com/EfazDev/" + projectName + "/archive/refs/heads/main.zip"
                 console.log("Loaded URL: " + url)
 
+                document.getElementById("message").innerHTML = "Awaiting server.."
                 fetch("https://api.efaz.dev")
                 .then(res => {
                     if (res.ok) {

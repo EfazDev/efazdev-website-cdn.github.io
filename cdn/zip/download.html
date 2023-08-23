@@ -11,6 +11,7 @@
                 var url = "https://api.efaz.dev/api/projects/download/" + folder + "/" + urlParams.get('fileName')
                 console.log("Loaded URL: " + url)
 
+                document.getElementById("message").innerHTML = "Awaiting server.."
                 fetch("https://api.efaz.dev")
                 .then(res => {
                     if (res.ok) {
