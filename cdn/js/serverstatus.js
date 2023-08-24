@@ -20,6 +20,9 @@ function setStatus(num) {
     serverStatus = num
     updateObject()
 }
+function pageInIframe() {
+    return (window.location !== window.parent.location);
+}
 async function scan() {
     latest = new Date().getTime()
     setTimer(60)
@@ -43,6 +46,9 @@ async function scan() {
 }
 async function main() {
     setStatus(1)
+    if (pageInIframe() == true) {
+        document.getElementById("linktoapi").href = "serverstatus.html"
+    }
     await scan()
     setTimeout(() => { main(); }, countdown_total * 1000);
 }
