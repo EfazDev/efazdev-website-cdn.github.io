@@ -19,7 +19,13 @@ button {
     border-collapse: collapse;
     text-align: center;
     margin-left: auto;
+    border-radius: 8px;
+    font-family: "Arial Rounded MT Bold";
     margin-right: auto;
+}
+
+a {
+    color: #0080ff;
 }
 
 table,
