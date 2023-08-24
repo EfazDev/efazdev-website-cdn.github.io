@@ -22,24 +22,29 @@ function download() {
         console.log("Loaded URL: " + url)
 
         setMessage("Awaiting server..")
-        if (getIfServerIsActive() == true) {
-            setMessage("Starting Download..")
-            if (testingMode == false) {
-                const object = document.getElementById("downloadbutton")
-                object.href = url
-                object.click()
-                setIsDownloading(false)
-                setMessage("Download should be started! You'll be redirected soon!")
-
-                setTimeout(() => {
-                    object.href = thanksURL + "?file=" + urlParams.get('fileName')
+        getIfServerIsActive().then(response => {
+            if (response == true) {
+                setMessage("Starting Download..")
+                if (testingMode == false) {
+                    const object = document.getElementById("downloadbutton")
+                    object.href = url
                     object.click()
-                }, "4000");
+                    setIsDownloading(false)
+                    setMessage("Download should be started! You'll be redirected soon!")
+    
+                    setTimeout(() => {
+                        object.href = thanksURL + "?file=" + urlParams.get('fileName')
+                        object.click()
+                    }, "4000");
+                }
+            } else {
+                setMessage("Server may be down. Try again later!")
+                setIsDownloading(false)
             }
-        } else {
+        }).catch(err => {
             setMessage("Server may be down. Try again later!")
             setIsDownloading(false)
-        }
+        })
     }
 }
 

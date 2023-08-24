@@ -4,7 +4,7 @@ function getDownloadURL() {
     const urlParams = new URLSearchParams(queryString);
     return "https://api.efaz.dev/api/projects/download/" + folder + "/" + urlParams.get('fileName')
 }
-function getIfServerIsActive() {
+async function getIfServerIsActive() {
     return fetch("https://api.efaz.dev")
         .then(res => {
             if (res.ok) {
