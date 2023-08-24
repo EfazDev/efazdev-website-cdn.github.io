@@ -1,5 +1,8 @@
 window.onload = download;
 
+const testingMode = false
+var isDownloading = false
+
 function setMessage(message) {
     document.getElementById("message").innerHTML = message
 }

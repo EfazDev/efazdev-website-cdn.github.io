@@ -15,11 +15,7 @@ function getIfServerIsActive() {
         })
         .then(new_json => {
             if (new_json["success"] == true) {
-                if (testingMode == false) {
-                    return true
-                } else {
-                    return false
-                }
+                return true
             } else {
                 return false
             }
