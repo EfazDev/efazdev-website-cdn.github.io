@@ -33,7 +33,7 @@ function download() {
                     setMessage("Download should be started! You'll be redirected soon!")
     
                     setTimeout(() => {
-                        object.href = thanksURL + "?file=" + urlParams.get('fileName')
+                        object.href = thanksURL
                         object.click()
                     }, "4000");
                 }
