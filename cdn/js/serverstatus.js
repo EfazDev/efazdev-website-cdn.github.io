@@ -12,7 +12,7 @@ function updateObject() {
     }
 }
 async function setTimer(time) {
-    var inner = 'Updating in: ' + time + ' : <span style="color: #0080ff;"><a style="color: #0080ff;"href="/cdn/other/serverstatus.html">Update Now</a></span>'
+    var inner = 'Updating in: ' + time + ' : <span><a href="/cdn/other/serverstatus.html">Update Now</a></span>'
     var object2 = document.getElementById("time")
     object2.innerHTML = inner
 }
