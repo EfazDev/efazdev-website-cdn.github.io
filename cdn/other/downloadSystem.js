@@ -1,5 +1,3 @@
-window.onload = download;
-
 const testingMode = false
 var isDownloading = false
 
@@ -44,3 +42,5 @@ function download() {
         }
     }
 }
+
+window.onload = download;
