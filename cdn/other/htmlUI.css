@@ -14,6 +14,12 @@ div {
     position: fixed;
 }
 
+p, 
+h1, 
+h2 {
+    text-align: center;
+}
+
 button {
     border: 1px solid white;
     border-collapse: collapse;
