@@ -7,6 +7,7 @@ body {
     background: linear-gradient(225deg, rgba(255,75,0,1) 0%, rgba(255,255,0,1) 60%, rgba(0,255,17,1) 100%);
     font-family: "Arial Rounded MT Bold";
     color: white;
+    overflow: hidden;
 }
 
 div {
