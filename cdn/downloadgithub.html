@@ -1,14 +1,47 @@
 <html>
 
 <head>
-    <script>
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const projectName = urlParams.get('project')
+    <script id="download_ui_settings">
+        const thanksURL = "https://www.efaz.dev/thanks"
+        function getDownloadURL() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const projectName = urlParams.get('project')
+            return "https://github.com/EfazDev/" + projectName + "/archive/refs/heads/main.zip"
+        }
+        function getIfServerIsActive() {
+            fetch("https://api.efaz.dev")
+                .then(res => {
+                    if (res.ok) {
+                        return res.json()
+                    } else {
+                        return { "success": false }
+                    }
+                })
+                .then(new_json => {
+                    if (new_json["success"] == true) {
+                        if (testingMode == false) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    } else {
+                        return false
+                    }
+                })
+                .catch(err => {
+                    return false
+                })
+        }
+    </script>
+
+    <script id="download_ui_system">
         const testingMode = false
         var isDownloading = false
+    </script>
 
-        window.onload = init;
+    <script>
+        window.onload = download;
 
         function setMessage(message) {
             document.getElementById("message").innerHTML = message
@@ -24,45 +57,31 @@
             }
         }
 
-        function init() {
+        function download() {
             if (isDownloading == false) {
                 setIsDownloading(true)
-                var url = "https://github.com/EfazDev/" + projectName + "/archive/refs/heads/main.zip"
+                var url = getDownloadURL()
                 console.log("Loaded URL: " + url)
 
                 setMessage("Awaiting server..")
-                fetch("https://api.efaz.dev")
-                    .then(res => {
-                        if (res.ok) {
-                            return res.json()
-                        } else {
-                            return { "success": false }
-                        }
-                    })
-                    .then(new_json => {
-                        if (new_json["success"] == true) {
-                            setMessage("Starting Download..")
-                            if (testingMode == false) {
-                                const object = document.getElementById("downloadbutton")
-                                object.href = url
-                                object.click()
-                                setIsDownloading(false)
-                                setMessage("Download should be started! You'll be redirected soon!")
-
-                                setTimeout(() => {
-                                    object.href = "https://www.efaz.dev/thanks"
-                                    object.click()
-                                }, "4000");
-                            }
-                        } else {
-                            setMessage("Server may be down. Try again later!")
-                            setIsDownloading(false)
-                        }
-                    })
-                    .catch(err => {
-                        setMessage("Server may be down. Try again later!")
+                if (getIfServerIsActive() == true) {
+                    setMessage("Starting Download..")
+                    if (testingMode == false) {
+                        const object = document.getElementById("downloadbutton")
+                        object.href = url
+                        object.click()
                         setIsDownloading(false)
-                    })
+                        setMessage("Download should be started! You'll be redirected soon!")
+
+                        setTimeout(() => {
+                            object.href = thanksURL + "?file=" + urlParams.get('fileName')
+                            object.click()
+                        }, "4000");
+                    }
+                } else {
+                    setMessage("Server may be down. Try again later!")
+                    setIsDownloading(false)
+                }
             }
         }
     </script>
@@ -104,9 +123,9 @@
 <body>
     <div>
         <h1 id="message">Starting Download System..</h1>
-        <a href="https://cdn.efaz.dev" download id="downloadbutton"></a>
+        <a href="https://api.efaz.dev" download id="downloadbutton"></a>
         <br>
-        <button type="button" id="retryButton" onclick="init()">Click to retry download.</button>
+        <button type="button" id="retryButton" onclick="download()">Click to retry download.</button>
     </div>
 </body>
 
