@@ -5,7 +5,7 @@ function getDownloadURL() {
     return "https://api.efaz.dev/api/projects/download/" + folder + "/" + urlParams.get('fileName')
 }
 function getIfServerIsActive() {
-    fetch("https://api.efaz.dev")
+    return fetch("https://api.efaz.dev")
         .then(res => {
             if (res.ok) {
                 return res.json()
@@ -14,7 +14,6 @@ function getIfServerIsActive() {
             }
         })
         .then(new_json => {
-            console.log(new_json)
             if (new_json["success"] == true) {
                 return true
             } else {
