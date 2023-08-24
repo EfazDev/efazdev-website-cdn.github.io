@@ -1,50 +1,113 @@
 <html>
-    <head>
-        <script>
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const projectName = urlParams.get('project')
 
-            window.onload = init;
+<head>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const projectName = urlParams.get('project')
+        const testingMode = true
+        var isDownloading = false
 
-            function init(){
+        window.onload = init;
+
+        function setMessage(message) {
+            document.getElementById("message").innerHTML = message
+        }
+
+        function setIsDownloading(toggle) {
+            isDownloading = toggle
+            const objectButton = document.getElementById("retryButton")
+            if (isDownloading == true) {
+                objectButton.style.display = "none";
+            } else {
+                objectButton.style.display = "block";
+            }
+        }
+
+        function init() {
+            if (isDownloading == false) {
+                setIsDownloading(true)
                 var url = "https://github.com/EfazDev/" + projectName + "/archive/refs/heads/main.zip"
                 console.log("Loaded URL: " + url)
 
-                document.getElementById("message").innerHTML = "Awaiting server.."
+                setMessage("Awaiting server..")
                 fetch("https://api.efaz.dev")
-                .then(res => {
-                    if (res.ok) {
-                        return res.json()
-                    } else {
-                        return {"success": false}
-                    }
-                })
-                .then(new_json => {
-                    if (new_json["success"] == true) {
-                        const object = document.getElementById("downloadbutton")
-                        object.href = url
-                        object.click()
+                    .then(res => {
+                        if (res.ok) {
+                            return res.json()
+                        } else {
+                            return { "success": false }
+                        }
+                    })
+                    .then(new_json => {
+                        if (new_json["success"] == true) {
+                            setMessage("Starting Download..")
+                            if (testingMode == false) {
+                                const object = document.getElementById("downloadbutton")
+                                object.href = url
+                                object.click()
+                                setIsDownloading(false)
+                                setMessage("Download should be started! You'll be redirected soon!")
 
-                        setTimeout(() => {
-                            object.href = "https://www.efaz.dev/thanks"
-                            object.click()
-                        }, "4000");
-                    } else {
-                        document.getElementById("message").innerHTML = "Server may be down. Try again later!"
-
-                    }
-                })
-                .catch(err => {
-                    document.getElementById("message").innerHTML = "Server may be down. Try again later!"
-                })
+                                setTimeout(() => {
+                                    object.href = "https://www.efaz.dev/thanks"
+                                    object.click()
+                                }, "4000");
+                            }
+                        } else {
+                            setMessage("Server may be down. Try again later!")
+                            setIsDownloading(false)
+                        }
+                    })
+                    .catch(err => {
+                        setMessage("Server may be down. Try again later!")
+                        setIsDownloading(false)
+                    })
             }
-        </script>
-    </head>
-    <body>
-        <p id="message">Redirecting you to Download System!</p>
+        }
+    </script>
+    <style>
+        body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrQAUBPxdTSe5SAzHqQfynUN5CR9WE8xpcCguJwBbtFw1o0LiQqRZhLk_xzkNaAX7IFrc&usqp=CAU");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: "Arial Rounded MT Bold";
+            color: white;
+        }
+
+        div {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: fixed;
+        }
+
+        button {
+            border: 1px solid white;
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid white;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 id="message">Starting Download System..</h1>
         <a href="https://cdn.efaz.dev" download id="downloadbutton"></a>
         <br>
-        <button type="button" onclick="init()">Click to retry download.</button>
-    </body>
+        <button type="button" id="retryButton" onclick="init()">Click to retry download.</button>
+    </div>
+</body>
+
 </html>
