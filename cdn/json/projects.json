@@ -2,7 +2,7 @@
     {
         "name": "Merch Code System",
         "url": "https://www.efaz.dev/merch-code-system",
-        "download_url": "https://codeload.github.com/EfazDev/merch-code-system/zip/refs/heads/main",
+        "download_url": "https://cdn.efaz.dev/cdn/downloadgithub.html?project=merch-code-system",
         "discontinued": false,
         "showInProjectsPage": true,
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
@@ -128,6 +128,16 @@
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
         "description": "Bulk Verify Roblox accounts with just a valid cookie!"
+    },
+    {
+        "name": "Twitter Verification System",
+        "url": "https://www.efaz.dev/twitterverificationsystem",
+        "download_url": "https://cdn.efaz.dev/cdn/downloadgithub.html?project=twitter-verification",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Twitter Verification System helps users to create Twitter Verification Systems using a webserver."
     },
     {
         "name": "discord.gg Redirect",
