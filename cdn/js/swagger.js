@@ -16,6 +16,11 @@ function main_swagger() {
                 }
             }
 
+            var g = document.createElement('p')
+            g.innerHTML = "EfazDev"
+            g.style = "margin: auto; width: 75%;"
+            d.appendChild(g)
+
             var b = document.createElement('link');
             b.type = 'image/png';
             b.rel = 'icon';
