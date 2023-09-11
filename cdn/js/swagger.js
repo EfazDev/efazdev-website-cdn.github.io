@@ -7,6 +7,15 @@ function main_swagger() {
             d.href = "https://www.efaz.dev/";
             d.target = "_blank";
 
+            var e = document.getElementsByTagName("link")
+            for (let f = 0; f < e.length; f++) {
+                if (e && e.href) {
+                    if (e.href == "./favicon-32x32.png" || e.href == "./favicon-16x16.png") {
+                        e.remove()
+                    }
+                }
+            }
+
             var b = document.createElement('link');
             b.type = 'image/png';
             b.rel = 'icon';
