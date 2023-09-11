@@ -6,7 +6,7 @@
     background: linear-gradient(to right, #ff4b00 0%, #ffff00 50%,  #00ff00 100%);
 }
 
-.swagger-ui img {
+.swagger-ui img[alt="EfazDev"] {
     content: url("https://cdn.efaz.dev/cdn/png/logo.png");
     width: 48px;
     height: 48px;

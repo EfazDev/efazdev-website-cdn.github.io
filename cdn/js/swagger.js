@@ -7,9 +7,6 @@ function main_swagger() {
             d.href = "https://www.efaz.dev/";
             d.target = "_blank";
 
-            d.children[0].alt = "EfazDev";
-            d.children[0].src = "https://cdn.efaz.dev/cdn/png/logo.png";
-
             var b = document.createElement('link');
             b.type = 'image/png';
             b.rel = 'icon';
