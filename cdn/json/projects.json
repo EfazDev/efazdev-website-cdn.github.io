@@ -150,6 +150,16 @@
         "description": "A simple redirect to discord.gg"
     },
     {
+        "name": "EfazDev API v1",
+        "url": "https://www.efaz.dev/api-v1",
+        "download_url": "https://api.efaz.dev/api/docs",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "How to use", "ProjectPage": "Try it now!"},
+        "dateDiscontinued": "None",
+        "description": "An API that can help with using Roblox or selected platform APIs!"
+    },
+    {
         "name": "JavaAutomation for Linux",
         "url": "https://www.efaz.dev/java-automation",
         "download_url": "https://efaz.dev/cdn/py/download.html?fileName=JavaAutomation.py",
