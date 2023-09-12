@@ -42,6 +42,7 @@ function main_swagger() {
             }
 
             loopFinished = true
+            window.onload()
         } else {
             setTimeout(main_swagger, 100)
         }
