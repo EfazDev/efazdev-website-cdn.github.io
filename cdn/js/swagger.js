@@ -1,4 +1,12 @@
 var loopFinished = false
+
+function structure_name(o) {
+    var g = document.createElement('p')
+    g.innerHTML = "EfazDev"
+    g.style = "margin: auto; width: 75%;"
+    o.appendChild(g)
+}
+
 function main_swagger() {
     if (loopFinished == false) {
         var a = document.getElementsByClassName('link');
@@ -16,10 +24,7 @@ function main_swagger() {
                 }
             }
 
-            var g = document.createElement('p')
-            g.innerHTML = "EfazDev"
-            g.style = "margin: auto; width: 75%;"
-            d.appendChild(g)
+            structure_name(d)
 
             var b = document.createElement('link');
             b.type = 'image/png';
@@ -43,6 +48,7 @@ function main_swagger() {
 
             loopFinished = true
             window.onload()
+            structure_name(d)
         } else {
             setTimeout(main_swagger, 100)
         }
