@@ -1,6 +1,6 @@
 var loopFinished = false
 
-async function main_swagger() {
+function main_swagger() {
     if (loopFinished == false) {
         var a = document.getElementsByClassName('link');
         var d = a[0]
@@ -42,13 +42,15 @@ async function main_swagger() {
             d.appendChild(g)
 
             loopFinished = true
+            console.log("Successfully set Custom UI!")
         } else {
             setTimeout(main_swagger, 100)
         }
     }
 }
 (function () {
-    window.addEventListener("load", async function () {
-        await main_swagger()
+    window.addEventListener("load", function () {
+        window.onload()
+        main_swagger()
     });
 })();
