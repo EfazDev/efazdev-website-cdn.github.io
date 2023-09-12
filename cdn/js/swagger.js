@@ -47,4 +47,12 @@ function main_swagger() {
     window.addEventListener("load", function () {
         main_swagger()
     });
+
+    window.addEventListener("load", function () {
+        var h_a = `<div id="doc-warning"><div class="warning-close" onclick="this.parentNode.remove()">x</div><div class="warning-description">DO NOT SHARE ANY ACCOUNT COOKIES OR PRIVATE INFORMATION WHEN USING THIS.</div></div>`
+        var j_a = document.getElementsByTagName("body")
+        if (j_a[0]) {
+            j_a[0].innerHTML = h_a + j_a[0].innerHTML
+        }
+    });
 })();
