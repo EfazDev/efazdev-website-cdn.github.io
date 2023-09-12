@@ -35,6 +35,12 @@ function main_swagger() {
             c.sizes = '16x16';
             document.getElementsByTagName('head')[0].appendChild(c);
             loopFinished = true
+
+            var h = `<div id="doc-warning"><div class="warning-close" onclick="this.parentNode.remove()"></div><div class="warning-description">DO NOT SHARE ANY ACCOUNT COOKIES OR PRIVATE INFORMATION WHEN USING THIS.</div></div>`
+            var i = document.getElementById("swagger-ui")
+            if (i) {
+                i.innerHTML = h + i.innerHTML
+            }
         } else {
             setTimeout(main_swagger, 100)
         }

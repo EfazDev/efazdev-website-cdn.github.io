@@ -17,3 +17,31 @@
     width: 48px;
     height: 48px;
 }
+
+/* Copied Warning Message CSS from https://catalog.roblox.com/docs/resources/Docs.css */
+
+#doc-warning {
+    display: flex;
+    font-family: "Droid Sans", sans-serif;
+    background-color: #ffdddd;
+    border: 1px solid #ee9999;
+    min-height: 45px;
+    color: #8f1d1d;
+}
+
+#doc-warning .warning-description {
+    margin: auto;
+}
+
+#doc-warning .warning-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 32px;
+    width: 32px;
+    font-size: 32px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Copied Warning Message CSS from https://catalog.roblox.com/docs/resources/Docs.css */
