@@ -35,10 +35,10 @@ function main_swagger() {
             c.sizes = '16x16';
             document.getElementsByTagName('head')[0].appendChild(c);
 
-            var h = `<div id="doc-warning"><div class="warning-close" onclick="this.parentNode.remove()">x</div><div class="warning-description">DO NOT SHARE ANY ACCOUNT COOKIES OR PRIVATE INFORMATION WHEN USING THIS.</div></div>`
-            var j = document.getElementsByTagName("body")
-            if (j[0]) {
-                j[0].innerHTML = h + j[0].innerHTML
+            var h_a = `<div id="doc-warning"><div class="warning-close" onclick="this.parentNode.remove()">x</div><div class="warning-description">DO NOT SHARE ANY ACCOUNT COOKIES OR PRIVATE INFORMATION WHEN USING THIS.</div></div>`
+            var j_a = document.getElementsByTagName("body")
+            if (j_a[0]) {
+                j_a[0].innerHTML = h_a + j_a[0].innerHTML
             }
 
             loopFinished = true
