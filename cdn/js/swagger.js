@@ -34,13 +34,14 @@ function main_swagger() {
             c.href = 'https://cdn.efaz.dev/cdn/png/logo16.png';
             c.sizes = '16x16';
             document.getElementsByTagName('head')[0].appendChild(c);
-            loopFinished = true
 
             var h = `<div id="doc-warning"><div class="warning-close" onclick="this.parentNode.remove()">x</div><div class="warning-description">DO NOT SHARE ANY ACCOUNT COOKIES OR PRIVATE INFORMATION WHEN USING THIS.</div></div>`
-            var i = document.getElementsByTagName("body")
-            if (i[0]) {
-                i[0].innerHTML = h + i[0].innerHTML
+            var j = document.getElementsByTagName("body")
+            if (j[0]) {
+                j[0].innerHTML = h + j[0].innerHTML
             }
+
+            loopFinished = true
         } else {
             setTimeout(main_swagger, 100)
         }
