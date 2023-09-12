@@ -1,13 +1,6 @@
 var loopFinished = false
 
-function structure_name(o) {
-    var g = document.createElement('p')
-    g.innerHTML = "EfazDev"
-    g.style = "margin: auto; width: 75%;"
-    o.appendChild(g)
-}
-
-function main_swagger() {
+async function main_swagger() {
     if (loopFinished == false) {
         var a = document.getElementsByClassName('link');
         var d = a[0]
@@ -23,8 +16,6 @@ function main_swagger() {
                     }
                 }
             }
-
-            structure_name(d)
 
             var b = document.createElement('link');
             b.type = 'image/png';
@@ -45,17 +36,19 @@ function main_swagger() {
             if (j_a[0]) {
                 j_a[0].innerHTML = h_a + j_a[0].innerHTML
             }
+            var g = document.createElement('p')
+            g.innerHTML = "EfazDev"
+            g.style = "margin: auto; width: 75%;"
+            d.appendChild(g)
 
             loopFinished = true
-            window.onload()
-            structure_name(d)
         } else {
             setTimeout(main_swagger, 100)
         }
     }
 }
 (function () {
-    window.addEventListener("load", function () {
-        main_swagger()
+    window.addEventListener("load", async function () {
+        await main_swagger()
     });
 })();
