@@ -37,9 +37,9 @@ function main_swagger() {
             loopFinished = true
 
             var h = `<div id="doc-warning"><div class="warning-close" onclick="this.parentNode.remove()">x</div><div class="warning-description">DO NOT SHARE ANY ACCOUNT COOKIES OR PRIVATE INFORMATION WHEN USING THIS.</div></div>`
-            var i = document.getElementById("swagger-ui")
-            if (i) {
-                i.innerHTML = h + i.innerHTML
+            var i = document.getElementsByTagName("body")
+            if (i[0]) {
+                i[0].innerHTML = h + i[0].innerHTML
             }
         } else {
             setTimeout(main_swagger, 100)
