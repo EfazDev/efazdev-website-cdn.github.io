@@ -204,6 +204,22 @@ window.onload = function () {
                 new_html = new_html + `></input></p>`
             }
             main_menu.innerHTML = main_menu.innerHTML + new_html
+        } else if (newQuestion["type"] == "Datetime Local" || newQuestion["type"] == "DTLocal") {
+            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="datetime-local" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+            if (newQuestion["required"] == true) {
+                new_html = new_html + ` required></input></p>`
+            } else {
+                new_html = new_html + `></input></p>`
+            }
+            main_menu.innerHTML = main_menu.innerHTML + new_html
+        } else if (newQuestion["type"] == "Date" || newQuestion["type"] == "DATE") {
+            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="date" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+            if (newQuestion["required"] == true) {
+                new_html = new_html + ` required></input></p>`
+            } else {
+                new_html = new_html + `></input></p>`
+            }
+            main_menu.innerHTML = main_menu.innerHTML + new_html
         } else {
             var new_html = `<p>${newQuestion["name"]}: Failed to create question. Please ask the owner of this form to correct the question type.</p>"`
             main_menu.innerHTML = main_menu.innerHTML + new_html
