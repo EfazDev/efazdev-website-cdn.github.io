@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.efaz.dev/cdn/js/reportsystem.js"></script>
+    <link rel="stylesheet" href="https://cdn.efaz.dev/cdn/other/htmlUI.css">
+</head>
+
+<body>
+    <div id="main_menu">
+        <h1 id="title1">Report System!</h1>
+        <p>Name: <input placeholder="Enter your first name here!" id="name_input"></input></p>
+        <p>Title: <input placeholder="Enter the title here!" id="title_input"></input></p>
+        <p>Message: </p><textarea placeholder="Enter your message here!" id="message_input" cols="40" rows="5"></textarea>
+        <br><br>
+        <button type="button" id="sendButton" onclick="send_response()">Send Report!</button>
+    </div>
+    <div id="failed" style="display: none;">
+        <h1 id="title2">Oops!</h1>
+        <p id="message1">{error}</p>
+        <br>
+        <button type="button" id="returnButton" onclick="view_main_menu()">Try again!</button>
+    </div>
+    <div id="success" style="display: none;">
+        <h1 id="title3">Success!</h1>
+        <p id="message2">Thanks for (suggesting your idea/reporting problems to us)!</p>
+        <br>
+        <button type="button" id="reloadButton" onclick="window.location.reload()">Do another!</button>
+    </div>
+</body>
+</html>
