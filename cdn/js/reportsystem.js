@@ -107,7 +107,7 @@ function send_response() {
             if (mode_response["success"] == true) {
                 mode_response = mode_response["response"]
                 var new_formated_values = {}
-                var listOfKeysProvided = values.keys()
+                var listOfKeysProvided = Object.keys(values);
                 var appliedAtSymbol = false
 
                 for (let c = 0; c < listOfKeysProvided.length; c++) {
