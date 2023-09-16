@@ -118,10 +118,10 @@ function send_response() {
                             new_formated_values[listOfKeysProvided[c]] = main_val
                         } else if (main_val2["in"] == "URL") {
                             if (appliedAtSymbol == false) {
-                                mode_response["api_url"] = mode_response["api_url"] + "&"
+                                mode_response["api_url"] = mode_response["api_url"] + "?"
                                 appliedAtSymbol = true
                             }
-                            mode_response["api_url"] = mode_response["api_url"] + `${main_val2["jsonName"]}=${main_val}`
+                            mode_response["api_url"] = mode_response["api_url"] + `&${main_val2["jsonName"]}=${main_val}`
                         }
                     }
                 }
