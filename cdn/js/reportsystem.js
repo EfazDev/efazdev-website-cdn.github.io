@@ -1,9 +1,11 @@
-var system_json = fetch("../json/reportsysteminfo.json")
-  .then(function (response) {
-    return response.json();
-  }).then(res => {
-    return res
-})
+var system_json = {}
+
+fetch("../json/reportsysteminfo.json")
+    .then(function (response) {
+        return response.json();
+    }).then(res => {
+        system_json = res
+    })
 
 var questions = system_json["questions"]
 var modes = system_json["modes"]
