@@ -3,10 +3,89 @@
 
 <head>
     <script>
-        var system_json = {} 
+        var system_json = {
+            "title": "Report System!",
+            "questions": [
+                {
+                    "name": "Name",
+                    "jsonName": "name",
+                    "type": "Short Response",
+                    "placeholder": "Enter your username!",
+                    "required": true,
+                    "custom_class": ""
+                },
+                {
+                    "name": "Title",
+                    "jsonName": "title",
+                    "type": "Short Response",
+                    "placeholder": "Enter the title here!",
+                    "required": true,
+                    "custom_class": ""
+                },
+                {
+                    "name": "Message",
+                    "jsonName": "message",
+                    "type": "Detailed Message",
+                    "placeholder": "Enter your message here!",
+                    "required": true,
+                    "custom_class": "center"
+                }
+            ],
+            "hideModeSelection": false,
+            "showCurrentMode": true,
+            "defaultMode": "Report",
+            "modes": [
+                {
+                    "name": "Report",
+                    "api_url": "https://api.efaz.dev/api/reports/send",
+                    "formatted": [
+                        {
+                            "questionName": "Name",
+                            "jsonName": "name",
+                            "in": "Body"
+                        },
+                        {
+                            "questionName": "Title",
+                            "jsonName": "title",
+                            "in": "Body"
+                        },
+                        {
+                            "questionName": "Message",
+                            "jsonName": "message",
+                            "in": "Body"
+                        }
+                    ],
+                    "thanksMessage": "Thanks for reporting problems to us!",
+                    "showTypeOfModeInBody": false
+                },
+                {
+                    "name": "Suggestion",
+                    "api_url": "https://api.efaz.dev/api/reports/send-suggestion",
+                    "formatted": [
+                        {
+                            "questionName": "Name",
+                            "jsonName": "name",
+                            "in": "Body"
+                        },
+                        {
+                            "questionName": "Title",
+                            "jsonName": "title",
+                            "in": "Body"
+                        },
+                        {
+                            "questionName": "Message",
+                            "jsonName": "message",
+                            "in": "Body"
+                        }
+                    ],
+                    "thanksMessage": "Thanks for suggesting your idea!",
+                    "showTypeOfModeInBody": false
+                }
+            ]
+        }
         fetch("../json/reportsysteminfo.json").then((res) => {
             return res.json().then(res2 => {
-                 system_json = res2
+                system_json = res2
             })
         })
     </script>
@@ -20,9 +99,11 @@
         <p>Name: <input placeholder="Enter your username!" type="text" id="name_input" required></input></p>
         <p>Title: <input placeholder="Enter the title here!" type="text" id="title_input" required></input></p>
         <p>Message: </p>
-        <textarea placeholder="Enter your message here!" type="text" class="center" required id="message_input" cols="40" rows="10"></textarea>
+        <textarea placeholder="Enter your message here!" type="text" class="center" required id="message_input"
+            cols="40" rows="10"></textarea>
         <br>
-        <p>Modes: <button type="button" id="modeButton" onclick="set_mode('Report')">Report</button> <button type="button" id="modeButton" onclick="set_mode('Suggestion')">Suggestion</button></p>
+        <p>Modes: <button type="button" id="modeButton" onclick="set_mode('Report')">Report</button> <button
+                type="button" id="modeButton" onclick="set_mode('Suggestion')">Suggestion</button></p>
         <p id="current_mode">Current Mode: Report</p>
         <button type="button" id="sendButton" class="center" onclick="send_response()">Send Report!</button>
     </div>
@@ -36,7 +117,9 @@
         <h1 id="title3">Success!</h1>
         <p id="message2">Thanks for (suggesting your idea/reporting problems to us)!</p>
         <br>
-        <button type="button" id="reloadButton" class="center" onclick="returnFromMessageAndClear()">Do another!</button>
+        <button type="button" id="reloadButton" class="center" onclick="returnFromMessageAndClear()">Do
+            another!</button>
     </div>
 </body>
+
 </html>
