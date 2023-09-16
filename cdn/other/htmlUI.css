@@ -54,9 +54,12 @@ textarea {
     text-align: center;
     margin-left: auto;
     border-radius: 8px;
-    vertical-align: middle;
     justify-content: center;
     font-family: "Arial Rounded MT Bold";
+    margin-right: auto;
+
+    display: block;
+    margin-left: auto;
     margin-right: auto;
 }
 
