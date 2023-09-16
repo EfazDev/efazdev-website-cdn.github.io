@@ -1,4 +1,4 @@
-import system_json from "../json/reportsysteminfo.json" assert { type: 'json' }
+var system_json = require("../json/reportsysteminfo.json")
 
 var questions = system_json["questions"]
 var modes = system_json["modes"]
