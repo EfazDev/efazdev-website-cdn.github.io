@@ -1,4 +1,7 @@
-var system_json = require("../json/reportsysteminfo.json")
+var system_json = fetch("../json/reportsysteminfo.json")
+  .then(function (response) {
+    return response.json();
+  })
 
 var questions = system_json["questions"]
 var modes = system_json["modes"]
