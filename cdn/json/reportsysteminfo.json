@@ -1,0 +1,80 @@
+{
+    "title": "Report System!",
+    "questions": [
+        {
+            "name": "Name",
+            "jsonName": "name",
+            "type": "Short Response",
+            "placeholder": "",
+            "required": true,
+            "custom_class": ""
+        },
+        {
+            "name": "Title",
+            "jsonName": "title",
+            "type": "Short Response",
+            "placeholder": "",
+            "required": true,
+            "custom_class": ""
+        },
+        {
+            "name": "Message",
+            "jsonName": "message",
+            "type": "Detailed Message",
+            "placeholder": "",
+            "required": true,
+            "custom_class": ""
+        }
+    ],
+    "hideModeSelection": false,
+    "showCurrentMode": true,
+    "defaultMode": "Report",
+    "modes": [
+        {
+            "name": "Report",
+            "api_url": "https://api.efaz.dev/api/reports/send",
+            "formatted": [
+                {
+                    "questionName": "Name",
+                    "jsonName": "name",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Title",
+                    "jsonName": "title",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Message",
+                    "jsonName": "message",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "Thanks for reporting problems to us!",
+            "showTypeOfModeInBody": false
+        },
+        {
+            "name": "Suggestion",
+            "api_url": "https://api.efaz.dev/api/reports/send-suggestion",
+            "formatted": [
+                {
+                    "questionName": "Name",
+                    "jsonName": "name",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Title",
+                    "jsonName": "title",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Message",
+                    "jsonName": "message",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "Thanks for suggesting your idea!",
+            "showTypeOfModeInBody": false
+        }
+    ]
+}
