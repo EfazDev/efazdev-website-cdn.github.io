@@ -22,6 +22,12 @@ async function getModeInfo(mode_name) {
     return new_table
 }
 
+function refreshVariables() {
+    questions = system_json["questions"]
+    modes = system_json["modes"]
+    selected_mode = system_json["defaultMode"]
+}
+
 function view_main_menu() {
     var obj1 = document.getElementById("main_menu")
     var obj2 = document.getElementById("success")
@@ -129,6 +135,7 @@ function send_response() {
 }
 
 window.onload = function () {
+    refreshVariables()
     document.body.innerHTML = `
     <div id="main_menu">
         <h1 id="title1">${system_json["title"]}</h1>
