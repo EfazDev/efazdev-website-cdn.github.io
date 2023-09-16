@@ -5,7 +5,7 @@
             "name": "Name",
             "jsonName": "name",
             "type": "Short Response",
-            "placeholder": "",
+            "placeholder": "Enter your username!",
             "required": true,
             "custom_class": ""
         },
@@ -13,7 +13,7 @@
             "name": "Title",
             "jsonName": "title",
             "type": "Short Response",
-            "placeholder": "",
+            "placeholder": "Enter the title here!",
             "required": true,
             "custom_class": ""
         },
@@ -21,9 +21,9 @@
             "name": "Message",
             "jsonName": "message",
             "type": "Detailed Message",
-            "placeholder": "",
+            "placeholder": "Enter your message here!",
             "required": true,
-            "custom_class": ""
+            "custom_class": "center"
         }
     ],
     "hideModeSelection": false,
