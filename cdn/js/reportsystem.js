@@ -5,7 +5,7 @@ function get_values() {
     var title_obj = document.getElementById("title_input")
     var message_obj = document.getElementById("message_input")
 
-    return {"n": name_obj.value, "t": title_obj.value, "m": message_obj.value, "mo": selected_mode}
+    return {"name": name_obj.value, "title": title_obj.value, "message": message_obj.value, "typeOfMode": selected_mode}
 }
 
 function view_main_menu() {
@@ -71,7 +71,7 @@ function set_mode(text) {
 function send_response() {
     var values = get_values()
 
-    if (values["mo"] == "Suggestion") {
+    if (values["typeOfMode"] == "Suggestion") {
         fetch("https://api.efaz.dev/api/reports/send-suggestion", {
             "headers": {
                 "accept": "application/json",
@@ -82,7 +82,7 @@ function send_response() {
                 "sec-fetch-site": "same-origin"
             },
             "referrerPolicy": "strict-origin-when-cross-origin",
-            "body": `{"name": "${values["n"]}",  "title": "${values["t"]}",  "message": "${values["m"]}"}`,
+            "body": `{"name": "${values["name"]}",  "title": "${values["title"]}",  "message": "${values["message"]}"}`,
             "method": "POST",
             "mode": "cors",
             "credentials": "omit"
@@ -106,7 +106,7 @@ function send_response() {
                 "sec-fetch-site": "same-origin"
             },
             "referrerPolicy": "strict-origin-when-cross-origin",
-            "body": `{"name": "${values["n"]}",  "title": "${values["t"]}",  "message": "${values["m"]}"}`,
+            "body": `{"name": "${values["name"]}",  "title": "${values["title"]}",  "message": "${values["message"]}"}`,
             "method": "POST",
             "mode": "cors",
             "credentials": "omit"
