@@ -1,6 +1,6 @@
 var system_json = fetch("../json/reportsysteminfo.json")
   .then(function (response) {
-    return response.json();
+    return response.json().then(res => {return res});
   })
 
 var questions = system_json["questions"]
