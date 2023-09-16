@@ -1,4 +1,4 @@
-import system_json from "../json/reportsysteminfo.json"
+import system_json from "../json/reportsysteminfo.json" assert { type: 'json' }
 
 var questions = system_json["questions"]
 var modes = system_json["modes"]
