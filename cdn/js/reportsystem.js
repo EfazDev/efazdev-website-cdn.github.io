@@ -1,12 +1,3 @@
-var system_json = {}
-
-fetch("../json/reportsysteminfo.json")
-    .then(function (response) {
-        return response.json();
-    }).then(res => {
-        system_json = res
-    })
-
 var questions = system_json["questions"]
 var modes = system_json["modes"]
 var selected_mode = system_json["defaultMode"]
