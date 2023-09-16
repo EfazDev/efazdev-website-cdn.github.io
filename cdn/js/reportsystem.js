@@ -107,27 +107,32 @@ function send_response() {
             if (mode_response["success"] == true) {
                 mode_response = mode_response["response"]
                 var new_formated_values = {}
+                var new_api_url = mode_response["api_url"]
                 var listOfKeysProvided = Object.keys(values);
                 var appliedAtSymbol = false
 
                 for (let c = 0; c < listOfKeysProvided.length; c++) {
-                    var main_val = values[listOfKeysProvided[c]]
+                    var key = listOfKeysProvided[c]
+                    var main_val = values[key]
                     for (let d = 0; d < mode_response["formatted"].length; d++) {
                         var main_val2 = mode_response["formatted"][d]
-                        if (main_val2["in"] == "Body") {
-                            new_formated_values[listOfKeysProvided[c]] = main_val
-                        } else if (main_val2["in"] == "URL") {
-                            if (appliedAtSymbol == false) {
-                                mode_response["api_url"] = mode_response["api_url"] + "?"
-                                appliedAtSymbol = true
+                        if (main_val2["jsonName"] == key) {
+                            if (main_val2["in"] == "Body") {
+                                new_formated_values[key] = main_val
+                            } else if (main_val2["in"] == "URL") {
+                                if (appliedAtSymbol == false) {
+                                    new_api_url = new_api_url + `?${main_val2["jsonName"]}=${main_val}`
+                                    appliedAtSymbol = true
+                                } else {
+                                    new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
+                                }
                             }
-                            mode_response["api_url"] = mode_response["api_url"] + `&${main_val2["jsonName"]}=${main_val}`
                         }
                     }
                 }
 
                 var converted_json_string = JSON.stringify(new_formated_values)
-                fetch(mode_response["api_url"], {
+                fetch(new_api_url, {
                     "headers": {
                         "accept": "application/json",
                         "accept-language": "en-US,en;q=0.9",
