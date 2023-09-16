@@ -5,8 +5,9 @@ var selected_mode = system_json["defaultMode"]
 async function get_values() {
     var new_table = {}
     for (let a = 0; a < questions.length; a++) {
-        var new_obj = document.getElementById(questions[a]["jsonName"] + "_input")
-        new_table[questions[a]["jsonName"]] = new_obj.value
+        var valueInfo = questions[a]
+        var new_obj = document.getElementById(valueInfo["jsonName"] + "_input")
+        new_table[valueInfo["jsonName"]] = new_obj.value
     }
     return new_table
 }
@@ -105,7 +106,27 @@ function send_response() {
         getModeInfo(selected_mode).then(mode_response => {
             if (mode_response["success"] == true) {
                 mode_response = mode_response["response"]
-                var converted_json_string = JSON.stringify(values)
+                var new_formated_values = {}
+                var listOfKeysProvided = values.keys()
+                var appliedAtSymbol = false
+
+                for (let c = 0; c < listOfKeysProvided.length; c++) {
+                    var main_val = values[listOfKeysProvided[c]]
+                    for (let d = 0; d < mode_response["formatted"].length; d++) {
+                        var main_val2 = mode_response["formatted"][d]
+                        if (main_val2["in"] == "Body") {
+                            new_formated_values[listOfKeysProvided[c]] = main_val
+                        } else if (main_val2["in"] == "URL") {
+                            if (appliedAtSymbol == false) {
+                                mode_response["api_url"] = mode_response["api_url"] + "&"
+                                appliedAtSymbol = true
+                            }
+                            mode_response["api_url"] = mode_response["api_url"] + `${main_val2["jsonName"]}=${main_val}`
+                        }
+                    }
+                }
+
+                var converted_json_string = JSON.stringify(new_formated_values)
                 fetch(mode_response["api_url"], {
                     "headers": {
                         "accept": "application/json",
