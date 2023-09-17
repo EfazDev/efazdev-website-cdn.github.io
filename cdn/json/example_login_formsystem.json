@@ -41,5 +41,8 @@
             "showTryAgainOnSuccess": false,
             "showTypeOfModeInBody": false
         }
-    ]
+    ],
+    "specific_settings": {
+        "showRequiredText": false
+    }
 }

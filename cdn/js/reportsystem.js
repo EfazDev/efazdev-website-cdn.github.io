@@ -5,6 +5,7 @@ if (!(typeof system_json !== 'undefined')) {
 var questions = system_json["questions"]
 var modes = system_json["modes"]
 var selected_mode = system_json["defaultMode"]
+var specific_settings = system_json["specific_settings"]
 
 async function get_values() {
     var new_table = {}
@@ -31,6 +32,7 @@ function refreshVariables() {
     questions = system_json["questions"]
     modes = system_json["modes"]
     selected_mode = system_json["defaultMode"]
+    specific_settings = system_json["specific_settings"]
 }
 
 function view_main_menu() {
@@ -245,7 +247,10 @@ function start_system() {
                 if (newQuestion["type"] == "Short Response" || newQuestion["type"] == "SR") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
                     } else {
                         new_html = new_html + `></input>`
                     }
@@ -254,7 +259,10 @@ function start_system() {
                 } else if (newQuestion["type"] == "Detailed Message" || newQuestion["type"] == "DM") {
                     var new_html = `<p>${newQuestion["name"]}: </p><textarea placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input" cols="40" rows="10"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></textarea> <e class="required">(required)</e>`
+                        new_html = new_html + ` required></textarea>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
                     } else {
                         new_html = new_html + `></textarea>`
                     }
@@ -262,7 +270,10 @@ function start_system() {
                 } else if (newQuestion["type"] == "Integer" || newQuestion["type"] == "INT") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="number" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
                     } else {
                         new_html = new_html + `></input>`
                     }
@@ -271,7 +282,10 @@ function start_system() {
                 } else if (newQuestion["type"] == "Email" || newQuestion["type"] == "EMAIL") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="email" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
                     } else {
                         new_html = new_html + `></input>`
                     }
@@ -280,7 +294,10 @@ function start_system() {
                 } else if (newQuestion["type"] == "Password" || newQuestion["type"] == "PW") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="password" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
                     } else {
                         new_html = new_html + `></input>`
                     }
@@ -289,7 +306,10 @@ function start_system() {
                 } else if (newQuestion["type"] == "Time" || newQuestion["type"] == "TIME") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="time" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
                     } else {
                         new_html = new_html + `></input>`
                     }
@@ -298,7 +318,10 @@ function start_system() {
                 } else if (newQuestion["type"] == "Datetime Local" || newQuestion["type"] == "DTLocal") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="datetime-local" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
                     } else {
                         new_html = new_html + `></input>`
                     }
@@ -307,7 +330,10 @@ function start_system() {
                 } else if (newQuestion["type"] == "Date" || newQuestion["type"] == "DATE") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="date" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
                     } else {
                         new_html = new_html + `></input>`
                     }
@@ -349,6 +375,7 @@ function loadFormJSONfromURL(url) {
             system_json = json
             questions = system_json["questions"]
             modes = system_json["modes"]
+            specific_settings = system_json["specific_settings"]
             selected_mode = system_json["defaultMode"]
             start_system()
         })
@@ -359,6 +386,7 @@ function loadFormJSON(json) {
     system_json = json
     questions = system_json["questions"]
     modes = system_json["modes"]
+    specific_settings = system_json["specific_settings"]
     selected_mode = system_json["defaultMode"]
     start_system()
 }
