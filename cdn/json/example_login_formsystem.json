@@ -43,6 +43,6 @@
         }
     ],
     "specific_settings": {
-        "showRequiredText": false
+        "showRequiredText": true
     }
 }
