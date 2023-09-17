@@ -163,18 +163,16 @@ function send_response() {
                     }
 
                     if (listOfEmptyRequiredVariables.length > 0) {
-                        var new_string_g = ""
-                        var added = 0
-                        for (let f = 0; f < questions.length; f++) {
-                            val_h = questions[f]
-                            if (listOfEmptyRequiredVariables.length == 1) {
-                                new_string_g = `${val_h}`
-                            } else if (added == questions.length - 1) {
-                                new_string_g = new_string_g + `, ${val_h}`
-                                added++
+                        var new_string_g = `${listOfEmptyRequiredVariables[0]}`
+                        var remove = false
+                        for (let f = 0; f < listOfEmptyRequiredVariables.length + 1; f++) {
+                            if (remove == true) {
+                                if (listOfEmptyRequiredVariables[f]) {
+                                    var val_h = listOfEmptyRequiredVariables[f]
+                                    new_string_g = new_string_g + `, ${val_h}`
+                                }
                             } else {
-                                new_string_g = new_string_g + `${val_h}, `
-                                added++
+                                remove = true
                             }
                         }
                         view_error_menu(`The following questions were filled empty: ${new_string_g}`)
