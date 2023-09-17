@@ -160,7 +160,17 @@ function send_response() {
     })
 }
 
-window.onload = function () {
+function loadJSONfromURL(url) {
+    var system_json = {}
+    fetch(url).then(res => {
+        res.json().then(json => {
+            system_json = json
+            start_system()
+        })
+    })
+}
+
+function start_system() {
     refreshVariables()
     document.body.innerHTML = `
     <div id="main_menu">

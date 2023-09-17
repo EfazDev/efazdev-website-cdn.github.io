@@ -2,94 +2,10 @@
 <html lang="en">
 
 <head>
-    <script>
-        var system_json = {
-            "title": "Report System!",
-            "questions": [
-                {
-                    "name": "Name",
-                    "jsonName": "name",
-                    "type": "Short Response",
-                    "placeholder": "Enter your username!",
-                    "required": true,
-                    "custom_class": ""
-                },
-                {
-                    "name": "Title",
-                    "jsonName": "title",
-                    "type": "Short Response",
-                    "placeholder": "Enter the title here!",
-                    "required": true,
-                    "custom_class": ""
-                },
-                {
-                    "name": "Message",
-                    "jsonName": "message",
-                    "type": "Detailed Message",
-                    "placeholder": "Enter your message here!",
-                    "required": true,
-                    "custom_class": "center"
-                }
-            ],
-            "hideModeSelection": false,
-            "showCurrentMode": true,
-            "defaultMode": "Report",
-            "modes": [
-                {
-                    "name": "Report",
-                    "api_url": "https://api.efaz.dev/api/reports/send",
-                    "formatted": [
-                        {
-                            "questionName": "Name",
-                            "jsonName": "name",
-                            "in": "Body"
-                        },
-                        {
-                            "questionName": "Title",
-                            "jsonName": "title",
-                            "in": "Body"
-                        },
-                        {
-                            "questionName": "Message",
-                            "jsonName": "message",
-                            "in": "Body"
-                        }
-                    ],
-                    "thanksMessage": "Thanks for reporting problems to us!",
-                    "showTypeOfModeInBody": false
-                },
-                {
-                    "name": "Suggestion",
-                    "api_url": "https://api.efaz.dev/api/reports/send-suggestion",
-                    "formatted": [
-                        {
-                            "questionName": "Name",
-                            "jsonName": "name",
-                            "in": "Body"
-                        },
-                        {
-                            "questionName": "Title",
-                            "jsonName": "title",
-                            "in": "Body"
-                        },
-                        {
-                            "questionName": "Message",
-                            "jsonName": "message",
-                            "in": "Body"
-                        }
-                    ],
-                    "thanksMessage": "Thanks for suggesting your idea!",
-                    "showTypeOfModeInBody": false
-                }
-            ]
-        }
-        fetch("../json/reportsysteminfo.json").then((res) => {
-            return res.json().then(res2 => {
-                system_json = res2
-            })
-        })
-    </script>
     <script src="https://cdn.efaz.dev/cdn/js/reportsystem.js"></script>
+    <script>
+        loadJSONfromURL("../json/reportsysteminfo.json")
+    </script>
     <link rel="stylesheet" href="https://cdn.efaz.dev/cdn/other/htmlUI.css">
 </head>
 
