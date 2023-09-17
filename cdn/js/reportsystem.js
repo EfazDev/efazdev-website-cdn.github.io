@@ -1,5 +1,8 @@
 if (!(typeof system_json !== 'undefined')) {
-    system_json = {}
+    var system_json = {}
+}
+if (!(typeof lastLoadedJSON !== 'undefined')) {
+    var lastLoadedJSON = {}
 }
 
 var questions = system_json["questions"]
@@ -359,6 +362,7 @@ function start_system() {
                 var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
+            lastLoadedJSON = system_json
             console.log("Successfully created form!")
         } catch (err) {
             console.log("System was disabled due to an error, please check if the json is valid: " + err.message)
@@ -380,6 +384,15 @@ function loadFormJSONfromURL(url) {
             start_system()
         })
     })
+}
+
+function loadLastLoadedJSON() {
+    system_json = lastLoadedJSON
+    questions = system_json["questions"]
+    modes = system_json["modes"]
+    specific_settings = system_json["specific_settings"]
+    selected_mode = system_json["defaultMode"]
+    start_system()
 }
 
 function loadFormJSON(json) {
