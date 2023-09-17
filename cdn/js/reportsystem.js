@@ -106,7 +106,7 @@ function set_mode(mode) {
 }
 
 function on_success_form(args) {}
-function get_xcerf(args) {
+function get_xcsrf(args) {
     return null
 }
 
@@ -149,7 +149,7 @@ function send_response() {
                         "sec-fetch-dest": "empty",
                         "sec-fetch-mode": "cors",
                         "sec-fetch-site": "same-origin",
-                        "x-csrf-token": get_xcerf(values)
+                        "x-csrf-token": get_xcsrf(values)
                     },
                     "referrerPolicy": "strict-origin-when-cross-origin",
                     "body": converted_json_string,
