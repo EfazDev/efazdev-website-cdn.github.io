@@ -51,6 +51,7 @@
                 }
             ],
             "thanksMessage": "Thanks for reporting problems to us!",
+            "showTryAgainOnSuccess": true,
             "showTypeOfModeInBody": false
         },
         {
@@ -74,6 +75,7 @@
                 }
             ],
             "thanksMessage": "Thanks for suggesting your idea!",
+            "showTryAgain": true,
             "showTypeOfModeInBody": false
         }
     ]

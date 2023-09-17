@@ -61,12 +61,18 @@ function view_success_menu(mode) {
     obj3.style = "display: none;"
 
     var obj4 = document.getElementById("message2")
+    var obj5 = document.getElementById("reloadButton")
     getModeInfo(mode).then(response => {
         if (response["success"] == true) {
             if (response["response"]["thanksMessage"]) {
                 obj4.innerHTML = response["response"]["thanksMessage"]
             } else {
                 obj4.innerHTML = "Thanks for submitting your form!"
+            }
+            if (response["response"]["showTryAgainOnSuccess"] == false) {
+                obj5.style = "display: none;"
+            } else {
+                obj5.style = "display: block;"
             }
         } else {
             obj4.innerHTML = "Thanks for submitting your form!"
