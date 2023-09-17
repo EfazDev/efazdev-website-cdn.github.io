@@ -1,4 +1,4 @@
-if (!(system_json)) {
+if (!(typeof system_json !== 'undefined')) {
     system_json = {}
 }
 
