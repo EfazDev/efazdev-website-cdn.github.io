@@ -4,7 +4,7 @@ body {
     background-size: cover;
     width: 1920px;
     height: 1080px;
-    background: linear-gradient(225deg, rgba(255, 75, 0, 1) 0%, rgba(255, 255, 0, 1) 60%, rgba(0, 255, 17, 1) 100%);
+    background: linear-gradient(225deg, rgba(255, 75, 0, 1) 0%, rgb(207, 207, 0) 60%, rgb(19, 193, 0) 100%);
     font-family: "Arial Rounded MT Bold";
     color: white;
     overflow: hidden;
