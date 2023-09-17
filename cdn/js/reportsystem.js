@@ -254,7 +254,7 @@ function start_system() {
                 } else if (newQuestion["type"] == "Detailed Message" || newQuestion["type"] == "DM") {
                     var new_html = `<p>${newQuestion["name"]}: </p><textarea placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input" cols="40" rows="10"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></textarea><e class="required">(required)</e>`
+                        new_html = new_html + ` required></textarea> <e class="required">(required)</e>`
                     } else {
                         new_html = new_html + `></textarea>`
                     }
