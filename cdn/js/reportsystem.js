@@ -165,11 +165,13 @@ function send_response() {
 }
 
 function loadJSONfromURL(url) {
-    var system_json = {}
+    system_json = {}
     fetch(url).then(res => {
         res.json().then(json => {
             system_json = json
-            refreshVariables()
+            questions = system_json["questions"]
+            modes = system_json["modes"]
+            selected_mode = system_json["defaultMode"]
             start_system()
         })
     })
