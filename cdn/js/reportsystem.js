@@ -261,7 +261,7 @@ function start_system() {
                     if (newQuestion["required"] == true) {
                         new_html = new_html + ` required></textarea>`
                         if (specific_settings["showRequiredText"] == true) {
-                            new_html = new_html + ` <e class="required">*</e>`
+                            new_html = new_html + ` <e class="required">(required)</e>`
                         }
                     } else {
                         new_html = new_html + `></textarea>`
