@@ -52,6 +52,8 @@ button {
     text-align: center;
     margin-left: auto;
     border-radius: 8px;
+    background-color: #ffffff;
+    color: black;
     vertical-align: middle;
     justify-content: center;
     font-family: "Arial Rounded MT Bold";
