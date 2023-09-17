@@ -75,7 +75,7 @@
                 }
             ],
             "thanksMessage": "Thanks for suggesting your idea!",
-            "showTryAgain": true,
+            "showTryAgainOnSuccess": true,
             "showTypeOfModeInBody": false
         }
     ]
