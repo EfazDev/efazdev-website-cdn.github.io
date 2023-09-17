@@ -166,9 +166,16 @@ function send_response() {
 
 function start_system() {
     refreshVariables()
+    var disabled_system = false
+    var title = "Error while loading Form JSON. If you're an visitor, please contact the site owner to manage the JSON correctly."
+    if (system_json["title"] == null) {
+        disabled_system = true
+    } else {
+        title = system_json["title"]
+    }
     document.body.innerHTML = `
     <div id="main_menu">
-        <h1 id="title1">${system_json["title"]}</h1>
+        <h1 id="title1">${title}</h1>
     </div>
     <div id="failed" style="display: none;">
         <h1 id="title2">Oops!</h1>
@@ -183,94 +190,103 @@ function start_system() {
         <button type="button" id="reloadButton" class="center" onclick="returnFromMessageAndClear()">Do another!</button>
     </div>
     ` /* Clear all objects inside the body and resets to default usable HTML. */
-    var main_menu = document.getElementById("main_menu")
-    for (let a = 0; a < questions.length; a++) {
-        var newQuestion = questions[a]
-        if (newQuestion["type"] == "Short Response" || newQuestion["type"] == "SR") {
-            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
-            if (newQuestion["required"] == true) {
-                new_html = new_html + ` required></input></p>`
-            } else {
-                new_html = new_html + `></input></p>`
+
+    if (disabled_system == false) {
+        try {
+            var main_menu = document.getElementById("main_menu")
+            for (let a = 0; a < questions.length; a++) {
+                var newQuestion = questions[a]
+                if (newQuestion["type"] == "Short Response" || newQuestion["type"] == "SR") {
+                    var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input></p>`
+                    } else {
+                        new_html = new_html + `></input></p>`
+                    }
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Detailed Message" || newQuestion["type"] == "DM") {
+                    var new_html = `<p>${newQuestion["name"]}: </p><textarea placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input" cols="40" rows="10"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></textarea>`
+                    } else {
+                        new_html = new_html + `></textarea>`
+                    }
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Integer" || newQuestion["type"] == "INT") {
+                    var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="number" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input></p>`
+                    } else {
+                        new_html = new_html + `></input></p>`
+                    }
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Email" || newQuestion["type"] == "EMAIL") {
+                    var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="email" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input></p>`
+                    } else {
+                        new_html = new_html + `></input></p>`
+                    }
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Password" || newQuestion["type"] == "PW") {
+                    var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="password" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input></p>`
+                    } else {
+                        new_html = new_html + `></input></p>`
+                    }
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Time" || newQuestion["type"] == "TIME") {
+                    var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="time" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input></p>`
+                    } else {
+                        new_html = new_html + `></input></p>`
+                    }
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Datetime Local" || newQuestion["type"] == "DTLocal") {
+                    var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="datetime-local" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input></p>`
+                    } else {
+                        new_html = new_html + `></input></p>`
+                    }
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Date" || newQuestion["type"] == "DATE") {
+                    var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="date" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input></p>`
+                    } else {
+                        new_html = new_html + `></input></p>`
+                    }
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else {
+                    var new_html = `<p>${newQuestion["name"]}: Failed to create question. Please ask the owner of this form to correct the question type.</p>"`
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                }
             }
-            main_menu.innerHTML = main_menu.innerHTML + new_html
-        } else if (newQuestion["type"] == "Detailed Message" || newQuestion["type"] == "DM") {
-            var new_html = `<p>${newQuestion["name"]}: </p><textarea placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input" cols="40" rows="10"`
-            if (newQuestion["required"] == true) {
-                new_html = new_html + ` required></textarea>`
-            } else {
-                new_html = new_html + `></textarea>`
+            if (system_json["hideModeSelection"] == false) {
+                var new_html = `<p>Modes: `
+                for (let b = 0; b < modes.length; b++) {
+                    var new_mode = modes[b]
+                    new_html = new_html + `<button type="button" id="modeButton" onclick="set_mode('${new_mode["name"]}')">${new_mode["name"]}</button> `
+                }
+                main_menu.innerHTML = main_menu.innerHTML + new_html
             }
-            main_menu.innerHTML = main_menu.innerHTML + new_html
-        } else if (newQuestion["type"] == "Integer" || newQuestion["type"] == "INT") {
-            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="number" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
-            if (newQuestion["required"] == true) {
-                new_html = new_html + ` required></input></p>`
+            if (system_json["showCurrentMode"] == true) {
+                var new_html = `<p id="current_mode">Current Mode: ${selected_mode}</p><button type="button" id="sendButton" class="center" onclick="send_response()">Send ${selected_mode}!</button>`
+                main_menu.innerHTML = main_menu.innerHTML + new_html
             } else {
-                new_html = new_html + `></input></p>`
+                var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
+                main_menu.innerHTML = main_menu.innerHTML + new_html
             }
-            main_menu.innerHTML = main_menu.innerHTML + new_html
-        } else if (newQuestion["type"] == "Email" || newQuestion["type"] == "EMAIL") {
-            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="email" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
-            if (newQuestion["required"] == true) {
-                new_html = new_html + ` required></input></p>`
-            } else {
-                new_html = new_html + `></input></p>`
-            }
-            main_menu.innerHTML = main_menu.innerHTML + new_html
-        } else if (newQuestion["type"] == "Password" || newQuestion["type"] == "PW") {
-            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="password" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
-            if (newQuestion["required"] == true) {
-                new_html = new_html + ` required></input></p>`
-            } else {
-                new_html = new_html + `></input></p>`
-            }
-            main_menu.innerHTML = main_menu.innerHTML + new_html
-        } else if (newQuestion["type"] == "Time" || newQuestion["type"] == "TIME") {
-            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="time" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
-            if (newQuestion["required"] == true) {
-                new_html = new_html + ` required></input></p>`
-            } else {
-                new_html = new_html + `></input></p>`
-            }
-            main_menu.innerHTML = main_menu.innerHTML + new_html
-        } else if (newQuestion["type"] == "Datetime Local" || newQuestion["type"] == "DTLocal") {
-            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="datetime-local" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
-            if (newQuestion["required"] == true) {
-                new_html = new_html + ` required></input></p>`
-            } else {
-                new_html = new_html + `></input></p>`
-            }
-            main_menu.innerHTML = main_menu.innerHTML + new_html
-        } else if (newQuestion["type"] == "Date" || newQuestion["type"] == "DATE") {
-            var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="date" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
-            if (newQuestion["required"] == true) {
-                new_html = new_html + ` required></input></p>`
-            } else {
-                new_html = new_html + `></input></p>`
-            }
-            main_menu.innerHTML = main_menu.innerHTML + new_html
-        } else {
-            var new_html = `<p>${newQuestion["name"]}: Failed to create question. Please ask the owner of this form to correct the question type.</p>"`
-            main_menu.innerHTML = main_menu.innerHTML + new_html
+            console.log("Successfully created form!")
+        } catch (err) {
+            console.log("System was disabled due to an error, please check if the json is valid: " + err.message)
         }
-    }
-    if (system_json["hideModeSelection"] == false) {
-        var new_html = `<p>Modes: `
-        for (let b = 0; b < modes.length; b++) {
-            var new_mode = modes[b]
-            new_html = new_html + `<button type="button" id="modeButton" onclick="set_mode('${new_mode["name"]}')">${new_mode["name"]}</button> `
-        }
-        main_menu.innerHTML = main_menu.innerHTML + new_html
-    }
-    if (system_json["showCurrentMode"] == true) {
-        var new_html = `<p id="current_mode">Current Mode: ${selected_mode}</p><button type="button" id="sendButton" class="center" onclick="send_response()">Send ${selected_mode}!</button>`
-        main_menu.innerHTML = main_menu.innerHTML + new_html
     } else {
-        var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
-        main_menu.innerHTML = main_menu.innerHTML + new_html
+        console.log("System was disabled due to a JSON error, please check if the json is valid: " + JSON.stringify(system_json))
     }
-    console.log("Successfully created form!")
 }
 
 function loadFormJSONfromURL(url) {
