@@ -165,6 +165,7 @@ function loadJSONfromURL(url) {
     fetch(url).then(res => {
         res.json().then(json => {
             system_json = json
+            refreshVariables()
             start_system()
         })
     })
