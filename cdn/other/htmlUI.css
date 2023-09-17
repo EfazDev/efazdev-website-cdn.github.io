@@ -25,6 +25,11 @@ div {
     transform: translate(-50%, -50%);
 }
 
+e {
+    color: rgb(255, 0, 0);
+    font-size: x-small;
+}
+
 p,
 h1,
 h2 {
