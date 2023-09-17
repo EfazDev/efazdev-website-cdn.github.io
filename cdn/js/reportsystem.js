@@ -164,19 +164,6 @@ function send_response() {
     })
 }
 
-function loadJSONfromURL(url) {
-    system_json = {}
-    fetch(url).then(res => {
-        res.json().then(json => {
-            system_json = json
-            questions = system_json["questions"]
-            modes = system_json["modes"]
-            selected_mode = system_json["defaultMode"]
-            start_system()
-        })
-    })
-}
-
 function start_system() {
     refreshVariables()
     document.body.innerHTML = `
@@ -284,4 +271,25 @@ function start_system() {
         main_menu.innerHTML = main_menu.innerHTML + new_html
     }
     console.log("Successfully created form!")
+}
+
+function loadFormJSONfromURL(url) {
+    system_json = {}
+    fetch(url).then(res => {
+        res.json().then(json => {
+            system_json = json
+            questions = system_json["questions"]
+            modes = system_json["modes"]
+            selected_mode = system_json["defaultMode"]
+            start_system()
+        })
+    })
+}
+
+function loadFormJSON(json) {
+    system_json = json
+    questions = system_json["questions"]
+    modes = system_json["modes"]
+    selected_mode = system_json["defaultMode"]
+    start_system()
 }
