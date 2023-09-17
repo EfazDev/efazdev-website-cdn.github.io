@@ -1,3 +1,7 @@
+if (!(system_json)) {
+    system_json = {}
+}
+
 var questions = system_json["questions"]
 var modes = system_json["modes"]
 var selected_mode = system_json["defaultMode"]
