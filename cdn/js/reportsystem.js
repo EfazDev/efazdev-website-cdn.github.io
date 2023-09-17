@@ -191,6 +191,7 @@ function send_response() {
                                 "sec-fetch-dest": "empty",
                                 "sec-fetch-mode": "cors",
                                 "sec-fetch-site": "same-origin",
+                                "credentials": 'include',
                                 "x-csrf-token": x_csrf_token
                             },
                             "referrerPolicy": "strict-origin-when-cross-origin",
