@@ -111,6 +111,10 @@ function set_mode(mode) {
     })
 }
 
+function getIfResponseIsEmpty(text) {
+    return text.trim().length === 0
+}
+
 function on_success_form(args) { }
 async function get_xcsrf(args) {
     return null
@@ -126,6 +130,8 @@ function send_response() {
                     var new_api_url = mode_response["api_url"]
                     var listOfKeysProvided = Object.keys(values);
                     var appliedAtSymbol = false
+
+                    var listOfEmptyRequiredVariables = []
 
                     for (let c = 0; c < listOfKeysProvided.length; c++) {
                         var key = listOfKeysProvided[c]
@@ -143,36 +149,63 @@ function send_response() {
                                         new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
                                     }
                                 }
+
+                                for (let e = 0; e < questions.length; e++) {
+                                    var question = questions[e]
+                                    if (question["required"] == true && question["jsonName"] == key) {
+                                        if (getIfResponseIsEmpty(main_val)) {
+                                            listOfEmptyRequiredVariables.push(question["name"])
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
 
-                    var converted_json_string = JSON.stringify(new_formated_values)
-                    fetch(new_api_url, {
-                        "headers": {
-                            "accept": "application/json",
-                            "accept-language": "en-US,en;q=0.9",
-                            "content-type": "application/json",
-                            "sec-fetch-dest": "empty",
-                            "sec-fetch-mode": "cors",
-                            "sec-fetch-site": "same-origin",
-                            "x-csrf-token": x_csrf_token
-                        },
-                        "referrerPolicy": "strict-origin-when-cross-origin",
-                        "body": converted_json_string,
-                        "method": "POST",
-                        "mode": "cors",
-                        "credentials": "omit"
-                    }).then(res => {
-                        if (res.ok) {
-                            view_success_menu(selected_mode)
-                            on_success_form(values)
-                        } else {
-                            res.json().then(json => {
-                                view_error_menu(json["message"])
-                            })
+                    if (listOfEmptyRequiredVariables.length > 0) {
+                        var new_string_g = ""
+                        var added = 0
+                        for (let f = 0; f < questions.length; f++) {
+                            val_h = questions[f]
+                            if (listOfEmptyRequiredVariables.length == 1) {
+                                new_string_g = `${val_h}`
+                            } else if (added == questions.length - 1) {
+                                new_string_g = new_string_g + `, ${val_h}`
+                                added++
+                            } else {
+                                new_string_g = new_string_g + `${val_h}, `
+                                added++
+                            }
                         }
-                    })
+                        view_error_menu(`The following questions were filled empty: ${new_string_g}`)
+                    } else {
+                        var converted_json_string = JSON.stringify(new_formated_values)
+                        fetch(new_api_url, {
+                            "headers": {
+                                "accept": "application/json",
+                                "accept-language": "en-US,en;q=0.9",
+                                "content-type": "application/json",
+                                "sec-fetch-dest": "empty",
+                                "sec-fetch-mode": "cors",
+                                "sec-fetch-site": "same-origin",
+                                "x-csrf-token": x_csrf_token
+                            },
+                            "referrerPolicy": "strict-origin-when-cross-origin",
+                            "body": converted_json_string,
+                            "method": "POST",
+                            "mode": "cors",
+                            "credentials": "omit"
+                        }).then(res => {
+                            if (res.ok) {
+                                view_success_menu(selected_mode)
+                                on_success_form(values)
+                            } else {
+                                res.json().then(json => {
+                                    view_error_menu(json["message"])
+                                })
+                            }
+                        })
+                    }
                 }
             })
         })
