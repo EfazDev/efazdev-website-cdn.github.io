@@ -1,3 +1,9 @@
+@font-face {
+    font-family: arialrounded;
+    src: url("/cdn/other/ArialRounded.ttf");
+    font-weight: bold;
+}
+
 body {
     background-position: center;
     background-repeat: no-repeat;
@@ -5,7 +11,7 @@ body {
     width: 1920px;
     height: 1080px;
     background: linear-gradient(225deg, rgba(255, 75, 0, 1) 0%, rgb(207, 207, 0) 60%, rgb(19, 193, 0) 100%);
-    font-family: "Arial Rounded MT Bold";
+    font-family: arialrounded;
     color: white;
     overflow: hidden;
 }
@@ -33,6 +39,7 @@ e {
 html {
     height: 100%;
 }
+
 body {
     height: 100%;
     margin: 0;
@@ -56,7 +63,7 @@ button {
     color: black;
     vertical-align: middle;
     justify-content: center;
-    font-family: "Arial Rounded MT Bold";
+    font-family: arialrounded;
     margin-right: auto;
 }
 
@@ -72,7 +79,7 @@ textarea {
     margin-left: auto;
     border-radius: 8px;
     justify-content: center;
-    font-family: "Arial Rounded MT Bold";
+    font-family: arialrounded;
     margin-right: auto;
 }
 
