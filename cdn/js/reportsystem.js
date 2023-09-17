@@ -245,15 +245,16 @@ function start_system() {
                 if (newQuestion["type"] == "Short Response" || newQuestion["type"] == "SR") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input></p>`
+                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
                     } else {
-                        new_html = new_html + `></input></p>`
+                        new_html = new_html + `></input>`
                     }
+                    new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Detailed Message" || newQuestion["type"] == "DM") {
                     var new_html = `<p>${newQuestion["name"]}: </p><textarea placeholder="${newQuestion["placeholder"]}" type="text" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input" cols="40" rows="10"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></textarea>`
+                        new_html = new_html + ` required></textarea><e class="required">(required)</e>`
                     } else {
                         new_html = new_html + `></textarea>`
                     }
@@ -261,50 +262,56 @@ function start_system() {
                 } else if (newQuestion["type"] == "Integer" || newQuestion["type"] == "INT") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="number" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input></p>`
+                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
                     } else {
-                        new_html = new_html + `></input></p>`
+                        new_html = new_html + `></input>`
                     }
+                    new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Email" || newQuestion["type"] == "EMAIL") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="email" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input></p>`
+                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
                     } else {
-                        new_html = new_html + `></input></p>`
+                        new_html = new_html + `></input>`
                     }
+                    new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Password" || newQuestion["type"] == "PW") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="password" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input></p>`
+                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
                     } else {
-                        new_html = new_html + `></input></p>`
+                        new_html = new_html + `></input>`
                     }
+                    new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Time" || newQuestion["type"] == "TIME") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="time" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input></p>`
+                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
                     } else {
-                        new_html = new_html + `></input></p>`
+                        new_html = new_html + `></input>`
                     }
+                    new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Datetime Local" || newQuestion["type"] == "DTLocal") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="datetime-local" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input></p>`
+                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
                     } else {
-                        new_html = new_html + `></input></p>`
+                        new_html = new_html + `></input>`
                     }
+                    new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Date" || newQuestion["type"] == "DATE") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="date" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
-                        new_html = new_html + ` required></input></p>`
+                        new_html = new_html + ` required></input> <e class="required">(required)</e>`
                     } else {
-                        new_html = new_html + `></input></p>`
+                        new_html = new_html + `></input>`
                     }
+                    new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else {
                     var new_html = `<p>${newQuestion["name"]}: Failed to create question. Please ask the owner of this form to correct the question type.</p>"`
