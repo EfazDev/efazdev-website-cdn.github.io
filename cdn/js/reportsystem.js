@@ -202,7 +202,10 @@ function send_response() {
                         }).then(res => {
                             if (res.ok) {
                                 view_success_menu(selected_mode)
-                                on_success_form(values)
+                                res.json().then(json => {
+                                    values["fetch_response"] = json
+                                    on_success_form(values)
+                                })
                             } else {
                                 res.json().then(json => {
                                     view_error_menu(json["message"])
