@@ -71,7 +71,7 @@ function set_mode(text) {
 function send_response() {
     var values = get_values()
 
-    if (values["mo"] == "Suggest") {
+    if (values["mo"] == "Suggestion") {
         fetch("https://api.efaz.dev/api/reports/send-suggestion", {
             "headers": {
                 "accept": "application/json",
