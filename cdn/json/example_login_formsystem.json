@@ -1,0 +1,45 @@
+{
+    "title": "Login",
+    "questions": [
+        {
+            "name": "Username",
+            "jsonName": "username",
+            "type": "Short Response",
+            "placeholder": "Enter your username!",
+            "required": true,
+            "custom_class": ""
+        },
+        {
+            "name": "Password",
+            "jsonName": "password",
+            "type": "Password",
+            "placeholder": "Enter your password!",
+            "required": true,
+            "custom_class": ""
+        }
+    ],
+    "hideModeSelection": true,
+    "showCurrentMode": false,
+    "defaultMode": "Login",
+    "modes": [
+        {
+            "name": "Login",
+            "api_url": "https://api.efaz.dev/api/auth/login",
+            "formatted": [
+                {
+                    "questionName": "Username",
+                    "jsonName": "username",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Password",
+                    "jsonName": "password",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "Logging in!",
+            "showTryAgainOnSuccess": false,
+            "showTypeOfModeInBody": false
+        }
+    ]
+}
