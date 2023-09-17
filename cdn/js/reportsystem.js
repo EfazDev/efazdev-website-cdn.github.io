@@ -105,6 +105,11 @@ function set_mode(mode) {
     })
 }
 
+function on_success_form(args) {}
+function get_xcerf(args) {
+    return null
+}
+
 function send_response() {
     get_values().then(values => {
         getModeInfo(selected_mode).then(mode_response => {
@@ -143,7 +148,8 @@ function send_response() {
                         "content-type": "application/json",
                         "sec-fetch-dest": "empty",
                         "sec-fetch-mode": "cors",
-                        "sec-fetch-site": "same-origin"
+                        "sec-fetch-site": "same-origin",
+                        "x-csrf-token": get_xcerf(values)
                     },
                     "referrerPolicy": "strict-origin-when-cross-origin",
                     "body": converted_json_string,
@@ -153,6 +159,7 @@ function send_response() {
                 }).then(res => {
                     if (res.ok) {
                         view_success_menu(selected_mode)
+                        on_success_form(values)
                     } else {
                         res.json().then(json => {
                             view_error_menu(json["message"])
