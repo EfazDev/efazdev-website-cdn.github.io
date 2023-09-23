@@ -74,10 +74,12 @@ function view_main_menu() {
     var obj1 = document.getElementById("main_menu")
     var obj2 = document.getElementById("success")
     var obj3 = document.getElementById("failed")
+    var obj4 = document.getElementById("awaiting")
 
     obj1.style = "display: block;"
     obj2.style = "display: none;"
     obj3.style = "display: none;"
+    obj4.style = "display: none;"
 }
 
 function returnFromMessageAndClear() {
@@ -92,10 +94,12 @@ function view_success_menu(mode) {
     var obj1 = document.getElementById("main_menu")
     var obj2 = document.getElementById("success")
     var obj3 = document.getElementById("failed")
+    var obj6 = document.getElementById("awaiting")
 
     obj1.style = "display: none;"
     obj2.style = "display: block;"
     obj3.style = "display: none;"
+    obj6.style = "display: none;"
 
     var obj4 = document.getElementById("message2")
     var obj5 = document.getElementById("reloadButton")
@@ -121,13 +125,27 @@ function view_error_menu(text) {
     var obj1 = document.getElementById("main_menu")
     var obj2 = document.getElementById("success")
     var obj3 = document.getElementById("failed")
+    var obj5 = document.getElementById("awaiting")
 
     obj1.style = "display: none;"
     obj2.style = "display: none;"
     obj3.style = "display: block;"
+    obj5.style = "display: none;"
 
     var obj4 = document.getElementById("message1")
     obj4.innerHTML = text
+}
+
+function view_awaiting_menu() {
+    var obj1 = document.getElementById("main_menu")
+    var obj2 = document.getElementById("success")
+    var obj3 = document.getElementById("failed")
+    var obj4 = document.getElementById("awaiting")
+
+    obj1.style = "display: none;"
+    obj2.style = "display: none;"
+    obj3.style = "display: none;"
+    obj4.style = "display: block;"
 }
 
 function set_mode(mode) {
@@ -160,6 +178,7 @@ async function get_captcha() {
 }
 
 function send_response() {
+    view_awaiting_menu()
     get_values().then(values => {
         get_xcsrf(values).then(x_csrf_token => {
             get_captcha().then(captcha_key => {
@@ -277,6 +296,10 @@ function start_system() {
         <p id="message1">{error}</p>
         <br>
         <button type="button" id="returnButton" class="center" onclick="view_main_menu()">Try again!</button>
+    </div>
+    <div id="awaiting" style="display: none;">
+        <h1 id="title2">Hold on!</h1>
+        <p id="message1">We are processing your request! Be right back!</p>
     </div>
     <div id="success" style="display: none;">
         <h1 id="title3">Success!</h1>
