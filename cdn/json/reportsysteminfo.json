@@ -27,10 +27,14 @@
         }
     ],
     "googleCaptcha": {
+        "enabled": false,
+        "siteKey": "",
+        "jsonName": "g_captcha"
+    },
+    "cloudflareCaptcha": {
         "enabled": true,
         "siteKey": "6Legv0ooAAAAAA_ekT7hMMWtnMrOuB_X-o252SM1",
-        "type": "Enterprise",
-        "jsonName": "g_captcha"
+        "jsonName": "c_captcha"
     },
     "hideModeSelection": false,
     "showCurrentMode": true,

@@ -34,6 +34,11 @@ async function get_xcsrf(args) {
 var google_captcha_enabled = false
 var google_captcha = system_json["googleCaptcha"]
 
+// Cloudflare Captcha
+var cloudflare_captcha_enabled = false
+var cloudflare_captcha = system_json["cloudflareCaptcha"]
+let widget_id = ""
+
 // Quick Functions
 function getIfResponseIsEmpty(text) {
     return text.trim().length === 0
@@ -167,13 +172,16 @@ function set_mode(mode) {
 }
 
 async function get_captcha() {
-    if (google_captcha["enabled"] == true) {
+    if (google_captcha_enabled == true) {
         return grecaptcha.execute(google_captcha["siteKey"], {action:'validate_captcha'})
         .then(function(token) {
-            return token
+            return ["Google", token]
         })
+    } else if (cloudflare_captcha_enabled == true) {
+        turnstile.reset(widget_id)
+        return ["Cloudflare", turnstile.getResponse(widget_id)]
     } else {
-        return ""
+        return ["None", ""]
     }
 }
 
@@ -210,7 +218,7 @@ function send_response() {
                                     }
                                 }
                             }
-                            
+
                             for (let e = 0; e < questions.length; e++) {
                                 var question = questions[e]
                                 if (question["required"] == true && question["jsonName"] == key) {
@@ -221,8 +229,10 @@ function send_response() {
                             }
                         }
 
-                        if (captcha_key) {
+                        if (captcha_key[0] == "Google") {
                             new_formated_values[google_captcha["jsonName"]] = captcha_key
+                        } else if (captcha_key[0] == "Cloudflare") {
+                            new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key
                         }
                         if (listOfEmptyRequiredVariables.length > 0) {
                             var new_string_g = `${listOfEmptyRequiredVariables[0]}`
@@ -432,7 +442,7 @@ function start_system() {
                 var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
-            if (google_captcha["enabled"] == true) {
+            if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == false) {
                 var new_html = `<input type="hidden" id="${google_captcha["jsonName"]}_input" name="${google_captcha["jsonName"]}_input"></input>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
 
@@ -449,6 +459,25 @@ function start_system() {
                 } catch (err) {
                     console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
                 }
+            } else if (google_captcha["enabled"] == false && cloudflare_captcha["enabled"] == true) {
+                var new_html = `<input type="hidden" id="${cloudflare_captcha["jsonName"]}_input" name="${cloudflare_captcha["jsonName"]}_input"></input>`
+                main_menu.innerHTML = main_menu.innerHTML + new_html
+
+                try {
+                    turnstile.ready(function () {
+                        widget_id = turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
+                            sitekey: cloudflare_captcha["siteKey"],
+                            callback: function(token) {
+                                document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML = token
+                            },
+                        });
+                        cloudflare_captcha_enabled = true
+                    });
+                } catch (err) {
+                    console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                }
+            } else if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == true) {
+                console.log("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
             }
             lastLoadedJSON = system_json
             console.log("Successfully created form!")
