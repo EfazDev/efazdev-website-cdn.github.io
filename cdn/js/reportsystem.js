@@ -241,35 +241,39 @@ function send_response() {
                             view_error_menu(`The following questions were filled empty: ${new_string_g}`)
                         } else {
                             var converted_json_string = JSON.stringify(new_formated_values)
-                            fetch(new_api_url, {
-                                "headers": {
-                                    "accept": "application/json",
-                                    "accept-language": "en-US,en;q=0.9",
-                                    "content-type": "application/json",
-                                    "sec-fetch-dest": "empty",
-                                    "sec-fetch-mode": "cors",
-                                    "sec-fetch-site": "same-origin",
-                                    "credentials": 'include',
-                                    "x-csrf-token": x_csrf_token
-                                },
-                                "referrerPolicy": "strict-origin-when-cross-origin",
-                                "body": converted_json_string,
-                                "method": "POST",
-                                "mode": "cors",
-                                "credentials": "omit"
-                            }).then(res => {
-                                if (res.ok) {
-                                    view_success_menu(selected_mode)
-                                    res.json().then(json => {
-                                        values["fetch_response"] = json
-                                        on_success_form(values)
-                                    })
-                                } else {
-                                    res.json().then(json => {
-                                        view_error_menu(json["message"])
-                                    })
-                                }
-                            })
+                            try {
+                                fetch(new_api_url, {
+                                    "headers": {
+                                        "accept": "application/json",
+                                        "accept-language": "en-US,en;q=0.9",
+                                        "content-type": "application/json",
+                                        "sec-fetch-dest": "empty",
+                                        "sec-fetch-mode": "cors",
+                                        "sec-fetch-site": "same-origin",
+                                        "credentials": 'include',
+                                        "x-csrf-token": x_csrf_token
+                                    },
+                                    "referrerPolicy": "strict-origin-when-cross-origin",
+                                    "body": converted_json_string,
+                                    "method": "POST",
+                                    "mode": "cors",
+                                    "credentials": "omit"
+                                }).then(res => {
+                                    if (res.ok) {
+                                        view_success_menu(selected_mode)
+                                        res.json().then(json => {
+                                            values["fetch_response"] = json
+                                            on_success_form(values)
+                                        })
+                                    } else {
+                                        res.json().then(json => {
+                                            view_error_menu(json["message"])
+                                        })
+                                    }
+                                })
+                            } catch (err) {
+                                view_error_menu(err.message)
+                            }
                         }
                     }
                 })
