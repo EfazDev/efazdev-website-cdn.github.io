@@ -178,7 +178,7 @@ async function get_captcha() {
             return ["Google", token]
         })
     } else if (cloudflare_captcha_enabled == true) {
-        widget_id = turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
+        await turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
             sitekey: cloudflare_captcha["siteKey"],
             callback: function(token) {
                 document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML = token
