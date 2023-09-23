@@ -408,7 +408,7 @@ function start_system() {
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
             if (google_captcha_enabled == true) {
-                var new_html = `<p class="footer">This form uses reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of service</a>.</p>`
+                var new_html = `<p class="footer">This form uses and is protected by reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of Service</a>.</p>`
                 document.body.innerHTML = document.body.innerHTML + new_html
             }
             lastLoadedJSON = system_json
