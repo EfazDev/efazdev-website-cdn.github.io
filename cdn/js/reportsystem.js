@@ -31,7 +31,7 @@ async function get_xcsrf(args) {
 }
 
 // Google Captcha
-let google_captcha_enabled = false
+var google_captcha_enabled = false
 
 // Quick Functions
 function getIfResponseIsEmpty(text) {
