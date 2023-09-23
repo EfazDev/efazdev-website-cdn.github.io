@@ -178,8 +178,8 @@ async function get_captcha() {
             return ["Google", token]
         })
     } else if (cloudflare_captcha_enabled == true) {
-        turnstile.reset(widget_id)
-        return ["Cloudflare", turnstile.getResponse(widget_id)]
+        await turnstile.reset(widget_id)
+        return ["Cloudflare", document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML]
     } else {
         return ["None", ""]
     }
@@ -230,9 +230,9 @@ function send_response() {
                         }
 
                         if (captcha_key[0] == "Google") {
-                            new_formated_values[google_captcha["jsonName"]] = captcha_key
+                            new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
                         } else if (captcha_key[0] == "Cloudflare") {
-                            new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key
+                            new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
                         }
                         if (listOfEmptyRequiredVariables.length > 0) {
                             var new_string_g = `${listOfEmptyRequiredVariables[0]}`
