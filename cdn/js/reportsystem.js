@@ -499,6 +499,7 @@ function loadFormJSONfromURL(url) {
             specific_settings = system_json["specific_settings"]
             selected_mode = system_json["defaultMode"]
             google_captcha = system_json["googleCaptcha"]
+            cloudflare_captcha = system_json["cloudflareCaptcha"]
             start_system()
         })
     })
@@ -511,6 +512,7 @@ function loadLastLoadedJSON() {
     specific_settings = system_json["specific_settings"]
     selected_mode = system_json["defaultMode"]
     google_captcha = system_json["googleCaptcha"]
+    cloudflare_captcha = system_json["cloudflareCaptcha"]
     start_system()
 }
 
@@ -521,5 +523,6 @@ function loadFormJSON(json) {
     specific_settings = system_json["specific_settings"]
     selected_mode = system_json["defaultMode"]
     google_captcha = system_json["googleCaptcha"]
+    cloudflare_captcha = system_json["cloudflareCaptcha"]
     start_system()
 }
