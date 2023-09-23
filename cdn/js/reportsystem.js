@@ -178,7 +178,12 @@ async function get_captcha() {
             return ["Google", token]
         })
     } else if (cloudflare_captcha_enabled == true) {
-        await turnstile.reset(widget_id)
+        widget_id = turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
+            sitekey: cloudflare_captcha["siteKey"],
+            callback: function(token) {
+                document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML = token
+            },
+        });
         return ["Cloudflare", document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML]
     } else {
         return ["None", ""]
