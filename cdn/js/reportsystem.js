@@ -169,11 +169,10 @@ function send_response() {
                                 for (let e = 0; e < questions.length; e++) {
                                     var question = questions[e]
                                     if (question["required"] == true && question["jsonName"] == key) {
-                                        if (getIfResponseIsEmpty(main_val) && (!(question["type"] == "Google Captcha" || question["type"] == "GCAPTCHA"))) {
+                                        if (getIfResponseIsEmpty(main_val)) {
                                             listOfEmptyRequiredVariables.push(question["name"])
                                         }
-                                    }
-                                    if ((question["type"] == "Google Captcha" || question["type"] == "GCAPTCHA") && question["jsonName"] == key) {
+                                    } else if ((question["type"] == "Google Captcha" || question["type"] == "GCAPTCHA") && question["jsonName"] == key) {
                                         if (google_captcha_enabled == true) {
                                             grecaptcha.execute(question["site_key"], {action:'validate_captcha'}).then(function(token) {
                                                 main_val = token
