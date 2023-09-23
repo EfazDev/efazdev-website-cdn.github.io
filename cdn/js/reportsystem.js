@@ -208,14 +208,14 @@ function send_response() {
                                             new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
                                         }
                                     }
-    
-                                    for (let e = 0; e < questions.length; e++) {
-                                        var question = questions[e]
-                                        if (question["required"] == true && question["jsonName"] == key) {
-                                            if (getIfResponseIsEmpty(main_val)) {
-                                                listOfEmptyRequiredVariables.push(question["name"])
-                                            }
-                                        }
+                                }
+                            }
+                            
+                            for (let e = 0; e < questions.length; e++) {
+                                var question = questions[e]
+                                if (question["required"] == true && question["jsonName"] == key) {
+                                    if (getIfResponseIsEmpty(main_val)) {
+                                        listOfEmptyRequiredVariables.push(question["name"])
                                     }
                                 }
                             }
@@ -224,7 +224,6 @@ function send_response() {
                         if (captcha_key) {
                             new_formated_values[google_captcha["jsonName"]] = captcha_key
                         }
-    
                         if (listOfEmptyRequiredVariables.length > 0) {
                             var new_string_g = `${listOfEmptyRequiredVariables[0]}`
                             var remove = false
