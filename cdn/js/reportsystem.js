@@ -1,3 +1,16 @@
+/* 
+
+Form System Javascript API
+
+Setup forms via a JSON!
+Made by Efaz from efaz.dev!
+
+Script Version: v1.0.5
+Script Type: JavaScript
+
+*/
+
+// Define Variables if not already.
 if (!(typeof system_json !== 'undefined')) {
     var system_json = {}
 }
@@ -5,11 +18,27 @@ if (!(typeof lastLoadedJSON !== 'undefined')) {
     var lastLoadedJSON = {}
 }
 
+// Form Variables
 var questions = system_json["questions"]
 var modes = system_json["modes"]
 var selected_mode = system_json["defaultMode"]
 var specific_settings = system_json["specific_settings"]
 
+// API Functions
+function on_success_form(args) { }
+async function get_xcsrf(args) {
+    return null
+}
+
+// Google Captcha
+let google_captcha_enabled = false
+
+// Quick Functions
+function getIfResponseIsEmpty(text) {
+    return text.trim().length === 0
+}
+
+// System Functions
 async function get_values() {
     var new_table = {}
     for (let a = 0; a < questions.length; a++) {
@@ -116,15 +145,6 @@ function set_mode(mode) {
     })
 }
 
-function getIfResponseIsEmpty(text) {
-    return text.trim().length === 0
-}
-
-function on_success_form(args) { }
-async function get_xcsrf(args) {
-    return null
-}
-
 function send_response() {
     get_values().then(values => {
         get_xcsrf(values).then(x_csrf_token => {
@@ -144,6 +164,25 @@ function send_response() {
                         for (let d = 0; d < mode_response["formatted"].length; d++) {
                             var main_val2 = mode_response["formatted"][d]
                             if (main_val2["jsonName"] == key) {
+                                for (let e = 0; e < questions.length; e++) {
+                                    var question = questions[e]
+                                    if (question["required"] == true && question["jsonName"] == key) {
+                                        if (getIfResponseIsEmpty(main_val) && (!(question["type"] == "Google Captcha" || question["type"] == "GCAPTCHA"))) {
+                                            listOfEmptyRequiredVariables.push(question["name"])
+                                        }
+                                    }
+                                    if ((question["type"] == "Google Captcha" || question["type"] == "GCAPTCHA") && question["jsonName"] == key) {
+                                        if (google_captcha_enabled == true) {
+                                            grecaptcha.execute(question["site_key"], {action:'validate_captcha'}).then(function(token) {
+                                                main_val = token
+                                            });
+                                        } else {
+                                            console.log("Failed to get Google Captcha Token. Please make sure the module was loaded!")
+                                            listOfEmptyRequiredVariables.push(question["name"])
+                                        }
+                                    }
+                                }
+
                                 if (main_val2["in"] == "Body") {
                                     new_formated_values[key] = main_val
                                 } else if (main_val2["in"] == "URL") {
@@ -152,15 +191,6 @@ function send_response() {
                                         appliedAtSymbol = true
                                     } else {
                                         new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
-                                    }
-                                }
-
-                                for (let e = 0; e < questions.length; e++) {
-                                    var question = questions[e]
-                                    if (question["required"] == true && question["jsonName"] == key) {
-                                        if (getIfResponseIsEmpty(main_val)) {
-                                            listOfEmptyRequiredVariables.push(question["name"])
-                                        }
                                     }
                                 }
                             }
@@ -310,6 +340,17 @@ function start_system() {
                     }
                     new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Google Captcha" || newQuestion["type"] == "GCAPTCHA") {
+                    var new_html = `<input type="hidden" id="${newQuestion["jsonName"]}-google-captcha" name="${newQuestion["jsonName"]}-google-captcha">"`
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+
+                    try {
+                        grecaptcha.ready(function() {
+                            google_captcha_enabled = true
+                        });
+                    } catch (err) {
+                        console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                    }
                 } else if (newQuestion["type"] == "Time" || newQuestion["type"] == "TIME") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="time" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {

@@ -16,6 +16,15 @@
             "placeholder": "Enter your password!",
             "required": true,
             "custom_class": ""
+        },
+        {
+            "name": "Captcha",
+            "jsonName": "g_captcha",
+            "type": "Google Captcha",
+            "placeholder": "",
+            "site_key": "6Legv0ooAAAAAA_ekT7hMMWtnMrOuB_X-o252SM1",
+            "required": true,
+            "custom_class": "center"
         }
     ],
     "hideModeSelection": true,
@@ -34,6 +43,11 @@
                 {
                     "questionName": "Password",
                     "jsonName": "password",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Captcha",
+                    "jsonName": "g_captcha",
                     "in": "Body"
                 }
             ],
