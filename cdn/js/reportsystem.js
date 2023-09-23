@@ -44,7 +44,9 @@ async function get_values() {
     for (let a = 0; a < questions.length; a++) {
         var valueInfo = questions[a]
         var new_obj = document.getElementById(valueInfo["jsonName"] + "_input")
-        new_table[valueInfo["jsonName"]] = new_obj.value
+        if (new_obj.value) {
+            new_table[valueInfo["jsonName"]] = new_obj.value
+        }
     }
     return new_table
 }
