@@ -348,6 +348,9 @@ function start_system() {
 
                     try {
                         grecaptcha.ready(function() {
+                            grecaptcha.execute(newQuestion["site_key"], {action:'validate_captcha'}).then(function(token) {
+                                document.getElementById(`${newQuestion["jsonName"]}_input`).innerHTML = token
+                            });
                             google_captcha_enabled = true
                         });
                     } catch (err) {
