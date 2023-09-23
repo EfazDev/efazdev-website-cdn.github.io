@@ -201,7 +201,7 @@ function send_response() {
                                 }
                             }
                         }
-                        
+
                         if (captcha_key) {
                             new_formated_values[google_captcha["jsonName"]] = captcha_key
                         }
@@ -407,7 +407,7 @@ function start_system() {
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
             if (google_captcha["enabled"] == true) {
-                var new_html = `<input type="hidden" id="${google_captcha["jsonName"]}_input" name="${google_captcha["jsonName"]}_input"></input>"`
+                var new_html = `<input type="hidden" id="${google_captcha["jsonName"]}_input" name="${google_captcha["jsonName"]}_input"></input>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
 
                 try {
@@ -416,14 +416,13 @@ function start_system() {
                             document.getElementById(`${google_captcha["jsonName"]}_input`).innerHTML = token
                         });
                         google_captcha_enabled = true
+
+                        var new_html = `<p class="footer">This form uses and is protected by reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of Service</a>.</p>`
+                        document.body.innerHTML = document.body.innerHTML + new_html
                     });
                 } catch (err) {
                     console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
                 }
-            }
-            if (google_captcha_enabled == true) {
-                var new_html = `<p class="footer">This form uses and is protected by reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of Service</a>.</p>`
-                document.body.innerHTML = document.body.innerHTML + new_html
             }
             lastLoadedJSON = system_json
             console.log("Successfully created form!")
