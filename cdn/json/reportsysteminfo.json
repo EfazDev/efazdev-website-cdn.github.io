@@ -24,17 +24,13 @@
             "placeholder": "Enter your message here!",
             "required": true,
             "custom_class": "center"
-        },
-        {
-            "name": "Captcha",
-            "jsonName": "g_captcha",
-            "type": "Google Captcha",
-            "placeholder": "",
-            "required": true,
-            "site_key": "6Legv0ooAAAAAA_ekT7hMMWtnMrOuB_X-o252SM1",
-            "custom_class": "center"
         }
     ],
+    "googleCaptcha": {
+        "enabled": true,
+        "siteKey": "6Legv0ooAAAAAA_ekT7hMMWtnMrOuB_X-o252SM1",
+        "jsonName": "g_captcha"
+    },
     "hideModeSelection": false,
     "showCurrentMode": true,
     "defaultMode": "Report",
@@ -56,11 +52,6 @@
                 {
                     "questionName": "Message",
                     "jsonName": "message",
-                    "in": "Body"
-                },
-                {
-                    "questionName": "Captcha",
-                    "jsonName": "g_captcha",
                     "in": "Body"
                 }
             ],
@@ -85,11 +76,6 @@
                 {
                     "questionName": "Message",
                     "jsonName": "message",
-                    "in": "Body"
-                },
-                {
-                    "questionName": "Captcha",
-                    "jsonName": "g_captcha",
                     "in": "Body"
                 }
             ],

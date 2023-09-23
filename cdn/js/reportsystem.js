@@ -32,6 +32,7 @@ async function get_xcsrf(args) {
 
 // Google Captcha
 var google_captcha_enabled = false
+var google_captcha = system_json["googleCaptcha"]
 
 // Quick Functions
 function getIfResponseIsEmpty(text) {
@@ -147,104 +148,112 @@ function set_mode(mode) {
     })
 }
 
+async function get_captcha() {
+    if (google_captcha["enabled"] == true) {
+        return grecaptcha.execute(google_captcha["siteKey"], {action:'validate_captcha'})
+        .then(function(token) {
+            return token
+        })
+    } else {
+        return ""
+    }
+}
+
 function send_response() {
     get_values().then(values => {
         get_xcsrf(values).then(x_csrf_token => {
-            getModeInfo(selected_mode).then(mode_response => {
-                if (mode_response["success"] == true) {
-                    mode_response = mode_response["response"]
-                    var new_formated_values = {}
-                    var new_api_url = mode_response["api_url"]
-                    var listOfKeysProvided = Object.keys(values);
-                    var appliedAtSymbol = false
-
-                    var listOfEmptyRequiredVariables = []
-
-                    for (let c = 0; c < listOfKeysProvided.length; c++) {
-                        var key = listOfKeysProvided[c]
-                        var main_val = values[key]
-                        for (let d = 0; d < mode_response["formatted"].length; d++) {
-                            var main_val2 = mode_response["formatted"][d]
-                            if (main_val2["jsonName"] == key) {
-                                for (let e = 0; e < questions.length; e++) {
-                                    var question = questions[e]
-                                    if (question["required"] == true && question["jsonName"] == key) {
-                                        if (getIfResponseIsEmpty(main_val)) {
-                                            listOfEmptyRequiredVariables.push(question["name"])
-                                        }
-                                    } else if ((question["type"] == "Google Captcha" || question["type"] == "GCAPTCHA") && question["jsonName"] == key) {
-                                        if (google_captcha_enabled == true) {
-                                            grecaptcha.execute(question["site_key"], {action:'validate_captcha'}).then(function(token) {
-                                                main_val = token
-                                            });
+            get_captcha().then(captcha_key => {
+                getModeInfo(selected_mode).then(mode_response => {
+                    if (mode_response["success"] == true) {
+                        mode_response = mode_response["response"]
+                        var new_formated_values = {}
+                        var new_api_url = mode_response["api_url"]
+                        var listOfKeysProvided = Object.keys(values);
+                        var appliedAtSymbol = false
+    
+                        var listOfEmptyRequiredVariables = []
+    
+                        for (let c = 0; c < listOfKeysProvided.length; c++) {
+                            var key = listOfKeysProvided[c]
+                            var main_val = values[key]
+                            for (let d = 0; d < mode_response["formatted"].length; d++) {
+                                var main_val2 = mode_response["formatted"][d]
+                                if (main_val2["jsonName"] == key) {
+                                    if (main_val2["in"] == "Body") {
+                                        new_formated_values[key] = main_val
+                                    } else if (main_val2["in"] == "URL") {
+                                        if (appliedAtSymbol == false) {
+                                            new_api_url = new_api_url + `?${main_val2["jsonName"]}=${main_val}`
+                                            appliedAtSymbol = true
                                         } else {
-                                            console.log("Failed to get Google Captcha Token. Please make sure the module was loaded!")
-                                            listOfEmptyRequiredVariables.push(question["name"])
+                                            new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
+                                        }
+                                    }
+    
+                                    for (let e = 0; e < questions.length; e++) {
+                                        var question = questions[e]
+                                        if (question["required"] == true && question["jsonName"] == key) {
+                                            if (getIfResponseIsEmpty(main_val)) {
+                                                listOfEmptyRequiredVariables.push(question["name"])
+                                            }
                                         }
                                     }
                                 }
-
-                                if (main_val2["in"] == "Body") {
-                                    new_formated_values[key] = main_val
-                                } else if (main_val2["in"] == "URL") {
-                                    if (appliedAtSymbol == false) {
-                                        new_api_url = new_api_url + `?${main_val2["jsonName"]}=${main_val}`
-                                        appliedAtSymbol = true
-                                    } else {
-                                        new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
+                            }
+                        }
+                        
+                        if (captcha_key) {
+                            new_formated_values[google_captcha["jsonName"]] = captcha_key
+                        }
+    
+                        if (listOfEmptyRequiredVariables.length > 0) {
+                            var new_string_g = `${listOfEmptyRequiredVariables[0]}`
+                            var remove = false
+                            for (let f = 0; f < listOfEmptyRequiredVariables.length + 1; f++) {
+                                if (remove == true) {
+                                    if (listOfEmptyRequiredVariables[f]) {
+                                        var val_h = listOfEmptyRequiredVariables[f]
+                                        new_string_g = new_string_g + `, ${val_h}`
                                     }
+                                } else {
+                                    remove = true
                                 }
                             }
-                        }
-                    }
-
-                    if (listOfEmptyRequiredVariables.length > 0) {
-                        var new_string_g = `${listOfEmptyRequiredVariables[0]}`
-                        var remove = false
-                        for (let f = 0; f < listOfEmptyRequiredVariables.length + 1; f++) {
-                            if (remove == true) {
-                                if (listOfEmptyRequiredVariables[f]) {
-                                    var val_h = listOfEmptyRequiredVariables[f]
-                                    new_string_g = new_string_g + `, ${val_h}`
+                            view_error_menu(`The following questions were filled empty: ${new_string_g}`)
+                        } else {
+                            var converted_json_string = JSON.stringify(new_formated_values)
+                            fetch(new_api_url, {
+                                "headers": {
+                                    "accept": "application/json",
+                                    "accept-language": "en-US,en;q=0.9",
+                                    "content-type": "application/json",
+                                    "sec-fetch-dest": "empty",
+                                    "sec-fetch-mode": "cors",
+                                    "sec-fetch-site": "same-origin",
+                                    "credentials": 'include',
+                                    "x-csrf-token": x_csrf_token
+                                },
+                                "referrerPolicy": "strict-origin-when-cross-origin",
+                                "body": converted_json_string,
+                                "method": "POST",
+                                "mode": "cors",
+                                "credentials": "omit"
+                            }).then(res => {
+                                if (res.ok) {
+                                    view_success_menu(selected_mode)
+                                    res.json().then(json => {
+                                        values["fetch_response"] = json
+                                        on_success_form(values)
+                                    })
+                                } else {
+                                    res.json().then(json => {
+                                        view_error_menu(json["message"])
+                                    })
                                 }
-                            } else {
-                                remove = true
-                            }
+                            })
                         }
-                        view_error_menu(`The following questions were filled empty: ${new_string_g}`)
-                    } else {
-                        var converted_json_string = JSON.stringify(new_formated_values)
-                        fetch(new_api_url, {
-                            "headers": {
-                                "accept": "application/json",
-                                "accept-language": "en-US,en;q=0.9",
-                                "content-type": "application/json",
-                                "sec-fetch-dest": "empty",
-                                "sec-fetch-mode": "cors",
-                                "sec-fetch-site": "same-origin",
-                                "credentials": 'include',
-                                "x-csrf-token": x_csrf_token
-                            },
-                            "referrerPolicy": "strict-origin-when-cross-origin",
-                            "body": converted_json_string,
-                            "method": "POST",
-                            "mode": "cors",
-                            "credentials": "omit"
-                        }).then(res => {
-                            if (res.ok) {
-                                view_success_menu(selected_mode)
-                                res.json().then(json => {
-                                    values["fetch_response"] = json
-                                    on_success_form(values)
-                                })
-                            } else {
-                                res.json().then(json => {
-                                    view_error_menu(json["message"])
-                                })
-                            }
-                        })
                     }
-                }
+                })
             })
         })
     })
@@ -341,20 +350,6 @@ function start_system() {
                     }
                     new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
-                } else if (newQuestion["type"] == "Google Captcha" || newQuestion["type"] == "GCAPTCHA") {
-                    var new_html = `<input type="hidden" id="${newQuestion["jsonName"]}_input" name="${newQuestion["jsonName"]}_input"></input>"`
-                    main_menu.innerHTML = main_menu.innerHTML + new_html
-
-                    try {
-                        grecaptcha.ready(function() {
-                            grecaptcha.execute(newQuestion["site_key"], {action:'validate_captcha'}).then(function(token) {
-                                document.getElementById(`${newQuestion["jsonName"]}_input`).innerHTML = token
-                            });
-                            google_captcha_enabled = true
-                        });
-                    } catch (err) {
-                        console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
-                    }
                 } else if (newQuestion["type"] == "Time" || newQuestion["type"] == "TIME") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="time" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
@@ -411,6 +406,21 @@ function start_system() {
                 var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
+            if (google_captcha["enabled"] == true) {
+                var new_html = `<input type="hidden" id="${google_captcha["jsonName"]}_input" name="${google_captcha["jsonName"]}_input"></input>"`
+                main_menu.innerHTML = main_menu.innerHTML + new_html
+
+                try {
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute(google_captcha["siteKey"], {action:'validate_captcha'}).then(function(token) {
+                            document.getElementById(`${google_captcha["jsonName"]}_input`).innerHTML = token
+                        });
+                        google_captcha_enabled = true
+                    });
+                } catch (err) {
+                    console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                }
+            }
             if (google_captcha_enabled == true) {
                 var new_html = `<p class="footer">This form uses and is protected by reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of Service</a>.</p>`
                 document.body.innerHTML = document.body.innerHTML + new_html
@@ -434,6 +444,7 @@ function loadFormJSONfromURL(url) {
             modes = system_json["modes"]
             specific_settings = system_json["specific_settings"]
             selected_mode = system_json["defaultMode"]
+            google_captcha = system_json["googleCaptcha"]
             start_system()
         })
     })
@@ -445,6 +456,7 @@ function loadLastLoadedJSON() {
     modes = system_json["modes"]
     specific_settings = system_json["specific_settings"]
     selected_mode = system_json["defaultMode"]
+    google_captcha = system_json["googleCaptcha"]
     start_system()
 }
 
@@ -454,5 +466,6 @@ function loadFormJSON(json) {
     modes = system_json["modes"]
     specific_settings = system_json["specific_settings"]
     selected_mode = system_json["defaultMode"]
+    google_captcha = system_json["googleCaptcha"]
     start_system()
 }
