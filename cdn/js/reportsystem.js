@@ -171,22 +171,21 @@ function set_mode(mode) {
     })
 }
 
-async function get_captcha() {
+async function get_captcha(callback_a) {
     if (google_captcha_enabled == true) {
         return grecaptcha.execute(google_captcha["siteKey"], {action:'validate_captcha'})
         .then(function(token) {
-            return ["Google", token]
+            callback_a(["Google", token])
         })
     } else if (cloudflare_captcha_enabled == true) {
         await turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
             sitekey: cloudflare_captcha["siteKey"],
             callback: function(token) {
-                document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML = token
+                callback_a(["Cloudflare", token])
             },
         });
-        return ["Cloudflare", document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML]
     } else {
-        return ["None", ""]
+        return callback_a(["None", ""])
     }
 }
 
@@ -194,7 +193,7 @@ function send_response() {
     view_awaiting_menu()
     get_values().then(values => {
         get_xcsrf(values).then(x_csrf_token => {
-            get_captcha().then(captcha_key => {
+            get_captcha(captcha_key => {
                 getModeInfo(selected_mode).then(mode_response => {
                     if (mode_response["success"] == true) {
                         mode_response = mode_response["response"]
