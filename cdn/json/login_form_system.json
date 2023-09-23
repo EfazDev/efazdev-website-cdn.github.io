@@ -29,7 +29,7 @@
     "modes": [
         {
             "name": "Login",
-            "api_url": "https://api.efaz.dev/api/auth/login-test",
+            "api_url": "https://api.efaz.dev/api/auth/login",
             "formatted": [
                 {
                     "questionName": "Username",
