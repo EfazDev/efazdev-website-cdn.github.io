@@ -36,6 +36,10 @@ e {
     font-size: x-small;
 }
 
+grecaptcha-badge {
+    display: none;
+}
+
 html {
     height: 100%;
 }
