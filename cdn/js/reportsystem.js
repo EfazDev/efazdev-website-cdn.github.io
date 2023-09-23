@@ -343,7 +343,7 @@ function start_system() {
                     new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Google Captcha" || newQuestion["type"] == "GCAPTCHA") {
-                    var new_html = `<input type="hidden" id="${newQuestion["jsonName"]}-google-captcha" name="${newQuestion["jsonName"]}-google-captcha">"`
+                    var new_html = `<input type="hidden" id="${newQuestion["jsonName"]}-google-captcha" name="${newQuestion["jsonName"]}-google-captcha"></input>"`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
 
                     try {
