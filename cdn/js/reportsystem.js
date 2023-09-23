@@ -407,6 +407,10 @@ function start_system() {
                 var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
+            if (google_captcha_enabled == true) {
+                var new_html = `<p class="footer">This form uses reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of service</a>.</p>`
+                main_menu.innerHTML = main_menu.innerHTML + new_html
+            }
             lastLoadedJSON = system_json
             console.log("Successfully created form!")
         } catch (err) {

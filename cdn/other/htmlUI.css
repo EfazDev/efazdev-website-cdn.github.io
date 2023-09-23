@@ -40,6 +40,11 @@ e {
     visibility: hidden;
 }
 
+.footer {
+    position: absolute;
+    bottom: 0;
+}
+
 html {
     height: 100%;
 }
