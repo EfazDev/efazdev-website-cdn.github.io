@@ -36,8 +36,8 @@ e {
     font-size: x-small;
 }
 
-grecaptcha-badge {
-    display: none;
+.grecaptcha-badge {
+    visibility: hidden;
 }
 
 html {
