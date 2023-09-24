@@ -35,7 +35,7 @@
                 }
             ],
             "thanksMessage": "{jsonMessage}",
-            "showTryAgainOnSuccess": false,
+            "showTryAgainOnSuccess": true,
             "showTypeOfModeInBody": false
         },
         {
@@ -49,7 +49,7 @@
                 }
             ],
             "thanksMessage": "{jsonMessage}",
-            "showTryAgainOnSuccess": false,
+            "showTryAgainOnSuccess": true,
             "showTypeOfModeInBody": false
         },
         {
@@ -63,7 +63,7 @@
                 }
             ],
             "thanksMessage": "{jsonMessage}",
-            "showTryAgainOnSuccess": false,
+            "showTryAgainOnSuccess": true,
             "showTypeOfModeInBody": false
         }
     ],
