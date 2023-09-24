@@ -323,7 +323,7 @@ function start_system() {
         title = system_json["title"]
     }
     document.body.innerHTML = `
-    <top alt="topbar">Enter Form JSON URL: <input placeholder="Enter URL!" type="text" id="explore_button_input_sys">    <button type="button" id="exploreButton" onclick="explore()">Explore!</button></top>
+    <top alt="topbar">Enter Form JSON URL: <input placeholder="Enter URL!" class="topbar_loaded_a" type="text" id="explore_button_input_sys">    <button type="button" class="topbar_loaded_b" id="exploreButton" onclick="explore()">Explore!</button></top>
     <div id="main_menu">
         <h1 id="title1">${title}</h1>
     </div>
