@@ -611,6 +611,8 @@ function loadFormJSONfromURL(url) {
                 console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
             })
         }
+    }).catch(err => {
+        console.error(`Request failed, json resulted with: {}`)
     })
 }
 
