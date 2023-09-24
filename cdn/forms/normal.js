@@ -192,7 +192,13 @@ async function get_captcha(callback_a) {
 }
 
 function getIfResponseIsEmpty(t) {
-    return t.trim().length === 0
+    if (typeof t == 'string') {
+        return t.trim().length === 0
+    } else if (typeof t == 'number') {
+        return t !== 0
+    } else if (typeof t == 'undefined') {
+        return true
+    }
 }
 
 function send_response() {
@@ -226,15 +232,15 @@ function send_response() {
                                             new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
                                         }
                                     }
+                                }
+                            }
+                        }
 
-                                    for (let e = 0; e < questions.length; e++) {
-                                        var question = questions[e]
-                                        if (question["required"] == true && question["jsonName"] == key) {
-                                            if (getIfResponseIsEmpty(main_val) == true) {
-                                                listOfEmptyRequiredVariables.push(question["name"])
-                                            }
-                                        }
-                                    }
+                        for (let e = 0; e < questions.length; e++) {
+                            var question = questions[e]
+                            if (question["required"] == true) {
+                                if (getIfResponseIsEmpty(new_formated_values[question["jsonName"]])) {
+                                    listOfEmptyRequiredVariables.push(question["name"])
                                 }
                             }
                         }
