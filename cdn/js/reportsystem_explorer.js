@@ -88,11 +88,7 @@ function view_main_menu() {
 }
 
 function returnFromMessageAndClear() {
-    for (let a = 0; a < questions.length; a++) {
-        var new_obj = document.getElementById(questions[a]["jsonName"] + "_input")
-        new_obj.value = ""
-    }
-    view_main_menu()
+    loadLastLoadedJSON()
 }
 
 function view_success_menu(mode, message) {
