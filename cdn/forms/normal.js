@@ -426,6 +426,67 @@ function start_system() {
                     }
                     new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Selection" || newQuestion["type"] == "SELECT") {
+                    var new_html = `<p>${newQuestion["name"]}: <select class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required>`
+
+                        for (let d_k = 0; d_k < newQuestion["placeholder"].length; d_k++) {
+                            var sel = newQuestion["placeholder"]
+                            new_html = new_html + `<option value="${sel["value"]}">${sel["name"]}</option>`
+                        }
+
+                        new_html = new_html + `</select>`
+
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
+                    } else {
+                        new_html = new_html + `>`
+                        for (let d_k = 0; d_k < newQuestion["placeholder"].length; d_k++) {
+                            var sel = newQuestion["placeholder"]
+                            new_html = new_html + `<option value="${sel["value"]}">${sel["name"]}</option>`
+                        }
+                        new_html = new_html + `</select>`
+                    }
+                    new_html = new_html + `</p>`
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Image" || newQuestion["type"] == "IMG") {
+                    var new_html = `<p>${newQuestion["name"]}: <input accept="image/*" type="file" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
+                    } else {
+                        new_html = new_html + `></input>`
+                    }
+                    new_html = new_html + `</p>`
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Video" || newQuestion["type"] == "VID") {
+                    var new_html = `<p>${newQuestion["name"]}: <input accept="video/*" type="file" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
+                    } else {
+                        new_html = new_html + `></input>`
+                    }
+                    new_html = new_html + `</p>`
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Audio" || newQuestion["type"] == "AUD") {
+                    var new_html = `<p>${newQuestion["name"]}: <input accept="audio/*" type="file" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
+                    } else {
+                        new_html = new_html + `></input>`
+                    }
+                    new_html = new_html + `</p>`
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Date" || newQuestion["type"] == "DATE") {
                     var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="date" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {
