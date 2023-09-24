@@ -1,0 +1,143 @@
+{
+    "title": "Hello World!",
+    "questions": [
+        {
+            "name": "Hello! How are you doing today?",
+            "jsonName": "doingtoday",
+            "type": "Short Response",
+            "placeholder": ":D",
+            "required": true,
+            "custom_class": ""
+        },
+        {
+            "name": "What's today's date?",
+            "jsonName": "doingtoday",
+            "type": "Date",
+            "placeholder": "",
+            "required": true,
+            "custom_class": ""
+        },
+        {
+            "name": "What's 23 * 3?",
+            "jsonName": "mathanswer",
+            "type": "Integer",
+            "placeholder": "funny number",
+            "required": true,
+            "custom_class": ""
+        },
+        {
+            "name": "Password? :OO",
+            "jsonName": "fakepass",
+            "type": "Password",
+            "placeholder": "any password",
+            "required": true,
+            "custom_class": ""
+        }
+    ],
+    "googleCaptcha": {
+        "enabled": false,
+        "siteKey": "",
+        "jsonName": "g_captcha"
+    },
+    "cloudflareCaptcha": {
+        "enabled": false,
+        "siteKey": "0x4AAAAAAAKmqoGdEw41aH3A",
+        "jsonName": "c_captcha"
+    },
+    "hideModeSelection": false,
+    "showCurrentMode": true,
+    "defaultMode": "Great",
+    "modes": [
+        {
+            "name": "Awesome",
+            "api_url": "https://api.efaz.dev/api/hello/cool",
+            "formatted": [
+                {
+                    "questionName": "Hello! How are you doing today? Enter here",
+                    "jsonName": "doingtoday",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "What's today's date?",
+                    "jsonName": "todaydate",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "What's 23 * 3?",
+                    "jsonName": "mathanswer",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Password? :OO",
+                    "jsonName": "fakepass",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "{jsonMessage}",
+            "showTryAgainOnSuccess": true,
+            "showTypeOfModeInBody": false
+        },
+        {
+            "name": "Great",
+            "api_url": "https://api.efaz.dev/api/hello/amazing",
+            "formatted": [
+                {
+                    "questionName": "Hello! How are you doing today? Enter here",
+                    "jsonName": "doingtoday",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "What's today's date?",
+                    "jsonName": "todaydate",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "What's 23 * 3?",
+                    "jsonName": "mathanswer",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Password? :OO",
+                    "jsonName": "fakepass",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "{jsonMessage}",
+            "showTryAgainOnSuccess": true,
+            "showTypeOfModeInBody": false
+        },
+        {
+            "name": "Bad",
+            "api_url": "https://api.efaz.dev/api/hello/sorry",
+            "formatted": [
+                {
+                    "questionName": "Hello! How are you doing today? Enter here",
+                    "jsonName": "doingtoday",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "What's today's date?",
+                    "jsonName": "todaydate",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "What's 23 * 3?",
+                    "jsonName": "mathanswer",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Password? :OO",
+                    "jsonName": "fakepass",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "{jsonMessage}",
+            "showTryAgainOnSuccess": true,
+            "showTypeOfModeInBody": false
+        }
+    ],
+    "specific_settings": {
+        "showRequiredText": true,
+        "showModeInButtonText": false
+    }
+}
