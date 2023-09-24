@@ -487,7 +487,7 @@ function start_system() {
                         cloudflare_captcha_enabled = true
                     });
                 } catch (err) {
-                    console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                    console.log("Cloudflare Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
                 }
             } else if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == true) {
                 console.log("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
