@@ -161,6 +161,7 @@
     ],
     "specific_settings": {
         "showRequiredText": true,
-        "showModeInButtonText": false
+        "showModeInButtonText": false,
+        "custom_css": "https://cdn.efaz.dev/cdn/forms/example_form.css"
     }
 }

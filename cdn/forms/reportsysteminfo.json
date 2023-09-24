@@ -90,6 +90,7 @@
         }
     ],
     "specific_settings": {
-        "showRequiredText": true
+        "showRequiredText": true,
+        "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css"
     }
 }

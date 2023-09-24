@@ -568,6 +568,12 @@ function start_system() {
             } else if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == true) {
                 console.log("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
             }
+            if (specific_settings["custom_css"] && (!(getIfResponseIsEmpty(specific_settings["custom_css"])))) {
+                var custom_css_url = specific_settings["custom_css"]
+                if (document.getElementById("css_spreadsheet")) {
+                    document.getElementById("css_spreadsheet").setAttribute("href", custom_css_url);  
+                }
+            }
             lastLoadedJSON = system_json
             console.log("Successfully created form!")
             on_form_loaded()
