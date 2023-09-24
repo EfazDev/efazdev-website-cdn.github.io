@@ -95,7 +95,7 @@ function returnFromMessageAndClear() {
     view_main_menu()
 }
 
-function view_success_menu(mode) {
+function view_success_menu(mode, message) {
     var obj1 = document.getElementById("main_menu")
     var obj2 = document.getElementById("success")
     var obj3 = document.getElementById("failed")
@@ -108,10 +108,14 @@ function view_success_menu(mode) {
 
     var obj4 = document.getElementById("message2")
     var obj5 = document.getElementById("reloadButton")
+
+    if (message  == null) {
+        message = "No message was given."
+    }
     getModeInfo(mode).then(response => {
         if (response["success"] == true) {
             if (response["response"]["thanksMessage"]) {
-                obj4.innerHTML = response["response"]["thanksMessage"]
+                obj4.innerHTML = response["response"]["thanksMessage"].replace("{jsonMessage}", message)
             } else {
                 obj4.innerHTML = "Thanks for submitting your form!"
             }
@@ -273,8 +277,8 @@ function send_response() {
                                     "credentials": "omit"
                                 }).then(res => {
                                     if (res.ok) {
-                                        view_success_menu(selected_mode)
                                         res.json().then(json => {
+                                            view_success_menu(selected_mode, json["message"])
                                             values["fetch_response"] = json
                                             on_success_form(values)
                                         })

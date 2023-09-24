@@ -1,0 +1,73 @@
+{
+    "title": "Hello World!",
+    "questions": [
+        {
+            "name": "Hello! How are you doing today?",
+            "jsonName": "doingtoday",
+            "type": "Short Response",
+            "placeholder": ":D",
+            "required": true,
+            "custom_class": ""
+        }
+    ],
+    "googleCaptcha": {
+        "enabled": false,
+        "siteKey": "",
+        "jsonName": "g_captcha"
+    },
+    "cloudflareCaptcha": {
+        "enabled": false,
+        "siteKey": "0x4AAAAAAAKmqoGdEw41aH3A",
+        "jsonName": "c_captcha"
+    },
+    "hideModeSelection": false,
+    "showCurrentMode": true,
+    "defaultMode": "Great",
+    "modes": [
+        {
+            "name": "Awesome",
+            "api_url": "https://api.efaz.dev/api/hello/cool",
+            "formatted": [
+                {
+                    "questionName": "Hello! How are you doing today? Enter here",
+                    "jsonName": "doingtoday",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "{jsonMessage}",
+            "showTryAgainOnSuccess": false,
+            "showTypeOfModeInBody": false
+        },
+        {
+            "name": "Great",
+            "api_url": "https://api.efaz.dev/api/hello/amazing",
+            "formatted": [
+                {
+                    "questionName": "Hello! How are you doing today? Enter here",
+                    "jsonName": "doingtoday",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "{jsonMessage}",
+            "showTryAgainOnSuccess": false,
+            "showTypeOfModeInBody": false
+        },
+        {
+            "name": "Bad",
+            "api_url": "https://api.efaz.dev/api/hello/sorry",
+            "formatted": [
+                {
+                    "questionName": "Hello! How are you doing today? Enter here",
+                    "jsonName": "doingtoday",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "{jsonMessage}",
+            "showTryAgainOnSuccess": false,
+            "showTypeOfModeInBody": false
+        }
+    ],
+    "specific_settings": {
+        "showRequiredText": true
+    }
+}
