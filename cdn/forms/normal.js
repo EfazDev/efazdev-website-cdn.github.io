@@ -26,6 +26,7 @@ var specific_settings = system_json["specific_settings"]
 
 // API Functions
 function on_success_form(args) { }
+function on_form_loaded() { }
 async function get_xcsrf(args) {
     return null
 }
@@ -494,6 +495,7 @@ function start_system() {
             }
             lastLoadedJSON = system_json
             console.log("Successfully created form!")
+            on_form_loaded()
         } catch (err) {
             console.log("System was disabled due to an error, please check if the json is valid: " + err.message)
         }
