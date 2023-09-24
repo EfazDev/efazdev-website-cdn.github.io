@@ -175,14 +175,14 @@ function set_mode(mode) {
 
 async function get_captcha(callback_a) {
     if (google_captcha_enabled == true) {
-        return grecaptcha.execute(google_captcha["siteKey"], {action:'validate_captcha'})
-        .then(function(token) {
-            callback_a(["Google", token])
-        })
+        return grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' })
+            .then(function (token) {
+                callback_a(["Google", token])
+            })
     } else if (cloudflare_captcha_enabled == true) {
         await turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
             sitekey: cloudflare_captcha["siteKey"],
-            callback: function(token) {
+            callback: function (token) {
                 callback_a(["Cloudflare", token])
             },
         });
@@ -213,9 +213,9 @@ function send_response() {
                         var new_api_url = mode_response["api_url"]
                         var listOfKeysProvided = Object.keys(values);
                         var appliedAtSymbol = false
-    
+
                         var listOfEmptyRequiredVariables = []
-    
+
                         for (let c = 0; c < listOfKeysProvided.length; c++) {
                             var key = listOfKeysProvided[c]
                             var main_val = values[key]
@@ -529,8 +529,8 @@ function start_system() {
                 main_menu.innerHTML = main_menu.innerHTML + new_html
 
                 try {
-                    grecaptcha.ready(function() {
-                        grecaptcha.execute(google_captcha["siteKey"], {action:'validate_captcha'}).then(function(token) {
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' }).then(function (token) {
                             document.getElementById(`${google_captcha["jsonName"]}_input`).innerHTML = token
                         });
                         google_captcha_enabled = true
@@ -549,7 +549,7 @@ function start_system() {
                     turnstile.ready(function () {
                         widget_id = turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
                             sitekey: cloudflare_captcha["siteKey"],
-                            callback: function(token) {
+                            callback: function (token) {
                                 document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML = token
                             },
                         });
@@ -564,7 +564,7 @@ function start_system() {
             if (specific_settings["custom_css"] && (!(getIfResponseIsEmpty(specific_settings["custom_css"])))) {
                 var custom_css_url = specific_settings["custom_css"]
                 if (document.getElementById("css_spreadsheet")) {
-                    document.getElementById("css_spreadsheet").setAttribute("href", custom_css_url);  
+                    document.getElementById("css_spreadsheet").setAttribute("href", custom_css_url);
                 }
             }
             lastLoadedJSON = system_json
@@ -579,19 +579,24 @@ function start_system() {
 }
 
 function loadFormJSONfromURL(url) {
-    system_json = {}
-    fetch(url).then(res => {
-        res.json().then(json => {
-            system_json = json
-            questions = system_json["questions"]
-            modes = system_json["modes"]
-            specific_settings = system_json["specific_settings"]
-            selected_mode = system_json["defaultMode"]
-            google_captcha = system_json["googleCaptcha"]
-            cloudflare_captcha = system_json["cloudflareCaptcha"]
-            start_system()
+    try {
+        system_json = {}
+        fetch(url).then(res => {
+            res.json().then(json => {
+                system_json = json
+                questions = system_json["questions"]
+                modes = system_json["modes"]
+                specific_settings = system_json["specific_settings"]
+                selected_mode = system_json["defaultMode"]
+                google_captcha = system_json["googleCaptcha"]
+                cloudflare_captcha = system_json["cloudflareCaptcha"]
+                start_system()
+            })
         })
-    })
+    } catch (err) {
+        console.log(`Error while loading from url: ${err.message}`)
+        loadLastLoadedJSON()
+    }
 }
 
 function loadLastLoadedJSON() {

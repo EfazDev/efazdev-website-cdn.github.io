@@ -310,7 +310,14 @@ function send_response() {
 
 function explore() {
     var url_used = document.getElementById("explore_button_input_sys").value
-    loadFormJSONfromURL(url_used)
+    try {
+        loadFormJSONfromURL(url_used)
+    } catch (err) {
+        document.getElementById("exploreButton").innerHTML = "Request failed to load!"
+        setTimeout(() => {
+            document.getElementById("exploreButton").innerHTML = "Explore!"
+        }, 2000)
+    }
 }
 
 function start_system() {
