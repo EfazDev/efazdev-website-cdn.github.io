@@ -205,7 +205,7 @@ function getIfResponseIsEmpty(t) {
 function send_response() {
     view_awaiting_menu()
     function responseToError(err) {
-        view_error_menu("Response couldn't be sent due to an error. View console for specific details.")
+        view_error_menu("Response couldn't be sent due to a client error. View console for specific details.")
         console.log(`
         Error:
         
