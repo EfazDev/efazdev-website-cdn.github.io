@@ -204,108 +204,117 @@ function getIfResponseIsEmpty(t) {
 
 function send_response() {
     view_awaiting_menu()
-    get_values().then(values => {
-        get_xcsrf(values).then(x_csrf_token => {
-            get_captcha(captcha_key => {
-                getModeInfo(selected_mode).then(mode_response => {
-                    if (mode_response["success"] == true) {
-                        mode_response = mode_response["response"]
-                        var new_formated_values = {}
-                        var new_api_url = mode_response["api_url"]
-                        var listOfKeysProvided = Object.keys(values);
-                        var appliedAtSymbol = false
-    
-                        var listOfEmptyRequiredVariables = []
-    
-                        for (let c = 0; c < listOfKeysProvided.length; c++) {
-                            var key = listOfKeysProvided[c]
-                            var main_val = values[key]
-                            for (let d = 0; d < mode_response["formatted"].length; d++) {
-                                var main_val2 = mode_response["formatted"][d]
-                                if (main_val2["jsonName"] == key) {
-                                    if (main_val2["in"] == "Body") {
-                                        new_formated_values[key] = main_val
-                                    } else if (main_val2["in"] == "URL") {
-                                        if (appliedAtSymbol == false) {
-                                            new_api_url = new_api_url + `?${main_val2["jsonName"]}=${main_val}`
-                                            appliedAtSymbol = true
-                                        } else {
-                                            new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
+    try {
+        get_values().then(values => {
+            get_xcsrf(values).then(x_csrf_token => {
+                get_captcha(captcha_key => {
+                    getModeInfo(selected_mode).then(mode_response => {
+                        if (mode_response["success"] == true) {
+                            mode_response = mode_response["response"]
+                            var new_formated_values = {}
+                            var new_api_url = mode_response["api_url"]
+                            var listOfKeysProvided = Object.keys(values);
+                            var appliedAtSymbol = false
+        
+                            var listOfEmptyRequiredVariables = []
+        
+                            for (let c = 0; c < listOfKeysProvided.length; c++) {
+                                var key = listOfKeysProvided[c]
+                                var main_val = values[key]
+                                for (let d = 0; d < mode_response["formatted"].length; d++) {
+                                    var main_val2 = mode_response["formatted"][d]
+                                    if (main_val2["jsonName"] == key) {
+                                        if (main_val2["in"] == "Body") {
+                                            new_formated_values[key] = main_val
+                                        } else if (main_val2["in"] == "URL") {
+                                            if (appliedAtSymbol == false) {
+                                                new_api_url = new_api_url + `?${main_val2["jsonName"]}=${main_val}`
+                                                appliedAtSymbol = true
+                                            } else {
+                                                new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-
-                        for (let e = 0; e < questions.length; e++) {
-                            var question = questions[e]
-                            if (question["required"] == true) {
-                                if (getIfResponseIsEmpty(new_formated_values[question["jsonName"]])) {
-                                    listOfEmptyRequiredVariables.push(question["name"])
-                                }
-                            }
-                        }
-
-                        if (captcha_key[0] == "Google") {
-                            new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
-                        } else if (captcha_key[0] == "Cloudflare") {
-                            new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
-                        }
-                        if (listOfEmptyRequiredVariables.length > 0) {
-                            var new_string_g = `${listOfEmptyRequiredVariables[0]}`
-                            var remove = false
-                            for (let f = 0; f < listOfEmptyRequiredVariables.length + 1; f++) {
-                                if (remove == true) {
-                                    if (listOfEmptyRequiredVariables[f]) {
-                                        var val_h = listOfEmptyRequiredVariables[f]
-                                        new_string_g = new_string_g + `, ${val_h}`
+    
+                            for (let e = 0; e < questions.length; e++) {
+                                var question = questions[e]
+                                if (question["required"] == true) {
+                                    if (getIfResponseIsEmpty(new_formated_values[question["jsonName"]])) {
+                                        listOfEmptyRequiredVariables.push(question["name"])
                                     }
-                                } else {
-                                    remove = true
                                 }
                             }
-                            view_error_menu(`The following questions were filled empty: ${new_string_g}`)
-                        } else {
-                            var converted_json_string = JSON.stringify(new_formated_values)
-                            try {
-                                fetch(new_api_url, {
-                                    "headers": {
-                                        "accept": "application/json",
-                                        "accept-language": "en-US,en;q=0.9",
-                                        "content-type": "application/json",
-                                        "sec-fetch-dest": "empty",
-                                        "sec-fetch-mode": "cors",
-                                        "sec-fetch-site": "same-origin",
-                                        "credentials": 'include',
-                                        "x-csrf-token": x_csrf_token
-                                    },
-                                    "referrerPolicy": "strict-origin-when-cross-origin",
-                                    "body": converted_json_string,
-                                    "method": "POST",
-                                    "mode": "cors",
-                                    "credentials": "omit"
-                                }).then(res => {
-                                    if (res.ok) {
-                                        res.json().then(json => {
-                                            view_success_menu(selected_mode, json["message"])
-                                            values["fetch_response"] = json
-                                            on_success_form(values)
-                                        })
+    
+                            if (captcha_key[0] == "Google") {
+                                new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
+                            } else if (captcha_key[0] == "Cloudflare") {
+                                new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
+                            }
+                            if (listOfEmptyRequiredVariables.length > 0) {
+                                var new_string_g = `${listOfEmptyRequiredVariables[0]}`
+                                var remove = false
+                                for (let f = 0; f < listOfEmptyRequiredVariables.length + 1; f++) {
+                                    if (remove == true) {
+                                        if (listOfEmptyRequiredVariables[f]) {
+                                            var val_h = listOfEmptyRequiredVariables[f]
+                                            new_string_g = new_string_g + `, ${val_h}`
+                                        }
                                     } else {
-                                        res.json().then(json => {
-                                            view_error_menu(json["message"])
-                                        })
+                                        remove = true
                                     }
-                                })
-                            } catch (err) {
-                                view_error_menu(err.message)
+                                }
+                                view_error_menu(`The following questions were filled empty: ${new_string_g}`)
+                            } else {
+                                var converted_json_string = JSON.stringify(new_formated_values)
+                                try {
+                                    fetch(new_api_url, {
+                                        "headers": {
+                                            "accept": "application/json",
+                                            "accept-language": "en-US,en;q=0.9",
+                                            "content-type": "application/json",
+                                            "sec-fetch-dest": "empty",
+                                            "sec-fetch-mode": "cors",
+                                            "sec-fetch-site": "same-origin",
+                                            "credentials": 'include',
+                                            "x-csrf-token": x_csrf_token
+                                        },
+                                        "referrerPolicy": "strict-origin-when-cross-origin",
+                                        "body": converted_json_string,
+                                        "method": "POST",
+                                        "mode": "cors",
+                                        "credentials": "omit"
+                                    }).then(res => {
+                                        if (res.ok) {
+                                            res.json().then(json => {
+                                                view_success_menu(selected_mode, json["message"])
+                                                values["fetch_response"] = json
+                                                on_success_form(values)
+                                            })
+                                        } else {
+                                            res.json().then(json => {
+                                                view_error_menu(json["message"])
+                                            })
+                                        }
+                                    })
+                                } catch (err) {
+                                    view_error_menu(err.message)
+                                }
                             }
                         }
-                    }
+                    })
                 })
             })
         })
-    })
+    } catch (err) {
+        view_error_menu("Response couldn't be sent due to an error. View console for specific details.")
+        console.log(`
+        Error:
+        
+        ${err.message}
+        `)
+    }
 }
 
 function explore() {
