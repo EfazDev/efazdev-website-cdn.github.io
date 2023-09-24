@@ -26,11 +26,19 @@
             "custom_class": ""
         },
         {
-            "name": "Password? :OO",
+            "name": "Password? (:D)",
             "jsonName": "fakepass",
             "type": "Password",
             "placeholder": "any password",
-            "required": true,
+            "required": false,
+            "custom_class": ""
+        },
+        {
+            "name": "Photo?",
+            "jsonName": "photoexample",
+            "type": "Photo",
+            "placeholder": "",
+            "required": false,
             "custom_class": ""
         }
     ],
@@ -68,8 +76,13 @@
                     "in": "Body"
                 },
                 {
-                    "questionName": "Password? :OO",
+                    "questionName": "Password? (:D)",
                     "jsonName": "fakepass",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Photo?",
+                    "jsonName": "photoexample",
                     "in": "Body"
                 }
             ],
@@ -97,8 +110,13 @@
                     "in": "Body"
                 },
                 {
-                    "questionName": "Password? :OO",
+                    "questionName": "Password? (:D)",
                     "jsonName": "fakepass",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Photo?",
+                    "jsonName": "photoexample",
                     "in": "Body"
                 }
             ],
@@ -126,8 +144,13 @@
                     "in": "Body"
                 },
                 {
-                    "questionName": "Password? :OO",
+                    "questionName": "Password? (:D)",
                     "jsonName": "fakepass",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Photo?",
+                    "jsonName": "photoexample",
                     "in": "Body"
                 }
             ],
