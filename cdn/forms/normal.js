@@ -582,16 +582,22 @@ function loadFormJSONfromURL(url) {
     try {
         system_json = {}
         fetch(url).then(res => {
-            res.json().then(json => {
-                system_json = json
-                questions = system_json["questions"]
-                modes = system_json["modes"]
-                specific_settings = system_json["specific_settings"]
-                selected_mode = system_json["defaultMode"]
-                google_captcha = system_json["googleCaptcha"]
-                cloudflare_captcha = system_json["cloudflareCaptcha"]
-                start_system()
-            })
+            if (res.ok) {
+                res.json().then(json => {
+                    system_json = json
+                    questions = system_json["questions"]
+                    modes = system_json["modes"]
+                    specific_settings = system_json["specific_settings"]
+                    selected_mode = system_json["defaultMode"]
+                    google_captcha = system_json["googleCaptcha"]
+                    cloudflare_captcha = system_json["cloudflareCaptcha"]
+                    start_system()
+                })
+            } else {
+                res.json().then(json => {
+                    console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
+                })
+            }
         })
     } catch (err) {
         console.log(`Error while loading from url: ${err.message}`)
