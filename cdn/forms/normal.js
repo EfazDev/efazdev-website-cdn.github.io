@@ -551,7 +551,7 @@ function start_system() {
                         document.body.innerHTML = document.body.innerHTML + new_html
                     });
                 } catch (err) {
-                    console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                    console.warn("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
                 }
             } else if (google_captcha["enabled"] == false && cloudflare_captcha["enabled"] == true) {
                 var new_html = `<input type="hidden" id="${cloudflare_captcha["jsonName"]}_input" name="${cloudflare_captcha["jsonName"]}_input"></input>`
@@ -568,10 +568,10 @@ function start_system() {
                         cloudflare_captcha_enabled = true
                     });
                 } catch (err) {
-                    console.log("Cloudflare Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                    console.warn("Cloudflare Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
                 }
             } else if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == true) {
-                console.log("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
+                console.warn("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
             }
             if (specific_settings["custom_css"] && (!(getIfResponseIsEmpty(specific_settings["custom_css"])))) {
                 var custom_css_url = specific_settings["custom_css"]
@@ -583,10 +583,10 @@ function start_system() {
             console.log("Successfully created form!")
             on_form_loaded()
         } catch (err) {
-            console.log("System was disabled due to an error, please check if the json is valid: " + err.message)
+            console.warn("System was disabled due to an error, please check if the json is valid: " + err.message)
         }
     } else {
-        console.log("System was disabled due to a JSON error, please check if the json is valid: " + JSON.stringify(system_json))
+        console.warn("System was disabled due to a JSON error, please check if the json is valid: " + JSON.stringify(system_json))
     }
 }
 
