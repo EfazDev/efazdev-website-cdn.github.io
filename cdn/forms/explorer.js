@@ -103,7 +103,7 @@ function view_success_menu(mode, message) {
     var obj4 = document.getElementById("message2")
     var obj5 = document.getElementById("reloadButton")
 
-    if (message  == null) {
+    if (message == null) {
         message = "No message was given."
     }
     getModeInfo(mode).then(response => {
@@ -176,14 +176,14 @@ function set_mode(mode) {
 
 async function get_captcha(callback_a) {
     if (google_captcha_enabled == true) {
-        return grecaptcha.execute(google_captcha["siteKey"], {action:'validate_captcha'})
-        .then(function(token) {
-            callback_a(["Google", token])
-        })
+        return grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' })
+            .then(function (token) {
+                callback_a(["Google", token])
+            })
     } else if (cloudflare_captcha_enabled == true) {
         await turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
             sitekey: cloudflare_captcha["siteKey"],
-            callback: function(token) {
+            callback: function (token) {
                 callback_a(["Cloudflare", token])
             },
         });
@@ -204,6 +204,14 @@ function getIfResponseIsEmpty(t) {
 
 function send_response() {
     view_awaiting_menu()
+    function responseToError(err) {
+        view_error_menu("Response couldn't be sent due to an error. View console for specific details.")
+        console.log(`
+        Error:
+        
+        ${err.message}
+        `)
+    }
     try {
         get_values().then(values => {
             get_xcsrf(values).then(x_csrf_token => {
@@ -215,9 +223,9 @@ function send_response() {
                             var new_api_url = mode_response["api_url"]
                             var listOfKeysProvided = Object.keys(values);
                             var appliedAtSymbol = false
-        
+
                             var listOfEmptyRequiredVariables = []
-        
+
                             for (let c = 0; c < listOfKeysProvided.length; c++) {
                                 var key = listOfKeysProvided[c]
                                 var main_val = values[key]
@@ -237,7 +245,7 @@ function send_response() {
                                     }
                                 }
                             }
-    
+
                             for (let e = 0; e < questions.length; e++) {
                                 var question = questions[e]
                                 if (question["required"] == true) {
@@ -246,7 +254,7 @@ function send_response() {
                                     }
                                 }
                             }
-    
+
                             if (captcha_key[0] == "Google") {
                                 new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
                             } else if (captcha_key[0] == "Cloudflare") {
@@ -303,17 +311,12 @@ function send_response() {
                                 }
                             }
                         }
-                    })
+                    }).catch(responseToError)
                 })
-            })
-        })
+            }).catch(responseToError)
+        }).catch(responseToError)
     } catch (err) {
-        view_error_menu("Response couldn't be sent due to an error. View console for specific details.")
-        console.log(`
-        Error:
-        
-        ${err.message}
-        `)
+        responseToError(err)
     }
 }
 
@@ -552,8 +555,8 @@ function start_system() {
                 main_menu.innerHTML = main_menu.innerHTML + new_html
 
                 try {
-                    grecaptcha.ready(function() {
-                        grecaptcha.execute(google_captcha["siteKey"], {action:'validate_captcha'}).then(function(token) {
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' }).then(function (token) {
                             document.getElementById(`${google_captcha["jsonName"]}_input`).innerHTML = token
                         });
                         google_captcha_enabled = true
@@ -572,7 +575,7 @@ function start_system() {
                     turnstile.ready(function () {
                         widget_id = turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
                             sitekey: cloudflare_captcha["siteKey"],
-                            callback: function(token) {
+                            callback: function (token) {
                                 document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML = token
                             },
                         });
@@ -587,7 +590,7 @@ function start_system() {
             if (specific_settings["custom_css"] && (!(getIfResponseIsEmpty(specific_settings["custom_css"])))) {
                 var custom_css_url = specific_settings["custom_css"]
                 if (document.getElementById("css_spreadsheet")) {
-                    document.getElementById("css_spreadsheet").setAttribute("href", custom_css_url);  
+                    document.getElementById("css_spreadsheet").setAttribute("href", custom_css_url);
                 }
             }
             lastLoadedJSON = system_json
