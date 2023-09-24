@@ -11,7 +11,7 @@
         },
         {
             "name": "What's today's date?",
-            "jsonName": "doingtoday",
+            "jsonName": "todaydate",
             "type": "Date",
             "placeholder": "",
             "required": true,
