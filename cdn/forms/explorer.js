@@ -40,11 +40,6 @@ var cloudflare_captcha_enabled = false
 var cloudflare_captcha = system_json["cloudflareCaptcha"]
 let widget_id = ""
 
-// Quick Functions
-function getIfResponseIsEmpty(text) {
-    return text.trim().length === 0
-}
-
 // System Functions
 async function get_values() {
     var new_table = {}
@@ -193,6 +188,10 @@ async function get_captcha(callback_a) {
     } else {
         return callback_a(["None", ""])
     }
+}
+
+function getIfResponseIsEmpty(text) {
+    return text.trim().length === 0
 }
 
 function send_response() {
