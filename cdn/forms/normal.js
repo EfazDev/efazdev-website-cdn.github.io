@@ -5,8 +5,10 @@ Form System Javascript API
 Setup forms via a JSON!
 Made by Efaz from efaz.dev!
 
+(Information about this script)
+Made by: Efaz from https://www.efaz.dev
 Script Version: v1.0.5
-Script Type: JavaScript
+Type of Code: JavaScript
 
 */
 
@@ -189,8 +191,8 @@ async function get_captcha(callback_a) {
     }
 }
 
-function getIfResponseIsEmpty(text) {
-    return text.trim().length === 0
+function getIfResponseIsEmpty(t) {
+    return t.trim().length === 0
 }
 
 function send_response() {
@@ -228,7 +230,7 @@ function send_response() {
                                     for (let e = 0; e < questions.length; e++) {
                                         var question = questions[e]
                                         if (question["required"] == true && question["jsonName"] == key) {
-                                            if (getIfResponseIsEmpty(main_val)) {
+                                            if (getIfResponseIsEmpty(main_val) == true) {
                                                 listOfEmptyRequiredVariables.push(question["name"])
                                             }
                                         }
@@ -487,7 +489,7 @@ function start_system() {
                         cloudflare_captcha_enabled = true
                     });
                 } catch (err) {
-                    console.log("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                    console.log("Cloudflare Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
                 }
             } else if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == true) {
                 console.log("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
