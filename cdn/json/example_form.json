@@ -68,6 +68,7 @@
         }
     ],
     "specific_settings": {
-        "showRequiredText": true
+        "showRequiredText": true,
+        "showModeInButtonText": false
     }
 }

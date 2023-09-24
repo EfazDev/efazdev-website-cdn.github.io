@@ -165,7 +165,12 @@ function set_mode(mode) {
                 var obj1 = document.getElementById("current_mode")
                 var obj2 = document.getElementById("sendButton")
                 obj1.innerHTML = `Current Mode: ${mode}`
-                obj2.innerHTML = `Send ${mode}!`
+
+                if (specific_settings["showModeInButtonText"] == false) {
+                    obj2.innerHTML = `Send Form!`
+                } else {
+                    obj2.innerHTML = `Send ${mode}!`
+                }
             } else {
                 var obj2 = document.getElementById("sendButton")
                 obj2.innerHTML = `Send Form!`
@@ -443,7 +448,12 @@ function start_system() {
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
             if (system_json["showCurrentMode"] == true) {
-                var new_html = `<p id="current_mode">Current Mode: ${selected_mode}</p><button type="button" id="sendButton" class="center" onclick="send_response()">Send ${selected_mode}!</button>`
+                var new_html = `<p id="current_mode">Current Mode: ${selected_mode}</p>`
+                if (specific_settings["showModeInButtonText"] == false) {
+                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
+                } else {
+                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response()">Send ${selected_mode}!</button>`
+                }
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             } else {
                 var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
