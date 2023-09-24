@@ -36,7 +36,7 @@
         {
             "name": "Photo?",
             "jsonName": "photoexample",
-            "type": "Photo",
+            "type": "Image",
             "placeholder": "",
             "required": false,
             "custom_class": ""
