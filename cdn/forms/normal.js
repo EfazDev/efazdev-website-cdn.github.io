@@ -544,22 +544,23 @@ function start_system() {
                     if (!(document.getElementById("google_script"))) {
                         var script = document.createElement("script");
                         script.type = "text/javascript";
-                        script.src = "https://www.google.com/recaptcha/api.js"; 
-                        script.id = "google_script"   
+                        script.src = "https://www.google.com/recaptcha/api.js";
+                        script.id = "google_script"
                         document.head.appendChild(script);
                     }
+                    setTimeout(() => {
+                        grecaptcha.ready(function () {
+                            grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' }).then(function (token) {
+                                document.getElementById(`${google_captcha["jsonName"]}_input`).innerHTML = token
+                            });
+                            google_captcha_enabled = true
 
-                    grecaptcha.ready(function () {
-                        grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' }).then(function (token) {
-                            document.getElementById(`${google_captcha["jsonName"]}_input`).innerHTML = token
+                            var new_html = `<p class="footer">This form uses and is protected by reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of Service</a>.</p>`
+                            document.body.innerHTML = document.body.innerHTML + new_html
                         });
-                        google_captcha_enabled = true
-
-                        var new_html = `<p class="footer">This form uses and is protected by reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of Service</a>.</p>`
-                        document.body.innerHTML = document.body.innerHTML + new_html
-                    });
+                    }, 100)
                 } catch (err) {
-                    console.warn("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                    console.warn("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your head object!")
                 }
             } else if (google_captcha["enabled"] == false && cloudflare_captcha["enabled"] == true) {
                 var new_html = `<input type="hidden" id="${cloudflare_captcha["jsonName"]}_input" name="${cloudflare_captcha["jsonName"]}_input"></input>`
@@ -569,22 +570,23 @@ function start_system() {
                     if (!(document.getElementById("cloudflare_script"))) {
                         var script = document.createElement("script");
                         script.type = "text/javascript";
-                        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"; 
-                        script.id = "cloudflare_script"   
+                        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+                        script.id = "cloudflare_script"
                         document.head.appendChild(script);
                     }
-
-                    turnstile.ready(function () {
-                        widget_id = turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
-                            sitekey: cloudflare_captcha["siteKey"],
-                            callback: function (token) {
-                                document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML = token
-                            },
+                    setTimeout(() => {
+                        turnstile.ready(function () {
+                            widget_id = turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
+                                sitekey: cloudflare_captcha["siteKey"],
+                                callback: function (token) {
+                                    document.getElementById(`${cloudflare_captcha["jsonName"]}_input`).innerHTML = token
+                                },
+                            });
+                            cloudflare_captcha_enabled = true
                         });
-                        cloudflare_captcha_enabled = true
-                    });
+                    }, 100)
                 } catch (err) {
-                    console.warn("Cloudflare Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your headers!")
+                    console.warn("Cloudflare Captcha failed to load due to an error. Please make sure to use the module and is in your head object!")
                 }
             } else if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == true) {
                 console.warn("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
