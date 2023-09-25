@@ -44,7 +44,7 @@ let widget_id = ""
 
 // System Functions
 function getImageFromInput(input, callback) {
-    var files = input.files;
+    var files = input.files[0];
     if (files) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(files);
