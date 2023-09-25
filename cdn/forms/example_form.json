@@ -59,6 +59,7 @@
         {
             "name": "Awesome",
             "api_url": "https://api.efaz.dev/api/hello/cool",
+            "type_of_api": "POST",
             "formatted": [
                 {
                     "questionName": "Hello! How are you doing today? Enter here",
@@ -93,6 +94,7 @@
         {
             "name": "Great",
             "api_url": "https://api.efaz.dev/api/hello/amazing",
+            "type_of_api": "POST",
             "formatted": [
                 {
                     "questionName": "Hello! How are you doing today? Enter here",
@@ -127,6 +129,7 @@
         {
             "name": "Bad",
             "api_url": "https://api.efaz.dev/api/hello/sorry",
+            "type_of_api": "POST",
             "formatted": [
                 {
                     "questionName": "Hello! How are you doing today? Enter here",

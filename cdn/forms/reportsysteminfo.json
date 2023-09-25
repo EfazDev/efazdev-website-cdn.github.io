@@ -43,6 +43,7 @@
         {
             "name": "Report",
             "api_url": "https://api.efaz.dev/api/reports/send",
+            "type_of_api": "POST",
             "formatted": [
                 {
                     "questionName": "Name",
@@ -67,6 +68,7 @@
         {
             "name": "Suggestion",
             "api_url": "https://api.efaz.dev/api/reports/send-suggestion",
+            "type_of_api": "POST",
             "formatted": [
                 {
                     "questionName": "Name",

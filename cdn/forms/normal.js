@@ -7,7 +7,7 @@ Made by Efaz from efaz.dev!
 
 (Information about this script)
 Made by: Efaz from https://www.efaz.dev
-Script Version: v1.0.5
+Script Version: v1.0.0
 Type of Code: JavaScript
 
 */
@@ -289,7 +289,7 @@ function send_response() {
                                         },
                                         "referrerPolicy": "strict-origin-when-cross-origin",
                                         "body": converted_json_string,
-                                        "method": "POST",
+                                        "method": mode_response["type_of_api"],
                                         "mode": "cors",
                                         "credentials": "omit"
                                     }).then(res => {
@@ -541,6 +541,14 @@ function start_system() {
                 main_menu.innerHTML = main_menu.innerHTML + new_html
 
                 try {
+                    if (!(document.getElementById("google_script"))) {
+                        var script = document.createElement("script");
+                        script.type = "text/javascript";
+                        script.src = "https://www.google.com/recaptcha/api.js"; 
+                        script.id = "google_script"   
+                        document.head.appendChild(script);
+                    }
+
                     grecaptcha.ready(function () {
                         grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' }).then(function (token) {
                             document.getElementById(`${google_captcha["jsonName"]}_input`).innerHTML = token
@@ -558,6 +566,14 @@ function start_system() {
                 main_menu.innerHTML = main_menu.innerHTML + new_html
 
                 try {
+                    if (!(document.getElementById("cloudflare_script"))) {
+                        var script = document.createElement("script");
+                        script.type = "text/javascript";
+                        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"; 
+                        script.id = "cloudflare_script"   
+                        document.head.appendChild(script);
+                    }
+
                     turnstile.ready(function () {
                         widget_id = turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
                             sitekey: cloudflare_captcha["siteKey"],

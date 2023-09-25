@@ -35,6 +35,7 @@
         {
             "name": "Login",
             "api_url": "https://api.efaz.dev/api/auth/login",
+            "type_of_api": "POST",
             "formatted": [
                 {
                     "questionName": "Username",
@@ -53,6 +54,7 @@
         }
     ],
     "specific_settings": {
-        "showRequiredText": true
+        "showRequiredText": true,
+        "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css"
     }
 }
