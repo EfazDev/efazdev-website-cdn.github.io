@@ -375,7 +375,7 @@ function start_system() {
                             var new_html = `<p class="footer">This form uses and is protected by reCAPTCHA that is used by Google's <a href="https://policies.google.com/privacy?hl=en-US">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-US">Terms of Service</a>.</p>`
                             document.body.innerHTML = document.body.innerHTML + new_html
                         });
-                    }, 400)
+                    }, 1000)
                 } catch (err) {
                     console.warn("Google Captcha failed to load due to an error. Please make sure to use Google Captcha v3 and is in your head object!")
                 }
@@ -401,7 +401,7 @@ function start_system() {
                             });
                             cloudflare_captcha_enabled = true
                         });
-                    }, 400)
+                    }, 1000)
                 } catch (err) {
                     console.warn("Cloudflare Captcha failed to load due to an error. Please make sure to use the module and is in your head object!")
                 }
