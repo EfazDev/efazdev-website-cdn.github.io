@@ -41,6 +41,7 @@ var google_captcha = system_json["googleCaptcha"]
 var cloudflare_captcha_enabled = false
 var cloudflare_captcha = system_json["cloudflareCaptcha"]
 let widget_id = ""
+let authenticated_token = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16);});
 
 // System Functions
 async function getImageFromInput(input) {
@@ -197,19 +198,23 @@ function set_mode(mode) {
     })
 }
 
-async function get_captcha(callback_a) {
-    if (google_captcha_enabled == true) {
-        return grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' })
-            .then(function (token) {
-                callback_a(["Google", token])
-            })
-    } else if (cloudflare_captcha_enabled == true) {
-        await turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
-            sitekey: cloudflare_captcha["siteKey"],
-            callback: function (token) {
-                callback_a(["Cloudflare", token])
-            },
-        });
+async function get_captcha(callback_a, token) {
+    if (token == authenticated_token) {
+        if (google_captcha_enabled == true) {
+            return grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' })
+                .then(function (token) {
+                    callback_a(["Google", token])
+                })
+        } else if (cloudflare_captcha_enabled == true) {
+            await turnstile.render(`#${cloudflare_captcha["jsonName"]}_input`, {
+                sitekey: cloudflare_captcha["siteKey"],
+                callback: function (token) {
+                    callback_a(["Cloudflare", token])
+                },
+            });
+        } else {
+            return callback_a(["None", ""])
+        }
     } else {
         return callback_a(["None", ""])
     }
@@ -338,7 +343,7 @@ function send_response() {
                             }
                         }
                     }).catch(responseToError)
-                })
+                }, authenticated_token)
             }).catch(responseToError)
         }).catch(responseToError)
     } catch (err) {
