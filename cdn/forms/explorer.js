@@ -277,6 +277,9 @@ function send_response() {
                             } else {
                                 var converted_json_string = JSON.stringify(new_formated_values)
                                 try {
+                                    if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
+                                        mode_response["type_of_api"] = "POST"
+                                    }
                                     fetch(new_api_url, {
                                         "headers": {
                                             "accept": "application/json",
@@ -290,7 +293,7 @@ function send_response() {
                                         },
                                         "referrerPolicy": "strict-origin-when-cross-origin",
                                         "body": converted_json_string,
-                                        "method": "POST",
+                                        "method": mode_response["type_of_api"],
                                         "mode": "cors",
                                         "credentials": "omit"
                                     }).then(res => {

@@ -276,6 +276,9 @@ function send_response() {
                             } else {
                                 var converted_json_string = JSON.stringify(new_formated_values)
                                 try {
+                                    if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
+                                        mode_response["type_of_api"] = "POST"
+                                    }
                                     fetch(new_api_url, {
                                         "headers": {
                                             "accept": "application/json",
