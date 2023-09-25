@@ -43,14 +43,20 @@ var cloudflare_captcha = system_json["cloudflareCaptcha"]
 let widget_id = ""
 
 // System Functions
-function getImageFromInput(input, callback) {
+async function getImageFromInput(input) {
     var files = input.files[0];
     if (files) {
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL(files);
-        fileReader.onload = function(frEvent) {
-            callback(frEvent.target.result)
-        }
+        return new Promise((resolve, reject) => {
+            var fileReader = new FileReader();
+            fileReader.readAsDataURL(files);
+            fileReader.onload = function (frEvent) {
+                resolve(frEvent.target.result)
+            }
+        })
+    } else {
+        return new Promise((resolve, reject) => {
+            resolve(null)
+        })
     }
 }
 
@@ -61,7 +67,7 @@ async function get_values() {
         var new_obj = document.getElementById(valueInfo["jsonName"] + "_input")
         if (new_obj.value) {
             if (new_obj.type == "file") {
-                getImageFromInput(new_obj, (res) => {
+                await getImageFromInput(new_obj).then(res => {
                     new_table[valueInfo["jsonName"]] = res
                 })
             } else {
