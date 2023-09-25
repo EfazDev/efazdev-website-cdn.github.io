@@ -444,6 +444,18 @@ function start_system() {
                     }
                     new_html = new_html + `</p>`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
+                } else if (newQuestion["type"] == "Color" || newQuestion["type"] == "HEX") {
+                    var new_html = `<p>${newQuestion["name"]}: <input placeholder="${newQuestion["placeholder"]}" type="color" class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
+                    if (newQuestion["required"] == true) {
+                        new_html = new_html + ` required></input>`
+                        if (specific_settings["showRequiredText"] == true) {
+                            new_html = new_html + ` <e class="required">*</e>`
+                        }
+                    } else {
+                        new_html = new_html + `></input>`
+                    }
+                    new_html = new_html + `</p>`
+                    main_menu.innerHTML = main_menu.innerHTML + new_html
                 } else if (newQuestion["type"] == "Selection" || newQuestion["type"] == "SELECT") {
                     var new_html = `<p>${newQuestion["name"]}: <select class="${newQuestion["custom_class"]}" id="${newQuestion["jsonName"]}_input"`
                     if (newQuestion["required"] == true) {

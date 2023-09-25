@@ -108,6 +108,7 @@ def questionCreator():
 (10) - Video
 (11) - Audio
 (12) - Date
+(13) - Color
                         
     """)
         selected_mode_of_question = input("Enter number: ")
@@ -135,6 +136,8 @@ def questionCreator():
             new_question_field["type"] = "Audio"
         elif (selected_mode_of_question == "12"):
             new_question_field["type"] = "Date"
+        elif (selected_mode_of_question == "13"):
+            new_question_field["type"] = "Color"
         else:
             selectOne()
     selectOne()

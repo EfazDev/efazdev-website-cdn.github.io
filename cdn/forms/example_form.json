@@ -41,6 +41,14 @@
             "placeholder": "",
             "required": false,
             "custom_class": ""
+        },
+        {
+            "name": "Color?",
+            "jsonName": "selectedcolor",
+            "type": "Color",
+            "placeholder": "",
+            "required": false,
+            "custom_class": ""
         }
     ],
     "googleCaptcha": {
@@ -75,6 +83,11 @@
                 {
                     "questionName": "What's 23 * 3?",
                     "jsonName": "mathanswer",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Color?",
+                    "jsonName": "selectedcolor",
                     "in": "Body"
                 },
                 {
@@ -118,6 +131,11 @@
                     "in": "Body"
                 },
                 {
+                    "questionName": "Color?",
+                    "jsonName": "selectedcolor",
+                    "in": "Body"
+                },
+                {
                     "questionName": "Photo?",
                     "jsonName": "photoexample",
                     "in": "Body"
@@ -150,6 +168,11 @@
                 {
                     "questionName": "Password? (:D)",
                     "jsonName": "fakepass",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Color?",
+                    "jsonName": "selectedcolor",
                     "in": "Body"
                 },
                 {
