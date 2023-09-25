@@ -336,10 +336,12 @@ function start_system() {
     refreshVariables()
     var disabled_system = false
     var title = "Error while loading Form JSON. If you're a visitor, please contact the site owner to manage the JSON correctly."
+    var icon_url = "https://cdn.efaz.dev/cdn/png/logo.png"
     if (system_json["title"] == null) {
         disabled_system = true
     } else {
         title = system_json["title"]
+        icon_url = system_json["icon_url"]
     }
     document.body.innerHTML = `
     <top alt="topbar">Enter Form JSON URL: <input placeholder="Enter URL!" class="topbar_loaded_a" type="text" id="explore_button_input_sys">    <button type="button" class="topbar_loaded_b" id="exploreButton" onclick="explore()">Explore!</button></top>
@@ -367,6 +369,10 @@ function start_system() {
     if (disabled_system == false) {
         try {
             var main_menu = document.getElementById("main_menu")
+            if (!(specific_settings["hideIcon"] == true)) {
+                var new_html = `<img src="${icon_url}" height="64" width="64" class="center">`
+                main_menu.innerHTML = new_html + main_menu.innerHTML
+            }
             for (let a = 0; a < questions.length; a++) {
                 var newQuestion = questions[a]
                 if (newQuestion["type"] == "Short Response" || newQuestion["type"] == "SR") {

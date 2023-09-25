@@ -1,5 +1,6 @@
 {
     "title": "Login",
+    "icon_url": "https://cdn.efaz.dev/cdn/png/logo.png",
     "questions": [
         {
             "name": "Username",

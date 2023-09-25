@@ -1,5 +1,6 @@
 {
     "title": "Report System!",
+    "icon_url": "https://cdn.efaz.dev/cdn/png/logo.png",
     "questions": [
         {
             "name": "Name",
