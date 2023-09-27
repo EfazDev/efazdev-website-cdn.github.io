@@ -1,6 +1,6 @@
 /* 
 
-Form System Javascript API
+Efaz's Form System Javascript API
 
 Setup forms via a JSON!
 Made by Efaz from efaz.dev!

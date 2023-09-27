@@ -1,5 +1,4 @@
 import json
-import uuid
 import os
 import platform
 import sys
@@ -42,6 +41,7 @@ printWarnMessage("Console: ")
 
 main_json = {
     "title": "",
+    "icon_url": "",
     "questions": [],
     "googleCaptcha": {
         "enabled": False,
@@ -56,20 +56,12 @@ main_json = {
     "hideModeSelection": True,
     "showCurrentMode": False,
     "defaultMode": "None",
-    "modes": [
-        {
-            "name": "None",
-            "api_url": "",
-            "type_of_api": "POST",
-            "formatted": [],
-            "thanksMessage": "",
-            "showTryAgainOnSuccess": False,
-            "showTypeOfModeInBody": False
-        }
-    ],
+    "modes": [],
     "specific_settings": {
         "showRequiredText": True,
-        "custom_css": ""
+        "showModeInButtonText": False,
+        "custom_css": "",
+        "hideIcon": False
     }
 }
 
@@ -77,6 +69,7 @@ printMainMessage("----------")
 printMainMessage("Basics")
 printMainMessage("----------")
 main_json["title"] = input("Enter the title of the form: ")
+main_json["icon_url"] = input("Enter the URL of the icon you're going to use (Will be shown on top the form title): ")
 questions = []
 questionCount = 0
 def questionCreator():
@@ -298,6 +291,30 @@ if input(">> ").lower() == "y":
     main_json["showCurrentMode"] = True
 else:
     main_json["showCurrentMode"] = False
+
+printMainMessage("----------")
+printMainMessage("Specific Settings")
+printMainMessage("----------")
+
+printMainMessage("Would you like to show required text in every required question in HTML? (y/n)")
+if input(">> ").lower() == "y":
+    main_json["specific_settings"]["showRequiredText"] = True
+else:
+    main_json["specific_settings"]["showRequiredText"] = False
+
+printMainMessage("Would you like to show mode in the button text? (y/n)")
+if input(">> ").lower() == "y":
+    main_json["specific_settings"]["showModeInButtonText"] = True
+else:
+    main_json["specific_settings"]["showModeInButtonText"] = False
+
+printMainMessage("Would you like to hide the icon shown above the title? (y/n)")
+if input(">> ").lower() == "y":
+    main_json["specific_settings"]["hideIcon"] = True
+else:
+    main_json["specific_settings"]["hideIcon"] = False
+
+main_json["specific_settings"]["custom_css"] = input("Enter Link of the CSS Stylesheet specialized for this form (Blank = No CSS, Changing stylesheets depends on the developer if supported): ")
 
 printMainMessage("----------")
 printMainMessage("Ending Basics")

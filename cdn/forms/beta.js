@@ -7,7 +7,7 @@ Made by Efaz from efaz.dev!
 
 (Information about this script)
 Made by: Efaz from https://www.efaz.dev
-Script Version: v1.0.0 Explorer Edition
+Script Version: v1.0.0 Beta
 Type of Code: JavaScript
 
 */
@@ -126,7 +126,6 @@ function view_success_menu(mode, message) {
 
     var obj4 = document.getElementById("message2")
     var obj5 = document.getElementById("reloadButton")
-
     if (message == null) {
         message = "No message was given."
     }
@@ -232,15 +231,15 @@ function getIfResponseIsEmpty(t) {
 
 function send_response() {
     view_awaiting_menu()
-    function responseToError(err) {
-        view_error_menu("Response couldn't be sent due to a client error. View console for specific details.")
-        console.log(`
-        Error:
-        
-        ${err.message}
-        `)
-    }
     try {
+        function responseToError(err) {
+            view_error_menu("Response couldn't be sent due to a client error. View console for specific details.")
+            console.log(`
+            Error:
+            
+            ${err.message}
+            `)
+        }
         get_values().then(values => {
             get_xcsrf(values).then(x_csrf_token => {
                 get_captcha(captcha_key => {
@@ -327,9 +326,9 @@ function send_response() {
                                     }).then(res => {
                                         if (res.ok) {
                                             res.json().then(json => {
-                                                view_success_menu(selected_mode, json["message"])
                                                 values["fetch_response"] = json
                                                 on_success_form(values)
+                                                view_success_menu(selected_mode, json["message"])
                                             })
                                         } else {
                                             res.json().then(json => {
@@ -351,18 +350,6 @@ function send_response() {
     }
 }
 
-function explore() {
-    var url_used = document.getElementById("explore_button_input_sys").value
-    try {
-        loadFormJSONfromURL(url_used)
-    } catch (err) {
-        document.getElementById("exploreButton").innerHTML = "Request failed to load!"
-        setTimeout(() => {
-            document.getElementById("exploreButton").innerHTML = "Explore!"
-        }, 2000)
-    }
-}
-
 function start_system() {
     refreshVariables()
     var disabled_system = false
@@ -375,7 +362,6 @@ function start_system() {
         icon_url = system_json["icon_url"]
     }
     document.body.innerHTML = `
-    <top alt="topbar">Enter Form JSON URL: <input placeholder="Enter URL!" class="topbar_loaded_a" type="text" id="explore_button_input_sys">    <button type="button" class="topbar_loaded_b" id="exploreButton" onclick="explore()">Explore!</button></top>
     <div id="main_menu">
         <h1 id="title1">${title}</h1>
     </div>
@@ -631,7 +617,7 @@ function start_system() {
                         cloudflare_captcha_enabled = true
                     });
                 } catch (err) {
-                    console.warn("Cloudflare Captcha failed to load due to an error. Please make sure to use the mode and is in your head object!")
+                    console.warn("Cloudflare Captcha failed to load due to an error. Please make sure to use the module and is in your head object!")
                 }
             } else if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == true) {
                 console.warn("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
@@ -654,27 +640,30 @@ function start_system() {
 }
 
 function loadFormJSONfromURL(url) {
-    system_json = {}
-    fetch(url).then(res => {
-        if (res.ok) {
-            res.json().then(json => {
-                system_json = json
-                questions = system_json["questions"]
-                modes = system_json["modes"]
-                specific_settings = system_json["specific_settings"]
-                selected_mode = system_json["defaultMode"]
-                google_captcha = system_json["googleCaptcha"]
-                cloudflare_captcha = system_json["cloudflareCaptcha"]
-                start_system()
-            })
-        } else {
-            res.json().then(json => {
-                console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
-            })
-        }
-    }).catch(err => {
-        console.error(`Request failed, json resulted with: {}`)
-    })
+    try {
+        system_json = {}
+        fetch(url).then(res => {
+            if (res.ok) {
+                res.json().then(json => {
+                    system_json = json
+                    questions = system_json["questions"]
+                    modes = system_json["modes"]
+                    specific_settings = system_json["specific_settings"]
+                    selected_mode = system_json["defaultMode"]
+                    google_captcha = system_json["googleCaptcha"]
+                    cloudflare_captcha = system_json["cloudflareCaptcha"]
+                    start_system()
+                })
+            } else {
+                res.json().then(json => {
+                    console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
+                })
+            }
+        })
+    } catch (err) {
+        console.log(`Error while loading from url: ${err.message}`)
+        loadLastLoadedJSON()
+    }
 }
 
 function loadLastLoadedJSON() {
@@ -698,9 +687,3 @@ function loadFormJSON(json) {
     cloudflare_captcha = system_json["cloudflareCaptcha"]
     start_system()
 }
-
-(function() {
-    window.addEventListener("load", function () {
-        loadFormJSONfromURL("https://cdn.efaz.dev/forms/example_form.json")
-    });
-})()

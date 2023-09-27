@@ -130,6 +130,16 @@
         "description": "Bulk Verify Roblox accounts with just a valid cookie!"
     },
     {
+        "name": "Efaz's Form System",
+        "url": "https://www.efaz.dev/formsystem",
+        "download_url": "https://cdn.efaz.dev/cdn/other/formsexplorer.html",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Try it out!", "ProjectPage": "Try it out!"},
+        "dateDiscontinued": "None",
+        "description": "Javascript Form System that allows you to make forms and send it to API Links!"
+    },
+    {
         "name": "Twitter Verification System",
         "url": "https://www.efaz.dev/twitterverificationsystem",
         "download_url": "https://cdn.efaz.dev/cdn/downloadgithub.html?project=twitter-verification",
