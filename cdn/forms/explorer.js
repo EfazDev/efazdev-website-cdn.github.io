@@ -701,6 +701,6 @@ function loadFormJSON(json) {
 
 (function() {
     window.addEventListener("load", function () {
-        loadFormJSONfromURL("https://cdn.efaz.dev/forms/example_form.json")
+        loadFormJSONfromURL("https://cdn.efaz.dev/cdn/forms/example_form.json")
     });
 })()
