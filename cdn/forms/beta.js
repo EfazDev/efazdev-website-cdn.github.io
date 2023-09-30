@@ -36,8 +36,13 @@ async function get_xcsrf(args) {
 // All Captchas
 var task = (function () {
     class Token {
-        #key = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); });
-        #count = 1
+        #key;
+        #count;
+        constructor() {
+            this.#key = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); })
+            this.#count = 1
+        }
+
         get_key() {
             if (this.#count == 1) {
                 this.#count = 0
