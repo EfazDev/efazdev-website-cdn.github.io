@@ -268,66 +268,67 @@ function send_response(verification_key) {
             }
             get_values().then(values => {
                 get_xcsrf(values).then(x_csrf_token => {
-                    get_captcha(captcha_key => {
-                        getModeInfo(selected_mode).then(mode_response => {
-                            if (mode_response["success"] == true) {
-                                mode_response = mode_response["response"]
-                                var new_formated_values = {}
-                                var new_api_url = mode_response["api_url"]
-                                var listOfKeysProvided = Object.keys(values);
-                                var appliedAtSymbol = false
+                    getModeInfo(selected_mode).then(mode_response => {
+                        if (mode_response["success"] == true) {
+                            mode_response = mode_response["response"]
+                            var new_formated_values = {}
+                            var new_api_url = mode_response["api_url"]
+                            var listOfKeysProvided = Object.keys(values);
+                            var appliedAtSymbol = false
 
-                                var listOfEmptyRequiredVariables = []
+                            var listOfEmptyRequiredVariables = []
 
-                                for (let c = 0; c < listOfKeysProvided.length; c++) {
-                                    var key = listOfKeysProvided[c]
-                                    var main_val = values[key]
-                                    for (let d = 0; d < mode_response["formatted"].length; d++) {
-                                        var main_val2 = mode_response["formatted"][d]
-                                        if (main_val2["jsonName"] == key) {
-                                            if (main_val2["in"] == "Body") {
-                                                new_formated_values[key] = main_val
-                                            } else if (main_val2["in"] == "URL") {
-                                                if (appliedAtSymbol == false) {
-                                                    new_api_url = new_api_url + `?${main_val2["jsonName"]}=${main_val}`
-                                                    appliedAtSymbol = true
-                                                } else {
-                                                    new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
-                                                }
+                            for (let c = 0; c < listOfKeysProvided.length; c++) {
+                                var key = listOfKeysProvided[c]
+                                var main_val = values[key]
+                                for (let d = 0; d < mode_response["formatted"].length; d++) {
+                                    var main_val2 = mode_response["formatted"][d]
+                                    if (main_val2["jsonName"] == key) {
+                                        if (main_val2["in"] == "Body") {
+                                            new_formated_values[key] = main_val
+                                        } else if (main_val2["in"] == "URL") {
+                                            if (appliedAtSymbol == false) {
+                                                new_api_url = new_api_url + `?${main_val2["jsonName"]}=${main_val}`
+                                                appliedAtSymbol = true
+                                            } else {
+                                                new_api_url = new_api_url + `&${main_val2["jsonName"]}=${main_val}`
                                             }
                                         }
                                     }
                                 }
+                            }
 
-                                for (let e = 0; e < questions.length; e++) {
-                                    var question = questions[e]
-                                    if (question["required"] == true) {
-                                        if (getIfResponseIsEmpty(new_formated_values[question["jsonName"]])) {
-                                            listOfEmptyRequiredVariables.push(question["name"])
-                                        }
+                            for (let e = 0; e < questions.length; e++) {
+                                var question = questions[e]
+                                if (question["required"] == true) {
+                                    if (getIfResponseIsEmpty(new_formated_values[question["jsonName"]])) {
+                                        listOfEmptyRequiredVariables.push(question["name"])
                                     }
                                 }
+                            }
 
-                                if (captcha_key[0] == "Google") {
-                                    new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
-                                } else if (captcha_key[0] == "Cloudflare") {
-                                    new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
-                                }
-                                if (listOfEmptyRequiredVariables.length > 0) {
-                                    var new_string_g = `${listOfEmptyRequiredVariables[0]}`
-                                    var remove = false
-                                    for (let f = 0; f < listOfEmptyRequiredVariables.length + 1; f++) {
-                                        if (remove == true) {
-                                            if (listOfEmptyRequiredVariables[f]) {
-                                                var val_h = listOfEmptyRequiredVariables[f]
-                                                new_string_g = new_string_g + `, ${val_h}`
-                                            }
-                                        } else {
-                                            remove = true
+                            if (listOfEmptyRequiredVariables.length > 0) {
+                                var new_string_g = `${listOfEmptyRequiredVariables[0]}`
+                                var remove = false
+                                for (let f = 0; f < listOfEmptyRequiredVariables.length + 1; f++) {
+                                    if (remove == true) {
+                                        if (listOfEmptyRequiredVariables[f]) {
+                                            var val_h = listOfEmptyRequiredVariables[f]
+                                            new_string_g = new_string_g + `, ${val_h}`
                                         }
+                                    } else {
+                                        remove = true
                                     }
-                                    view_error_menu(`The following questions were filled empty: ${new_string_g}`)
-                                } else {
+                                }
+                                view_error_menu(`The following questions were filled empty: ${new_string_g}`)
+                            } else {
+                                get_captcha(captcha_key => {
+                                    if (captcha_key[0] == "Google") {
+                                        new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
+                                    } else if (captcha_key[0] == "Cloudflare") {
+                                        new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
+                                    }
+                                    
                                     var converted_json_string = JSON.stringify(new_formated_values)
                                     try {
                                         if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
@@ -365,10 +366,10 @@ function send_response(verification_key) {
                                     } catch (err) {
                                         view_error_menu(err.message)
                                     }
-                                }
+                                }, task_key)
                             }
-                        }).catch(responseToError)
-                    }, task_key)
+                        }
+                    }).catch(responseToError)
                 }).catch(responseToError)
             }).catch(responseToError)
         } catch (err) {

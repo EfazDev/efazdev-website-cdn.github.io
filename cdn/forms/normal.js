@@ -33,6 +33,32 @@ async function get_xcsrf(args) {
     return null
 }
 
+// All Captchas
+const task = (function () {
+    class Token {
+        #key;
+        #count;
+        constructor() {
+            this.#key = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); })
+            this.#count = 1
+        }
+
+        get_key() {
+            if (this.#count == 1) {
+                this.#count = 0
+                return this.#key
+            } else {
+                return null
+            }
+        }
+        validateToken(e) {
+            return e == this.#key
+        }
+    }
+    return new Token()
+})()
+const task_key = task.get_key()
+
 // Google Captcha
 var google_captcha_enabled = false
 var google_captcha = system_json["googleCaptcha"]
@@ -41,7 +67,6 @@ var google_captcha = system_json["googleCaptcha"]
 var cloudflare_captcha_enabled = false
 var cloudflare_captcha = system_json["cloudflareCaptcha"]
 let widget_id = ""
-let authenticated_token = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16);});
 
 // System Functions
 async function getImageFromInput(input) {
@@ -198,7 +223,7 @@ function set_mode(mode) {
 }
 
 async function get_captcha(callback_a, token) {
-    if (token == authenticated_token) {
+    if (task.validateToken(token)) {
         if (google_captcha_enabled == true) {
             return grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' })
                 .then(function (token) {
@@ -229,20 +254,20 @@ function getIfResponseIsEmpty(t) {
     }
 }
 
-function send_response() {
-    view_awaiting_menu()
-    try {
-        function responseToError(err) {
-            view_error_menu("Response couldn't be sent due to a client error. View console for specific details.")
-            console.log(`
+function send_response(verification_key) {
+    if (task.validateToken(atob(verification_key))) {
+        view_awaiting_menu()
+        try {
+            function responseToError(err) {
+                view_error_menu("Response couldn't be sent due to a client error. View console for specific details.")
+                console.log(`
             Error:
             
             ${err.message}
             `)
-        }
-        get_values().then(values => {
-            get_xcsrf(values).then(x_csrf_token => {
-                get_captcha(captcha_key => {
+            }
+            get_values().then(values => {
+                get_xcsrf(values).then(x_csrf_token => {
                     getModeInfo(selected_mode).then(mode_response => {
                         if (mode_response["success"] == true) {
                             mode_response = mode_response["response"]
@@ -282,11 +307,6 @@ function send_response() {
                                 }
                             }
 
-                            if (captcha_key[0] == "Google") {
-                                new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
-                            } else if (captcha_key[0] == "Cloudflare") {
-                                new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
-                            }
                             if (listOfEmptyRequiredVariables.length > 0) {
                                 var new_string_g = `${listOfEmptyRequiredVariables[0]}`
                                 var remove = false
@@ -302,51 +322,59 @@ function send_response() {
                                 }
                                 view_error_menu(`The following questions were filled empty: ${new_string_g}`)
                             } else {
-                                var converted_json_string = JSON.stringify(new_formated_values)
-                                try {
-                                    if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
-                                        mode_response["type_of_api"] = "POST"
+                                get_captcha(captcha_key => {
+                                    if (captcha_key[0] == "Google") {
+                                        new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
+                                    } else if (captcha_key[0] == "Cloudflare") {
+                                        new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
                                     }
-                                    fetch(new_api_url, {
-                                        "headers": {
-                                            "accept": "application/json",
-                                            "accept-language": "en-US,en;q=0.9",
-                                            "content-type": "application/json",
-                                            "sec-fetch-dest": "empty",
-                                            "sec-fetch-mode": "cors",
-                                            "sec-fetch-site": "same-origin",
-                                            "credentials": 'include',
-                                            "x-csrf-token": x_csrf_token
-                                        },
-                                        "referrerPolicy": "strict-origin-when-cross-origin",
-                                        "body": converted_json_string,
-                                        "method": mode_response["type_of_api"],
-                                        "mode": "cors",
-                                        "credentials": "omit"
-                                    }).then(res => {
-                                        if (res.ok) {
-                                            res.json().then(json => {
-                                                values["fetch_response"] = json
-                                                on_success_form(values)
-                                                view_success_menu(selected_mode, json["message"])
-                                            })
-                                        } else {
-                                            res.json().then(json => {
-                                                view_error_menu(json["message"])
-                                            })
+                                    
+                                    var converted_json_string = JSON.stringify(new_formated_values)
+                                    try {
+                                        if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
+                                            mode_response["type_of_api"] = "POST"
                                         }
-                                    })
-                                } catch (err) {
-                                    view_error_menu(err.message)
-                                }
+                                        fetch(new_api_url, {
+                                            "headers": {
+                                                "accept": "application/json",
+                                                "accept-language": "en-US,en;q=0.9",
+                                                "content-type": "application/json",
+                                                "sec-fetch-dest": "empty",
+                                                "sec-fetch-mode": "cors",
+                                                "sec-fetch-site": "same-origin",
+                                                "credentials": 'include',
+                                                "x-csrf-token": x_csrf_token
+                                            },
+                                            "referrerPolicy": "strict-origin-when-cross-origin",
+                                            "body": converted_json_string,
+                                            "method": mode_response["type_of_api"],
+                                            "mode": "cors",
+                                            "credentials": "omit"
+                                        }).then(res => {
+                                            if (res.ok) {
+                                                res.json().then(json => {
+                                                    values["fetch_response"] = json
+                                                    on_success_form(values)
+                                                    view_success_menu(selected_mode, json["message"])
+                                                })
+                                            } else {
+                                                res.json().then(json => {
+                                                    view_error_menu(json["message"])
+                                                })
+                                            }
+                                        })
+                                    } catch (err) {
+                                        view_error_menu(err.message)
+                                    }
+                                }, task_key)
                             }
                         }
                     }).catch(responseToError)
-                }, authenticated_token)
+                }).catch(responseToError)
             }).catch(responseToError)
-        }).catch(responseToError)
-    } catch (err) {
-        responseToError(err)
+        } catch (err) {
+            responseToError(err)
+        }
     }
 }
 
@@ -582,7 +610,7 @@ function start_system() {
                 }
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             } else {
-                var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
+                var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response("${btoa(task_key)}")">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
             if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == false) {
