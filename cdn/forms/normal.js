@@ -604,9 +604,9 @@ function start_system() {
             if (system_json["showCurrentMode"] == true) {
                 var new_html = `<p id="current_mode">Current Mode: ${selected_mode}</p>`
                 if (specific_settings["showModeInButtonText"] == false) {
-                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
+                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response("${btoa(task_key)}")">Send Form!</button>`
                 } else {
-                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response()">Send ${selected_mode}!</button>`
+                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response("${btoa(task_key)}")">Send ${selected_mode}!</button>`
                 }
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             } else {
