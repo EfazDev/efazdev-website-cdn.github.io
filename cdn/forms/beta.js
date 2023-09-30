@@ -33,6 +33,26 @@ async function get_xcsrf(args) {
     return null
 }
 
+// All Captchas
+
+class Token {
+    #key = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16);});
+    #count = 1
+    get_key() {
+        if (this.#count == 1) {
+            this.#count = 0
+            return this.#key
+        } else {
+            return null
+        }
+    }
+    validateToken(e) {
+        return e == this.#key
+    }
+}
+const key = new Token()
+const key_2 = key.get_key()
+
 // Google Captcha
 var google_captcha_enabled = false
 var google_captcha = system_json["googleCaptcha"]
@@ -41,7 +61,6 @@ var google_captcha = system_json["googleCaptcha"]
 var cloudflare_captcha_enabled = false
 var cloudflare_captcha = system_json["cloudflareCaptcha"]
 let widget_id = ""
-let authenticated_token = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16);});
 
 // System Functions
 async function getImageFromInput(input) {
@@ -198,7 +217,7 @@ function set_mode(mode) {
 }
 
 async function get_captcha(callback_a, token) {
-    if (token == authenticated_token) {
+    if (key.validateToken(token)) {
         if (google_captcha_enabled == true) {
             return grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' })
                 .then(function (token) {
@@ -342,7 +361,7 @@ function send_response() {
                             }
                         }
                     }).catch(responseToError)
-                }, authenticated_token)
+                }, key_2)
             }).catch(responseToError)
         }).catch(responseToError)
     } catch (err) {
