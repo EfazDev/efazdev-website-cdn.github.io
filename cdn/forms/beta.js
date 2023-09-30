@@ -34,24 +34,25 @@ async function get_xcsrf(args) {
 }
 
 // All Captchas
-
-class Token {
-    #key = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16);});
-    #count = 1
-    get_key() {
-        if (this.#count == 1) {
-            this.#count = 0
-            return this.#key
-        } else {
-            return null
+var task = (function () {
+    class Token {
+        #key = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); });
+        #count = 1
+        get_key() {
+            if (this.#count == 1) {
+                this.#count = 0
+                return this.#key
+            } else {
+                return null
+            }
+        }
+        validateToken(e) {
+            return e == this.#key
         }
     }
-    validateToken(e) {
-        return e == this.#key
-    }
-}
-const key = new Token()
-const key_2 = key.get_key()
+    return new Token()
+})()
+const task_key = task.get_key()
 
 // Google Captcha
 var google_captcha_enabled = false
@@ -217,7 +218,7 @@ function set_mode(mode) {
 }
 
 async function get_captcha(callback_a, token) {
-    if (key.validateToken(token)) {
+    if (task.validateToken(token)) {
         if (google_captcha_enabled == true) {
             return grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' })
                 .then(function (token) {
@@ -361,7 +362,7 @@ function send_response() {
                             }
                         }
                     }).catch(responseToError)
-                }, key_2)
+                }, task_key)
             }).catch(responseToError)
         }).catch(responseToError)
     } catch (err) {
