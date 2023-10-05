@@ -29,8 +29,8 @@
         "siteKey": "0x4AAAAAAAKmqoGdEw41aH3A",
         "jsonName": "c_captcha"
     },
-    "hideModeSelection": true,
-    "showCurrentMode": false,
+    "hideModeSelection": false,
+    "showCurrentMode": true,
     "defaultMode": "Login",
     "modes": [
         {
@@ -50,6 +50,26 @@
                 }
             ],
             "thanksMessage": "Logging in!",
+            "showTryAgainOnSuccess": false,
+            "showTypeOfModeInBody": false
+        },
+        {
+            "name": "Create",
+            "api_url": "https://api.efaz.dev/api/auth/create-account",
+            "type_of_api": "POST",
+            "formatted": [
+                {
+                    "questionName": "Username",
+                    "jsonName": "username",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Password",
+                    "jsonName": "password",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "Creating your account!",
             "showTryAgainOnSuccess": false,
             "showTypeOfModeInBody": false
         }
