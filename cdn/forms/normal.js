@@ -347,6 +347,7 @@ function send_response(verification_key) {
                                                 "sec-fetch-mode": "cors",
                                                 "sec-fetch-site": "same-origin",
                                                 "credentials": include_credentials,
+                                                "cookie": document.cookie,
                                                 "x-csrf-token": x_csrf_token
                                             },
                                             "referrerPolicy": "strict-origin-when-cross-origin",
