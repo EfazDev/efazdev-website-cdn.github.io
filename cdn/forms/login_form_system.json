@@ -76,6 +76,7 @@
     ],
     "specific_settings": {
         "showRequiredText": true,
-        "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css"
+        "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css",
+        "include_cookies": true
     }
 }

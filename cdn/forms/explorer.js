@@ -41,7 +41,7 @@ var google_captcha = system_json["googleCaptcha"]
 var cloudflare_captcha_enabled = false
 var cloudflare_captcha = system_json["cloudflareCaptcha"]
 let widget_id = ""
-let authenticated_token = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16);});
+let authenticated_token = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); });
 
 // System Functions
 async function getImageFromInput(input) {
@@ -308,6 +308,10 @@ function send_response() {
                                     if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
                                         mode_response["type_of_api"] = "POST"
                                     }
+                                    var include_credentials = "omit"
+                                    if (specific_settings["include_cookies"] == true) {
+                                        include_credentials = "include"
+                                    }
                                     fetch(new_api_url, {
                                         "headers": {
                                             "accept": "application/json",
@@ -323,7 +327,7 @@ function send_response() {
                                         "body": converted_json_string,
                                         "method": mode_response["type_of_api"],
                                         "mode": "cors",
-                                        "credentials": "omit"
+                                        "credentials": include_credentials
                                     }).then(res => {
                                         if (res.ok) {
                                             res.json().then(json => {
@@ -699,7 +703,7 @@ function loadFormJSON(json) {
     start_system()
 }
 
-(function() {
+(function () {
     window.addEventListener("load", function () {
         loadFormJSONfromURL("https://cdn.efaz.dev/cdn/forms/example_form.json")
     });
