@@ -320,14 +320,14 @@ function send_response() {
                                             "sec-fetch-dest": "empty",
                                             "sec-fetch-mode": "cors",
                                             "sec-fetch-site": "same-origin",
-                                            "credentials": 'include',
+                                            "credentials": include_credentials,
                                             "x-csrf-token": x_csrf_token
                                         },
                                         "referrerPolicy": "strict-origin-when-cross-origin",
                                         "body": converted_json_string,
                                         "method": mode_response["type_of_api"],
                                         "mode": "cors",
-                                        "credentials": include_credentials
+                                        "credentials": include_credentials,
                                     }).then(res => {
                                         if (res.ok) {
                                             res.json().then(json => {
