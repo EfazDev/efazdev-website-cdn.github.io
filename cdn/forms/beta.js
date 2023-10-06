@@ -334,6 +334,10 @@ function send_response(verification_key) {
                                         if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
                                             mode_response["type_of_api"] = "POST"
                                         }
+                                        var include_credentials = "omit"
+                                        if (specific_settings["include_cookies"] == true) {
+                                            include_credentials = "include"
+                                        }
                                         fetch(new_api_url, {
                                             "headers": {
                                                 "accept": "application/json",
@@ -342,14 +346,14 @@ function send_response(verification_key) {
                                                 "sec-fetch-dest": "empty",
                                                 "sec-fetch-mode": "cors",
                                                 "sec-fetch-site": "same-origin",
-                                                "credentials": 'include',
+                                                "credentials": include_credentials,
                                                 "x-csrf-token": x_csrf_token
                                             },
                                             "referrerPolicy": "strict-origin-when-cross-origin",
                                             "body": converted_json_string,
                                             "method": mode_response["type_of_api"],
                                             "mode": "cors",
-                                            "credentials": "omit"
+                                            "credentials": include_credentials,
                                         }).then(res => {
                                             if (res.ok) {
                                                 res.json().then(json => {
