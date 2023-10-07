@@ -27,7 +27,7 @@
     "modes": [
         {
             "name": "Verification",
-            "api_url": "https://dashboard.efaz.dev/api/auth/change-password",
+            "api_url": "https://dashboard.efaz.dev/api/auth/in-game-method",
             "type_of_api": "PATCH",
             "formatted": [
                 {
