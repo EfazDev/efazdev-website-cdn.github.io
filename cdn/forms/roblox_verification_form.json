@@ -1,20 +1,12 @@
 {
-    "title": "Change Password",
+    "title": "Verify Roblox Account via In-Game!",
     "icon_url": "https://cdn.efaz.dev/cdn/png/logo.png",
     "questions": [
         {
-            "name": "Old Password",
-            "jsonName": "old_password",
-            "type": "Password",
-            "placeholder": "Enter your old password!",
-            "required": true,
-            "custom_class": ""
-        },
-        {
-            "name": "New Password",
-            "jsonName": "new_password",
-            "type": "Password",
-            "placeholder": "Enter your new password!",
+            "name": "Roblox Username",
+            "jsonName": "Roblox-Username",
+            "type": "Short Response",
+            "placeholder": "Enter your roblox username!",
             "required": true,
             "custom_class": ""
         }
@@ -31,25 +23,20 @@
     },
     "hideModeSelection": true,
     "showCurrentMode": true,
-    "defaultMode": "Change Password",
+    "defaultMode": "Verification",
     "modes": [
         {
-            "name": "Change Password",
+            "name": "Verification",
             "api_url": "https://dashboard.efaz.dev/api/auth/change-password",
-            "type_of_api": "POST",
+            "type_of_api": "PATCH",
             "formatted": [
                 {
-                    "questionName": "Old Password",
-                    "jsonName": "old_password",
-                    "in": "Body"
-                },
-                {
-                    "questionName": "New Password",
-                    "jsonName": "new_password",
+                    "questionName": "Roblox Username",
+                    "jsonName": "Roblox-Username",
                     "in": "Body"
                 }
             ],
-            "thanksMessage": "Your password has been changed! All valid sessions are currently active.",
+            "thanksMessage": "This Roblox Account has been requested to be verified successfully! Join this game to connect the accounts: https://www.roblox.com/games/14986642611/Efazs-Verification-Center",
             "showTryAgainOnSuccess": false,
             "showTypeOfModeInBody": false
         }
