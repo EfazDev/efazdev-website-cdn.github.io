@@ -34,7 +34,7 @@
     },
     "cloudflareCaptcha": {
         "enabled": true,
-        "siteKey": "0x4AAAAAAAKmqoGdEw41aH3A",
+        "siteKey": "0x4AAAAAAAL7YK_aJBt5iMM6",
         "jsonName": "c_captcha"
     },
     "hideModeSelection": false,
