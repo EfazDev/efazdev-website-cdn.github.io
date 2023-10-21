@@ -359,8 +359,8 @@ function send_response(verification_key) {
                                             if (res.ok) {
                                                 res.json().then(json => {
                                                     values["fetch_response"] = json
-                                                    on_success_form(values)
                                                     view_success_menu(selected_mode, json["message"])
+                                                    on_success_form(values)
                                                 })
                                             } else {
                                                 res.json().then(json => {
