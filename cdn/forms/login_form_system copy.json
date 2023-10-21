@@ -1,0 +1,62 @@
+{
+    "title": "Security Key Setup",
+    "icon_url": "https://cdn.efaz.dev/cdn/png/logo.png",
+    "questions": [
+        {
+            "name": "Username",
+            "jsonName": "username",
+            "type": "Short Response",
+            "placeholder": "Enter your username!",
+            "required": true,
+            "custom_class": ""
+        },
+        {
+            "name": "Password",
+            "jsonName": "password",
+            "type": "Password",
+            "placeholder": "Enter your password!",
+            "required": true,
+            "custom_class": ""
+        }
+    ],
+    "googleCaptcha": {
+        "enabled": false,
+        "siteKey": "",
+        "jsonName": "g_captcha"
+    },
+    "cloudflareCaptcha": {
+        "enabled": true,
+        "siteKey": "0x4AAAAAAAL7YK_aJBt5iMM6",
+        "jsonName": "c_captcha"
+    },
+    "hideModeSelection": false,
+    "showCurrentMode": true,
+    "defaultMode": "Security",
+    "modes": [
+        {
+            "name": "Security",
+            "api_url": "https://dashboard.efaz.dev/api/auth/login",
+            "type_of_api": "POST",
+            "formatted": [
+                {
+                    "questionName": "Username",
+                    "jsonName": "username",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Password",
+                    "jsonName": "password",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "Logging in!",
+            "showTryAgainOnSuccess": false,
+            "showTypeOfModeInBody": false
+        }
+    ],
+    "specific_settings": {
+        "showRequiredText": true,
+        "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css",
+        "include_cookies": true
+    }
+}
