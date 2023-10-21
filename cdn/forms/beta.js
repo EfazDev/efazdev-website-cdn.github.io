@@ -360,7 +360,7 @@ function send_response(verification_key) {
                                                 res.json().then(json => {
                                                     values["fetch_response"] = json
                                                     view_success_menu(selected_mode, json["message"])
-                                                    on_success_form(values)
+                                                    on_success_form(values) 
                                                 })
                                             } else {
                                                 res.json().then(json => {
