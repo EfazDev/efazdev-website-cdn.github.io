@@ -27,7 +27,7 @@
     "modes": [
         {
             "name": "Security",
-            "api_url": "https://dashboard.efaz.dev/api/auth/security-keys",
+            "api_url": "https://dashboard.efaz.dev/api/auth/security-key",
             "type_of_api": "POST",
             "formatted": [
                 {
