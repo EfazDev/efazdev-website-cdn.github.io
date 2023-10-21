@@ -359,8 +359,18 @@ function send_response(verification_key) {
                                             if (res.ok) {
                                                 res.json().then(json => {
                                                     values["fetch_response"] = json
-                                                    view_success_menu(selected_mode, json["message"])
-                                                    on_success_form(values) 
+                                                    values["current_form"] = system_json
+                                                    if (specific_settings["allow_second_form"] == true) {
+                                                        if (json["form"]) {
+                                                            loadFormJSON(json["form"])
+                                                        } else {
+                                                            view_success_menu(selected_mode, json["message"])
+                                                            on_success_form(values) 
+                                                        }
+                                                    } else {
+                                                        view_success_menu(selected_mode, json["message"])
+                                                        on_success_form(values) 
+                                                    }
                                                 })
                                             } else {
                                                 res.json().then(json => {

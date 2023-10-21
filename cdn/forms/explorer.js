@@ -332,9 +332,19 @@ function send_response() {
                                     }).then(res => {
                                         if (res.ok) {
                                             res.json().then(json => {
-                                                view_success_menu(selected_mode, json["message"])
                                                 values["fetch_response"] = json
-                                                on_success_form(values)
+                                                values["current_form"] = system_json
+                                                if (specific_settings["allow_second_form"] == true) {
+                                                    if (json["form"]) {
+                                                        loadFormJSON(json["form"])
+                                                    } else {
+                                                        view_success_menu(selected_mode, json["message"])
+                                                        on_success_form(values)
+                                                    }
+                                                } else {
+                                                    view_success_menu(selected_mode, json["message"])
+                                                    on_success_form(values)
+                                                }
                                             })
                                         } else {
                                             res.json().then(json => {
