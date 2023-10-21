@@ -7,7 +7,7 @@ Made by Efaz from efaz.dev!
 
 (Information about this script)
 Made by: Efaz from https://www.efaz.dev
-Script Version: v1.0.0
+Script Version: v1.0.5
 Type of Code: JavaScript
 
 */
