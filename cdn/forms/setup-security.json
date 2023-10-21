@@ -27,7 +27,7 @@
     "modes": [
         {
             "name": "Security",
-            "api_url": "https://dashboard.efaz.dev/api/auth/login",
+            "api_url": "https://dashboard.efaz.dev/api/auth/security-keys",
             "type_of_api": "POST",
             "formatted": [
                 {
@@ -36,7 +36,7 @@
                     "in": "Body"
                 }
             ],
-            "thanksMessage": "Logging in!",
+            "thanksMessage": "Awaiting response from Form Builder!",
             "showTryAgainOnSuccess": false,
             "showTypeOfModeInBody": false
         }
