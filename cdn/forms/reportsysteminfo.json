@@ -43,7 +43,7 @@
     "modes": [
         {
             "name": "Report",
-            "api_url": "https://dashboard.efaz.dev/api/reports/send",
+            "api_url": "https://api.efaz.dev/api/reports/send",
             "type_of_api": "POST",
             "formatted": [
                 {
@@ -68,7 +68,7 @@
         },
         {
             "name": "Suggestion",
-            "api_url": "https://dashboard.efaz.dev/api/reports/send-suggestion",
+            "api_url": "https://api.efaz.dev/api/reports/send-suggestion",
             "type_of_api": "POST",
             "formatted": [
                 {

@@ -77,6 +77,7 @@
     "specific_settings": {
         "showRequiredText": true,
         "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css",
-        "include_cookies": true
+        "include_cookies": true,
+        "allow_second_form": true
     }
 }
