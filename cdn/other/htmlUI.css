@@ -51,6 +51,11 @@ html {
     height: 100%;
 }
 
+group {
+    border-bottom: dashed rgb(255, 255, 255);
+    border-top: dashed rgb(255, 255, 255);
+}
+
 body {
     height: 100%;
     margin: 0;
@@ -70,8 +75,78 @@ button {
     text-align: center;
     margin-left: auto;
     border-radius: 8px;
-    background-color: #ffffff;
-    color: black;
+    background-color: #00b1ff;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
+button[id="hide_group_roblox"] {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #e88c00;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
+button[id="hide_group_account"] {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #43cd00;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
+button[onclick="logOut('all')"] {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #34a000;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
+button[onclick="logOut('this')"] {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #34a000;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
+button[id="hide_reporting"] {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #00afff;
+    color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
     font-family: arialrounded;
