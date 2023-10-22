@@ -430,8 +430,13 @@ function start_system() {
         try {
             var main_menu = document.getElementById("main_menu")
             if (!(specific_settings["hideIcon"] == true)) {
-                var new_html = `<img src="${icon_url}" height="64" width="64" class="center">`
-                main_menu.innerHTML = new_html + main_menu.innerHTML
+                if (specific_settings["resize_logo"]) {
+                    var new_html = `<img src="${icon_url}" height="${specific_settings["resize_logo"]["height"]}" width="${specific_settings["resize_logo"]["width"]}" class="center">`
+                    main_menu.innerHTML = new_html + main_menu.innerHTML
+                } else {
+                    var new_html = `<img src="${icon_url}" height="64" width="64" class="center">`
+                    main_menu.innerHTML = new_html + main_menu.innerHTML
+                }
             }
             for (let a = 0; a < questions.length; a++) {
                 var newQuestion = questions[a]
