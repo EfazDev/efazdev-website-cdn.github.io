@@ -83,13 +83,27 @@ button {
     margin-right: auto;
 }
 
+button[id="hide_group_main"] {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #ff8000;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
 button[id="hide_group_roblox"] {
     border: 1px solid white;
     border-collapse: collapse;
     text-align: center;
     margin-left: auto;
     border-radius: 8px;
-    background-color: #e88c00;
+    background-color: #dcda00;
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
