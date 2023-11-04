@@ -7,7 +7,7 @@ Made by Efaz from efaz.dev!
 
 (Information about this script)
 Made by: Efaz from https://www.efaz.dev
-Script Version: v1.0.5 Beta
+Script Version: v1.1.0 Beta
 Type of Code: JavaScript
 
 */
@@ -438,6 +438,9 @@ function start_system() {
                     main_menu.innerHTML = new_html + main_menu.innerHTML
                 }
             }
+            if (specific_settings["add_html_slot1"]) {
+                new_html = new_html + specific_settings["add_html_slot1"]
+            }
             for (let a = 0; a < questions.length; a++) {
                 var newQuestion = questions[a]
                 if (newQuestion["type"] == "Short Response" || newQuestion["type"] == "SR") {
@@ -612,6 +615,15 @@ function start_system() {
                     var new_html = `<p>${newQuestion["name"]}: Failed to create question. Please ask the owner of this form to correct the question type.</p>"`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 }
+                if (document.getElementById(`${newQuestion["jsonName"]}_input`)) {
+                    var object = document.getElementById(`${newQuestion["jsonName"]}_input`)
+                    if (object.tagName.toLowerCase() == "input") {
+                        if (newQuestion["autofilled"] == true) {
+                            object.style.display = "none"
+                            object.value = newQuestion["autofilled_value"]
+                        }
+                    }
+                }
             }
             if (system_json["hideModeSelection"] == false) {
                 var new_html = `<p>Modes: `
@@ -623,6 +635,9 @@ function start_system() {
             }
             if (system_json["showCurrentMode"] == true) {
                 var new_html = `<p id="current_mode">Current Mode: ${selected_mode}</p>`
+                if (specific_settings["add_html_slot2"]) {
+                    new_html = new_html + specific_settings["add_html_slot2"]
+                }
                 if (specific_settings["showModeInButtonText"] == false) {
                     new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send Form!</button>`
                 } else {
@@ -630,8 +645,14 @@ function start_system() {
                 }
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             } else {
+                if (specific_settings["add_html_slot2"]) {
+                    new_html = new_html + specific_settings["add_html_slot2"]
+                }
                 var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
+            }
+            if (specific_settings["add_html_slot3"]) {
+                new_html = new_html + specific_settings["add_html_slot3"]
             }
             if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == false) {
                 var new_html = `<input type="hidden" id="${google_captcha["jsonName"]}_input" name="${google_captcha["jsonName"]}_input"></input>`

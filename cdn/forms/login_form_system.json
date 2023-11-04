@@ -78,6 +78,7 @@
         "showRequiredText": true,
         "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css",
         "include_cookies": true,
-        "allow_second_form": true
+        "allow_second_form": true,
+        "add_html_slot2": "<button type='button' id='gotoroblox' class='center' onclick='redirect_to_roblox()'>Login via Roblox!</button><br>"
     }
 }
