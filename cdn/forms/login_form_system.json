@@ -79,6 +79,6 @@
         "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css",
         "include_cookies": true,
         "allow_second_form": true,
-        "add_html_slot2": "<button type='button' id='gotoroblox' class='center' onclick='redirect_to_roblox()'>Login via Roblox!</button><br>"
+        "add_html_slot2": "<button type='button' id='gotoroblox' class='center' onclick='redirect_to_roblox()' style='height:40px; width:200px; background-color: #000000; font-size:15px'>Login via <img src='https://images.rbxcdn.com/d82801b936c26e174c4e782510a72d78-roblox_logo_dark_08292022.svg' width='50'>!</button><br>"
     }
 }
