@@ -244,7 +244,7 @@ function set_mode(mode) {
                                 }
                             }
 
-                            for (let b = 0; b < main_mode_details["formatted"].length; a++) {
+                            for (let b = 0; b < main_mode_details["formatted"].length; b++) {
                                 var question_a_details = main_mode_details["formatted"][b]
                                 if (question_a_details["jsonName"] == main_question["jsonName"]) {
                                     if (object) {
