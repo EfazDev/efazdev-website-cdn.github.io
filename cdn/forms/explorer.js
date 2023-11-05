@@ -7,7 +7,7 @@ Made by Efaz from efaz.dev!
 
 (Information about this script)
 Made by: Efaz from https://www.efaz.dev
-Script Version: v1.0.5 Explorer Edition
+Script Version: v1.1.0 Explorer Edition
 Type of Code: JavaScript
 
 */
@@ -33,6 +33,32 @@ async function get_xcsrf(args) {
     return null
 }
 
+// All Captchas
+const task = (function () {
+    class Token {
+        #key;
+        #count;
+        constructor() {
+            this.#key = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); })
+            this.#count = 1
+        }
+
+        get_key() {
+            if (this.#count == 1) {
+                this.#count = 0
+                return this.#key
+            } else {
+                return null
+            }
+        }
+        validateToken(e) {
+            return e == this.#key
+        }
+    }
+    return new Token()
+})()
+const task_key = task.get_key()
+
 // Google Captcha
 var google_captcha_enabled = false
 var google_captcha = system_json["googleCaptcha"]
@@ -41,7 +67,6 @@ var google_captcha = system_json["googleCaptcha"]
 var cloudflare_captcha_enabled = false
 var cloudflare_captcha = system_json["cloudflareCaptcha"]
 let widget_id = ""
-let authenticated_token = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) { const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); });
 
 // System Functions
 async function getImageFromInput(input) {
@@ -126,7 +151,6 @@ function view_success_menu(mode, message) {
 
     var obj4 = document.getElementById("message2")
     var obj5 = document.getElementById("reloadButton")
-
     if (message == null) {
         message = "No message was given."
     }
@@ -179,6 +203,7 @@ function set_mode(mode) {
     getModeInfo(mode).then(response => {
         if (response["success"] == true) {
             selected_mode = mode
+            main_mode_details = response["response"]
 
             if (system_json["showCurrentMode"] && document.getElementById("current_mode")) {
                 var obj1 = document.getElementById("current_mode")
@@ -190,6 +215,50 @@ function set_mode(mode) {
                 } else {
                     obj2.innerHTML = `Send ${mode}!`
                 }
+
+                var questions = system_json["questions"]
+                if (specific_settings["showAllQuestionsInAllModes"] == true) {
+                    for (let a = 0; a < questions.length; a++) {
+                        var main_question = questions[a]
+                        if (!(main_question["autofilled"] == true)) {
+                            var object = document.getElementById(`${main_question["jsonName"]}_input`)
+                            if (object) {
+                                if (object.parentNode.tagName == "DIV") {
+                                    object.style.display = ""
+                                } else {
+                                    object.parentNode.style.display = ""
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    for (let a = 0; a < questions.length; a++) {
+                        var main_question = questions[a]
+                        if (!(main_question["autofilled"] == true)) {
+                            var object = document.getElementById(`${main_question["jsonName"]}_input`)
+                            if (object) {
+                                if (object.parentNode.tagName == "DIV") {
+                                    object.style.display = "none"
+                                } else {
+                                    object.parentNode.style.display = "none"
+                                }
+                            }
+
+                            for (let b = 0; b < main_mode_details["formatted"].length; b++) {
+                                var question_a_details = main_mode_details["formatted"][b]
+                                if (question_a_details["jsonName"] == main_question["jsonName"]) {
+                                    if (object) {
+                                        if (object.parentNode.tagName == "DIV") {
+                                            object.style.display = ""
+                                        } else {
+                                            object.parentNode.style.display = ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             } else {
                 var obj2 = document.getElementById("sendButton")
                 obj2.innerHTML = `Send Form!`
@@ -199,7 +268,7 @@ function set_mode(mode) {
 }
 
 async function get_captcha(callback_a, token) {
-    if (token == authenticated_token) {
+    if (task.validateToken(token)) {
         if (google_captcha_enabled == true) {
             return grecaptcha.execute(google_captcha["siteKey"], { action: 'validate_captcha' })
                 .then(function (token) {
@@ -230,20 +299,20 @@ function getIfResponseIsEmpty(t) {
     }
 }
 
-function send_response() {
-    view_awaiting_menu()
-    function responseToError(err) {
-        view_error_menu("Response couldn't be sent due to a client error. View console for specific details.")
-        console.log(`
-        Error:
-        
-        ${err.message}
-        `)
-    }
-    try {
-        get_values().then(values => {
-            get_xcsrf(values).then(x_csrf_token => {
-                get_captcha(captcha_key => {
+function send_response(verification_key) {
+    if (task.validateToken(atob(verification_key))) {
+        view_awaiting_menu()
+        try {
+            function responseToError(err) {
+                view_error_menu("Response couldn't be sent due to a client error. View console for specific details.")
+                console.log(`
+            Error:
+            
+            ${err.message}
+            `)
+            }
+            get_values().then(values => {
+                get_xcsrf(values).then(x_csrf_token => {
                     getModeInfo(selected_mode).then(mode_response => {
                         if (mode_response["success"] == true) {
                             mode_response = mode_response["response"]
@@ -283,11 +352,6 @@ function send_response() {
                                 }
                             }
 
-                            if (captcha_key[0] == "Google") {
-                                new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
-                            } else if (captcha_key[0] == "Cloudflare") {
-                                new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
-                            }
                             if (listOfEmptyRequiredVariables.length > 0) {
                                 var new_string_g = `${listOfEmptyRequiredVariables[0]}`
                                 var remove = false
@@ -303,66 +367,74 @@ function send_response() {
                                 }
                                 view_error_menu(`The following questions were filled empty: ${new_string_g}`)
                             } else {
-                                var converted_json_string = JSON.stringify(new_formated_values)
-                                try {
-                                    if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
-                                        mode_response["type_of_api"] = "POST"
+                                get_captcha(captcha_key => {
+                                    if (captcha_key[0] == "Google") {
+                                        new_formated_values[google_captcha["jsonName"]] = captcha_key[1]
+                                    } else if (captcha_key[0] == "Cloudflare") {
+                                        new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
                                     }
-                                    var include_credentials = "omit"
-                                    if (specific_settings["include_cookies"] == true) {
-                                        include_credentials = "include"
-                                    }
-                                    fetch(new_api_url, {
-                                        "headers": {
-                                            "accept": "application/json",
-                                            "accept-language": "en-US,en;q=0.9",
-                                            "content-type": "application/json",
-                                            "sec-fetch-dest": "empty",
-                                            "sec-fetch-mode": "cors",
-                                            "sec-fetch-site": "same-origin",
+
+                                    var converted_json_string = JSON.stringify(new_formated_values)
+                                    try {
+                                        if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
+                                            mode_response["type_of_api"] = "POST"
+                                        }
+                                        var include_credentials = "omit"
+                                        if (specific_settings["include_cookies"] == true) {
+                                            include_credentials = "include"
+                                        }
+                                        fetch(new_api_url, {
+                                            "headers": {
+                                                "accept": "application/json",
+                                                "accept-language": "en-US,en;q=0.9",
+                                                "content-type": "application/json",
+                                                "sec-fetch-dest": "empty",
+                                                "sec-fetch-mode": "cors",
+                                                "sec-fetch-site": "same-origin",
+                                                "credentials": include_credentials,
+                                                "cookie": document.cookie,
+                                                "x-csrf-token": x_csrf_token
+                                            },
+                                            "referrerPolicy": "strict-origin-when-cross-origin",
+                                            "body": converted_json_string,
+                                            "method": mode_response["type_of_api"],
+                                            "mode": "cors",
                                             "credentials": include_credentials,
-                                            "cookie": document.cookie,
-                                            "x-csrf-token": x_csrf_token
-                                        },
-                                        "referrerPolicy": "strict-origin-when-cross-origin",
-                                        "body": converted_json_string,
-                                        "method": mode_response["type_of_api"],
-                                        "mode": "cors",
-                                        "credentials": include_credentials,
-                                    }).then(res => {
-                                        if (res.ok) {
-                                            res.json().then(json => {
-                                                values["fetch_response"] = json
-                                                values["current_form"] = system_json
-                                                if (specific_settings["allow_second_form"] == true) {
-                                                    if (json["form"]) {
-                                                        loadFormJSON(json["form"])
+                                        }).then(res => {
+                                            if (res.ok) {
+                                                res.json().then(json => {
+                                                    values["fetch_response"] = json
+                                                    values["current_form"] = system_json
+                                                    if (specific_settings["allow_second_form"] == true) {
+                                                        if (json["form"]) {
+                                                            loadFormJSON(json["form"])
+                                                        } else {
+                                                            view_success_menu(selected_mode, json["message"])
+                                                            on_success_form(values)
+                                                        }
                                                     } else {
                                                         view_success_menu(selected_mode, json["message"])
                                                         on_success_form(values)
                                                     }
-                                                } else {
-                                                    view_success_menu(selected_mode, json["message"])
-                                                    on_success_form(values)
-                                                }
-                                            })
-                                        } else {
-                                            res.json().then(json => {
-                                                view_error_menu(json["message"])
-                                            })
-                                        }
-                                    })
-                                } catch (err) {
-                                    view_error_menu(err.message)
-                                }
+                                                })
+                                            } else {
+                                                res.json().then(json => {
+                                                    view_error_menu(json["message"])
+                                                })
+                                            }
+                                        })
+                                    } catch (err) {
+                                        view_error_menu(err.message)
+                                    }
+                                }, task_key)
                             }
                         }
                     }).catch(responseToError)
-                }, authenticated_token)
+                }).catch(responseToError)
             }).catch(responseToError)
-        }).catch(responseToError)
-    } catch (err) {
-        responseToError(err)
+        } catch (err) {
+            responseToError(err)
+        }
     }
 }
 
@@ -423,6 +495,9 @@ function start_system() {
                     var new_html = `<img src="${icon_url}" height="64" width="64" class="center">`
                     main_menu.innerHTML = new_html + main_menu.innerHTML
                 }
+            }
+            if (specific_settings["add_html_slot1"]) {
+                new_html = new_html + specific_settings["add_html_slot1"]
             }
             for (let a = 0; a < questions.length; a++) {
                 var newQuestion = questions[a]
@@ -598,6 +673,16 @@ function start_system() {
                     var new_html = `<p>${newQuestion["name"]}: Failed to create question. Please ask the owner of this form to correct the question type.</p>"`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 }
+                if (document.getElementById(`${newQuestion["jsonName"]}_input`)) {
+                    var object = document.getElementById(`${newQuestion["jsonName"]}_input`)
+                    if (object.tagName.toLowerCase() == "input") {
+                        if (newQuestion["autofilled"] == true) {
+                            object.style.display = "none"
+                            object.value = newQuestion["autofilled_value"]
+                            object.setAttribute("autofilled", "true")
+                        }
+                    }
+                }
             }
             if (system_json["hideModeSelection"] == false) {
                 var new_html = `<p>Modes: `
@@ -609,15 +694,24 @@ function start_system() {
             }
             if (system_json["showCurrentMode"] == true) {
                 var new_html = `<p id="current_mode">Current Mode: ${selected_mode}</p>`
+                if (specific_settings["add_html_slot2"]) {
+                    new_html = new_html + specific_settings["add_html_slot2"]
+                }
                 if (specific_settings["showModeInButtonText"] == false) {
-                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
+                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send Form!</button>`
                 } else {
-                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response()">Send ${selected_mode}!</button>`
+                    new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send ${selected_mode}!</button>`
                 }
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             } else {
-                var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response()">Send Form!</button>`
+                if (specific_settings["add_html_slot2"]) {
+                    new_html = new_html + specific_settings["add_html_slot2"]
+                }
+                var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
+            }
+            if (specific_settings["add_html_slot3"]) {
+                new_html = new_html + specific_settings["add_html_slot3"]
             }
             if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == false) {
                 var new_html = `<input type="hidden" id="${google_captcha["jsonName"]}_input" name="${google_captcha["jsonName"]}_input"></input>`
@@ -651,7 +745,7 @@ function start_system() {
                         cloudflare_captcha_enabled = true
                     });
                 } catch (err) {
-                    console.warn("Cloudflare Captcha failed to load due to an error. Please make sure to use the mode and is in your head object!")
+                    console.warn("Cloudflare Captcha failed to load due to an error. Please make sure to use the module and is in your head object!")
                 }
             } else if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == true) {
                 console.warn("You can't have both CAPTCHAs enabled at the same time. Disable one in your JSON settings!")
@@ -674,27 +768,30 @@ function start_system() {
 }
 
 function loadFormJSONfromURL(url) {
-    system_json = {}
-    fetch(url).then(res => {
-        if (res.ok) {
-            res.json().then(json => {
-                system_json = json
-                questions = system_json["questions"]
-                modes = system_json["modes"]
-                specific_settings = system_json["specific_settings"]
-                selected_mode = system_json["defaultMode"]
-                google_captcha = system_json["googleCaptcha"]
-                cloudflare_captcha = system_json["cloudflareCaptcha"]
-                start_system()
-            })
-        } else {
-            res.json().then(json => {
-                console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
-            })
-        }
-    }).catch(err => {
-        console.error(`Request failed, json resulted with: {}`)
-    })
+    try {
+        system_json = {}
+        fetch(url).then(res => {
+            if (res.ok) {
+                res.json().then(json => {
+                    system_json = json
+                    questions = system_json["questions"]
+                    modes = system_json["modes"]
+                    specific_settings = system_json["specific_settings"]
+                    selected_mode = system_json["defaultMode"]
+                    google_captcha = system_json["googleCaptcha"]
+                    cloudflare_captcha = system_json["cloudflareCaptcha"]
+                    start_system()
+                })
+            } else {
+                res.json().then(json => {
+                    console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
+                })
+            }
+        })
+    } catch (err) {
+        console.log(`Error while loading from url: ${err.message}`)
+        loadLastLoadedJSON()
+    }
 }
 
 function loadLastLoadedJSON() {

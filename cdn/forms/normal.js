@@ -7,7 +7,7 @@ Made by Efaz from efaz.dev!
 
 (Information about this script)
 Made by: Efaz from https://www.efaz.dev
-Script Version: v1.0.5
+Script Version: v1.1.0
 Type of Code: JavaScript
 
 */
@@ -203,6 +203,7 @@ function set_mode(mode) {
     getModeInfo(mode).then(response => {
         if (response["success"] == true) {
             selected_mode = mode
+            main_mode_details = response["response"]
 
             if (system_json["showCurrentMode"] && document.getElementById("current_mode")) {
                 var obj1 = document.getElementById("current_mode")
@@ -213,6 +214,50 @@ function set_mode(mode) {
                     obj2.innerHTML = `Send Form!`
                 } else {
                     obj2.innerHTML = `Send ${mode}!`
+                }
+
+                var questions = system_json["questions"]
+                if (specific_settings["showAllQuestionsInAllModes"] == true) {
+                    for (let a = 0; a < questions.length; a++) {
+                        var main_question = questions[a]
+                        if (!(main_question["autofilled"] == true)) {
+                            var object = document.getElementById(`${main_question["jsonName"]}_input`)
+                            if (object) {
+                                if (object.parentNode.tagName == "DIV") {
+                                    object.style.display = ""
+                                } else {
+                                    object.parentNode.style.display = ""
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    for (let a = 0; a < questions.length; a++) {
+                        var main_question = questions[a]
+                        if (!(main_question["autofilled"] == true)) {
+                            var object = document.getElementById(`${main_question["jsonName"]}_input`)
+                            if (object) {
+                                if (object.parentNode.tagName == "DIV") {
+                                    object.style.display = "none"
+                                } else {
+                                    object.parentNode.style.display = "none"
+                                }
+                            }
+
+                            for (let b = 0; b < main_mode_details["formatted"].length; b++) {
+                                var question_a_details = main_mode_details["formatted"][b]
+                                if (question_a_details["jsonName"] == main_question["jsonName"]) {
+                                    if (object) {
+                                        if (object.parentNode.tagName == "DIV") {
+                                            object.style.display = ""
+                                        } else {
+                                            object.parentNode.style.display = ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             } else {
                 var obj2 = document.getElementById("sendButton")
@@ -328,7 +373,7 @@ function send_response(verification_key) {
                                     } else if (captcha_key[0] == "Cloudflare") {
                                         new_formated_values[cloudflare_captcha["jsonName"]] = captcha_key[1]
                                     }
-                                    
+
                                     var converted_json_string = JSON.stringify(new_formated_values)
                                     try {
                                         if (!(mode_response["type_of_api"] == "POST" || mode_response["type_of_api"] == "PUT" || mode_response["type_of_api"] == "PATCH")) {
@@ -354,7 +399,7 @@ function send_response(verification_key) {
                                             "body": converted_json_string,
                                             "method": mode_response["type_of_api"],
                                             "mode": "cors",
-                                            "credentials": include_credentials
+                                            "credentials": include_credentials,
                                         }).then(res => {
                                             if (res.ok) {
                                                 res.json().then(json => {
@@ -365,11 +410,11 @@ function send_response(verification_key) {
                                                             loadFormJSON(json["form"])
                                                         } else {
                                                             view_success_menu(selected_mode, json["message"])
-                                                            on_success_form(values) 
+                                                            on_success_form(values)
                                                         }
                                                     } else {
                                                         view_success_menu(selected_mode, json["message"])
-                                                        on_success_form(values) 
+                                                        on_success_form(values)
                                                     }
                                                 })
                                             } else {
@@ -437,6 +482,9 @@ function start_system() {
                     var new_html = `<img src="${icon_url}" height="64" width="64" class="center">`
                     main_menu.innerHTML = new_html + main_menu.innerHTML
                 }
+            }
+            if (specific_settings["add_html_slot1"]) {
+                new_html = new_html + specific_settings["add_html_slot1"]
             }
             for (let a = 0; a < questions.length; a++) {
                 var newQuestion = questions[a]
@@ -612,6 +660,16 @@ function start_system() {
                     var new_html = `<p>${newQuestion["name"]}: Failed to create question. Please ask the owner of this form to correct the question type.</p>"`
                     main_menu.innerHTML = main_menu.innerHTML + new_html
                 }
+                if (document.getElementById(`${newQuestion["jsonName"]}_input`)) {
+                    var object = document.getElementById(`${newQuestion["jsonName"]}_input`)
+                    if (object.tagName.toLowerCase() == "input") {
+                        if (newQuestion["autofilled"] == true) {
+                            object.style.display = "none"
+                            object.value = newQuestion["autofilled_value"]
+                            object.setAttribute("autofilled", "true")
+                        }
+                    }
+                }
             }
             if (system_json["hideModeSelection"] == false) {
                 var new_html = `<p>Modes: `
@@ -623,6 +681,9 @@ function start_system() {
             }
             if (system_json["showCurrentMode"] == true) {
                 var new_html = `<p id="current_mode">Current Mode: ${selected_mode}</p>`
+                if (specific_settings["add_html_slot2"]) {
+                    new_html = new_html + specific_settings["add_html_slot2"]
+                }
                 if (specific_settings["showModeInButtonText"] == false) {
                     new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send Form!</button>`
                 } else {
@@ -630,8 +691,14 @@ function start_system() {
                 }
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             } else {
+                if (specific_settings["add_html_slot2"]) {
+                    new_html = new_html + specific_settings["add_html_slot2"]
+                }
                 var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
+            }
+            if (specific_settings["add_html_slot3"]) {
+                new_html = new_html + specific_settings["add_html_slot3"]
             }
             if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == false) {
                 var new_html = `<input type="hidden" id="${google_captcha["jsonName"]}_input" name="${google_captcha["jsonName"]}_input"></input>`
