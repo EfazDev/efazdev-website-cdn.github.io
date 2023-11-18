@@ -347,7 +347,16 @@ function send_response(verification_key) {
                                 var question = questions[e]
                                 if (question["required"] == true) {
                                     if (getIfResponseIsEmpty(new_formated_values[question["jsonName"]])) {
-                                        listOfEmptyRequiredVariables.push(question["name"])
+                                        if (mode_response["formatted"]) {
+                                            for (let h = 0; h < mode_response["formatted"].length; h++) {
+                                                var lista = mode_response["formatted"][h]
+                                                if (lista["jsonName"] == question["jsonName"]) {
+                                                    listOfEmptyRequiredVariables.push(question["name"])
+                                                }
+                                            }
+                                        } else {
+                                            listOfEmptyRequiredVariables.push(question["name"])
+                                        }
                                     }
                                 }
                             }
