@@ -1,0 +1,63 @@
+{
+    "title": "Verify Email Address!",
+    "icon_url": "https://cdn.efaz.dev/cdn/png/logo.png",
+    "questions": [
+        {
+            "name": "Password",
+            "jsonName": "password",
+            "type": "Short Response",
+            "placeholder": "Enter your password!",
+            "required": true,
+            "custom_class": ""
+        },
+        {
+            "name": "Email Address",
+            "jsonName": "email_address",
+            "type": "Short Response",
+            "placeholder": "Enter your email!",
+            "required": true,
+            "custom_class": ""
+        }
+    ],
+    "googleCaptcha": {
+        "enabled": false,
+        "siteKey": "",
+        "jsonName": "g_captcha"
+    },
+    "cloudflareCaptcha": {
+        "enabled": true,
+        "siteKey": "0x4AAAAAAAL7YK_aJBt5iMM6",
+        "jsonName": "c_captcha"
+    },
+    "hideModeSelection": true,
+    "showCurrentMode": true,
+    "defaultMode": "Verification",
+    "modes": [
+        {
+            "name": "Verification",
+            "api_url": "https://dashboard.efaz.dev/api/auth/email-address",
+            "type_of_api": "POST",
+            "formatted": [
+                {
+                    "questionName": "Password",
+                    "jsonName": "password",
+                    "in": "Body"
+                },
+                {
+                    "questionName": "Email Address",
+                    "jsonName": "email_address",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "Email has been sent to finish verifying! Check your inbox or Junk box!",
+            "showTryAgainOnSuccess": false,
+            "showTypeOfModeInBody": false
+        }
+    ],
+    "specific_settings": {
+        "showRequiredText": true,
+        "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css",
+        "include_cookies": true,
+        "allow_second_form": true
+    }
+}
