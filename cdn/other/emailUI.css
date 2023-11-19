@@ -20,46 +20,4 @@ e {
 
 a {
     color: #0080ff;
-    margin-left: 20px;
-}
-
-.footer {
-    left: 0px;
-    bottom: 0px;
-    height: 30px;
-    width: 100%;
-}
-.center {
-    display: block;
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-html {
-    height: 100%;
-}
-
-group {
-    border-bottom: dashed rgb(255, 255, 255);
-    border-top: dashed rgb(255, 255, 255);
-}
-
-body {
-    height: 100%;
-    margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-h1, p {
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-top {
-    background: gray;
-    border-radius: 0px;
-    right:0px;
-    left:0px;
-    padding: 6px;
-    position: absolute;
 }
