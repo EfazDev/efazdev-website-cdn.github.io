@@ -5,7 +5,7 @@
         {
             "name": "Password",
             "jsonName": "password",
-            "type": "Short Response",
+            "type": "Password",
             "placeholder": "Enter your password!",
             "required": true,
             "custom_class": ""
