@@ -1,0 +1,123 @@
+@font-face {
+    font-family: arialrounded;
+    src: url("/cdn/other/ArialRounded.ttf");
+    font-weight: bold;
+}
+
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(225deg, rgba(255, 75, 0, 1) 0%, rgb(207, 207, 0) 60%, rgb(19, 193, 0) 100%);
+    font-family: arialrounded;
+    color: white;
+    overflow: hidden;
+}
+
+div {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    vertical-align: middle;
+    position: fixed;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+e {
+    color: rgb(255, 0, 0);
+    font-size: x-small;
+}
+
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+.footer {
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+group {
+    border-bottom: dashed rgb(255, 255, 255);
+    border-top: dashed rgb(255, 255, 255);
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+p,
+h1,
+h2 {
+    text-align: center;
+}
+
+button {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #00b1ff;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
+a {
+    color: #0080ff;
+}
+
+input,
+textarea {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+top {
+    background: gray;
+    border-radius: 0px;
+    right:0px;
+    left:0px;
+    padding: 6px;
+    position: absolute;
+}
+
+table,
+th,
+td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+}
