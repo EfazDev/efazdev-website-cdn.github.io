@@ -686,8 +686,8 @@ function start_system() {
                     var object = document.getElementById(`${newQuestion["jsonName"]}_input`)
                     if (object.tagName.toLowerCase() == "input") {
                         if (newQuestion["autofilled"] == true) {
-                            object.style.display = "none"
-                            object.value = newQuestion["autofilled_value"]
+                            object.parentNode.style.display = "none"
+                            object.setAttribute("value", newQuestion["autofilled_value"])
                             object.setAttribute("autofilled", "true")
                         }
                     }
