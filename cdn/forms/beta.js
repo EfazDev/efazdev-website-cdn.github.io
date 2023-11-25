@@ -811,3 +811,69 @@ function loadFormJSON(json) {
     cloudflare_captcha = system_json["cloudflareCaptcha"]
     start_system()
 }
+
+async function loadFormJSONfromURLByAsync(url) {
+    try {
+        system_json = {}
+        return fetch(url).then(res => {
+            if (res.ok) {
+                res.json().then(json => {
+                    system_json = json
+                    questions = system_json["questions"]
+                    modes = system_json["modes"]
+                    specific_settings = system_json["specific_settings"]
+                    selected_mode = system_json["defaultMode"]
+                    google_captcha = system_json["googleCaptcha"]
+                    cloudflare_captcha = system_json["cloudflareCaptcha"]
+                    start_system()
+                    return true, "success"
+                })
+            } else {
+                return res.json().then(json => {
+                    console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
+                    return false, JSON.stringify(json)
+                })
+            }
+        }).catch(err => {
+            console.log(`Error while loading from url: ${err.message}`)
+            loadLastLoadedJSON()
+            return false, err.message
+        })
+    } catch (err) {
+        console.log(`Error while loading from url: ${err.message}`)
+        loadLastLoadedJSON()
+        return false, err.message
+    }
+}
+
+async function loadLastLoadedJSONByAsync() {
+    try {
+        system_json = lastLoadedJSON
+        questions = system_json["questions"]
+        modes = system_json["modes"]
+        specific_settings = system_json["specific_settings"]
+        selected_mode = system_json["defaultMode"]
+        google_captcha = system_json["googleCaptcha"]
+        cloudflare_captcha = system_json["cloudflareCaptcha"]
+        start_system()
+        return true, "success"
+    } catch (err) {
+        return false, err.message
+    }
+}
+
+async function loadFormJSONByAsync(json) {
+    try {
+        system_json = json
+        questions = system_json["questions"]
+        modes = system_json["modes"]
+        specific_settings = system_json["specific_settings"]
+        selected_mode = system_json["defaultMode"]
+        google_captcha = system_json["googleCaptcha"]
+        cloudflare_captcha = system_json["cloudflareCaptcha"]
+        start_system()
+        return true, "success"
+    } catch (err) {
+        return false, err.message
+    }
+}
