@@ -834,6 +834,9 @@ async function loadFormJSONfromURLByAsync(url) {
                 return res.json().then(json => {
                     console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
                     return false, JSON.stringify(json)
+                }).catch(err => {
+                    console.error(`Request failed, json resulted with: ${err.message}`)
+                    return false, err.message
                 })
             }
         }).catch(err => {
