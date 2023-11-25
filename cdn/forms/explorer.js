@@ -854,6 +854,8 @@ async function loadFormJSONfromURLByAsync(url) {
                     cloudflare_captcha = system_json["cloudflareCaptcha"]
                     start_system()
                     return true, "success"
+                }).catch(err => {
+                    return false, err.message
                 })
             } else {
                 return res.json().then(json => {
