@@ -450,8 +450,8 @@ function send_response(verification_key) {
 function explore() {
     var url_used = document.getElementById("explore_button_input_sys").value
     try {
-        loadFormJSONfromURLByAsync(url_used).then((success, err) => {
-            if (success) {
+        loadFormJSONfromURLByAsync(url_used).then((res) => {
+            if (res[0]) {
                 setTimeout(() => {
                     document.getElementById("exploreButton").innerHTML = "Success!"
                     setTimeout(() => {
@@ -853,28 +853,28 @@ async function loadFormJSONfromURLByAsync(url) {
                     google_captcha = system_json["googleCaptcha"]
                     cloudflare_captcha = system_json["cloudflareCaptcha"]
                     start_system()
-                    return true, "success"
+                    return [true, "success"]
                 }).catch(err => {
-                    return false, err.message
+                    return [false, err.message]
                 })
             } else {
                 return res.json().then(json => {
                     console.error(`Request failed, json resulted with: ${JSON.stringify(json)}`)
-                    return false, JSON.stringify(json)
+                    return [false, JSON.stringify(json)]
                 }).catch(err => {
                     console.error(`Request failed, json resulted with: ${err.message}`)
-                    return false, err.message
+                    return [false, err.message]
                 })
             }
         }).catch(err => {
             console.log(`Error while loading from url: ${err.message}`)
             loadLastLoadedJSON()
-            return false, err.message
+            return [false, err.message]
         })
     } catch (err) {
         console.log(`Error while loading from url: ${err.message}`)
         loadLastLoadedJSON()
-        return false, err.message
+        return [false, err.message]
     }
 }
 
@@ -888,9 +888,9 @@ async function loadLastLoadedJSONByAsync() {
         google_captcha = system_json["googleCaptcha"]
         cloudflare_captcha = system_json["cloudflareCaptcha"]
         start_system()
-        return true, "success"
+        return [true, "success"]
     } catch (err) {
-        return false, err.message
+        return [false, err.message]
     }
 }
 
@@ -904,9 +904,9 @@ async function loadFormJSONByAsync(json) {
         google_captcha = system_json["googleCaptcha"]
         cloudflare_captcha = system_json["cloudflareCaptcha"]
         start_system()
-        return true, "success"
+        return [true, "success"]
     } catch (err) {
-        return false, err.message
+        return [false, err.message]
     }
 }
 
