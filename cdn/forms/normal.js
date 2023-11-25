@@ -817,7 +817,7 @@ async function loadFormJSONfromURLByAsync(url) {
         system_json = {}
         return fetch(url).then(res => {
             if (res.ok) {
-                res.json().then(json => {
+                return res.json().then(json => {
                     system_json = json
                     questions = system_json["questions"]
                     modes = system_json["modes"]

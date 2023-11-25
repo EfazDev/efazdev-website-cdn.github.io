@@ -452,10 +452,12 @@ function explore() {
     try {
         loadFormJSONfromURLByAsync(url_used).then((success, err) => {
             if (success) {
-                document.getElementById("exploreButton").innerHTML = "Success!"
                 setTimeout(() => {
-                    document.getElementById("exploreButton").innerHTML = "Explore!"
-                }, 2000)
+                    document.getElementById("exploreButton").innerHTML = "Success!"
+                    setTimeout(() => {
+                        document.getElementById("exploreButton").innerHTML = "Explore!"
+                    }, 2000)
+                }, 1000)
             } else {
                 document.getElementById("exploreButton").innerHTML = "Request failed to load!"
                 setTimeout(() => {
@@ -842,7 +844,7 @@ async function loadFormJSONfromURLByAsync(url) {
         system_json = {}
         return fetch(url).then(res => {
             if (res.ok) {
-                res.json().then(json => {
+                return res.json().then(json => {
                     system_json = json
                     questions = system_json["questions"]
                     modes = system_json["modes"]
