@@ -625,7 +625,7 @@ function start_system() {
                         new_html = new_html + ` required>`
 
                         for (let d_k = 0; d_k < newQuestion["placeholder"].length; d_k++) {
-                            var sel = newQuestion["placeholder"]
+                            var sel = newQuestion["placeholder"][d_k]
                             new_html = new_html + `<option value="${sel["value"]}">${sel["name"]}</option>`
                         }
 
@@ -637,7 +637,7 @@ function start_system() {
                     } else {
                         new_html = new_html + `>`
                         for (let d_k = 0; d_k < newQuestion["placeholder"].length; d_k++) {
-                            var sel = newQuestion["placeholder"]
+                            var sel = newQuestion["placeholder"][d_k]
                             new_html = new_html + `<option value="${sel["value"]}">${sel["name"]}</option>`
                         }
                         new_html = new_html + `</select>`
