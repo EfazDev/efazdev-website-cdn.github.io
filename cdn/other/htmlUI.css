@@ -130,7 +130,7 @@ button[id="hide_group_account"] {
     margin-right: auto;
 }
 
-button[buys="buy_button"] {
+button[buy="buy_button"] {
     border: 1px solid white;
     border-collapse: collapse;
     text-align: center;
