@@ -130,6 +130,20 @@ button[id="hide_group_account"] {
     margin-right: auto;
 }
 
+button[buys="buy_button"] {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #43cd00;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    justify-content: center;
+    font-family: arialrounded;
+    margin-right: auto;
+}
+
 button[onclick="logOut('all')"] {
     border: 1px solid white;
     border-collapse: collapse;
@@ -209,4 +223,12 @@ td {
     border: 1px solid white;
     border-collapse: collapse;
     text-align: center;
+}
+
+m {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
