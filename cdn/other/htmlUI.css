@@ -36,6 +36,11 @@ e {
     font-size: x-small;
 }
 
+m {
+    text-align: center;
+    color:#00ff00;
+}
+
 .grecaptcha-badge {
     visibility: hidden;
 }
