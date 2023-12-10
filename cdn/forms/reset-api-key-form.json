@@ -1,0 +1,50 @@
+{
+    "title": "Reset API Key",
+    "icon_url": "https://cdn.efaz.dev/cdn/png/logo.png",
+    "questions": [
+        {
+            "name": "Enter your password",
+            "jsonName": "password",
+            "type": "Password",
+            "placeholder": "Enter your password!",
+            "required": true,
+            "custom_class": ""
+        }
+    ],
+    "googleCaptcha": {
+        "enabled": false,
+        "siteKey": "",
+        "jsonName": "g_captcha"
+    },
+    "cloudflareCaptcha": {
+        "enabled": true,
+        "siteKey": "0x4AAAAAAAL7YK_aJBt5iMM6",
+        "jsonName": "c_captcha"
+    },
+    "hideModeSelection": true,
+    "showCurrentMode": true,
+    "defaultMode": "Reset",
+    "modes": [
+        {
+            "name": "Reset",
+            "api_url": "https://dashboard.efaz.dev/api/payment/request-new-key",
+            "type_of_api": "POST",
+            "formatted": [
+                {
+                    "questionName": "Enter your password",
+                    "jsonName": "password",
+                    "in": "Body"
+                }
+            ],
+            "thanksMessage": "{jsonMessage}",
+            "showTryAgainOnSuccess": false,
+            "showTypeOfModeInBody": false
+        }
+    ],
+    "specific_settings": {
+        "showRequiredText": true,
+        "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css",
+        "include_cookies": true,
+        "allow_second_form": true
+    }
+}
