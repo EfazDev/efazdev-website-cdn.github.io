@@ -20,13 +20,13 @@
         "description": "Fix Roblox UGC Items bugged and cannot be put on-sale."
     },
     {
-        "name": "Ban Service",
-        "url": "https://www.efaz.dev/banservice",
-        "download_url": "https://cdn.efaz.dev/cdn/rbxm/download.html?fileName=BanService.rbxm",
+        "name": "EfazDev API v1",
+        "url": "https://www.efaz.dev/api-v1",
+        "download_url": "https://api.efaz.dev/api/docs",
         "discontinued": false,
         "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "buttonText": {"ProjectsPage": "How to use", "ProjectPage": "Try it now!"},
         "dateDiscontinued": "None",
-        "description": "A ban system that can be used to ban users"
+        "description": "An API that can help with using Roblox or selected platform APIs!"
     }
 ]

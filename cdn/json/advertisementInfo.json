@@ -1,13 +1,1 @@
-[
-    {
-        "name": "RubyAutomation",
-        "madeBy": "siillver.",
-        "url": "https://www.efaz.dev/rubyautomation",
-        "download_url": "https://codeload.github.com/httpssilver/RubyAutomation/zip/refs/heads/main",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "A mewt sniper extension."
-    }
-]
+[]

@@ -84,7 +84,7 @@
         "url": "https://www.efaz.dev/fakeMewtUI",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=fakeMewtUI.py",
         "discontinued": true,
-        "showInProjectsPage": true,
+        "showInProjectsPage": false,
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "July 10th, 2023",
         "description": "Create a fake mewt sniper UI via Python cmd."
@@ -94,7 +94,7 @@
         "url": "https://www.efaz.dev/mewt-webhook-spammer",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=spamMewtWebhook.py",
         "discontinued": true,
-        "showInProjectsPage": true,
+        "showInProjectsPage": false,
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "July 10th, 2023",
         "description": "Spam a Discord Webhook with Mewt Payload"
