@@ -520,7 +520,7 @@ function start_system() {
                 }
             }
             if (specific_settings["add_html_slot1"]) {
-                new_html = new_html + specific_settings["add_html_slot1"]
+                main_menu.innerHTML = main_menu.innerHTML + specific_settings["add_html_slot1"]
             }
             for (let a = 0; a < questions.length; a++) {
                 var newQuestion = questions[a]
@@ -727,14 +727,15 @@ function start_system() {
                 }
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             } else {
+                new_html = ""
                 if (specific_settings["add_html_slot2"]) {
                     new_html = new_html + specific_settings["add_html_slot2"]
                 }
-                var new_html = `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send Form!</button>`
+                new_html = new_html + `<button type="button" id="sendButton" class="center" onclick="send_response('${btoa(task_key)}')">Send Form!</button>`
                 main_menu.innerHTML = main_menu.innerHTML + new_html
             }
             if (specific_settings["add_html_slot3"]) {
-                new_html = new_html + specific_settings["add_html_slot3"]
+                main_menu.innerHTML = main_menu.innerHTML + specific_settings["add_html_slot3"]
             }
             if (google_captcha["enabled"] == true && cloudflare_captcha["enabled"] == false) {
                 var new_html = `<input type="hidden" id="${google_captcha["jsonName"]}_input" name="${google_captcha["jsonName"]}_input"></input>`
