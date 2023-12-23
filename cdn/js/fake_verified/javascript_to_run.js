@@ -153,7 +153,7 @@
                                     var username_containers_2 = document.getElementsByClassName("creator-name text-link");
                                     if (username_containers_2.length > 0) {
                                         username_containers_2.forEach((user_container) => {
-                                            if (user_container.innerHTML == `@${json["name"]}`) {
+                                            if (user_container.innerHTML == `@${json["name"]}` && user_container.className == "creator-name text-link") {
                                                 user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
                                             }
                                         });
@@ -164,7 +164,7 @@
                             var username_containers_2 = document.getElementsByClassName("creator-name text-link");
                             if (username_containers_2.length > 0) {
                                 username_containers_2.forEach((user_container) => {
-                                    if (user_container.innerHTML == `@${json["name"]}`) {
+                                    if (user_container.innerHTML == `@${json["name"]}` && user_container.className == "creator-name text-link") {
                                         user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
                                     }
                                 });
@@ -173,6 +173,15 @@
                             var username_containers_3 = document.getElementsByClassName("text-name text-overflow");
                             if (username_containers_3.length > 0) {
                                 username_containers_3.forEach((user_container) => {
+                                    if (user_container.innerHTML == `@${json["name"]}`) {
+                                        user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                    }
+                                });
+                            }
+
+                            var username_containers_4 = document.getElementsByClassName("text-name");
+                            if (username_containers_4.length > 0) {
+                                username_containers_4.forEach((user_container) => {
                                     if (user_container.innerHTML == `@${json["name"]}`) {
                                         user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
                                     }
