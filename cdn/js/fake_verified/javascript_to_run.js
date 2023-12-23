@@ -174,7 +174,7 @@
                             if (username_containers_3.length > 0) {
                                 username_containers_3.forEach((user_container) => {
                                     if (user_container.innerHTML == `@${json["name"]}`) {
-                                        user_container.innerHTML = `${user_container.innerHTML} ${game_html}`;
+                                        user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
                                     }
                                 });
                             }
