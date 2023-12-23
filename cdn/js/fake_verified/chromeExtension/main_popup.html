@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' gap:; script-src 'unsafe-inline'; script-src-elem *; object-src *; style-src 'self' data: 'unsafe-inline'; img-src * data:; media-src * data:; font-src * data:; connect-src *">
+    <style>
+        @font-face {
+            font-family: arialrounded;
+            src: url('https://cdn.efaz.dev/cdn/other/ArialRounded.ttf');
+            font-weight: bold;
+        }
+
+        body {
+            min-height: 100%;
+            min-width: 100%;
+            background: linear-gradient(225deg, #ff4b00 0%, rgb(207, 207, 0) 60%, rgb(19, 193, 0) 100%);
+            font-family: arialrounded;
+            color: white;
+        }
+
+        e {
+            color: rgb(255, 0, 0);
+            font-size: x-small;
+        }
+
+        input, button {
+            border: 1px solid white;
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: auto;
+            border-radius: 8px;
+            background-color: #00b1ff;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+            justify-content: center;
+            font-family: arialrounded;
+            margin-right: auto;
+        }
+
+        a {
+            color: #4295f5;
+        }
+    </style>
+    <script src="popup.js"></script>
+</head>
+<body style='min-height: 100%; min-width:100%; background-color: rgb(255, 75, 0);'>
+    <div id='main_menu'><img src='https://cdn.efaz.dev/cdn/png/logo.png' height='64' width='64' class='center'>
+        <h1 id='title1'>Hello!</h1>
+
+        <label for="enableExtension">Enable Extension: <input type="checkbox" id="enableExtension" name="enableExtension" checked></label><br>
+        <button type='submit' id="submitbutton">Save Data!</button>
+
+        <td align="center" style="font-size:0">
+            <table cellpadding="4" cellspacing="4">
+                <tbody>
+                    <tr>
+                        <td align="center" valign="top"><a target="_blank" href="https://twitter.efaz.dev"><img
+                                    title="Twitter" src="https://cdn.efaz.dev/cdn/png/twitter-logo.png" alt="Tw"
+                                    height="32" width="32"></a></td>
+                        <td align="center" valign="top" width="null"><a target="_blank"
+                                href="https://youtube.efaz.dev"><img title="Custom"
+                                    src="https://cdn.efaz.dev/cdn/png/youtube-logo.png" alt height="32" width="32"></a>
+                        </td>
+                        <td align="center" valign="top" width="null"><a target="_blank"
+                                href="https://discord.efaz.dev"><img title="Custom"
+                                    src="https://cdn.efaz.dev/cdn/png/discord-logo.png" alt height="32" width="32"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <p>Made by @EfazDev</p>
+    </div>
+</body>
+
+</html>

@@ -90,6 +90,16 @@
         "description": "Destroy a Roblox Cookie in just a few moments!"
     },
     {
+        "name": "Efaz's Roblox Verified Badge Addon",
+        "url": "https://www.efaz.dev/fake-roblox-verified-badge",
+        "download_url": "https://cdn.efaz.dev/cdn/js/fake_verified/download.html?type=link&browser=all",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Have a Roblox Verified Badge next to your name!"
+    },
+    {
         "name": "Efaz's Roblox In-Game UGC Tracer",
         "url": "https://www.efaz.dev/ingameugctracer",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=RobloxInGameUGCTracer.py",
