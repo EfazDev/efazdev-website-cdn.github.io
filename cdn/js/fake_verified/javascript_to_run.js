@@ -123,6 +123,50 @@
                                                 }
                                             });
                                         }
+
+
+                                        setTimeout(() => {
+                                            var list_item = document.getElementsByClassName("group-comments vlist");
+                                            list_item = Array.prototype.slice.call(list_item);
+                                            if (list_item.length > 0) {
+                                                var group_list_comments = list_item[0];
+                                                applied_updating_v2 = true;
+                                                var observer = new MutationObserver(() => {
+                                                    var group_wall = document.getElementsByClassName("text-name ng-binding ng-scope");
+                                                    group_wall = Array.prototype.slice.call(group_wall);
+                                                    if (group_wall.length > 0) {
+                                                        group_wall.forEach((main_name_on_group) => {
+                                                            if (main_name_on_group.innerHTML == json["displayName"] && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                                observer.observe(group_list_comments, { attributes: true, childList: true });
+                                            }
+
+                                            setTimeout(() => {
+                                                var group_div = document.getElementsByClassName("ng-scope");
+                                                group_div = Array.prototype.slice.call(group_div);
+                                                if (group_div.length > 0) {
+                                                    group_div.forEach((user_container) => {
+                                                        if ((user_container.className == "ng-scope" || user_container.className == "btr-group-container ng-scope btr-hasGames btr-hasPayouts") && user_container.getAttribute("ng-if") == "!isLockedGroup() && !isGroupRestrictedByPolicy() && !layout.loadGroupMetadataError") {
+                                                            var observer = new MutationObserver(applyCallback);
+                                                            observer.observe(user_container, { attributes: true, childList: true });
+                                                        }
+                                                    });
+                                                }
+
+                                                var member_list = document.getElementsByClassName("hlist");
+                                                member_list = Array.prototype.slice.call(member_list);
+                                                if (member_list.length > 1) {
+                                                    var group_list_comments = member_list[1];
+                                                    applied_updating_v2 = true;
+                                                    var observer = new MutationObserver(applyCallback);
+                                                    observer.observe(group_list_comments, { attributes: true, childList: true });
+                                                }
+                                            }, 500)
+                                        }, 500)
                                     }
                                     var applied_updating = false;
                                     var applied_updating_v2 = false;
@@ -170,7 +214,7 @@
                                             }
                                         });
                                     }
-                                    
+
                                     if (applied_updating_v2 == false) {
                                         var list_item = document.getElementsByClassName("tab-content rbx-tab-content col-xs-12");
                                         list_item = Array.prototype.slice.call(list_item);
@@ -181,6 +225,60 @@
                                             observer.observe(group_list_header, { attributes: true, childList: true });
                                         }
                                     }
+
+                                    var group_wall = document.getElementsByClassName("text-name ng-binding ng-scope");
+                                    group_wall = Array.prototype.slice.call(group_wall);
+                                    if (group_wall.length > 0) {
+                                        group_wall.forEach((main_name_on_group) => {
+                                            if (main_name_on_group.innerHTML == json["displayName"] && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                            }
+                                        });
+                                    }
+
+                                    setTimeout(() => {
+                                        var list_item = document.getElementsByClassName("group-comments vlist");
+                                        list_item = Array.prototype.slice.call(list_item);
+                                        if (list_item.length > 0) {
+                                            var group_list_comments = list_item[0];
+                                            applied_updating_v2 = true;
+                                            var observer = new MutationObserver(() => {
+                                                var group_wall = document.getElementsByClassName("text-name ng-binding ng-scope");
+                                                group_wall = Array.prototype.slice.call(group_wall);
+                                                if (group_wall.length > 0) {
+                                                    group_wall.forEach((main_name_on_group) => {
+                                                        if (main_name_on_group.innerHTML == json["displayName"] && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                            main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                            observer.observe(group_list_comments, { attributes: true, childList: true });
+                                        }
+
+                                        setTimeout(() => {
+                                            var group_div = document.getElementsByClassName("ng-scope");
+                                            group_div = Array.prototype.slice.call(group_div);
+                                            if (group_div.length > 0) {
+                                                group_div.forEach((user_container) => {
+                                                    if ((user_container.className == "ng-scope" || user_container.className == "btr-group-container ng-scope btr-hasGames btr-hasPayouts") && user_container.getAttribute("ng-if") == "!isLockedGroup() && !isGroupRestrictedByPolicy() && !layout.loadGroupMetadataError") {
+                                                        var observer = new MutationObserver(applyCallback);
+                                                        observer.observe(user_container, { attributes: true, childList: true });
+                                                    }
+                                                });
+                                            }
+
+                                            var member_list = document.getElementsByClassName("hlist");
+                                            member_list = Array.prototype.slice.call(member_list);
+                                            if (member_list.length > 1) {
+                                                var group_list_comments = member_list[1];
+                                                applied_updating_v2 = true;
+                                                var observer = new MutationObserver(applyCallback);
+                                                observer.observe(group_list_comments, { attributes: true, childList: true });
+                                            }
+                                        }, 500)
+                                    }, 500)
+
                                 }
 
                                 var username_containers = document.getElementsByClassName("user-name-container");
@@ -204,7 +302,7 @@
                                                 }
                                             });
                                         }
-                                        
+
                                         var username_containers_7 = document.getElementsByClassName("avatar-name text-overflow ng-binding");
                                         username_containers_7 = Array.prototype.slice.call(username_containers_7);
                                         if (username_containers_7.length > 0) {
@@ -268,7 +366,7 @@
                                         }
                                     });
                                 }
-                                
+
                                 var username_containers_5 = document.getElementsByClassName("text-overflow age-bracket-label-username font-caption-header");
                                 username_containers_5 = Array.prototype.slice.call(username_containers_5);
                                 if (username_containers_5.length > 0) {
@@ -278,7 +376,7 @@
                                         }
                                     });
                                 }
-                                
+
                                 var username_containers_6 = document.getElementsByClassName("text-name name ng-binding");
                                 username_containers_6 = Array.prototype.slice.call(username_containers_6);
                                 if (username_containers_6.length > 0) {
@@ -288,7 +386,7 @@
                                         }
                                     });
                                 }
-                                
+
                                 var username_containers_7 = document.getElementsByClassName("avatar-name text-overflow ng-binding");
                                 username_containers_7 = Array.prototype.slice.call(username_containers_7);
                                 if (username_containers_7.length > 0) {
