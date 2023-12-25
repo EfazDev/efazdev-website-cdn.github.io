@@ -109,7 +109,9 @@
                                         if (name_in_group.length > 0) {
                                             name_in_group.forEach((main_name_on_group) => {
                                                 if (main_name_on_group.innerHTML == json["displayName"]) {
-                                                    main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                    if (main_name_on_group.offsetParent.offsetParent.id == `member-${userId}`) {
+                                                        main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                    }
                                                 }
                                             });
                                         }
@@ -123,7 +125,6 @@
                                                 }
                                             });
                                         }
-
 
                                         setTimeout(() => {
                                             var list_item = document.getElementsByClassName("group-comments vlist");
@@ -165,8 +166,8 @@
                                                     var observer = new MutationObserver(applyCallback);
                                                     observer.observe(group_list_comments, { attributes: true, childList: true });
                                                 }
-                                            }, 500)
-                                        }, 500)
+                                            }, 500);
+                                        }, 500);
                                     }
                                     var applied_updating = false;
                                     var applied_updating_v2 = false;
@@ -210,20 +211,11 @@
                                     if (name_in_group.length > 0) {
                                         name_in_group.forEach((main_name_on_group) => {
                                             if (main_name_on_group.innerHTML == json["displayName"]) {
-                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                if (main_name_on_group.offsetParent.offsetParent.id == `member-${userId}`) {
+                                                    main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                }
                                             }
                                         });
-                                    }
-
-                                    if (applied_updating_v2 == false) {
-                                        var list_item = document.getElementsByClassName("tab-content rbx-tab-content col-xs-12");
-                                        list_item = Array.prototype.slice.call(list_item);
-                                        if (list_item.length > 0) {
-                                            var group_list_header = list_item[0];
-                                            applied_updating_v2 = true;
-                                            var observer = new MutationObserver(applyCallback);
-                                            observer.observe(group_list_header, { attributes: true, childList: true });
-                                        }
                                     }
 
                                     var group_wall = document.getElementsByClassName("text-name ng-binding ng-scope");
@@ -276,9 +268,19 @@
                                                 var observer = new MutationObserver(applyCallback);
                                                 observer.observe(group_list_comments, { attributes: true, childList: true });
                                             }
-                                        }, 500)
-                                    }, 500)
+                                        }, 500);
+                                    }, 500);
 
+                                    if (applied_updating_v2 == false) {
+                                        var list_item = document.getElementsByClassName("tab-content rbx-tab-content col-xs-12");
+                                        list_item = Array.prototype.slice.call(list_item);
+                                        if (list_item.length > 0) {
+                                            var group_list_header = list_item[0];
+                                            applied_updating_v2 = true;
+                                            var observer = new MutationObserver(applyCallback);
+                                            observer.observe(group_list_header, { attributes: true, childList: true });
+                                        }
+                                    }
                                 }
 
                                 var username_containers = document.getElementsByClassName("user-name-container");
@@ -312,7 +314,37 @@
                                                 }
                                             });
                                         }
-                                    }, 1000)
+
+                                        var username_containers_8 = document.getElementsByClassName("text-overflow avatar-name ng-binding ng-scope");
+                                        username_containers_8 = Array.prototype.slice.call(username_containers_8);
+                                        if (username_containers_8.length > 0) {
+                                            username_containers_8.forEach((user_container) => {
+                                                if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "text-overflow avatar-name ng-binding ng-scope") {
+                                                    var username_containers_9 = document.getElementsByClassName("text-overflow avatar-card-label ng-binding ng-scope");
+                                                    username_containers_9 = Array.prototype.slice.call(username_containers_9);
+                                                    if (username_containers_9.length > 0) {
+                                                        username_containers_9.forEach((user_container_2) => {
+                                                            if (user_container.offsetParent == user_container_2.offsetParent) {
+                                                                if (user_container_2.innerText == `@${json["name"]}`) {
+                                                                    user_container.outerHTML = `${user_container.innerHTML} ${game_html}`;
+                                                                }
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+
+                                        setTimeout(function () {
+                                            var list_item = document.getElementsByClassName("search-result avatar-cards ng-scope");
+                                            list_item = Array.prototype.slice.call(list_item);
+                                            if (list_item.length > 0) {
+                                                var catalog_list_header = list_item[0];
+                                                var observer = new MutationObserver(applyAutoChangeFunctionB);
+                                                observer.observe(catalog_list_header, { childList: true });
+                                            }
+                                        }, 500);
+                                    }, 1000);
                                 }
 
                                 function applyAutoChangeFunctionC() {
@@ -334,7 +366,7 @@
                                             var observer = new MutationObserver(applyAutoChangeFunctionB);
                                             observer.observe(catalog_list_header, { childList: true });
                                         }
-                                    }, 1000)
+                                    }, 1000);
                                 }
 
                                 var username_containers_2 = document.getElementsByClassName("creator-name text-link");
@@ -397,6 +429,38 @@
                                     });
                                 }
 
+                                setTimeout(function () {
+                                    var username_containers_8 = document.getElementsByClassName("text-overflow avatar-name ng-binding ng-scope");
+                                    username_containers_8 = Array.prototype.slice.call(username_containers_8);
+                                    if (username_containers_8.length > 0) {
+                                        username_containers_8.forEach((user_container) => {
+                                            if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "text-overflow avatar-name ng-binding ng-scope") {
+                                                var username_containers_9 = document.getElementsByClassName("text-overflow avatar-card-label ng-binding ng-scope");
+                                                username_containers_9 = Array.prototype.slice.call(username_containers_9);
+                                                if (username_containers_9.length > 0) {
+                                                    username_containers_9.forEach((user_container_2) => {
+                                                        if (user_container.offsetParent == user_container_2.offsetParent) {
+                                                            if (user_container_2.innerText == `@${json["name"]}`) {
+                                                                user_container.outerHTML = `${user_container.innerHTML} ${game_html}`;
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        });
+                                    }
+                                }, 500);
+
+                                setTimeout(function () {
+                                    var list_item = document.getElementsByClassName("search-result avatar-cards ng-scope");
+                                    list_item = Array.prototype.slice.call(list_item);
+                                    if (list_item.length > 0) {
+                                        var catalog_list_header = list_item[0];
+                                        var observer = new MutationObserver(applyAutoChangeFunctionB);
+                                        observer.observe(catalog_list_header, { childList: true });
+                                    }
+                                }, 500);
+
                                 var list_item = document.getElementsByClassName("hlist item-cards-stackable ng-scope");
                                 list_item = Array.prototype.slice.call(list_item);
                                 if (list_item.length > 0) {
@@ -421,7 +485,17 @@
                                     observer.observe(catalog_list_header, { childList: true });
                                 }
 
-                                window.set_verified = true;
+                                setTimeout(function () {
+                                    var list_item = document.getElementsByClassName("content");
+                                    list_item = Array.prototype.slice.call(list_item);
+                                    if (list_item.length > 0) {
+                                        var catalog_list_header = list_item[0];
+                                        var observer = new MutationObserver(applyAutoChangeFunctionB);
+                                        observer.observe(catalog_list_header, { childList: true });
+                                    }
+                                }, 500);
+
+                                window.set_verified = true
                             } else {
                                 if (allow_messages) alert("Fake Verified Badge couldn't be applied since we couldn't figure what your User ID is.");
                             }
