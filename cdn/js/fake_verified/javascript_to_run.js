@@ -56,6 +56,9 @@
                         .then(json => {
                             if (json["id"]) {
                                 var userId = json["id"];
+                                
+                                profile_html = profile_html.replace("18617640", userId).replace("18617640", userId).replace("18617640", userId).replace("18617640", userId);
+
                                 if (window.location.pathname == `/users/${userId}/profile`) {
                                     var main_headers = document.getElementsByClassName("header-title");
                                     main_headers = Array.prototype.slice.call(main_headers);
