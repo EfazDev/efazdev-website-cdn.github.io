@@ -67,6 +67,14 @@ window.onload = function () {
                         .then(json => {
                             if (json["id"]) {
                                 var userId = json["id"];
+                                var include_groups = false;
+                                var allowed_groups = [];
+
+                                if (window.verifiedCheckmarkSettings) {
+                                    if (window.verifiedCheckmarkSettings["groupsIncluded"] == true) {
+                                        include_groups = true;
+                                    }
+                                }
 
                                 profile_html = profile_html.replace("18617640", userId).replace("18617640", userId).replace("18617640", userId).replace("18617640", userId);
 
@@ -365,6 +373,26 @@ window.onload = function () {
                                                 if (user_container.innerHTML == `@${json["name"]}` && user_container.className == "creator-name text-link") {
                                                     user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
                                                 }
+                                                if (include_groups == true) {
+                                                    if (user_container.className == "creator-name text-link") {
+                                                        if (user_container.href && user_container.href.includes("/groups/")) {
+                                                            var group_id = user_container.href.match(/[0-9]+/)[0];
+                                                            var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
+                                                            fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                                if (grou_json["owner"]) {
+                                                                    if (grou_json["owner"]["userId"] == userId) {
+                                                                        allowed_groups.push(group_id);
+                                                                        if (user_container.className == "creator-name text-link") {
+                                                                            if (user_container.innerHTML == grou_json["name"]) {
+                                                                                user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            })
+                                                        }
+                                                    }
+                                                }
                                             });
                                         }
 
@@ -439,6 +467,26 @@ window.onload = function () {
                                         if (user_container.innerHTML == `@${json["name"]}` && user_container.className == "creator-name text-link") {
                                             user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
                                         }
+                                        if (include_groups == true) {
+                                            if (user_container.className == "creator-name text-link") {
+                                                if (user_container.href && user_container.href.includes("/groups/")) {
+                                                    var group_id = user_container.href.match(/[0-9]+/)[0];
+                                                    var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
+                                                    fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                        if (grou_json["owner"]) {
+                                                            if (grou_json["owner"]["userId"] == userId) {
+                                                                allowed_groups.push(group_id);
+                                                                if (user_container.className == "creator-name text-link") {
+                                                                    if (user_container.innerHTML == grou_json["name"]) {
+                                                                        user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    })
+                                                }
+                                            }
+                                        }
                                     });
                                 }
 
@@ -449,6 +497,22 @@ window.onload = function () {
                                         if (user_container.innerHTML == `@${json["name"]}`) {
                                             user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
                                         }
+                                        if (include_groups == true) {
+                                            if (user_container.href && user_container.href.includes("/groups/")) {
+                                                var group_id = user_container.href.match(/[0-9]+/)[0];
+                                                var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
+                                                fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                    if (grou_json["owner"]) {
+                                                        if (grou_json["owner"]["userId"] == userId) {
+                                                            allowed_groups.push(group_id);
+                                                            if (user_container.innerHTML == grou_json["name"]) {
+                                                                user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                            }
+                                                        }
+                                                    }
+                                                })
+                                            }
+                                        }
                                     });
                                 }
 
@@ -458,6 +522,22 @@ window.onload = function () {
                                     username_containers_4.forEach((user_container) => {
                                         if (user_container.innerHTML == `@${json["name"]}`) {
                                             user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                        }
+                                        if (include_groups == true) {
+                                            if (user_container.href && user_container.href.includes("/groups/")) {
+                                                var group_id = user_container.href.match(/[0-9]+/)[0];
+                                                var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
+                                                fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                    if (grou_json["owner"]) {
+                                                        if (grou_json["owner"]["userId"] == userId) {
+                                                            allowed_groups.push(group_id);
+                                                            if (user_container.innerHTML == grou_json["name"]) {
+                                                                user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                            }
+                                                        }
+                                                    }
+                                                })
+                                            }
                                         }
                                     });
                                 }
