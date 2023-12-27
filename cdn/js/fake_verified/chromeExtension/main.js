@@ -8,12 +8,27 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (details) {
             const storage = chrome.storage.sync;
             storage.get(["verified_checkmark_settings"], function (items) {
                 var enabled = false
+                var custom_color = "#0066FF"
+                var group_included = false
                 if (items["verified_checkmark_settings"]) {
-                    enabled = items["verified_checkmark_settings"]["enabled"];
+                    if (items["verified_checkmark_settings"]["enabled"]) { enabled = items["verified_checkmark_settings"]["enabled"] };
+                    if (items["verified_checkmark_settings"]["color"]) { custom_color = items["verified_checkmark_settings"]["color"] };
+                    if (items["verified_checkmark_settings"]["groupsIncluded"]) { group_included = items["verified_checkmark_settings"]["groupsIncluded"] };
                 } else {
                     enabled = true;
+                    custom_color = "#0066FF"    
+                    group_included = false
                 }
                 if (enabled == true) {
+                    function setVerifiedSettings(data) {
+                        window.verifiedCheckmarkSettings = data
+                    }
+                    chrome.scripting.executeScript({
+                        target: { tabId: tabId, allFrames: true },
+                        func: setVerifiedSettings,
+                        args : [ {"enabled": enabled, "color": custom_color, "groupsIncluded": group_included} ]
+                    });
+
                     if (ready == true) {
                         fetch("javascript_to_run.js").then(res => {
                             return res.text()

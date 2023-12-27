@@ -45,6 +45,7 @@
                     var name_side_html = atob("PGltZyBzcmM9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtjaGFyc2V0PXV0Zi04LCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyOCcgaGVpZ2h0PScyOCcgdmlld0JveD0nMCAwIDI4IDI4JyBmaWxsPSdub25lJyUzRSUzQ2cgY2xpcC1wYXRoPSd1cmwoJTIzY2xpcDBfOF80NiknJTNFJTNDcmVjdCB4PSc1Ljg4ODE4JyB3aWR0aD0nMjIuODknIGhlaWdodD0nMjIuODknIHRyYW5zZm9ybT0ncm90YXRlKDE1IDUuODg4MTggMCknIGZpbGw9JyUyMzAwNjZGRicvJTNFJTNDcGF0aCBmaWxsLXJ1bGU9J2V2ZW5vZGQnIGNsaXAtcnVsZT0nZXZlbm9kZCcgZD0nTTIwLjU0MyA4Ljc1MDhMMjAuNTQ5IDguNzU2OEMyMS4xNSA5LjM1NzggMjEuMTUgMTAuMzMxOCAyMC41NDkgMTAuOTMyOEwxMS44MTcgMTkuNjY0OEw3LjQ1IDE1LjI5NjhDNi44NSAxNC42OTU4IDYuODUgMTMuNzIxOCA3LjQ1IDEzLjEyMThMNy40NTcgMTMuMTE0OEM4LjA1OCAxMi41MTM4IDkuMDMxIDEyLjUxMzggOS42MzMgMTMuMTE0OEwxMS44MTcgMTUuMjk5OEwxOC4zNjcgOC43NTA4QzE4Ljk2OCA4LjE0OTggMTkuOTQyIDguMTQ5OCAyMC41NDMgOC43NTA4WicgZmlsbD0nd2hpdGUnLyUzRSUzQy9nJTNFJTNDZGVmcyUzRSUzQ2NsaXBQYXRoIGlkPSdjbGlwMF84XzQ2JyUzRSUzQ3JlY3Qgd2lkdGg9JzI4JyBoZWlnaHQ9JzI4JyBmaWxsPSd3aGl0ZScvJTNFJTNDL2NsaXBQYXRoJTNFJTNDL2RlZnMlM0UlM0Mvc3ZnJTNFIiB0aXRsZT0iVmVyaWZpZWQgQmFkZ2UgSWNvbiIgYWx0PSJWZXJpZmllZCBCYWRnZSBJY29uIiBzdHlsZT0ibWFyZ2luLWxlZnQ6IDJweDt3aWR0aDogMTJweDtoZWlnaHQ6IDEycHg7IGJhY2tncm91bmQ6IG5vbmUgIWltcG9ydGFudDsiPg==");
                     var game_html = atob("PHNwYW4gcm9sZT0iYnV0dG9uIiB0YWJpbmRleD0iMCIgZGF0YS1yYmx4LXZlcmlmaWVkLWJhZGdlLWljb249IiIgZGF0YS1yYmx4LWJhZGdlLWljb249InRydWUiIGNsYXNzPSJqc3M0Ij48aW1nIGNsYXNzPSJ2ZXJpZmllZC1iYWRnZS1pY29uLWV4cGVyaWVuY2UtY3JlYXRvciIgc3R5bGU9Im1hcmdpbi1sZWZ0OiA0cHg7d2lkdGg6IDE2cHg7aGVpZ2h0OiAxNnB4OyIgc3JjPSJkYXRhOmltYWdlL3N2Zyt4bWw7Y2hhcnNldD11dGYtOCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB3aWR0aD0nMjgnIGhlaWdodD0nMjgnIHZpZXdCb3g9JzAgMCAyOCAyOCcgZmlsbD0nbm9uZSclM0UlM0NnIGNsaXAtcGF0aD0ndXJsKCUyM2NsaXAwXzhfNDYpJyUzRSUzQ3JlY3QgeD0nNS44ODgxOCcgd2lkdGg9JzIyLjg5JyBoZWlnaHQ9JzIyLjg5JyB0cmFuc2Zvcm09J3JvdGF0ZSgxNSA1Ljg4ODE4IDApJyBmaWxsPSclMjMwMDY2RkYnLyUzRSUzQ3BhdGggZmlsbC1ydWxlPSdldmVub2RkJyBjbGlwLXJ1bGU9J2V2ZW5vZGQnIGQ9J00yMC41NDMgOC43NTA4TDIwLjU0OSA4Ljc1NjhDMjEuMTUgOS4zNTc4IDIxLjE1IDEwLjMzMTggMjAuNTQ5IDEwLjkzMjhMMTEuODE3IDE5LjY2NDhMNy40NSAxNS4yOTY4QzYuODUgMTQuNjk1OCA2Ljg1IDEzLjcyMTggNy40NSAxMy4xMjE4TDcuNDU3IDEzLjExNDhDOC4wNTggMTIuNTEzOCA5LjAzMSAxMi41MTM4IDkuNjMzIDEzLjExNDhMMTEuODE3IDE1LjI5OThMMTguMzY3IDguNzUwOEMxOC45NjggOC4xNDk4IDE5Ljk0MiA4LjE0OTggMjAuNTQzIDguNzUwOFonIGZpbGw9J3doaXRlJy8lM0UlM0MvZyUzRSUzQ2RlZnMlM0UlM0NjbGlwUGF0aCBpZD0nY2xpcDBfOF80NiclM0UlM0NyZWN0IHdpZHRoPScyOCcgaGVpZ2h0PScyOCcgZmlsbD0nd2hpdGUnLyUzRSUzQy9jbGlwUGF0aCUzRSUzQy9kZWZzJTNFJTNDL3N2ZyUzRSIgdGl0bGU9IlZlcmlmaWVkIEJhZGdlIEljb24iIGFsdD0iVmVyaWZpZWQgQmFkZ2UgSWNvbiI+PC9zcGFuPg==");
                     var name_small_html = atob("PHNwYW4+PHNwYW4gcm9sZT0iYnV0dG9uIiB0YWJpbmRleD0iMCIgZGF0YS1yYmx4LXZlcmlmaWVkLWJhZGdlLWljb249IiIgZGF0YS1yYmx4LWJhZGdlLWljb249InRydWUiIGNsYXNzPSJqc3MyMiI+PGltZyBjbGFzcz0idmVyaWZpZWQtYmFkZ2UtaWNvbi1tZW1iZXItY2FyZC1yZW5kZXJlZCIgc3JjPSJkYXRhOmltYWdlL3N2Zyt4bWw7Y2hhcnNldD11dGYtOCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB3aWR0aD0nMjgnIGhlaWdodD0nMjgnIHZpZXdCb3g9JzAgMCAyOCAyOCcgZmlsbD0nbm9uZSclM0UlM0NnIGNsaXAtcGF0aD0ndXJsKCUyM2NsaXAwXzhfNDYpJyUzRSUzQ3JlY3QgeD0nNS44ODgxOCcgd2lkdGg9JzIyLjg5JyBoZWlnaHQ9JzIyLjg5JyB0cmFuc2Zvcm09J3JvdGF0ZSgxNSA1Ljg4ODE4IDApJyBmaWxsPSclMjMwMDY2RkYnLyUzRSUzQ3BhdGggZmlsbC1ydWxlPSdldmVub2RkJyBjbGlwLXJ1bGU9J2V2ZW5vZGQnIGQ9J00yMC41NDMgOC43NTA4TDIwLjU0OSA4Ljc1NjhDMjEuMTUgOS4zNTc4IDIxLjE1IDEwLjMzMTggMjAuNTQ5IDEwLjkzMjhMMTEuODE3IDE5LjY2NDhMNy40NSAxNS4yOTY4QzYuODUgMTQuNjk1OCA2Ljg1IDEzLjcyMTggNy40NSAxMy4xMjE4TDcuNDU3IDEzLjExNDhDOC4wNTggMTIuNTEzOCA5LjAzMSAxMi41MTM4IDkuNjMzIDEzLjExNDhMMTEuODE3IDE1LjI5OThMMTguMzY3IDguNzUwOEMxOC45NjggOC4xNDk4IDE5Ljk0MiA4LjE0OTggMjAuNTQzIDguNzUwOFonIGZpbGw9J3doaXRlJy8lM0UlM0MvZyUzRSUzQ2RlZnMlM0UlM0NjbGlwUGF0aCBpZD0nY2xpcDBfOF80NiclM0UlM0NyZWN0IHdpZHRoPScyOCcgaGVpZ2h0PScyOCcgZmlsbD0nd2hpdGUnLyUzRSUzQy9jbGlwUGF0aCUzRSUzQy9kZWZzJTNFJTNDL3N2ZyUzRSIgdGl0bGU9IlZlcmlmaWVkIEJhZGdlIEljb24iIGFsdD0iVmVyaWZpZWQgQmFkZ2UgSWNvbiI+PC9zcGFuPjwvc3Bhbj4=");
+                    var group_name_verified_html = atob("PGltZyBjbGFzcz0idmVyaWZpZWQtYmFkZ2UtaWNvbi1ncm91cC1uYW1lLXJlbmRlcmVkIiBzcmM9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtjaGFyc2V0PXV0Zi04LCUzQ3N2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyOCcgaGVpZ2h0PScyOCcgdmlld0JveD0nMCAwIDI4IDI4JyBmaWxsPSdub25lJyUzRSUzQ2cgY2xpcC1wYXRoPSd1cmwoJTIzY2xpcDBfOF80NiknJTNFJTNDcmVjdCB4PSc1Ljg4ODE4JyB3aWR0aD0nMjIuODknIGhlaWdodD0nMjIuODknIHRyYW5zZm9ybT0ncm90YXRlKDE1IDUuODg4MTggMCknIGZpbGw9JyUyMzAwNjZGRicvJTNFJTNDcGF0aCBmaWxsLXJ1bGU9J2V2ZW5vZGQnIGNsaXAtcnVsZT0nZXZlbm9kZCcgZD0nTTIwLjU0MyA4Ljc1MDhMMjAuNTQ5IDguNzU2OEMyMS4xNSA5LjM1NzggMjEuMTUgMTAuMzMxOCAyMC41NDkgMTAuOTMyOEwxMS44MTcgMTkuNjY0OEw3LjQ1IDE1LjI5NjhDNi44NSAxNC42OTU4IDYuODUgMTMuNzIxOCA3LjQ1IDEzLjEyMThMNy40NTcgMTMuMTE0OEM4LjA1OCAxMi41MTM4IDkuMDMxIDEyLjUxMzggOS42MzMgMTMuMTE0OEwxMS44MTcgMTUuMjk5OEwxOC4zNjcgOC43NTA4QzE4Ljk2OCA4LjE0OTggMTkuOTQyIDguMTQ5OCAyMC41NDMgOC43NTA4WicgZmlsbD0nd2hpdGUnLyUzRSUzQy9nJTNFJTNDZGVmcyUzRSUzQ2NsaXBQYXRoIGlkPSdjbGlwMF84XzQ2JyUzRSUzQ3JlY3Qgd2lkdGg9JzI4JyBoZWlnaHQ9JzI4JyBmaWxsPSd3aGl0ZScvJTNFJTNDL2NsaXBQYXRoJTNFJTNDL2RlZnMlM0UlM0Mvc3ZnJTNFIiB0aXRsZT0iVmVyaWZpZWQgQmFkZ2UgSWNvbiIgYWx0PSJWZXJpZmllZCBCYWRnZSBJY29uIj4=");
                     getUserData()
                         .then(res => {
                             if (res) {
@@ -56,7 +57,7 @@
                         .then(json => {
                             if (json["id"]) {
                                 var userId = json["id"];
-                                
+
                                 profile_html = profile_html.replace("18617640", userId).replace("18617640", userId).replace("18617640", userId).replace("18617640", userId);
 
                                 if (window.location.pathname == `/users/${userId}/profile`) {
@@ -95,6 +96,18 @@
                                         group_owners.forEach((group_owner_name) => {
                                             if (group_owner_name.innerHTML == json["displayName"] && group_owner_name.href == `https://www.roblox.com/users/${userId}/profile`) {
                                                 group_owner_name.innerHTML = `${group_owner_name.innerHTML} ${name_side_html}`;
+
+                                                if (window.verifiedCheckmarkSettings) {
+                                                    if (window.verifiedCheckmarkSettings["groupsIncluded"] == true) {
+                                                        var group_name = document.getElementsByClassName("group-name text-overflow ng-binding ng-scope");
+                                                        group_name = Array.prototype.slice.call(group_name);
+                                                        if (group_name.length > 0) {
+                                                            group_name.forEach((main_name_on_group) => {
+                                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${group_name_verified_html}`;
+                                                            });
+                                                        }
+                                                    }
+                                                }
                                             }
                                         });
 
@@ -177,6 +190,19 @@
                                     group_owners.forEach((group_owner_name) => {
                                         if (group_owner_name.innerHTML == json["displayName"] && group_owner_name.href == `https://www.roblox.com/users/${userId}/profile`) {
                                             group_owner_name.innerHTML = `${group_owner_name.innerHTML} ${name_side_html}`;
+
+                                            if (window.verifiedCheckmarkSettings) {
+                                                if (window.verifiedCheckmarkSettings["groupsIncluded"] == true) {
+                                                    var group_name = document.getElementsByClassName("group-name text-overflow ng-binding ng-scope");
+                                                    group_name = Array.prototype.slice.call(group_name);
+                                                    if (group_name.length > 0) {
+                                                        group_name.forEach((main_name_on_group) => {
+                                                            main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${group_name_verified_html}`;
+                                                        });
+                                                    }
+                                                }
+                                            }
+
                                             if (applied_updating == false) {
                                                 var group_headers = document.getElementsByClassName("group-title");
                                                 group_headers = Array.prototype.slice.call(group_headers);
@@ -189,6 +215,30 @@
                                             }
                                         }
                                     });
+
+                                    if (window.verifiedCheckmarkSettings) {
+                                        if (window.verifiedCheckmarkSettings["groupsIncluded"] == true) {
+                                            var group_list_verified_logo = document.getElementsByTagName("groups-list-item");
+                                            group_list_verified_logo = Array.prototype.slice.call(group_list_verified_logo);
+                                            if (group_list_verified_logo.length > 0) {
+                                                group_list_verified_logo.forEach((main_name_on_group) => {
+                                                    if (main_name_on_group.parentElement.getAttribute("ng-repeat")) {
+                                                        if (main_name_on_group.parentElement.getAttribute("ng-repeat").includes("filter: { isOwner: true }")) {
+                                                            if (main_name_on_group.children[0] && main_name_on_group.children[0].children[0] && main_name_on_group.children[0].children[0].children[1]) {
+                                                                main_name_on_group = main_name_on_group.children[0].children[0].children[1];
+                                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                            }
+                                                        }
+                                                    } else if (main_name_on_group.parentElement.className.includes("primary-group")) {
+                                                        if (main_name_on_group.children[0] && main_name_on_group.children[0].children[0] && main_name_on_group.children[0].children[0].children[1]) {
+                                                            main_name_on_group = main_name_on_group.children[0].children[0].children[1];
+                                                            main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    }
 
                                     var group_shouts = document.getElementsByClassName("text-name name ng-binding ng-scope");
                                     group_shouts = Array.prototype.slice.call(group_shouts);
