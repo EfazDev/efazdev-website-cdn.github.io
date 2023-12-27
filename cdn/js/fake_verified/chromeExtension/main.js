@@ -7,17 +7,15 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (details) {
         if (details.url.includes("https://www.roblox.com")) {
             const storage = chrome.storage.sync;
             storage.get(["verified_checkmark_settings"], function (items) {
-                var enabled = false
+                var enabled = true
                 var custom_color = "#0066FF"
                 var group_included = false
+                var allowed_alerts = true
                 if (items["verified_checkmark_settings"]) {
-                    if (items["verified_checkmark_settings"]["enabled"]) { enabled = items["verified_checkmark_settings"]["enabled"] };
-                    if (items["verified_checkmark_settings"]["color"]) { custom_color = items["verified_checkmark_settings"]["color"] };
-                    if (items["verified_checkmark_settings"]["groupsIncluded"]) { group_included = items["verified_checkmark_settings"]["groupsIncluded"] };
-                } else {
-                    enabled = true;
-                    custom_color = "#0066FF"    
-                    group_included = false
+                    if (typeof(items["verified_checkmark_settings"]["enabled"]) == "boolean") { enabled = items["verified_checkmark_settings"]["enabled"] };
+                    if (typeof(items["verified_checkmark_settings"]["color"]) == "string" && /^#[0-9A-F]{6}$/i.test(items["verified_checkmark_settings"]["color"])) { custom_color = items["verified_checkmark_settings"]["color"] };
+                    if (typeof(items["verified_checkmark_settings"]["groupsIncluded"]) == "boolean") { group_included = items["verified_checkmark_settings"]["groupsIncluded"] };
+                    if (typeof(items["verified_checkmark_settings"]["allowedAlerts"]) == "boolean") { allowed_alerts = items["verified_checkmark_settings"]["allowedAlerts"] };
                 }
                 if (enabled == true) {
                     function setVerifiedSettings(data) {
@@ -26,7 +24,7 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function (details) {
                     chrome.scripting.executeScript({
                         target: { tabId: tabId, allFrames: true },
                         func: setVerifiedSettings,
-                        args : [ {"enabled": enabled, "color": custom_color, "groupsIncluded": group_included} ]
+                        args : [ {"enabled": enabled, "color": custom_color, "groupsIncluded": group_included, "allowedAlerts": allowed_alerts} ]
                     });
 
                     if (ready == true) {
