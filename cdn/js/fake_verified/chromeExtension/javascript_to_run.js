@@ -378,18 +378,27 @@ window.onload = function () {
                                                         if (user_container.href && user_container.href.includes("/groups/")) {
                                                             var group_id = user_container.href.match(/[0-9]+/)[0];
                                                             var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
-                                                            fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
-                                                                if (grou_json["owner"]) {
-                                                                    if (grou_json["owner"]["userId"] == userId) {
-                                                                        allowed_groups.push(group_id);
-                                                                        if (user_container.className == "creator-name text-link") {
-                                                                            if (user_container.innerHTML == grou_json["name"]) {
-                                                                                user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                            if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
+                                                                if (user_container.className == "creator-name text-link") {
+                                                                    if (user_container.innerHTML == allowed_groups[group_id]["name"]) {
+                                                                        user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                                    if (grou_json["owner"]) {
+                                                                        if (grou_json["owner"]["userId"] == userId) {
+                                                                            grou_json["accepted"] = true
+                                                                            allowed_groups[group_id] = grou_json
+                                                                            if (user_container.className == "creator-name text-link") {
+                                                                                if (user_container.innerHTML == grou_json["name"]) {
+                                                                                    user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                                                }
                                                                             }
                                                                         }
                                                                     }
-                                                                }
-                                                            })
+                                                                });
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -472,18 +481,27 @@ window.onload = function () {
                                                 if (user_container.href && user_container.href.includes("/groups/")) {
                                                     var group_id = user_container.href.match(/[0-9]+/)[0];
                                                     var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
-                                                    fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
-                                                        if (grou_json["owner"]) {
-                                                            if (grou_json["owner"]["userId"] == userId) {
-                                                                allowed_groups.push(group_id);
-                                                                if (user_container.className == "creator-name text-link") {
-                                                                    if (user_container.innerHTML == grou_json["name"]) {
-                                                                        user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                    if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
+                                                        if (user_container.className == "creator-name text-link") {
+                                                            if (user_container.innerHTML == allowed_groups[group_id]["name"]) {
+                                                                user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                            }
+                                                        }
+                                                    } else {
+                                                        fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                            if (grou_json["owner"]) {
+                                                                if (grou_json["owner"]["userId"] == userId) {
+                                                                    grou_json["accepted"] = true
+                                                                    allowed_groups[group_id] = grou_json
+                                                                    if (user_container.className == "creator-name text-link") {
+                                                                        if (user_container.innerHTML == grou_json["name"]) {
+                                                                            user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                                        }
                                                                     }
                                                                 }
                                                             }
-                                                        }
-                                                    })
+                                                        })
+                                                    }
                                                 }
                                             }
                                         }
@@ -501,16 +519,23 @@ window.onload = function () {
                                             if (user_container.href && user_container.href.includes("/groups/")) {
                                                 var group_id = user_container.href.match(/[0-9]+/)[0];
                                                 var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
-                                                fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
-                                                    if (grou_json["owner"]) {
-                                                        if (grou_json["owner"]["userId"] == userId) {
-                                                            allowed_groups.push(group_id);
-                                                            if (user_container.innerHTML == grou_json["name"]) {
-                                                                user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
+                                                    if (user_container.innerHTML == allowed_groups[group_id]["name"]) {
+                                                        user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                    }
+                                                } else {
+                                                    fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                        if (grou_json["owner"]) {
+                                                            if (grou_json["owner"]["userId"] == userId) {
+                                                                grou_json["accepted"] = true
+                                                                allowed_groups[group_id] = grou_json
+                                                                if (user_container.innerHTML == grou_json["name"]) {
+                                                                    user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                                })
+                                                    })
+                                                }
                                             }
                                         }
                                     });
@@ -527,16 +552,23 @@ window.onload = function () {
                                             if (user_container.href && user_container.href.includes("/groups/")) {
                                                 var group_id = user_container.href.match(/[0-9]+/)[0];
                                                 var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
-                                                fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
-                                                    if (grou_json["owner"]) {
-                                                        if (grou_json["owner"]["userId"] == userId) {
-                                                            allowed_groups.push(group_id);
-                                                            if (user_container.innerHTML == grou_json["name"]) {
-                                                                user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
+                                                    if (user_container.innerHTML == allowed_groups[group_id]["name"]) {
+                                                        user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                    }
+                                                } else {
+                                                    fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                        if (grou_json["owner"]) {
+                                                            if (grou_json["owner"]["userId"] == userId) {
+                                                                grou_json["accepted"] = true
+                                                                allowed_groups[group_id] = grou_json
+                                                                if (user_container.innerHTML == grou_json["name"]) {
+                                                                    user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                                })
+                                                    })
+                                                }
                                             }
                                         }
                                     });
