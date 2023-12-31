@@ -5,7 +5,9 @@ async function saveData() {
         "enabled": document.getElementById("enableExtension").checked, 
         "color": document.getElementById("customColor").value, 
         "groupsIncluded": document.getElementById("includeGroups").checked, 
-        "allowedAlerts": document.getElementById("allowAlertMessages").checked 
+        "allowedAlerts": document.getElementById("allowAlertMessages").checked,
+        "verifiedPrompt": document.getElementById("verifiedPrompt").checked,
+        "defaultPrompt": document.getElementById("defaultPrompt").checked
     }
     await storage.set({ "verified_checkmark_settings": formData }, () => {
         alert("Saved data!")
@@ -18,18 +20,27 @@ async function resetColorInput1() {
 
 async function loadChanges(event) {
     storage.get(["verified_checkmark_settings"], function (items) {
+        var enabled = true
+        var custom_color = "#0066FF"
+        var group_included = false
+        var allowed_alerts = true
+        var verified_prompt = true
+        var default_prompt = false
         if (items["verified_checkmark_settings"]) {
             var settings = items["verified_checkmark_settings"];
-            if (settings["enabled"]) { document.getElementById("enableExtension").checked = true };
-            if (settings["color"]) { document.getElementById("customColor").value = settings["color"] };
-            if (settings["groupsIncluded"]) { document.getElementById("includeGroups").checked = true };
-            if (settings["allowedAlerts"]) { document.getElementById("allowAlertMessages").checked = true };
-        } else {
-            document.getElementById("enableExtension").checked = true;
-            document.getElementById("customColor").value = "#0066FF";
-            document.getElementById("includeGroups").checked = false;
-            document.getElementById("allowAlertMessages").checked = true;
+            if (typeof(settings["enabled"]) == "boolean") { enabled = settings["enabled"] };
+            if (typeof(settings["color"]) == "string" && /^#[0-9A-F]{6}$/i.test(settings["color"])) { custom_color = settings["color"] };
+            if (typeof(settings["groupsIncluded"]) == "boolean") { group_included = settings["groupsIncluded"] };
+            if (typeof(settings["allowedAlerts"]) == "boolean") { allowed_alerts = settings["allowedAlerts"] };
+            if (typeof(settings["verifiedPrompt"]) == "boolean") { verified_prompt = settings["verifiedPrompt"] };
+            if (typeof(settings["defaultPrompt"]) == "boolean") { default_prompt = settings["defaultPrompt"] };
         }
+        document.getElementById("enableExtension").checked = enabled;
+        document.getElementById("customColor").value = custom_color;
+        document.getElementById("includeGroups").checked = group_included;
+        document.getElementById("allowAlertMessages").checked = allowed_alerts;
+        document.getElementById("verifiedPrompt").checked = verified_prompt;
+        document.getElementById("defaultPrompt").checked = default_prompt;
     });
     const submitButton = document.getElementById("submitbutton");
     submitButton.addEventListener("click", saveData);
