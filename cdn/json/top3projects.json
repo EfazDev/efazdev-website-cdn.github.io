@@ -1,5 +1,15 @@
 [
     {
+        "name": "Item Moderation Scanner",
+        "url": "https://www.efaz.dev/itemmoderation",
+        "download_url": "https://discord.gg/",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Discord Server", "ProjectPage": "Join Server Now!"},
+        "dateDiscontinued": "None",
+        "description": "Scan items that recently went into Roblox Moderation and be notified when they got approved or declined!"
+    },
+    {
         "name": "Merch Code System",
         "url": "https://www.efaz.dev/merch-code-system",
         "download_url": "https://codeload.github.com/EfazDev/merch-code-system/zip/refs/heads/main",
@@ -8,16 +18,6 @@
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
         "description": "A Discord Bot that allows users to redeem codes for rewards!"
-    },
-    {
-        "name": "Item Fixer",
-        "url": "https://www.efaz.dev/item-fixer",
-        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=ItemFixer-v1.5.1.py",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Fix Roblox UGC Items bugged and cannot be put on-sale."
     },
     {
         "name": "EfazDev API v1",
