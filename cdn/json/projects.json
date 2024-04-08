@@ -30,6 +30,16 @@
         "description": "A ban system that can be used to ban users"
     },
     {
+        "name": "Efaz's Developer Product to Item Game",
+        "url": "https://www.efaz.dev/devproduct-to-item",
+        "download_url": "https://cdn.efaz.dev/cdn/rbxl/download.html?fileName=DeveloperProductItem.rbxl",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "A Roblox Game file that allows you to convert free UGC Limiteds to paid only."
+    },
+    {
         "name": "Logger Detector",
         "url": "https://www.efaz.dev/logger-detector",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=LoggerDetector.py",
