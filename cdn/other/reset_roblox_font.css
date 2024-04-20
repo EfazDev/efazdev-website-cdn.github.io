@@ -1,0 +1,416 @@
+/* Create Font */
+@font-face {
+    font-family: Builder;
+    src: url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Light.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Light.woff) format("woff");
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: Builder;
+    src: url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff) format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: Builder;
+    src: url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff) format("woff");
+    font-weight: 500;
+    font-style: normal
+}
+
+@font-face {
+    font-family: Builder;
+    src: url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff) format("woff");
+    font-weight: 700;
+    font-style: normal
+}
+
+@font-face {
+    font-family: Builder;
+    src: url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Black.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Black.woff) format("woff");
+    font-weight: 800;
+    font-style: normal
+}
+
+/* Original Font */
+
+.builder-font .text,.builder-font body,.builder-font button,.builder-font html,.builder-font input,.builder-font pre,.builder-font select,.builder-font textarea {
+    font-family: HCo Gotham SSm,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.builder-font {
+    font-weight: 400
+}
+
+.builder-font,.builder-font .h1,.builder-font .h2,.builder-font .h3,.builder-font .h4,.builder-font .h5,.builder-font .h6,.builder-font h1,.builder-font h2,.builder-font h3,.builder-font h4,.builder-font h5,.builder-font h6 {
+    font-family: HCo Gotham SSm,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif
+}
+
+.builder-font .font-title,.builder-font .h1,.builder-font h1 {
+    font-size: 32px;
+    font-weight: 800
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-title,.builder-font .h1,.builder-font h1 {
+        font-size:24px
+    }
+}
+
+.builder-font .text-link,.builder-font .vlist .list-item .list-body .list-content a,.vlist .list-item .list-body .list-content .builder-font a {
+    font-weight: 500
+}
+
+.builder-font div {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4em
+}
+
+@media (max-width: 767px) {
+    .builder-font div {
+        font-size:16px;
+        font-weight: 400
+    }
+}
+
+@media (max-width: 543px) {
+    .builder-font div {
+        font-size:12px;
+        font-weight: 400
+    }
+}
+
+.builder-font .ad-identification-text,.builder-font .ad-identification-text:active,.builder-font .ad-identification-text:focus,.builder-font .ad-identification-text:hover,.builder-font .ad-identification-text:link,.builder-font .ad-identification-text:visited,.builder-font .font-small,.builder-font .font-small:active,.builder-font .font-small:focus,.builder-font .font-small:hover,.builder-font .font-small:link,.builder-font .font-small:visited,.builder-font .small,.builder-font .small-oneline,.builder-font .small-oneline:active,.builder-font .small-oneline:focus,.builder-font .small-oneline:hover,.builder-font .small-oneline:link,.builder-font .small-oneline:visited,.builder-font .small:active,.builder-font .small:focus,.builder-font .small:hover,.builder-font .small:link,.builder-font .small:visited,.builder-font .text-date-hint,.builder-font .text-date-hint:active,.builder-font .text-date-hint:focus,.builder-font .text-date-hint:hover,.builder-font .text-date-hint:link,.builder-font .text-date-hint:visited,.builder-font .text-secondary,.builder-font .text-secondary:active,.builder-font .text-secondary:focus,.builder-font .text-secondary:hover,.builder-font .text-secondary:link,.builder-font .text-secondary:visited,.builder-font .text-tooltips,.builder-font .text-tooltips:active,.builder-font .text-tooltips:focus,.builder-font .text-tooltips:hover,.builder-font .text-tooltips:link,.builder-font .text-tooltips:visited {
+    font-size: 12px;
+    font-weight: 400
+}
+
+.builder-font .font-header-1,.builder-font .h2,.builder-font .h3,.builder-font .h4,.builder-font .text-robux-lg,.builder-font h2,.builder-font h3,.builder-font h4 {
+    font-size: 20px;
+    font-weight: 700
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-header-1,.builder-font .h2,.builder-font .h3,.builder-font .h4,.builder-font .text-robux-lg,.builder-font h2,.builder-font h3,.builder-font h4 {
+        font-size:16px
+    }
+}
+
+.builder-font .font-bold,.builder-font .font-bold:active,.builder-font .font-bold:hover,.builder-font .font-bold:link,.builder-font .font-bold:visited,.builder-font .font-header-2,.builder-font .font-header-2:active,.builder-font .font-header-2:hover,.builder-font .font-header-2:link,.builder-font .font-header-2:visited,.builder-font .h5,.builder-font .h5:active,.builder-font .h5:hover,.builder-font .h5:link,.builder-font .h5:visited,.builder-font .h6,.builder-font .h6:active,.builder-font .h6:hover,.builder-font .h6:link,.builder-font .h6:visited,.builder-font .text-footer-nav,.builder-font .text-footer-nav:active,.builder-font .text-footer-nav:hover,.builder-font .text-footer-nav:link,.builder-font .text-footer-nav:visited,.builder-font .text-label,.builder-font .text-label:active,.builder-font .text-label:hover,.builder-font .text-label:link,.builder-font .text-label:visited,.builder-font .text-lead,.builder-font .text-lead:active,.builder-font .text-lead:hover,.builder-font .text-lead:link,.builder-font .text-lead:visited,.builder-font .text-name,.builder-font .text-name:active,.builder-font .text-name:hover,.builder-font .text-name:link,.builder-font .text-name:visited,.builder-font .text-subject,.builder-font .text-subject:active,.builder-font .text-subject:hover,.builder-font .text-subject:link,.builder-font .text-subject:visited,.builder-font .text-warning,.builder-font .text-warning:active,.builder-font .text-warning:hover,.builder-font .text-warning:link,.builder-font .text-warning:visited,.builder-font h5,.builder-font h5:active,.builder-font h5:hover,.builder-font h5:link,.builder-font h5:visited,.builder-font h6,.builder-font h6:active,.builder-font h6:hover,.builder-font h6:link,.builder-font h6:visited,.builder-font strong,.builder-font strong:active,.builder-font strong:hover,.builder-font strong:link,.builder-font strong:visited {
+    font-size: 16px;
+    font-weight: 500
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-bold,.builder-font .font-bold:active,.builder-font .font-bold:hover,.builder-font .font-bold:link,.builder-font .font-bold:visited,.builder-font .font-header-2,.builder-font .font-header-2:active,.builder-font .font-header-2:hover,.builder-font .font-header-2:link,.builder-font .font-header-2:visited,.builder-font .h5,.builder-font .h5:active,.builder-font .h5:hover,.builder-font .h5:link,.builder-font .h5:visited,.builder-font .h6,.builder-font .h6:active,.builder-font .h6:hover,.builder-font .h6:link,.builder-font .h6:visited,.builder-font .text-footer-nav,.builder-font .text-footer-nav:active,.builder-font .text-footer-nav:hover,.builder-font .text-footer-nav:link,.builder-font .text-footer-nav:visited,.builder-font .text-label,.builder-font .text-label:active,.builder-font .text-label:hover,.builder-font .text-label:link,.builder-font .text-label:visited,.builder-font .text-lead,.builder-font .text-lead:active,.builder-font .text-lead:hover,.builder-font .text-lead:link,.builder-font .text-lead:visited,.builder-font .text-name,.builder-font .text-name:active,.builder-font .text-name:hover,.builder-font .text-name:link,.builder-font .text-name:visited,.builder-font .text-subject,.builder-font .text-subject:active,.builder-font .text-subject:hover,.builder-font .text-subject:link,.builder-font .text-subject:visited,.builder-font .text-warning,.builder-font .text-warning:active,.builder-font .text-warning:hover,.builder-font .text-warning:link,.builder-font .text-warning:visited,.builder-font h5,.builder-font h5:active,.builder-font h5:hover,.builder-font h5:link,.builder-font h5:visited,.builder-font h6,.builder-font h6:active,.builder-font h6:hover,.builder-font h6:link,.builder-font h6:visited,.builder-font strong,.builder-font strong:active,.builder-font strong:hover,.builder-font strong:link,.builder-font strong:visited {
+        font-size:12px;
+        font-weight: 500
+    }
+}
+
+.builder-font .font-subheader-2 {
+    font-size: 16px;
+    font-weight: 500
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-subheader-2 {
+        font-size:12px
+    }
+}
+
+.builder-font .font-body,.builder-font .text-description,.builder-font .text-favorite,.builder-font p {
+    font-size: 16px;
+    font-weight: 400
+}
+
+.builder-font .font-caption-header,.builder-font .font-caption-header:active,.builder-font .font-caption-header:focus,.builder-font .font-caption-header:hover,.builder-font .font-caption-header:link,.builder-font .font-caption-header:visited,.builder-font .small.font-caption-header,.builder-font .small.font-caption-header:active,.builder-font .small.font-caption-header:focus,.builder-font .small.font-caption-header:hover,.builder-font .small.font-caption-header:link,.builder-font .small.font-caption-header:visited,.builder-font .small.text-error,.builder-font .small.text-error:active,.builder-font .small.text-error:focus,.builder-font .small.text-error:hover,.builder-font .small.text-error:link,.builder-font .small.text-error:visited,.builder-font .small.text-pastname,.builder-font .small.text-pastname:active,.builder-font .small.text-pastname:focus,.builder-font .small.text-pastname:hover,.builder-font .small.text-pastname:link,.builder-font .small.text-pastname:visited,.builder-font .small.text-report,.builder-font .small.text-report-ads,.builder-font .small.text-report-ads:active,.builder-font .small.text-report-ads:focus,.builder-font .small.text-report-ads:hover,.builder-font .small.text-report-ads:link,.builder-font .small.text-report-ads:visited,.builder-font .small.text-report:active,.builder-font .small.text-report:focus,.builder-font .small.text-report:hover,.builder-font .small.text-report:link,.builder-font .small.text-report:visited,.builder-font .text-error,.builder-font .text-error:active,.builder-font .text-error:focus,.builder-font .text-error:hover,.builder-font .text-error:link,.builder-font .text-error:visited,.builder-font .text-pastname,.builder-font .text-pastname:active,.builder-font .text-pastname:focus,.builder-font .text-pastname:hover,.builder-font .text-pastname:link,.builder-font .text-pastname:visited,.builder-font .text-report,.builder-font .text-report-ads,.builder-font .text-report-ads:active,.builder-font .text-report-ads:focus,.builder-font .text-report-ads:hover,.builder-font .text-report-ads:link,.builder-font .text-report-ads:visited,.builder-font .text-report:active,.builder-font .text-report:focus,.builder-font .text-report:hover,.builder-font .text-report:link,.builder-font .text-report:visited {
+    font-size: 12px;
+    font-weight: 500
+}
+
+.builder-font .font-footer,.builder-font .font-footer:active,.builder-font .font-footer:focus,.builder-font .font-footer:hover,.builder-font .font-footer:link,.builder-font .font-footer:visited,.builder-font .text-footer,.builder-font .text-footer:active,.builder-font .text-footer:focus,.builder-font .text-footer:hover,.builder-font .text-footer:link,.builder-font .text-footer:visited,.builder-font .xsmall,.builder-font .xsmall:active,.builder-font .xsmall:focus,.builder-font .xsmall:hover,.builder-font .xsmall:link,.builder-font .xsmall:visited,.builder-font .xxsmall,.builder-font .xxsmall:active,.builder-font .xxsmall:focus,.builder-font .xxsmall:hover,.builder-font .xxsmall:link,.builder-font .xxsmall:visited {
+    font-size: 10px;
+    font-weight: 500
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-footer,.builder-font .font-footer:active,.builder-font .font-footer:focus,.builder-font .font-footer:hover,.builder-font .font-footer:link,.builder-font .font-footer:visited,.builder-font .text-footer,.builder-font .text-footer:active,.builder-font .text-footer:focus,.builder-font .text-footer:hover,.builder-font .text-footer:link,.builder-font .text-footer:visited,.builder-font .xsmall,.builder-font .xsmall:active,.builder-font .xsmall:focus,.builder-font .xsmall:hover,.builder-font .xsmall:link,.builder-font .xsmall:visited,.builder-font .xxsmall,.builder-font .xxsmall:active,.builder-font .xxsmall:focus,.builder-font .xxsmall:hover,.builder-font .xxsmall:link,.builder-font .xxsmall:visited {
+        font-size:8px
+    }
+}
+
+.builder-font .tooltip .tooltip-inner {
+    max-width: 220px
+}
+
+.builder-font .font-caption-body,.builder-font .font-caption-body:active,.builder-font .font-caption-body:focus,.builder-font .font-caption-body:hover,.builder-font .font-caption-body:link,.builder-font .font-caption-body:visited,.builder-font .tooltip .tooltip-inner,.builder-font .tooltip .tooltip-inner:active,.builder-font .tooltip .tooltip-inner:focus,.builder-font .tooltip .tooltip-inner:hover,.builder-font .tooltip .tooltip-inner:link,.builder-font .tooltip .tooltip-inner:visited {
+    font-size: 12px;
+    font-weight: 400
+}
+
+.builder-font .input-field,.builder-font .line-height {
+    line-height: 1.4em
+}
+
+/* Original Builder Font
+
+.dark-theme.builder-font .refresh-link-icon:after,.dark-theme.builder-font .see-all-link-icon:after,.light-theme.builder-font .refresh-link-icon:after,.light-theme.builder-font .see-all-link-icon:after {
+    background-image: url(https://images.rbxcdn.com/44acd0c6195597cdc307a3f60efab0e3-common_sm_dark_12032018.svg);
+    background-repeat: no-repeat;
+    background-size: 32px auto;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.dark-theme.builder-font .refresh-link-icon:after,.dark-theme.builder-font .see-all-link-icon:after,.dark-theme .light-theme.builder-font .refresh-link-icon:after,.dark-theme .light-theme.builder-font .see-all-link-icon:after,.light-theme.builder-font .dark-theme .refresh-link-icon:after,.light-theme.builder-font .dark-theme .see-all-link-icon:after {
+    background-image: url(https://images.rbxcdn.com/44acd0c6195597cdc307a3f60efab0e3-common_sm_dark_12032018.svg)
+}
+
+.dark-theme.builder-font .light-theme .refresh-link-icon:after,.dark-theme.builder-font .light-theme .see-all-link-icon:after,.light-theme.builder-font .refresh-link-icon:after,.light-theme.builder-font .see-all-link-icon:after,.light-theme .dark-theme.builder-font .refresh-link-icon:after,.light-theme .dark-theme.builder-font .see-all-link-icon:after {
+    background-image: url(https://images.rbxcdn.com/ca3888e4e17a9df7b25d5bfe2110c1c9-common_sm_light_12032018.svg)
+}
+
+.dark-theme.builder-font .refresh-link-icon:after,.light-theme.builder-font .refresh-link-icon:after {
+    background-position: 0 0
+}
+
+.dark-theme.builder-font .see-all-link-icon:after,.light-theme.builder-font .see-all-link-icon:after {
+    background-position: 0 -16px
+}
+
+.builder-font .item-card-creator,.builder-font .item-card-creator .text-label,.builder-font .item-card-creator .text-link,.builder-font .item-card-creator .vlist .list-item .list-body .list-content a,.builder-font .item-card-label,.vlist .list-item .list-body .list-content .builder-font .item-card-creator a {
+    font-size: 12px
+}
+
+.dark-theme.builder-font .refresh-link,.dark-theme.builder-font .refresh-link-icon,.dark-theme.builder-font .refresh-link-icon:active,.dark-theme.builder-font .refresh-link-icon:hover,.dark-theme.builder-font .refresh-link-icon:link,.dark-theme.builder-font .refresh-link-icon:visited,.dark-theme.builder-font .refresh-link:active,.dark-theme.builder-font .refresh-link:hover,.dark-theme.builder-font .refresh-link:link,.dark-theme.builder-font .refresh-link:visited,.dark-theme.builder-font .see-all-link,.dark-theme.builder-font .see-all-link-icon,.dark-theme.builder-font .see-all-link-icon:active,.dark-theme.builder-font .see-all-link-icon:hover,.dark-theme.builder-font .see-all-link-icon:link,.dark-theme.builder-font .see-all-link-icon:visited,.dark-theme.builder-font .see-all-link:active,.dark-theme.builder-font .see-all-link:hover,.dark-theme.builder-font .see-all-link:link,.dark-theme.builder-font .see-all-link:visited,.dark-theme.builder-font .touch .refresh-link,.dark-theme.builder-font .touch .refresh-link-icon,.dark-theme.builder-font .touch .refresh-link-icon:active,.dark-theme.builder-font .touch .refresh-link-icon:hover,.dark-theme.builder-font .touch .refresh-link-icon:link,.dark-theme.builder-font .touch .refresh-link-icon:visited,.dark-theme.builder-font .touch .refresh-link:active,.dark-theme.builder-font .touch .refresh-link:hover,.dark-theme.builder-font .touch .refresh-link:link,.dark-theme.builder-font .touch .refresh-link:visited,.dark-theme.builder-font .touch .see-all-link,.dark-theme.builder-font .touch .see-all-link-icon,.dark-theme.builder-font .touch .see-all-link-icon:active,.dark-theme.builder-font .touch .see-all-link-icon:hover,.dark-theme.builder-font .touch .see-all-link-icon:link,.dark-theme.builder-font .touch .see-all-link-icon:visited,.dark-theme.builder-font .touch .see-all-link:active,.dark-theme.builder-font .touch .see-all-link:hover,.dark-theme.builder-font .touch .see-all-link:link,.dark-theme.builder-font .touch .see-all-link:visited {
+    color: #fff
+}
+
+.dark-theme.builder-font .see-all-link-icon {
+    padding: 0 20px 0 0
+}
+
+.dark-theme.builder-font .see-all-link-icon:after {
+    transform: scale(.875)
+}
+
+.dark-theme.builder-font .refresh-link-icon {
+    padding: 0 20px 0 0
+}
+
+.dark-theme.builder-font .refresh-link-icon:after {
+    transform: scale(.875)
+}
+
+.light-theme.builder-font .refresh-link,.light-theme.builder-font .refresh-link-icon,.light-theme.builder-font .refresh-link-icon:active,.light-theme.builder-font .refresh-link-icon:hover,.light-theme.builder-font .refresh-link-icon:link,.light-theme.builder-font .refresh-link-icon:visited,.light-theme.builder-font .refresh-link:active,.light-theme.builder-font .refresh-link:hover,.light-theme.builder-font .refresh-link:link,.light-theme.builder-font .refresh-link:visited,.light-theme.builder-font .see-all-link,.light-theme.builder-font .see-all-link-icon,.light-theme.builder-font .see-all-link-icon:active,.light-theme.builder-font .see-all-link-icon:hover,.light-theme.builder-font .see-all-link-icon:link,.light-theme.builder-font .see-all-link-icon:visited,.light-theme.builder-font .see-all-link:active,.light-theme.builder-font .see-all-link:hover,.light-theme.builder-font .see-all-link:link,.light-theme.builder-font .see-all-link:visited,.light-theme.builder-font .touch .refresh-link,.light-theme.builder-font .touch .refresh-link-icon,.light-theme.builder-font .touch .refresh-link-icon:active,.light-theme.builder-font .touch .refresh-link-icon:hover,.light-theme.builder-font .touch .refresh-link-icon:link,.light-theme.builder-font .touch .refresh-link-icon:visited,.light-theme.builder-font .touch .refresh-link:active,.light-theme.builder-font .touch .refresh-link:hover,.light-theme.builder-font .touch .refresh-link:link,.light-theme.builder-font .touch .refresh-link:visited,.light-theme.builder-font .touch .see-all-link,.light-theme.builder-font .touch .see-all-link-icon,.light-theme.builder-font .touch .see-all-link-icon:active,.light-theme.builder-font .touch .see-all-link-icon:hover,.light-theme.builder-font .touch .see-all-link-icon:link,.light-theme.builder-font .touch .see-all-link-icon:visited,.light-theme.builder-font .touch .see-all-link:active,.light-theme.builder-font .touch .see-all-link:hover,.light-theme.builder-font .touch .see-all-link:link,.light-theme.builder-font .touch .see-all-link:visited {
+    color: #393b3d
+}
+
+.light-theme.builder-font .see-all-link-icon {
+    padding: 0 20px 0 0
+}
+
+.light-theme.builder-font .see-all-link-icon:after {
+    transform: scale(.875)
+}
+
+.light-theme.builder-font .refresh-link-icon {
+    padding: 0 20px 0 0
+}
+
+.light-theme.builder-font .refresh-link-icon:after {
+    transform: scale(.875)
+}
+
+.builder-font .game-main-content.follow-button-enabled .favorite-follow-vote-share .game-favorite-button-container .favorite-button {
+    width: 68px
+}
+
+.builder-font .game-main-content .game-calls-to-action .game-buttons-container {
+    padding: 0
+}
+
+.builder-font .game-main-content .game-calls-to-action {
+    padding: 0 12px 0 18px
+}
+
+@media (max-width: 991px) {
+    .builder-font .game-main-content .game-calls-to-action,.builder-font .game-main-content .game-calls-to-action .game-buttons-container {
+        padding:0
+    }
+}
+
+.builder-font .game-main-content .game-calls-to-action .game-buttons-container .game-play-buttons,.builder-font .game-main-content .game-calls-to-action .game-play-buttons {
+    border-top: 0;
+    padding-bottom: 5px
+}
+
+.builder-font .game-main-content .game-calls-to-action #game-context-menu {
+    right: 0;
+    top: 6px
+}
+
+.builder-font .game-main-content .game-calls-to-action .experimental-mode {
+    padding: 6px 0
+}
+
+.builder-font .game-main-content .game-calls-to-action .game-title-container {
+    padding: 0 12px 0 0
+}
+
+@media (max-width: 543px) {
+    .builder-font .store-card .store-card-add .store-card-add-label {
+        height:81px
+    }
+}
+
+@media (max-width: 991px) and (min-width:767px) {
+    .builder-font .game-main-content .game-calls-to-action .game-title-container,.game-main-content.follow-button-enabled .favorite-follow-vote-share {
+        padding-left:12px;
+        padding-right: 12px
+    }
+}
+
+.builder-font .text,.builder-font body,.builder-font button,.builder-font html,.builder-font input,.builder-font pre,.builder-font select,.builder-font textarea {
+    font-family: Builder Sans,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.builder-font {
+    font-weight: 400
+}
+
+.builder-font,.builder-font .h1,.builder-font .h2,.builder-font .h3,.builder-font .h4,.builder-font .h5,.builder-font .h6,.builder-font h1,.builder-font h2,.builder-font h3,.builder-font h4,.builder-font h5,.builder-font h6 {
+    font-family: Builder Sans,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif
+}
+
+.builder-font .font-title,.builder-font .h1,.builder-font h1 {
+    font-size: 32px;
+    font-weight: 800
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-title,.builder-font .h1,.builder-font h1 {
+        font-size:24px
+    }
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-bold,.builder-font .font-bold:active,.builder-font .font-bold:hover,.builder-font .font-bold:link,.builder-font .font-bold:visited,.builder-font .h5,.builder-font .h5:active,.builder-font .h5:hover,.builder-font .h5:link,.builder-font .h5:visited,.builder-font .h6,.builder-font .h6:active,.builder-font .h6:hover,.builder-font .h6:link,.builder-font .h6:visited,.builder-font .text-footer-nav,.builder-font .text-footer-nav:active,.builder-font .text-footer-nav:hover,.builder-font .text-footer-nav:link,.builder-font .text-footer-nav:visited,.builder-font .text-label,.builder-font .text-label:active,.builder-font .text-label:hover,.builder-font .text-label:link,.builder-font .text-label:visited,.builder-font .text-lead,.builder-font .text-lead:active,.builder-font .text-lead:hover,.builder-font .text-lead:link,.builder-font .text-lead:visited,.builder-font .text-name,.builder-font .text-name:active,.builder-font .text-name:hover,.builder-font .text-name:link,.builder-font .text-name:visited,.builder-font .text-subject,.builder-font .text-subject:active,.builder-font .text-subject:hover,.builder-font .text-subject:link,.builder-font .text-subject:visited,.builder-font .text-warning,.builder-font .text-warning:active,.builder-font .text-warning:hover,.builder-font .text-warning:link,.builder-font .text-warning:visited,.builder-font h5,.builder-font h5:active,.builder-font h5:hover,.builder-font h5:link,.builder-font h5:visited,.builder-font h6,.builder-font h6:active,.builder-font h6:hover,.builder-font h6:link,.builder-font h6:visited,.builder-font strong,.builder-font strong:active,.builder-font strong:hover,.builder-font strong:link,.builder-font strong:visited {
+        font-size:12px;
+        font-weight: 500
+    }
+}
+
+.builder-font .text-link {
+    font-weight: 500
+}
+
+.builder-font div {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4em
+}
+
+@media (max-width: 767px) {
+    .builder-font div {
+        font-size:16px;
+        font-weight: 400
+    }
+}
+
+@media (max-width: 543px) {
+    .builder-font div {
+        font-size:12px;
+        font-weight: 400
+    }
+}
+
+.builder-font .ad-identification-text,.builder-font .ad-identification-text:active,.builder-font .ad-identification-text:focus,.builder-font .ad-identification-text:hover,.builder-font .ad-identification-text:link,.builder-font .ad-identification-text:visited,.builder-font .font-small,.builder-font .font-small:active,.builder-font .font-small:focus,.builder-font .font-small:hover,.builder-font .font-small:link,.builder-font .font-small:visited,.builder-font .small,.builder-font .small-oneline,.builder-font .small-oneline:active,.builder-font .small-oneline:focus,.builder-font .small-oneline:hover,.builder-font .small-oneline:link,.builder-font .small-oneline:visited,.builder-font .small:active,.builder-font .small:focus,.builder-font .small:hover,.builder-font .small:link,.builder-font .small:visited,.builder-font .text-date-hint,.builder-font .text-date-hint:active,.builder-font .text-date-hint:focus,.builder-font .text-date-hint:hover,.builder-font .text-date-hint:link,.builder-font .text-date-hint:visited,.builder-font .text-secondary,.builder-font .text-secondary:active,.builder-font .text-secondary:focus,.builder-font .text-secondary:hover,.builder-font .text-secondary:link,.builder-font .text-secondary:visited,.builder-font .text-tooltips,.builder-font .text-tooltips:active,.builder-font .text-tooltips:focus,.builder-font .text-tooltips:hover,.builder-font .text-tooltips:link,.builder-font .text-tooltips:visited {
+    font-size: 12px;
+    font-weight: 400
+}
+
+.builder-font .font-header-1,.builder-font .h2,.builder-font .h3,.builder-font .h4,.builder-font .text-robux-lg,.builder-font h2,.builder-font h3,.builder-font h4 {
+    font-size: 20px;
+    font-weight: 700
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-header-1,.builder-font .h2,.builder-font .h3,.builder-font .h4,.builder-font .text-robux-lg,.builder-font h2,.builder-font h3,.builder-font h4 {
+        font-size:16px
+    }
+}
+
+.builder-font .font-bold,.builder-font .font-bold:active,.builder-font .font-bold:hover,.builder-font .font-bold:link,.builder-font .font-bold:visited,.builder-font .font-header-2,.builder-font .font-header-2:active,.builder-font .font-header-2:hover,.builder-font .font-header-2:link,.builder-font .font-header-2:visited,.builder-font .h5,.builder-font .h5:active,.builder-font .h5:hover,.builder-font .h5:link,.builder-font .h5:visited,.builder-font .h6,.builder-font .h6:active,.builder-font .h6:hover,.builder-font .h6:link,.builder-font .h6:visited,.builder-font .text-footer-nav,.builder-font .text-footer-nav:active,.builder-font .text-footer-nav:hover,.builder-font .text-footer-nav:link,.builder-font .text-footer-nav:visited,.builder-font .text-label,.builder-font .text-label:active,.builder-font .text-label:hover,.builder-font .text-label:link,.builder-font .text-label:visited,.builder-font .text-lead,.builder-font .text-lead:active,.builder-font .text-lead:hover,.builder-font .text-lead:link,.builder-font .text-lead:visited,.builder-font .text-name,.builder-font .text-name:active,.builder-font .text-name:hover,.builder-font .text-name:link,.builder-font .text-name:visited,.builder-font .text-subject,.builder-font .text-subject:active,.builder-font .text-subject:hover,.builder-font .text-subject:link,.builder-font .text-subject:visited,.builder-font .text-warning,.builder-font .text-warning:active,.builder-font .text-warning:hover,.builder-font .text-warning:link,.builder-font .text-warning:visited,.builder-font h5,.builder-font h5:active,.builder-font h5:hover,.builder-font h5:link,.builder-font h5:visited,.builder-font h6,.builder-font h6:active,.builder-font h6:hover,.builder-font h6:link,.builder-font h6:visited,.builder-font strong,.builder-font strong:active,.builder-font strong:hover,.builder-font strong:link,.builder-font strong:visited {
+    font-size: 16px;
+    font-weight: 500
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-bold,.builder-font .font-bold:active,.builder-font .font-bold:hover,.builder-font .font-bold:link,.builder-font .font-bold:visited,.builder-font .font-header-2,.builder-font .font-header-2:active,.builder-font .font-header-2:hover,.builder-font .font-header-2:link,.builder-font .font-header-2:visited,.builder-font .h5,.builder-font .h5:active,.builder-font .h5:hover,.builder-font .h5:link,.builder-font .h5:visited,.builder-font .h6,.builder-font .h6:active,.builder-font .h6:hover,.builder-font .h6:link,.builder-font .h6:visited,.builder-font .text-footer-nav,.builder-font .text-footer-nav:active,.builder-font .text-footer-nav:hover,.builder-font .text-footer-nav:link,.builder-font .text-footer-nav:visited,.builder-font .text-label,.builder-font .text-label:active,.builder-font .text-label:hover,.builder-font .text-label:link,.builder-font .text-label:visited,.builder-font .text-lead,.builder-font .text-lead:active,.builder-font .text-lead:hover,.builder-font .text-lead:link,.builder-font .text-lead:visited,.builder-font .text-name,.builder-font .text-name:active,.builder-font .text-name:hover,.builder-font .text-name:link,.builder-font .text-name:visited,.builder-font .text-subject,.builder-font .text-subject:active,.builder-font .text-subject:hover,.builder-font .text-subject:link,.builder-font .text-subject:visited,.builder-font .text-warning,.builder-font .text-warning:active,.builder-font .text-warning:hover,.builder-font .text-warning:link,.builder-font .text-warning:visited,.builder-font h5,.builder-font h5:active,.builder-font h5:hover,.builder-font h5:link,.builder-font h5:visited,.builder-font h6,.builder-font h6:active,.builder-font h6:hover,.builder-font h6:link,.builder-font h6:visited,.builder-font strong,.builder-font strong:active,.builder-font strong:hover,.builder-font strong:link,.builder-font strong:visited {
+        font-size:14px;
+        font-weight: 500
+    }
+}
+
+.builder-font .font-subheader-2 {
+    font-size: 16px;
+    font-weight: 500
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-subheader-2 {
+        font-size:12px
+    }
+}
+
+.builder-font .font-body,.builder-font .text-description,.builder-font .text-favorite,.builder-font p {
+    font-size: 16px;
+    font-weight: 400
+}
+
+.builder-font .font-caption-header,.builder-font .font-caption-header:active,.builder-font .font-caption-header:focus,.builder-font .font-caption-header:hover,.builder-font .font-caption-header:link,.builder-font .font-caption-header:visited,.builder-font .small.font-caption-header,.builder-font .small.font-caption-header:active,.builder-font .small.font-caption-header:focus,.builder-font .small.font-caption-header:hover,.builder-font .small.font-caption-header:link,.builder-font .small.font-caption-header:visited,.builder-font .small.text-error,.builder-font .small.text-error:active,.builder-font .small.text-error:focus,.builder-font .small.text-error:hover,.builder-font .small.text-error:link,.builder-font .small.text-error:visited,.builder-font .small.text-pastname,.builder-font .small.text-pastname:active,.builder-font .small.text-pastname:focus,.builder-font .small.text-pastname:hover,.builder-font .small.text-pastname:link,.builder-font .small.text-pastname:visited,.builder-font .small.text-report,.builder-font .small.text-report-ads,.builder-font .small.text-report-ads:active,.builder-font .small.text-report-ads:focus,.builder-font .small.text-report-ads:hover,.builder-font .small.text-report-ads:link,.builder-font .small.text-report-ads:visited,.builder-font .small.text-report:active,.builder-font .small.text-report:focus,.builder-font .small.text-report:hover,.builder-font .small.text-report:link,.builder-font .small.text-report:visited,.builder-font .text-error,.builder-font .text-error:active,.builder-font .text-error:focus,.builder-font .text-error:hover,.builder-font .text-error:link,.builder-font .text-error:visited,.builder-font .text-pastname,.builder-font .text-pastname:active,.builder-font .text-pastname:focus,.builder-font .text-pastname:hover,.builder-font .text-pastname:link,.builder-font .text-pastname:visited,.builder-font .text-report,.builder-font .text-report-ads,.builder-font .text-report-ads:active,.builder-font .text-report-ads:focus,.builder-font .text-report-ads:hover,.builder-font .text-report-ads:link,.builder-font .text-report-ads:visited,.builder-font .text-report:active,.builder-font .text-report:focus,.builder-font .text-report:hover,.builder-font .text-report:link,.builder-font .text-report:visited {
+    font-size: 12px;
+    font-weight: 500
+}
+
+.builder-font .font-footer,.builder-font .font-footer:active,.builder-font .font-footer:focus,.builder-font .font-footer:hover,.builder-font .font-footer:link,.builder-font .font-footer:visited,.builder-font .text-footer,.builder-font .text-footer:active,.builder-font .text-footer:focus,.builder-font .text-footer:hover,.builder-font .text-footer:link,.builder-font .text-footer:visited,.builder-font .xsmall,.builder-font .xsmall:active,.builder-font .xsmall:focus,.builder-font .xsmall:hover,.builder-font .xsmall:link,.builder-font .xsmall:visited,.builder-font .xxsmall,.builder-font .xxsmall:active,.builder-font .xxsmall:focus,.builder-font .xxsmall:hover,.builder-font .xxsmall:link,.builder-font .xxsmall:visited {
+    font-size: 10px;
+    font-weight: 500
+}
+
+@media (max-width: 767px) {
+    .builder-font .font-footer,.builder-font .font-footer:active,.builder-font .font-footer:focus,.builder-font .font-footer:hover,.builder-font .font-footer:link,.builder-font .font-footer:visited,.builder-font .text-footer,.builder-font .text-footer:active,.builder-font .text-footer:focus,.builder-font .text-footer:hover,.builder-font .text-footer:link,.builder-font .text-footer:visited,.builder-font .xsmall,.builder-font .xsmall:active,.builder-font .xsmall:focus,.builder-font .xsmall:hover,.builder-font .xsmall:link,.builder-font .xsmall:visited,.builder-font .xxsmall,.builder-font .xxsmall:active,.builder-font .xxsmall:focus,.builder-font .xxsmall:hover,.builder-font .xxsmall:link,.builder-font .xxsmall:visited {
+        font-size:8px
+    }
+}
+
+.builder-font .tooltip .tooltip-inner {
+    max-width: 220px
+}
+
+.builder-font .font-caption-body,.builder-font .font-caption-body:active,.builder-font .font-caption-body:focus,.builder-font .font-caption-body:hover,.builder-font .font-caption-body:link,.builder-font .font-caption-body:visited,.builder-font .tooltip .tooltip-inner,.builder-font .tooltip .tooltip-inner:active,.builder-font .tooltip .tooltip-inner:focus,.builder-font .tooltip .tooltip-inner:hover,.builder-font .tooltip .tooltip-inner:link,.builder-font .tooltip .tooltip-inner:visited {
+    font-size: 12px;
+    font-weight: 400
+}
+
+.builder-font .input-field,.builder-font .line-height {
+    line-height: 1.4em
+}
+
+.builder-font .game-card-container .game-card-name {
+    font-weight: 700
+}
+*/
