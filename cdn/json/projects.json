@@ -110,6 +110,16 @@
         "description": "Have a Roblox Verified Badge next to your name!"
     },
     {
+        "name": "Efaz's Builder™️ Font Remover",
+        "url": "https://www.efaz.dev/remove-builder-font",
+        "download_url": "https://chromewebstore.google.com/detail/jdhcfmelgjdmdednijojnfgepkhjiogd/",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Chrome extension that removes the Builder™️ font on the Roblox website and replaces it with GothamSS again!"
+    },
+    {
         "name": "Efaz's Roblox In-Game UGC Tracer",
         "url": "https://www.efaz.dev/ingameugctracer",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=RobloxInGameUGCTracer.py",

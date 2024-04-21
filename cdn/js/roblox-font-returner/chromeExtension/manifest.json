@@ -1,0 +1,35 @@
+{
+  "name": "Efaz's Builder™ Font Remover",
+  "description": "An extension that removes the Builder™ font on Roblox and changes it to the original GothamSS font!",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "author": "EfazDev",
+  "homepage_url": "https://www.efaz.dev/remove-builder-font",
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "background": {
+    "service_worker": "main.js"
+  },
+  "externally_connectable": {
+    "matches": ["https://cdn.efaz.dev/*"]
+  },
+  "action": {
+    "default_popup": "main_popup.html",
+    "default_title": "Efaz's Builder™ Font Remover",
+    "default_icon": "icon128.png"
+  },
+  "content_security_policy": {
+    "sandbox": "sandbox allow-scripts; script-src * 'wasm-unsafe-eval';"
+  },
+  "sandbox": {
+    "pages": []
+  },
+  "permissions": ["storage", "scripting", "webNavigation"],
+  "host_permissions": [
+    "https://www.roblox.com/*"
+  ]
+}
