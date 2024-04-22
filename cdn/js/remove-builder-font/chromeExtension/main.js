@@ -28,10 +28,21 @@ chrome.webNavigation.onCommitted.addListener(function (details) {
                 }
                 if (enabled == true) {
                     if (remoteStyles == true) {
+                        function injectCSS() {
+                            if (document.getElementById("return-roblox-gotham") == null) {
+                                const style = document.createElement("link")
+                                style.id = "return-roblox-gotham";
+                                style.rel = "stylesheet";
+                                style.type = "text/css";
+                                style.media = "all";
+                                style.href = "https://cdn.efaz.dev/cdn/other/reset_roblox_font.css"
+                                document.head.append(style)
+                            }
+                        }
                         chrome.scripting.executeScript({
                             target: { tabId: tabId, allFrames: true },
-                            files: ["insert_remote_css.js"],
-                        });
+                            func: injectCSS
+                        })
                     } else {
                         function injectCSS(css) {
                             if (document.getElementById("return-roblox-gotham") == null) {
