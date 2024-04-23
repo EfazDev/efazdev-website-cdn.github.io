@@ -1,6 +1,6 @@
 /* 
 
-Efaz's Builder™️ Font Remover
+Efaz's Builder Font Remover
 By: EfazDev
 Page: https://www.efaz.dev/remove-builder-font
 
