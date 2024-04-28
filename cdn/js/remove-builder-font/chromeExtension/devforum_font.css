@@ -1,0 +1,199 @@
+@font-face { font-family: "BuilderSans"; font-weight: 300; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "BuilderSans"; font-weight: 325; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "BuilderSans"; font-weight: 500; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "BuilderSans"; font-weight: 800; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff") format("woff"); font-display: swap; }
+
+* :not(.ace-wrapper *,code,code *) {
+    font-family: BuilderSans,Helvetica Neue,Helvetica,Arial,Lucida Grande,san-serif !important;
+}
+
+strong {
+    font-weight: 600
+}
+
+.bug-report-button-rbx-entrypoint button {
+    margin: 0px
+}
+
+body {
+    background: #222 !important;
+    color: var(--primary) !important;
+    font-family: var(--font-family) !important;
+    font-size: 15px !important;
+    line-height: var(--line-height-large) !important;
+    font-weight: 300 !important
+}
+
+header {
+    margin-top: 0px;
+    height: 60.031px
+}
+
+header .header-dropdown-toggle .btn-flat {
+    padding: 3.216px !important;
+    width: 34.297px !important
+}
+
+header .header-dropdown-toggle .btn-flat .svg-icon {
+    width: 34.297px !important;
+    height: 26.23px !important
+}
+
+header .logo-big {
+    width: 208.617px !important;
+    height: 40.023px !important
+}
+
+header .header-dropdown-toggle {
+    width: 42.719px !important
+}
+
+.d-icon-d-liked,.d-icon-d-unliked {
+    width: 1.45em
+}
+
+.widget-button.btn-flat.button-count.like-count.btn-icon-text,.widget-button.btn-flat.toggle-like.like.no-text.btn-icon:only-child {
+    border-radius: 4px 4px 4px 4px
+}
+
+.widget-button.btn-flat.button-count.like-count.btn-text {
+    border-radius: 4px 0px 0px 4px
+}
+
+.widget-button.btn-flat.toggle-like.btn-icon {
+    border-radius: 0px 4px 4px 0px
+}
+
+.widget-button.btn-flat.create-flag.btn-icon {
+    border-radius: 4px 4px 4px 4px
+}
+
+#main-outlet {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 2.5em
+}
+
+#main-outlet-wrapper {
+    padding: 0 20px
+}
+
+.embedded-posts.bottom .topic-avatar {
+    padding-left: initial !important
+}
+
+.bug-report-button-rbx-entrypoint button {
+    border-radius: 0;
+    color: var(--primary);
+    background: var(--primary-low);
+    font-family: var(--font-family);
+    font-size: 15px
+}
+
+.mobile-view .user-menu .menu-panel.slide-in,.mobile-view .hamburger-panel .menu-panel.slide-in {
+    height: auto !important;
+    max-height: 100vh !important
+}
+
+.mobile-view .user-menu .panel-body-contents,.mobile-view .hamburger-panel .panel-body-contents {
+    padding-bottom: 0
+}
+
+.mobile-view .user-main .controls {
+    max-width: 100%
+}
+
+.mobile-view .user-main .controls ul li {
+    flex: 1 1 100%
+}
+
+.user-main .controls .show-notes-on-profile {
+    margin-bottom: 0px !important
+}
+
+.before-create-topic-button-outlet.go-to-wizard button {
+    height: 100%
+}
+
+.user-menu .quick-access-panel ul {
+    justify-content: space-around
+}
+
+.user-menu .menu-panel .panel-body-bottom .btn,.hamburger-panel .menu-panel .panel-body-bottom .btn {
+    background-color: var(--primary-low);
+    color: var(--primary-high)
+}
+
+.topic-list .posters {
+    width: 151px
+}
+
+.who-liked,.who-read {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end
+}
+
+#categorySearchField,#subCategorySearchField,#tagSearchField,#PositionField {
+    border: none !important;
+    background: none !important;
+    outline: none !important;
+    padding: 27px 12px 10px;
+    background-color: transparent;
+    margin-bottom: 0px;
+    box-sizing: content-box
+}
+
+#ActiveNotificationLevel {
+    background-color: var(--tertiary-low)
+}
+
+.reply-area .d-icon-share {
+    padding: 2px !important;
+    margin: 4px !important
+}
+
+.sign-up-button {
+    display: none
+}
+
+.topic-status-btn-open {
+    background-color: #BBBCBE;
+    color: #191919;
+    border-radius: 20px
+}
+
+.topic-status-btn-needs-information {
+    background-color: #F3BA2B;
+    color: #191919;
+    border-radius: 20px
+}
+
+.topic-status-btn-fixed {
+    background-color: #27C473;
+    color: #191919;
+    border-radius: 20px
+}
+
+.topic-status-btn-closed {
+    background-color: #90B3F8;
+    color: #191919;
+    border-radius: 20px
+}
+
+.post-stream .topic-post.topic-owner article [role="heading"].topic-meta-data .names::after {
+    content: "OP";
+    color: var(--tertiary);
+    font-weight: 600;
+    order: 66
+}
+
+.MuiMenu-paper a:visited {
+    color: #bbbcbe
+}
+
+.solved-status-filter .select-kit {
+    min-width: auto
+}
+
+/*# sourceMappingURL=desktop_theme_3_0b4d38c45dc18ce3da021c215d196ae613d9feed.css.map?__ws=devforum.roblox.com */
