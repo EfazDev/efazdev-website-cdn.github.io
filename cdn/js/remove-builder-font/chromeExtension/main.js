@@ -82,7 +82,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                         }
                     } else if (tab.url.startsWith("https://devforum.roblox.com")) {
                         if (devForum == true) {
-                            function injectCSS(css) {
+                            function injectCSS(css, remoteStyles) {
                                 if (document.querySelector("body > discourse-assets > discourse-assets-stylesheets > link:nth-child(30)")) {
                                     document.querySelector("body > discourse-assets > discourse-assets-stylesheets > link:nth-child(30)").href = ""
                                 }
@@ -110,7 +110,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                 chrome.scripting.executeScript({
                                     target: { tabId: tabId, allFrames: true },
                                     func: injectCSS,
-                                    args: [stored_devforum_css]
+                                    args: [stored_devforum_css, remoteStyles]
                                 })
                             } else {
                                 fetch("devforum_font.css").then(res => { return res.text() }).then(fetched => {
@@ -118,7 +118,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                     chrome.scripting.executeScript({
                                         target: { tabId: tabId, allFrames: true },
                                         func: injectCSS,
-                                        args: [fetched]
+                                        args: [fetched, remoteStyles]
                                     })
                                 })
                             }

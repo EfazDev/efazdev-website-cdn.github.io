@@ -183,5 +183,5 @@ header .header-dropdown-toggle {
     min-width: auto
 }
 .timeline-ago {
-    max-width: none;
+    max-width: none !important;
 }
