@@ -80,7 +80,8 @@ body { font-family: "Builder Sans", Arial, san-serif; font-weight: 325; font-sty
     font-weight: 400 !important;
 }
 .web-blox-css-tss-m5bwe7-Typography-h6-Typography-root {
-    font-size: 18px;
+    font-weight: 400 !important;
+    font-size: 18px !important;
 }
 .web-blox-css-tss-w0082-Typography-footer-Typography-colorSecondary-Typography-root {
     font-size: 13px !important;
