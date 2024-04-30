@@ -42,7 +42,7 @@ try {
                                 style.rel = "stylesheet";
                                 style.type = "text/css";
                                 style.media = "all";
-                                style.href = "https://cdn.efaz.dev/cdn/other/reset_roblox_font.css"
+                                style.href = "https://cdn.efaz.dev/cdn/js/remove-builder-font/stored_css/change_font.css"
                                 document.head.append(style)
                             }
                         }
@@ -81,22 +81,32 @@ try {
                                     if (selector.href.includes("devforum.roblox.com")) {
                                         selector.remove()
                                         if (css) {
-                                            const style = document.createElement("style")
-                                            style.id = "return-roblox-gotham";
-                                            style.media = "all";
-                                            style.innerHTML = css
-                                            document.head.append(style)
+                                            if (remoteStyles == true) {
+                                                const style = document.createElement("link")
+                                                style.id = "return-roblox-gotham";
+                                                style.rel = "stylesheet";
+                                                style.type = "text/css";
+                                                style.media = "all";
+                                                style.href = "https://cdn.efaz.dev/cdn/js/remove-builder-font/stored_css/devforum_font.css"
+                                                document.head.append(style)
+                                            } else {
+                                                const style = document.createElement("style")
+                                                style.id = "return-roblox-gotham";
+                                                style.media = "all";
+                                                style.innerHTML = css
+                                                document.head.append(style)
+                                            }
                                         }
                                     } else {
                                         setTimeout(() => { injectCSS(css, new_tries + 1) }, 100)
                                     }
                                 } else {
-                                    var observer = new MutationObserver(function(m) {
+                                    var observer = new MutationObserver(function (m) {
                                         if (document.querySelector("body > discourse-assets > discourse-assets-stylesheets > link:nth-child(30)")) {
                                             injectCSS(css, new_tries + 1)
                                         }
                                     });
-                                    observer.observe(document.head, {childList: true});
+                                    observer.observe(document.head, { childList: true });
                                 }
                             }
                         }
@@ -127,12 +137,12 @@ try {
                                         setTimeout(() => { injectCSS(css, new_tries + 1) }, 100)
                                     }
                                 } else {
-                                    var observer = new MutationObserver(function(m) {
+                                    var observer = new MutationObserver(function (m) {
                                         if (document.querySelector("head > style:nth-child(1)")) {
                                             injectCSS(css, new_tries + 1)
                                         }
                                     });
-                                    observer.observe(document.head, {childList: true});
+                                    observer.observe(document.head, { childList: true });
                                 }
                             }
                         }

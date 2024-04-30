@@ -43,7 +43,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                     style.rel = "stylesheet";
                                     style.type = "text/css";
                                     style.media = "all";
-                                    style.href = "https://cdn.efaz.dev/cdn/other/reset_roblox_font.css"
+                                    style.href = "https://cdn.efaz.dev/cdn/js/remove-builder-font/stored_css/change_font.css"
                                     document.head.append(style)
                                 }
                             }
@@ -88,11 +88,21 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                 }
                                 if (document.getElementById("return-roblox-gotham") == null) {
                                     if (css) {
-                                        const style = document.createElement("style")
-                                        style.id = "return-roblox-gotham";
-                                        style.media = "all";
-                                        style.innerHTML = css
-                                        document.head.append(style)
+                                        if (remoteStyles == true) {
+                                            const style = document.createElement("link")
+                                            style.id = "return-roblox-gotham";
+                                            style.rel = "stylesheet";
+                                            style.type = "text/css";
+                                            style.media = "all";
+                                            style.href = "https://cdn.efaz.dev/cdn/js/remove-builder-font/stored_css/devforum_font.css"
+                                            document.head.append(style)
+                                        } else {
+                                            const style = document.createElement("style")
+                                            style.id = "return-roblox-gotham";
+                                            style.media = "all";
+                                            style.innerHTML = css
+                                            document.head.append(style)
+                                        }
                                     }
                                 }
                             }
