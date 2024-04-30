@@ -5,17 +5,15 @@ By: EfazDev
 Page: https://www.efaz.dev/remove-builder-font
 
 main.js:
-    - Watch for new tabs from https://www.roblox.com or any other subdomain under roblox.com
-    - Get if the user has enabled the extension
-    - Inject the stored or remote stylesheets into the loading page.
-    - Launches a Thank You page if first time use: [https://www.efaz.dev/thanks]
+    - Backup script incase of an error or timeout inside inject.js
+    - Launches a Thank You page if first time use: [thank-you.html]
 
 */
 
 var stored_css = ""
 var stored_creator_dashboard_css = ""
 var stored_devforum_css = ""
-
+    
 chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
     try {
         const storage = chrome.storage.sync;
@@ -176,7 +174,7 @@ chrome.runtime.onInstalled.addListener(() => {
             }
         }
         chrome.tabs.create({
-            url: "https://www.efaz.dev/thanks"
+            url: chrome.runtime.getURL("thank_you.css")
         })
         await storage.set({ "roblox_font_thanks": { "thanks": true } });
     });

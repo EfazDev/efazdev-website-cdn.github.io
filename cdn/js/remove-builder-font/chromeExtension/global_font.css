@@ -1,3 +1,22 @@
+/* 
+
+Efaz's Builder Font Remover
+By: EfazDev
+Page: https://www.efaz.dev/remove-builder-font
+
+Font files are exported to my CDN server in case Roblox attempts to delete the files off their servers.
+CSS is created based on Roblox's servers for old files. Styles using specific classes are made using Google's Chrome Console.
+
+*/
+
+/* [Create font faces based on the files.] */
+@font-face { font-family: "Builder Sans"; font-weight: 300; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Sans"; font-weight: 325; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Sans"; font-weight: 500; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Sans"; font-weight: 800; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Mono"; font-weight: 400; font-style: normal; src: url("https://webblox.roblox.com/firamono/FiraMono-Regular.woff2") format("woff2"), url("https://webblox.roblox.com/firamono/FiraMono-Regular.woff") format("woff"); font-display: swap; }
+
+/* [Overwrite Builder font-family with Gotham files.]  */
 html { -webkit-font-smoothing: antialiased; box-sizing: border-box; text-size-adjust: 100%; color-scheme: dark; }
 *, ::before, ::after { box-sizing: inherit; }
 strong, b { font-weight: 800; }
@@ -6,11 +25,7 @@ body { margin: 0px; color: rgb(255, 255, 255); font-family: "Builder Sans", Helv
   body { background-color: rgb(255, 255, 255); }
 }
 body::backdrop { background-color: rgb(17, 18, 22); }
-@font-face { font-family: "Builder Sans"; font-weight: 300; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff") format("woff"); font-display: swap; }
-@font-face { font-family: "Builder Sans"; font-weight: 325; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff") format("woff"); font-display: swap; }
-@font-face { font-family: "Builder Sans"; font-weight: 500; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff") format("woff"); font-display: swap; }
-@font-face { font-family: "Builder Sans"; font-weight: 800; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff") format("woff"); font-display: swap; }
-@font-face { font-family: "Builder Mono"; font-weight: 400; font-style: normal; src: url("https://webblox.roblox.com/firamono/FiraMono-Regular.woff2") format("woff2"), url("https://webblox.roblox.com/firamono/FiraMono-Regular.woff") format("woff"); font-display: swap; }
+
 body { font-family: "Builder Sans", Arial, san-serif; font-weight: 325; font-style: normal; line-height: 140%; font-size: 14px; letter-spacing: 0.15px; }
 .css-332b7m-Typography-root-Typography-h6 {
     font-weight: 500 !important;
@@ -32,8 +47,14 @@ body { font-family: "Builder Sans", Arial, san-serif; font-weight: 325; font-sty
 .css-5a98es-Typography-root-Typography-largeLabel2 {
     font-weight: 400 !important;
 }
-.css-1flhdlh-Typography-root-Typography-subtitle1 {
+.css-1flhdlh-Typography-root-Typography-subtitle1, div[role="tooltip"] {
     font-size: 17px !important;
+    font-weight: 400 !important;
+}
+.css-1kqhqgm-Typography-buttonSmall-Button-text-Typography-button-Typography-buttonSmall-Button-text {
+    font-weight: 400 !important;
+}
+.css-1398ohm-Typography-tooltip {
     font-weight: 400 !important;
 }
 .css-1oslwv2-Typography-tooltip {
@@ -44,4 +65,13 @@ body { font-family: "Builder Sans", Arial, san-serif; font-weight: 325; font-sty
 }
 .css-9iedg7 {
     font-weight: 400 !important;
+}
+.css-1v2hkw3-Typography-root-Typography-smallLabel2 {
+    font-weight: 400 !important;
+}
+.css-ocxyfa-Typography-body1-Typography-alertTitle {
+    font-weight: 800 !important;
+}
+.web-blox-css-tss-fhm5ml-Typography-footer-Typography-colorSecondary-Typography-root-textEllipsis {
+    font-size: 13px !important;
 }
