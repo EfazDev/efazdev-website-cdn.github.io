@@ -34,7 +34,7 @@ try {
                                 style.rel = "stylesheet";
                                 style.type = "text/css";
                                 style.media = "all";
-                                style.href = "https://cdn.efaz.dev/cdn/js/efaz-roblox-theme/chromeExtension/theme.css"
+                                style.href = "https://cdn.efaz.dev/cdn/extensions/efaz-roblox-theme/chromeExtension/theme.css"
                                 document.head.append(style)
                             }
                         }

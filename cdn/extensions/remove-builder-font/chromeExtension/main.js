@@ -13,7 +13,7 @@ main.js:
 var stored_css = ""
 var stored_creator_dashboard_css = ""
 var stored_devforum_css = ""
-    
+
 chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
     try {
         const storage = chrome.storage.sync;
@@ -43,7 +43,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                     style.rel = "stylesheet";
                                     style.type = "text/css";
                                     style.media = "all";
-                                    style.href = "https://cdn.efaz.dev/cdn/js/remove-builder-font/stored_css/change_font.css"
+                                    style.href = "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/chromeExtension/change_font.css"
                                     document.head.append(style)
                                 }
                             }
@@ -94,7 +94,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                             style.rel = "stylesheet";
                                             style.type = "text/css";
                                             style.media = "all";
-                                            style.href = "https://cdn.efaz.dev/cdn/js/remove-builder-font/stored_css/devforum_font.css"
+                                            style.href = "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/chromeExtension/devforum_font.css"
                                             document.head.append(style)
                                         } else {
                                             const style = document.createElement("style")
@@ -123,8 +123,8 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                 })
                             }
                         }
-                    } else if (urlObj.hostname.includes(".roblox.com")) {
-                        if ((overwriteCreateDashboard == true && urlObj.hostname.includes("create.roblox.com")) || (otherSub == true && !(urlObj.hostname.includes("create.roblox.com")))) {
+                    } else if (tab.url.startsWith("https://create.roblox.com")) {
+                        if (overwriteCreateDashboard == true) {
                             function injectCSS(css, tries) {
                                 if (css) {
                                     var new_tries = 0
@@ -144,7 +144,75 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                             setTimeout(() => { injectCSS(css, new_tries + 1) }, 100)
                                         }
                                     } else {
-                                        setTimeout(() => { injectCSS(css, new_tries + 1) }, 100)
+                                        var selectors = document.head.getElementsByTagName("style")
+                                        var found = false
+                                        for (q = 0; q < selectors.length; q++) {
+                                            var selector = selectors[q]
+                                            if (selector.getAttribute("data-emotion") == "web-blox-css-mui-global") {
+                                                if (selector.innerHTML == "") {
+                                                    selector.innerHTML = css
+                                                    found = true
+                                                }
+                                            }
+                                        }
+                                        if (found == false) {
+                                            setTimeout(() => { injectCSS(css, new_tries + 1) }, 100)
+                                        }
+                                    }
+                                }
+                            }
+                            if (stored_creator_dashboard_css) {
+                                chrome.scripting.executeScript({
+                                    target: { tabId: tabId, allFrames: true },
+                                    func: injectCSS,
+                                    args: [stored_creator_dashboard_css]
+                                })
+                            } else {
+                                fetch("global_font.css").then(res => { return res.text() }).then(fetched => {
+                                    stored_creator_dashboard_css = fetched
+                                    chrome.scripting.executeScript({
+                                        target: { tabId: tabId, allFrames: true },
+                                        func: injectCSS,
+                                        args: [fetched]
+                                    })
+                                })
+                            }
+                        }
+                    } else if (urlObj.hostname.includes(".roblox.com")) {
+                        if (otherSub == true && !(urlObj.hostname.includes("create.roblox.com"))) {
+                            function injectCSS(css, tries) {
+                                if (css) {
+                                    var new_tries = 0
+                                    if (tries) {
+                                        new_tries = tries
+                                    }
+                                    if (new_tries > 75) {
+                                        return
+                                    }
+                                    if (document.querySelector("head > style:nth-child(1)")) {
+                                        var selector = document.querySelector("head > style:nth-child(1)");
+                                        if (selector.sheet.cssRules[7].cssText.includes("font-face")) {
+                                            if (selector.innerHTML == "") {
+                                                selector.innerHTML = css
+                                            }
+                                        } else {
+                                            setTimeout(() => { injectCSS(css, new_tries + 1) }, 100)
+                                        }
+                                    } else {
+                                        var selectors = document.head.getElementsByTagName("style")
+                                        var found = false
+                                        for (q = 0; q < selectors.length; q++) {
+                                            var selector = selectors[q]
+                                            if (selector.getAttribute("data-emotion") == "web-blox-css-mui-global") {
+                                                if (selector.innerHTML == "") {
+                                                    selector.innerHTML = css
+                                                    found = true
+                                                }
+                                            }
+                                        }
+                                        if (found == false) {
+                                            setTimeout(() => { injectCSS(css, new_tries + 1) }, 100)
+                                        }
                                     }
                                 }
                             }
@@ -184,7 +252,7 @@ chrome.runtime.onInstalled.addListener(() => {
             }
         }
         chrome.tabs.create({
-            url: chrome.runtime.getURL("thank_you.css")
+            url: chrome.runtime.getURL("thank_you.html")
         })
         await storage.set({ "roblox_font_thanks": { "thanks": true } });
     });

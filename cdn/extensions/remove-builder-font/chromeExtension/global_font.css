@@ -10,11 +10,11 @@ CSS is created based on Roblox's servers for old files. Styles using specific cl
 */
 
 /* [Create font faces based on the files.] */
-@font-face { font-family: "Builder Sans"; font-weight: 300; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff") format("woff"); font-display: swap; }
-@font-face { font-family: "Builder Sans"; font-weight: 325; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Book.woff") format("woff"); font-display: swap; }
-@font-face { font-family: "Builder Sans"; font-weight: 500; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Medium.woff") format("woff"); font-display: swap; }
-@font-face { font-family: "Builder Sans"; font-weight: 800; font-style: normal; src: url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/other/roblox-gotham-backup/GothamSSm-Bold.woff") format("woff"); font-display: swap; }
-@font-face { font-family: "Builder Mono"; font-weight: 400; font-style: normal; src: url("https://webblox.roblox.com/firamono/FiraMono-Regular.woff2") format("woff2"), url("https://webblox.roblox.com/firamono/FiraMono-Regular.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Sans"; font-weight: 300; font-style: normal; src: url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Book.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Sans"; font-weight: 325; font-style: normal; src: url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Book.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Book.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Sans"; font-weight: 500; font-style: normal; src: url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Medium.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Medium.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Sans"; font-weight: 800; font-style: normal; src: url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Bold.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Bold.woff") format("woff"); font-display: swap; }
+@font-face { font-family: "Builder Mono"; font-weight: 400; font-style: normal; src: url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/FiraMono-Regular.woff2") format("woff2"), url("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/FiraMono-Regular.woff") format("woff"); font-display: swap; }
 
 /* [Overwrite Builder font-family with Gotham files.]  */
 html { -webkit-font-smoothing: antialiased; box-sizing: border-box; text-size-adjust: 100%; color-scheme: dark; }
@@ -85,4 +85,7 @@ body { font-family: "Builder Sans", Arial, san-serif; font-weight: 325; font-sty
 }
 .web-blox-css-tss-w0082-Typography-footer-Typography-colorSecondary-Typography-root {
     font-size: 13px !important;
+}
+.web-blox-css-tss-1h50r65-Typography-chip-chip {
+    font-weight: 400 !important;
 }
