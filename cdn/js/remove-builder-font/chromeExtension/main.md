@@ -1,0 +1,1 @@
+# Source Code is moved to https://github.com/EfazDev/efazdev-website-cdn.github.io/tree/main/cdn/extensions/remove-builder-font/chromeExtension
