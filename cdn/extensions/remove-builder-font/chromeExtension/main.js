@@ -17,19 +17,19 @@ var stored_devforum_css = ""
 chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
     try {
         const storage = chrome.storage.sync;
-        storage.get(["return_roblox_font_settings"], function (items) {
+        storage.get(["removeBuilderFont"], function (items) {
             var enabled = true;
             var remoteStyles = false;
             var overwriteCreateDashboard = true;
             var devForum = true;
             var otherSub = true;
 
-            if (items["return_roblox_font_settings"]) {
-                if (typeof (items["return_roblox_font_settings"]["enabled"]) == "boolean") { enabled = items["return_roblox_font_settings"]["enabled"] };
-                if (typeof (items["return_roblox_font_settings"]["remoteStyles"]) == "boolean") { remoteStyles = items["return_roblox_font_settings"]["remoteStyles"] };
-                if (typeof (items["return_roblox_font_settings"]["overwriteCreateDashboard"]) == "boolean") { overwriteCreateDashboard = items["return_roblox_font_settings"]["overwriteCreateDashboard"] };
-                if (typeof (items["return_roblox_font_settings"]["overwriteDevForum"]) == "boolean") { devForum = items["return_roblox_font_settings"]["overwriteDevForum"] };
-                if (typeof (items["return_roblox_font_settings"]["overwriteOtherSubdomains"]) == "boolean") { otherSub = items["return_roblox_font_settings"]["overwriteOtherSubdomains"] };
+            if (items["removeBuilderFont"]) {
+                if (typeof (items["removeBuilderFont"]["enabled"]) == "boolean") { enabled = items["removeBuilderFont"]["enabled"] };
+                if (typeof (items["removeBuilderFont"]["remoteStyles"]) == "boolean") { remoteStyles = items["removeBuilderFont"]["remoteStyles"] };
+                if (typeof (items["removeBuilderFont"]["overwriteCreateDashboard"]) == "boolean") { overwriteCreateDashboard = items["removeBuilderFont"]["overwriteCreateDashboard"] };
+                if (typeof (items["removeBuilderFont"]["overwriteDevForum"]) == "boolean") { devForum = items["removeBuilderFont"]["overwriteDevForum"] };
+                if (typeof (items["removeBuilderFont"]["overwriteOtherSubdomains"]) == "boolean") { otherSub = items["removeBuilderFont"]["overwriteOtherSubdomains"] };
             }
             if (enabled == true) {
                 if (tab.url) {
@@ -244,16 +244,23 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
 
 chrome.runtime.onInstalled.addListener(() => {
     const storage = chrome.storage.sync;
-    storage.get(["roblox_font_thanks"], async function (items) {
-        if (items["roblox_font_thanks"]) {
-            if (items["roblox_font_thanks"]["thanks"] == true) {
-                console.log("System might have updated! GG!")
-                return
+    fetch("settings.json").then(setting_res => {
+        return setting_res.json()
+    }).then(settings => {
+        var name = settings["name"]
+        storage.get([name], async function (items) {
+            if (items[name]) {
+                if (items[name]["thanks"] == true) {
+                    console.log("The extension might have updated!")
+                    return
+                } else {
+                    items[name]["thanks"] = true
+                    chrome.tabs.create({
+                        url: chrome.runtime.getURL("thank_you.html")
+                    })
+                    await storage.set(items);
+                }
             }
-        }
-        chrome.tabs.create({
-            url: chrome.runtime.getURL("thank_you.html")
-        })
-        await storage.set({ "roblox_font_thanks": { "thanks": true } });
-    });
+        });
+    })
 });

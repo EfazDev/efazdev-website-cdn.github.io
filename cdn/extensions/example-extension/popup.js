@@ -1,14 +1,3 @@
-/* 
-
-Efaz's Builder Font Remover
-By: EfazDev
-Page: https://www.efaz.dev/remove-builder-font
-
-popup.js:
-    - Save Settings such as if the extension is enabled.
-    
-*/
-
 const storage = chrome.storage.sync
 var system_settings = {}
 
@@ -73,7 +62,7 @@ async function loadChanges() {
                             selected = items[system_settings["name"]][key]
                         }
                     }
-                    if (!(typeof(selected) == "undefined")) {
+                    if (!(typeof (selected) == "undefined")) {
                         if (document.getElementById(key)) {
                             var main_selection = document.getElementById(key)
                             if (val["type"] == "checkbox") {

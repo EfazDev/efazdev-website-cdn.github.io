@@ -1,0 +1,30 @@
+{
+    "name": "removeBuilderFont",
+    "settings": {
+        "enabled": {
+            "text": "Enable Extension",
+            "type": "checkbox",
+            "default": true
+        },
+        "remoteStyles": {
+            "text": "Use Remote Stylesheets (Imported from https://cdn.efaz.dev)",
+            "type": "checkbox",
+            "default": false
+        },
+        "overwriteCreateDashboard": {
+            "text": "Change Fonts on Creator Dashboard",
+            "type": "checkbox",
+            "default": true
+        },
+        "overwriteDevForum": {
+            "text": "Change Fonts on DevForum",
+            "type": "checkbox",
+            "default": true
+        },
+        "overwriteOtherSubdomains": {
+            "text": "Change Fonts on Other Subdomains",
+            "type": "checkbox",
+            "default": true
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "exampleExtension",
+    "settings": {
+        "enabled": {
+            "text": "Enable Extension",
+            "type": "checkbox",
+            "default": true
+        },
+        "color": {
+            "text": "Select a color",
+            "type": "color",
+            "default": "#0066FF",
+            "reset": true
+        }
+    }
+}
