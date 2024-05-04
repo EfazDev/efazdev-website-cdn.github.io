@@ -5,6 +5,12 @@ body {
     --background-size: cover;
 }
 
+#roproThemeFrame {
+    content: none;
+    height: 0px !important;
+    width: 0px !important;
+}
+
 #header {
     background-color: rgb(255, 75, 0); 
     border-color: rgb(228, 67, 0);
