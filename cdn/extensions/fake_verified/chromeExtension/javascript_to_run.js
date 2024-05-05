@@ -148,7 +148,7 @@ window.onload = function () {
                                 name_on_side = Array.prototype.slice.call(name_on_side);
                                 if (name_on_side.length > 0) {
                                     name_on_side.forEach((main_name_on_side) => {
-                                        if (main_name_on_side.innerHTML == json["displayName"]) {
+                                        if (main_name_on_side.outerHTML.includes(json["displayName"])) {
                                             main_name_on_side.innerHTML = `${main_name_on_side.innerHTML} ${name_side_real_html}`;
                                         }
                                     });
@@ -161,8 +161,8 @@ window.onload = function () {
                                         var group_owners = document.getElementsByClassName("text-link ng-binding ng-scope");
                                         group_owners = Array.prototype.slice.call(group_owners);
                                         group_owners.forEach((group_owner_name) => {
-                                            if (group_owner_name.innerHTML == json["displayName"] && group_owner_name.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                                group_owner_name.innerHTML = `${group_owner_name.innerHTML} ${name_side_html}`;
+                                            if (group_owner_name.outerHTML.includes(json["displayName"]) && group_owner_name.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                group_owner_name.innerHTML = `${json["displayName"]} ${name_side_html.replace("12px", "14px").replace("12px", "14px")}`;
 
                                                 if (window.verifiedCheckmarkSettings) {
                                                     if (window.verifiedCheckmarkSettings["groupsIncluded"] == true) {
@@ -170,6 +170,9 @@ window.onload = function () {
                                                         group_name = Array.prototype.slice.call(group_name);
                                                         if (group_name.length > 0) {
                                                             group_name.forEach((main_name_on_group) => {
+                                                                if (main_name_on_group.innerHTML.includes("data-rblx-verified-badge-icon")) {
+                                                                    return
+                                                                }
                                                                 main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${group_name_verified_html}`;
                                                             });
                                                         }
@@ -182,8 +185,11 @@ window.onload = function () {
                                         group_shouts = Array.prototype.slice.call(group_shouts);
                                         if (group_shouts.length > 0) {
                                             var shout = group_shouts[0];
-                                            if (shout.innerHTML == json["displayName"] && shout.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                                shout.innerHTML = `${shout.innerHTML} ${name_html_larger}`;
+                                            if (shout.outerHTML.includes(json["displayName"]) && shout.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                if (shout.parentElement.innerHTML.includes("data-rblx-verified-badge-icon")) {
+                                                    return
+                                                }
+                                                shout.outerHTML = `${shout.outerHTML} ${name_html_larger}`;
                                             }
                                         }
 
@@ -191,9 +197,12 @@ window.onload = function () {
                                         name_in_group = Array.prototype.slice.call(name_in_group);
                                         if (name_in_group.length > 0) {
                                             name_in_group.forEach((main_name_on_group) => {
-                                                if (main_name_on_group.innerHTML == json["displayName"]) {
+                                                if (main_name_on_group.outerHTML.includes(json["displayName"])) {
                                                     if (main_name_on_group.offsetParent.offsetParent.id == `member-${userId}`) {
-                                                        main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                        if (main_name_on_group.parentElement.innerHTML.includes("data-rblx-verified-badge-icon")) {
+                                                            return
+                                                        }
+                                                        main_name_on_group.outerHTML = `${main_name_on_group.outerHTML} ${name_side_html}`;
                                                     }
                                                 }
                                             });
@@ -203,8 +212,11 @@ window.onload = function () {
                                         group_payouts_auto = Array.prototype.slice.call(group_payouts_auto);
                                         if (group_payouts_auto.length > 0) {
                                             group_payouts_auto.forEach((main_name_on_group) => {
-                                                if (main_name_on_group.innerHTML == json["displayName"] && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                                    main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                if (main_name_on_group.outerHTML.includes(json["displayName"]) && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                    if (main_name_on_group.parentElement.innerHTML.includes("data-rblx-verified-badge-icon")) {
+                                                        return
+                                                    }
+                                                    main_name_on_group.outerHTML = `${main_name_on_group.outerHTML} ${name_side_html}`;
                                                 }
                                             });
                                         }
@@ -220,8 +232,8 @@ window.onload = function () {
                                                     group_wall = Array.prototype.slice.call(group_wall);
                                                     if (group_wall.length > 0) {
                                                         group_wall.forEach((main_name_on_group) => {
-                                                            if (main_name_on_group.innerHTML == json["displayName"] && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                            if (main_name_on_group.outerHTML.includes(json["displayName"]) && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html.replace("12px", "14px").replace("12px", "14px")}`;
                                                             }
                                                         });
                                                     }
@@ -257,8 +269,8 @@ window.onload = function () {
                                     var applied_updating = false;
                                     var applied_updating_v2 = false;
                                     group_owners.forEach((group_owner_name) => {
-                                        if (group_owner_name.innerHTML == json["displayName"] && group_owner_name.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                            group_owner_name.innerHTML = `${group_owner_name.innerHTML} ${name_side_html}`;
+                                        if (group_owner_name.innerHTML.includes(json["displayName"]) && group_owner_name.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                            group_owner_name.innerHTML = `${json["displayName"]} ${name_side_html}`;
 
                                             if (window.verifiedCheckmarkSettings) {
                                                 if (window.verifiedCheckmarkSettings["groupsIncluded"] == true) {
@@ -313,8 +325,8 @@ window.onload = function () {
                                     group_shouts = Array.prototype.slice.call(group_shouts);
                                     if (group_shouts.length > 0) {
                                         var shout = group_shouts[0];
-                                        if (shout.innerHTML == json["displayName"] && shout.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                            shout.innerHTML = `${shout.innerHTML} ${name_html_larger}`;
+                                        if (shout.outerHTML.includes(json["displayName"]) && shout.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                            shout.outerHTML = `${shout.outerHTML} ${name_html_larger}`;
                                         }
                                     }
 
@@ -322,8 +334,8 @@ window.onload = function () {
                                     group_payouts_auto = Array.prototype.slice.call(group_payouts_auto);
                                     if (group_payouts_auto.length > 0) {
                                         group_payouts_auto.forEach((main_name_on_group) => {
-                                            if (main_name_on_group.innerHTML == json["displayName"] && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                            if (main_name_on_group.outerHTML.includes(json["displayName"]) && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                main_name_on_group.outerHTML = `${main_name_on_group.outerHTML} ${name_side_html}`;
                                             }
                                         });
                                     }
@@ -332,9 +344,9 @@ window.onload = function () {
                                     name_in_group = Array.prototype.slice.call(name_in_group);
                                     if (name_in_group.length > 0) {
                                         name_in_group.forEach((main_name_on_group) => {
-                                            if (main_name_on_group.innerHTML == json["displayName"]) {
+                                            if (main_name_on_group.outerHTML.includes(json["displayName"])) {
                                                 if (main_name_on_group.offsetParent.offsetParent.id == `member-${userId}`) {
-                                                    main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                    main_name_on_group.outerHTML = `${main_name_on_group.outerHTML} ${name_side_html}`;
                                                 }
                                             }
                                         });
@@ -344,8 +356,8 @@ window.onload = function () {
                                     group_wall = Array.prototype.slice.call(group_wall);
                                     if (group_wall.length > 0) {
                                         group_wall.forEach((main_name_on_group) => {
-                                            if (main_name_on_group.innerHTML == json["displayName"] && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                                main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                            if (main_name_on_group.outerHTML.includes(json["displayName"]) && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                main_name_on_group.outerHTML = `${main_name_on_group.outerHTML} ${name_side_html}`;
                                             }
                                         });
                                     }
@@ -361,8 +373,8 @@ window.onload = function () {
                                                 group_wall = Array.prototype.slice.call(group_wall);
                                                 if (group_wall.length > 0) {
                                                     group_wall.forEach((main_name_on_group) => {
-                                                        if (main_name_on_group.innerHTML == json["displayName"] && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
-                                                            main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html}`;
+                                                        if (main_name_on_group.outerHTML.includes(json["displayName"]) && main_name_on_group.className == "text-name ng-binding ng-scope" && main_name_on_group.href == `https://www.roblox.com/users/${userId}/profile`) {
+                                                            main_name_on_group.innerHTML = `${main_name_on_group.innerHTML} ${name_side_html.replace("12px", "14px").replace("12px", "14px")}`;
                                                         }
                                                     });
                                                 }
@@ -421,8 +433,8 @@ window.onload = function () {
                                         username_containers_2 = Array.prototype.slice.call(username_containers_2);
                                         if (username_containers_2.length > 0) {
                                             username_containers_2.forEach((user_container) => {
-                                                if (user_container.innerHTML == `@${json["name"]}` && user_container.className == "creator-name text-link") {
-                                                    user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                if (user_container.outerHTML.includes(`@${json["name"]}`) && user_container.className == "creator-name text-link") {
+                                                    user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                                 }
                                                 if (include_groups == true) {
                                                     if (user_container.className == "creator-name text-link") {
@@ -431,8 +443,8 @@ window.onload = function () {
                                                             var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
                                                             if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
                                                                 if (user_container.className == "creator-name text-link") {
-                                                                    if (user_container.innerHTML == allowed_groups[group_id]["name"]) {
-                                                                        user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                                    if (user_container.outerHTML.includes(allowed_groups[group_id]["name"])) {
+                                                                        user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                                                     }
                                                                 }
                                                             } else {
@@ -442,8 +454,8 @@ window.onload = function () {
                                                                             grou_json["accepted"] = true
                                                                             allowed_groups[group_id] = grou_json
                                                                             if (user_container.className == "creator-name text-link") {
-                                                                                if (user_container.innerHTML == grou_json["name"]) {
-                                                                                    user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                                                if (user_container.outerHTML.includes(grou_json["name"])) {
+                                                                                    user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                                                                 }
                                                                             }
                                                                         }
@@ -460,9 +472,9 @@ window.onload = function () {
                                         username_containers_7 = Array.prototype.slice.call(username_containers_7);
                                         if (username_containers_7.length > 0) {
                                             username_containers_7.forEach((user_container) => {
-                                                if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "avatar-name text-overflow ng-binding") {
-                                                    if (user_container.parentElement.parentElement.children[1].innerHTML == `@${json["name"]}`) {
-                                                        user_container.innerHTML = `${user_container.innerHTML} ${name_small_html}`;
+                                                if (user_container.outerHTML.includes(`${json["displayName"]}`) && user_container.className == "avatar-name text-overflow ng-binding") {
+                                                    if (user_container.parentElement.parentElement.children[1].outerHTML.includes(`@${json["name"]}`)) {
+                                                        user_container.outerHTML = `${user_container.outerHTML} ${name_small_html}`;
                                                     }
                                                 }
                                             });
@@ -472,14 +484,14 @@ window.onload = function () {
                                         username_containers_8 = Array.prototype.slice.call(username_containers_8);
                                         if (username_containers_8.length > 0) {
                                             username_containers_8.forEach((user_container) => {
-                                                if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "text-overflow avatar-name ng-binding ng-scope") {
+                                                if (user_container.outerHTML.includes(`${json["displayName"]}`) && user_container.className == "text-overflow avatar-name ng-binding ng-scope") {
                                                     var username_containers_9 = document.getElementsByClassName("text-overflow avatar-card-label ng-binding ng-scope");
                                                     username_containers_9 = Array.prototype.slice.call(username_containers_9);
                                                     if (username_containers_9.length > 0) {
                                                         username_containers_9.forEach((user_container_2) => {
                                                             if (user_container.offsetParent == user_container_2.offsetParent) {
                                                                 if (user_container_2.innerText == `@${json["name"]}`) {
-                                                                    user_container.outerHTML = `${user_container.innerHTML} ${game_html}`;
+                                                                    user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                                                 }
                                                             }
                                                         });
@@ -509,9 +521,9 @@ window.onload = function () {
                                         username_containers_7 = Array.prototype.slice.call(username_containers_7);
                                         if (username_containers_7.length > 0) {
                                             username_containers_7.forEach((user_container) => {
-                                                if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "avatar-name text-overflow ng-binding") {
-                                                    if (user_container.parentElement.parentElement.children[1].innerHTML == `@${json["name"]}`) {
-                                                        user_container.innerHTML = `${user_container.innerHTML} ${name_small_html}`;
+                                                if (user_container.outerHTML.includes(`${json["displayName"]}`) && user_container.className == "avatar-name text-overflow ng-binding") {
+                                                    if (user_container.parentElement.parentElement.children[1].outerHTML.includes(`@${json["name"]}`)) {
+                                                        user_container.outerHTML = `${user_container.outerHTML} ${name_small_html}`;
                                                     }
                                                 }
                                             });
@@ -529,12 +541,62 @@ window.onload = function () {
                                     }, 1000);
                                 }
 
+                                function applyAutoChangeFunctionD() {
+                                    setTimeout(function () {
+                                        var username_containers_9 = document.getElementsByClassName("creator-name text-overflow text-link ng-binding");
+                                        username_containers_9 = Array.prototype.slice.call(username_containers_9);
+                                        if (username_containers_9.length > 0) {
+                                            username_containers_9.forEach((user_container) => {
+                                                if (user_container.outerHTML.includes(`@${json["name"]}`) && user_container.className == "creator-name text-overflow text-link ng-binding") {
+                                                    user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
+                                                }
+                                                if (include_groups == true) {
+                                                    if (user_container.className == "creator-name text-overflow text-link ng-binding") {
+                                                        if (user_container.href && user_container.href.includes("/groups/")) {
+                                                            var group_id = user_container.href.match(/[0-9]+/)[0];
+                                                            var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
+                                                            if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
+                                                                if (user_container.className == "creator-name text-overflow text-link ng-binding") {
+                                                                    if (user_container.outerHTML.includes(allowed_groups[group_id]["name"])) {
+                                                                        user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
+                                                                    if (grou_json["owner"]) {
+                                                                        if (grou_json["owner"]["userId"] == userId) {
+                                                                            grou_json["accepted"] = true
+                                                                            allowed_groups[group_id] = grou_json
+                                                                            if (user_container.className == "creator-name text-overflow text-link ng-binding") {
+                                                                                if (user_container.outerHTML.includes(grou_json["name"])) {
+                                                                                    user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                })
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        }
+
+                                        var list_item = document.getElementById("assetsItems");
+                                        if (list_item) {
+                                            var catalog_list_header = list_item;
+                                            var observer = new MutationObserver(applyAutoChangeFunctionD);
+                                            observer.observe(catalog_list_header, { childList: true });
+                                        }
+                                    }, 1000);
+                                }
+
                                 var username_containers_2 = document.getElementsByClassName("creator-name text-link");
                                 username_containers_2 = Array.prototype.slice.call(username_containers_2);
                                 if (username_containers_2.length > 0) {
                                     username_containers_2.forEach((user_container) => {
-                                        if (user_container.innerHTML == `@${json["name"]}` && user_container.className == "creator-name text-link") {
-                                            user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                        if (user_container.outerHTML.includes(`@${json["name"]}`) && user_container.className == "creator-name text-link") {
+                                            user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                         }
                                         if (include_groups == true) {
                                             if (user_container.className == "creator-name text-link") {
@@ -543,8 +605,8 @@ window.onload = function () {
                                                     var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
                                                     if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
                                                         if (user_container.className == "creator-name text-link") {
-                                                            if (user_container.innerHTML == allowed_groups[group_id]["name"]) {
-                                                                user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                            if (user_container.outerHTML.includes(allowed_groups[group_id]["name"])) {
+                                                                user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                                             }
                                                         }
                                                     } else {
@@ -554,8 +616,8 @@ window.onload = function () {
                                                                     grou_json["accepted"] = true
                                                                     allowed_groups[group_id] = grou_json
                                                                     if (user_container.className == "creator-name text-link") {
-                                                                        if (user_container.innerHTML == grou_json["name"]) {
-                                                                            user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                                                        if (user_container.outerHTML.includes(grou_json["name"])) {
+                                                                            user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                                                         }
                                                                     }
                                                                 }
@@ -572,16 +634,16 @@ window.onload = function () {
                                 username_containers_3 = Array.prototype.slice.call(username_containers_3);
                                 if (username_containers_3.length > 0) {
                                     username_containers_3.forEach((user_container) => {
-                                        if (user_container.innerHTML == `@${json["name"]}`) {
-                                            user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                        if (user_container.outerHTML.includes(`@${json["name"]}`)) {
+                                            user_container.outerHTML = `${user_container.outerHTML}${game_html}`;
                                         }
                                         if (include_groups == true) {
                                             if (user_container.href && user_container.href.includes("/groups/")) {
                                                 var group_id = user_container.href.match(/[0-9]+/)[0];
                                                 var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
                                                 if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
-                                                    if (user_container.innerHTML == allowed_groups[group_id]["name"]) {
-                                                        user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                    if (user_container.outerHTML.includes(allowed_groups[group_id]["name"])) {
+                                                        user_container.outerHTML = `${user_container.outerHTML}${game_html}`;
                                                     }
                                                 } else {
                                                     fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
@@ -589,8 +651,8 @@ window.onload = function () {
                                                             if (grou_json["owner"]["userId"] == userId) {
                                                                 grou_json["accepted"] = true
                                                                 allowed_groups[group_id] = grou_json
-                                                                if (user_container.innerHTML == grou_json["name"]) {
-                                                                    user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                                if (user_container.outerHTML.includes(grou_json["name"])) {
+                                                                    user_container.outerHTML = `${user_container.outerHTML}${game_html}`;
                                                                 }
                                                             }
                                                         }
@@ -605,16 +667,16 @@ window.onload = function () {
                                 username_containers_4 = Array.prototype.slice.call(username_containers_4);
                                 if (username_containers_4.length > 0) {
                                     username_containers_4.forEach((user_container) => {
-                                        if (user_container.innerHTML == `@${json["name"]}`) {
-                                            user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                        if (user_container.parentElement.outerHTML.includes(`@${json["name"]}`)) {
+                                            user_container.parentElement.outerHTML = `${user_container.parentElement.outerHTML}${game_html}`;
                                         }
                                         if (include_groups == true) {
                                             if (user_container.href && user_container.href.includes("/groups/")) {
                                                 var group_id = user_container.href.match(/[0-9]+/)[0];
                                                 var generated_group_api_link = `https://groups.roblox.com/v1/groups/${group_id}`;
                                                 if (allowed_groups[group_id] && allowed_groups[group_id]["accepted"] == true) {
-                                                    if (user_container.innerHTML == allowed_groups[group_id]["name"]) {
-                                                        user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                    if (user_container.parentElement.outerHTML.includes(allowed_groups[group_id]["name"])) {
+                                                        user_container.parentElement.outerHTML = `${user_container.parentElement.outerHTML}${game_html}`;
                                                     }
                                                 } else {
                                                     fetch(generated_group_api_link).then(grou_res => { return grou_res.json(); }).then(grou_json => {
@@ -622,8 +684,8 @@ window.onload = function () {
                                                             if (grou_json["owner"]["userId"] == userId) {
                                                                 grou_json["accepted"] = true
                                                                 allowed_groups[group_id] = grou_json
-                                                                if (user_container.innerHTML == grou_json["name"]) {
-                                                                    user_container.innerHTML = `${user_container.innerHTML}${game_html}`;
+                                                                if (user_container.parentElement.outerHTML.includes(grou_json["name"])) {
+                                                                    user_container.parentElement.outerHTML = `${user_container.parentElement.outerHTML}${game_html}`;
                                                                 }
                                                             }
                                                         }
@@ -638,8 +700,8 @@ window.onload = function () {
                                 username_containers_5 = Array.prototype.slice.call(username_containers_5);
                                 if (username_containers_5.length > 0) {
                                     username_containers_5.forEach((user_container) => {
-                                        if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "text-overflow age-bracket-label-username font-caption-header") {
-                                            user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                        if (user_container.outerHTML.includes(`${json["displayName"]}`) && user_container.className == "text-overflow age-bracket-label-username font-caption-header") {
+                                            user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                         }
                                     });
                                 }
@@ -648,8 +710,8 @@ window.onload = function () {
                                 username_containers_6 = Array.prototype.slice.call(username_containers_6);
                                 if (username_containers_6.length > 0) {
                                     username_containers_6.forEach((user_container) => {
-                                        if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "text-name name ng-binding") {
-                                            user_container.innerHTML = `${user_container.innerHTML} ${name_side_html}`;
+                                        if (user_container.outerHTML.includes(`${json["displayName"]}`) && user_container.className == "text-name name ng-binding") {
+                                            user_container.outerHTML = `${user_container.outerHTML} ${name_side_html}`;
                                         }
                                     });
                                 }
@@ -658,9 +720,9 @@ window.onload = function () {
                                 username_containers_7 = Array.prototype.slice.call(username_containers_7);
                                 if (username_containers_7.length > 0) {
                                     username_containers_7.forEach((user_container) => {
-                                        if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "avatar-name text-overflow ng-binding") {
-                                            if (user_container.parentElement.parentElement.children[1].innerHTML == `@${json["name"]}`) {
-                                                user_container.innerHTML = `${user_container.innerHTML} ${name_small_html}`;
+                                        if (user_container.outerHTML.includes(`${json["displayName"]}`) && user_container.className == "avatar-name text-overflow ng-binding") {
+                                            if (user_container.parentElement.parentElement.children[1].outerHTML.includes(`@${json["name"]}`)) {
+                                                user_container.outerHTML = `${user_container.outerHTML} ${name_small_html}`;
                                             }
                                         }
                                     });
@@ -671,14 +733,14 @@ window.onload = function () {
                                     username_containers_8 = Array.prototype.slice.call(username_containers_8);
                                     if (username_containers_8.length > 0) {
                                         username_containers_8.forEach((user_container) => {
-                                            if (user_container.innerHTML == `${json["displayName"]}` && user_container.className == "text-overflow avatar-name ng-binding ng-scope") {
+                                            if (user_container.outerHTML.includes(`${json["displayName"]}`) && user_container.className == "text-overflow avatar-name ng-binding ng-scope") {
                                                 var username_containers_9 = document.getElementsByClassName("text-overflow avatar-card-label ng-binding ng-scope");
                                                 username_containers_9 = Array.prototype.slice.call(username_containers_9);
                                                 if (username_containers_9.length > 0) {
                                                     username_containers_9.forEach((user_container_2) => {
                                                         if (user_container.offsetParent == user_container_2.offsetParent) {
                                                             if (user_container_2.innerText == `@${json["name"]}`) {
-                                                                user_container.outerHTML = `${user_container.innerHTML} ${game_html}`;
+                                                                user_container.outerHTML = `${user_container.outerHTML} ${game_html}`;
                                                             }
                                                         }
                                                     });
