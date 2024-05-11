@@ -10,7 +10,7 @@ main.js:
 
 */
 
-var stored_css = ""
+var stored_css = "";
 var stored_creator_dashboard_css = ""
 var stored_devforum_css = ""
 
