@@ -1,4 +1,4 @@
-var serverStatus = 1
+var serverStatus = 1;
 var latest = new Date().getTime()
 var countdown_total = 60
 function updateObject() {
