@@ -1,17 +1,4 @@
-/* 
-
-Efaz's Builder Font Remover
-By: EfazDev
-Page: https://www.efaz.dev/remove-builder-font
-
-inject.js:
-    - Inject the stored or remote stylesheets into the loading page depending on user's settings.
-
-*/
-
 var stored_css = ""
-var stored_creator_dashboard_css = ""
-var stored_devforum_css = ""
 
 try {
     const storage = chrome.storage.sync;

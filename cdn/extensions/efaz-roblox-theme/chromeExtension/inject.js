@@ -1,25 +1,14 @@
-/* 
-
-Efaz's Roblox Theme
-By: EfazDev
-Page: https://www.efaz.dev/
-
-inject.js:
-    - Inject the stored or remote stylesheets into the loading page depending on user's settings.
-
-*/
-
 var stored_css = ""
 
 try {
     const storage = chrome.storage.sync;
-    storage.get(["return_efaz_theme_settings"], function (items) {
+    storage.get(["efazRobloxTheme"], function (items) {
         var enabled = true;
         var remoteStyles = false;
 
-        if (items["return_efaz_theme_settings"]) {
-            if (typeof (items["return_efaz_theme_settings"]["enabled"]) == "boolean") { enabled = items["return_efaz_theme_settings"]["enabled"] };
-            if (typeof (items["return_efaz_theme_settings"]["remoteStyles"]) == "boolean") { remoteStyles = items["return_efaz_theme_settings"]["remoteStyles"] };
+        if (items["efazRobloxTheme"]) {
+            if (typeof (items["efazRobloxTheme"]["enabled"]) == "boolean") { enabled = items["efazRobloxTheme"]["enabled"] };
+            if (typeof (items["efazRobloxTheme"]["remoteStyles"]) == "boolean") { remoteStyles = items["efazRobloxTheme"]["remoteStyles"] };
         }
         if (enabled == true) {
             var tab = window.location
@@ -28,9 +17,9 @@ try {
                 if (urlObj.hostname == "www.roblox.com") {
                     if (remoteStyles == true) {
                         function injectCSS() {
-                            if (document.getElementById("efaz-theme") == null) {
+                            if (document.getElementById("efaz-roblox-theme") == null) {
                                 const style = document.createElement("link")
-                                style.id = "efaz-theme";
+                                style.id = "efaz-roblox-theme";
                                 style.rel = "stylesheet";
                                 style.type = "text/css";
                                 style.media = "all";
@@ -41,10 +30,10 @@ try {
                         injectCSS()
                     } else {
                         function injectCSS(css) {
-                            if (document.getElementById("efaz-theme") == null) {
+                            if (document.getElementById("efaz-roblox-theme") == null) {
                                 if (css) {
                                     const style = document.createElement("style")
-                                    style.id = "efaz-theme";
+                                    style.id = "efaz-roblox-theme";
                                     style.media = "all";
                                     style.innerHTML = css
                                     document.head.append(style)

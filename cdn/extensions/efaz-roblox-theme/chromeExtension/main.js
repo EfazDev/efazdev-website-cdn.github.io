@@ -1,36 +1,24 @@
-/* 
-
-Efaz's Roblox Theme
-By: EfazDev
-Page: https://www.efaz.dev/
-
-main.js:
-    - Backup script incase of an error or timeout inside inject.js
-    - Launches a Thank You page if first time use: [https://www.efaz.dev/thanks]
-
-*/
-
 var stored_css = ""
-    
+
 chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
     try {
         const storage = chrome.storage.sync;
-        storage.get(["return_efaz_theme_settings"], function (items) {
+        storage.get(["efazRobloxTheme"], function (items) {
             var enabled = true;
             var remoteStyles = false;
 
-            if (items["return_efaz_theme_settings"]) {
-                if (typeof (items["return_efaz_theme_settings"]["enabled"]) == "boolean") { enabled = items["return_efaz_theme_settings"]["enabled"] };
-                if (typeof (items["return_efaz_theme_settings"]["remoteStyles"]) == "boolean") { remoteStyles = items["return_efaz_theme_settings"]["remoteStyles"] };
+            if (items["efazRobloxTheme"]) {
+                if (typeof (items["efazRobloxTheme"]["enabled"]) == "boolean") { enabled = items["efazRobloxTheme"]["enabled"] };
+                if (typeof (items["efazRobloxTheme"]["remoteStyles"]) == "boolean") { remoteStyles = items["efazRobloxTheme"]["remoteStyles"] };
             }
             if (enabled == true) {
                 if (tab.url) {
                     if (tab.url.startsWith("https://www.roblox.com")) {
                         if (remoteStyles == true) {
                             function injectCSS() {
-                                if (document.getElementById("efaz-theme") == null) {
+                                if (document.getElementById("efaz-roblox-theme") == null) {
                                     const style = document.createElement("link")
-                                    style.id = "efaz-theme";
+                                    style.id = "efaz-roblox-theme";
                                     style.rel = "stylesheet";
                                     style.type = "text/css";
                                     style.media = "all";
@@ -44,10 +32,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                             })
                         } else {
                             function injectCSS(css) {
-                                if (document.getElementById("efaz-theme") == null) {
+                                if (document.getElementById("efaz-roblox-theme") == null) {
                                     if (css) {
                                         const style = document.createElement("style")
-                                        style.id = "efaz-theme";
+                                        style.id = "efaz-roblox-theme";
                                         style.media = "all";
                                         style.innerHTML = css
                                         document.head.append(style)
@@ -82,16 +70,23 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
 
 chrome.runtime.onInstalled.addListener(() => {
     const storage = chrome.storage.sync;
-    storage.get(["efaz_theme_thanks"], async function (items) {
-        if (items["efaz_theme_thanks"]) {
-            if (items["efaz_theme_thanks"]["thanks"] == true) {
-                console.log("System might have updated! GG!")
-                return
+    fetch("settings.json").then(setting_res => {
+        return setting_res.json()
+    }).then(settings => {
+        var name = settings["name"]
+        storage.get([name], async function (items) {
+            if (items[name]) {
+                if (items[name]["thanks"] == true) {
+                    console.log("The extension might have updated!")
+                    return
+                } else {
+                    items[name]["thanks"] = true
+                    chrome.tabs.create({
+                        url: chrome.runtime.getURL("thank_you.html")
+                    })
+                    await storage.set(items);
+                }
             }
-        }
-        chrome.tabs.create({
-            url: "https://www.efaz.dev/thanks"
-        })
-        await storage.set({ "efaz_theme_thanks": { "thanks": true } });
-    });
+        });
+    })
 });
