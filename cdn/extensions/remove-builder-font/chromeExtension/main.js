@@ -263,4 +263,4 @@ chrome.runtime.onInstalled.addListener(() => {
             }
         });
     })
-});
+})
