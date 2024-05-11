@@ -5,7 +5,6 @@ body {
     --background-size: cover !important;
 }
 
-
 #roproThemeFrame {
     content: none;
     height: 0px !important;
@@ -63,4 +62,6 @@ body * {
 .dark-theme .text, .dark-theme .text-date-hint, .dark-theme .text-default, .dark-theme .text-description, .dark-theme .text-footer, .dark-theme .text-info, .dark-theme .text-label, .dark-theme .text-secondary, .dark-theme p {
     color: #ffffff;
 }
-.dark-theme .footer .text-footer-nav, .dark-theme .footer .text-footer-nav:active, .dark-theme .footer .text-footer-nav:link, .dark-theme .footer .te
+.dark-theme .footer .text-footer-nav, .dark-theme .footer .text-footer-nav:active, .dark-theme .footer .text-footer-nav:link, .dark-theme .footer .text-footer-nav:visited {
+    color: #ffffff;
+}

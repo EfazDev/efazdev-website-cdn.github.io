@@ -1,4 +1,4 @@
-var stored_css = ""
+var stored_css = "";
 
 chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
     try {

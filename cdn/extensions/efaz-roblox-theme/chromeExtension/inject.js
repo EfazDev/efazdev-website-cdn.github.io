@@ -1,4 +1,4 @@
-var stored_css = ""
+var stored_css = "";
 
 try {
     const storage = chrome.storage.sync;
