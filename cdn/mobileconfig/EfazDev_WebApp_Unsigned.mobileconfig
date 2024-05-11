@@ -994,9 +994,9 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Full webapp of the EfazDev website and dashboard!</string>
+	<string>2 apps for EfazDev website and dashboard that can be installed on your iOS device!</string>
 	<key>PayloadDisplayName</key>
-	<string>EfazDev</string>
+	<string>EfazDev Webapp</string>
 	<key>PayloadIdentifier</key>
 	<string>com.efazdev.webapp</string>
 	<key>PayloadOrganization</key>
