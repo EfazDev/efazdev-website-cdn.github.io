@@ -182,7 +182,7 @@
     {
         "name": "Item Moderation Scanner",
         "url": "https://www.efaz.dev/itemmoderation",
-        "download_url": "https://discord.gg/",
+        "download_url": "https://item-moderation.efaz.dev",
         "discontinued": false,
         "showInProjectsPage": true,
         "buttonText": {"ProjectsPage": "Discord Server", "ProjectPage": "Join Server Now!"},

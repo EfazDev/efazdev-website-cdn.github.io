@@ -2,7 +2,7 @@
     {
         "name": "Item Moderation Scanner",
         "url": "https://www.efaz.dev/itemmoderation",
-        "download_url": "https://discord.gg/",
+        "download_url": "https://item-moderation.efaz.dev",
         "discontinued": false,
         "showInProjectsPage": true,
         "buttonText": {"ProjectsPage": "Discord Server", "ProjectPage": "Join Server Now!"},
@@ -10,14 +10,14 @@
         "description": "Scan items that recently went into Roblox Moderation and be notified when they got approved or declined!"
     },
     {
-        "name": "Merch Code System",
-        "url": "https://www.efaz.dev/merch-code-system",
-        "download_url": "https://codeload.github.com/EfazDev/merch-code-system/zip/refs/heads/main",
+        "name": "Efaz's Builder Font Remover",
+        "url": "https://www.efaz.dev/remove-builder-font",
+        "download_url": "https://chromewebstore.google.com/detail/efazs-builder-font-remove/hapbigglmmihgdmpficddjdmfgikalcp",
         "discontinued": false,
         "showInProjectsPage": true,
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
-        "description": "A Discord Bot that allows users to redeem codes for rewards!"
+        "description": "Chrome extension that removes the Builder font on the Roblox website and replaces it with GothamSS again!"
     },
     {
         "name": "EfazDev API v1",

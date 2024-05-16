@@ -1,9 +1,11 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'unsafe-inline' gap:; script-src 'unsafe-inline'; script-src-elem *; object-src *; style-src 'self' data: 'unsafe-inline'; img-src * data:; media-src * data:; font-src * data:; connect-src *">
-    <style>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'; script-src-elem *; img-src *; media-src *; font-src *; connect-src *;">
+    <title>Extension Settings</title>
+    <meta name="title" content="Extension Settings">
+    <meta name="description" content="just a extension settings page">
+    <style id="css">
         @font-face {
             font-family: arialrounded;
             src: url('https://cdn.efaz.dev/cdn/other/ArialRounded.ttf');
@@ -21,8 +23,8 @@
         }
 
         html {
-            width: 400px;
-            height: 500px;
+            width: 475px;
+            height: 475px;
         }
 
         e {
@@ -32,6 +34,7 @@
 
         li {
             display: inline-block;
+            padding: 1px;
         }
 
         button {
@@ -56,6 +59,12 @@
             margin-right: auto;
         }
 
+        ul {
+            padding-left: 0;
+            display: flex !important;
+            justify-content: left;
+        }
+
         a {
             color: #4295f5;
         }
@@ -64,36 +73,26 @@
 </head>
 
 <body style='min-height: 100%; min-width:100%; background-color: rgb(255, 75, 0);'>
-    <div id='main_menu'><img src='https://cdn.efaz.dev/cdn/png/logo.png' height='64' width='64'>
+    <div id='main_menu'><img src='https://cdn.efaz.dev/cdn/png/logo.png' class="center" height='64' width='64'>
         <h1 id='title1'>Hello!</h1>
 
         <p>------ System Details ------</p>
         <label id="extens_name">Extension Name: Loading..</label><br>
-        <label for="enableExtension">Enable Extension: <input type="checkbox" id="enableExtension"
-                name="enableExtension"></label><br>
-        <label for="allowAlertMessages">Allow Alerts by Extension: <input type="checkbox" id="allowAlertMessages"
-                name="allowAlertMessages"></label>
-        <p>------ Extension Details ------</p>
-        <label for="customColor">Custom Color Checkmark (HEX): <input type="color" id="customColor" name="customColor"
-                value="#0066FF"></label> <button id="resetcolorbutton">Reset Color!</button><br>
-        <label for="includeGroups">Include Groups Owned by You: <input type="checkbox" id="includeGroups"
-                name="includeGroups"></label><br>
-        <label for="verifiedPrompt">Enable Verified Badge Prompt: <input type="checkbox" id="verifiedPrompt"
-            name="verifiedPrompt"></label><br>
-        <label for="defaultPrompt">Use Default Roblox Verified Prompt (Enable Verified Prompt Required): <input type="checkbox" id="defaultPrompt"
-            name="defaultPrompt"></label><br>
-        <p>------ Review Details! ------</p>
-        <button type='submit' id="submitbutton">Save Data!</button>
-        <p>Made by @EfazDev</p>
-        <li><a target="_blank" href="https://twitter.efaz.dev"><img title="Twitter"
-                    src="https://cdn.efaz.dev/cdn/png/twitter-logo.png" class="center" style="justify-content: center;"
-                    height="16" width="16"></a></li>
-        <li><a target="_blank" href="https://youtube.efaz.dev"><img class="center" title="Custom"
-                    style="justify-content: center;" src="https://cdn.efaz.dev/cdn/png/youtube-logo.png" alt height="16"
-                    width="16"></a></li>
-        <li><a target="_blank" href="https://discord.efaz.dev"><img title="Custom" style="justify-content: center;"
-                    class="center" src="https://cdn.efaz.dev/cdn/png/discord-logo.png" alt height="16" width="16"></a>
-        </li>
+        <label for="enabled">Enable Extension: <input type="checkbox" id="enabled"
+                name="enabled"></label><br>
+        <p id="extensionSettings">------ Extension Settings ------</p>
+        <p id="reviewDetails">------ Review Details! ------</p>
+        <button type='submit' id="submitbutton" class="center">Save Settings!</button><br><br>
+        <em>Extension is made by @EfazDev. This extension is not affiliated or made by Roblox.</em>
+        <ul>
+            <li><a target="_blank" href="https://twitter.efaz.dev"><img class="resize-img" title="Twitter" height="16"
+                        width="16" src="https://cdn.efaz.dev/cdn/png/twitter-logo.png"></a></li>
+            <li><a target="_blank" href="https://youtube.efaz.dev"><img class="resize-img" title="Custom"
+                        src="https://cdn.efaz.dev/cdn/png/youtube-logo.png" alt height="16" width="16"></a></li>
+            <li><a target="_blank" href="https://discord.efaz.dev"><img class="resize-img" title="Custom"
+                        src="https://cdn.efaz.dev/cdn/png/discord-logo.png" alt height="16" width="16"></a>
+            </li>
+        </ul>
         <p id="extens_vers">Loading..</p>
     </div>
 </body>

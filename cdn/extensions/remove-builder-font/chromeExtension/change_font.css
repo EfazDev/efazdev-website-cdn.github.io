@@ -173,3 +173,7 @@ CSS is created based on Roblox's servers and via archive.org for old files.
 .builder-font .game-card-container .game-card-name {
     font-weight: 500 !important
 }
+
+.user-name[style="font-size: medium;margin-left: 15px;font-weight: initial;display: inline-flex;flex-direction: column;justify-content: center;"] {
+    font-weight: 500 !important;
+}
