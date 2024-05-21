@@ -11,6 +11,12 @@
             "type": "color",
             "default": "#0066FF",
             "reset": true
+        },
+        "donotdisturb": {
+            "text": "Would you like us to not disturb you?",
+            "type": "checkbox",
+            "default": true,
+            "reset": false
         }
     }
 }

@@ -11,44 +11,57 @@
 	<array>
 		<dict>
 			<key>PayloadCertificateFileName</key>
-			<string>DigiCert Assured ID Root G2.cer</string>
+			<string>Atos TrustedRoot Root CA RSA G2 2020.cer</string>
 			<key>PayloadContent</key>
 			<data>
-			MIIDljCCAn6gAwIBAgIQC5McOtY5Z+pnI7/Dr5r0SzANBgkqhkiG
-			9w0BAQsFADBlMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNl
-			cnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29tMSQwIgYD
-			VQQDExtEaWdpQ2VydCBBc3N1cmVkIElEIFJvb3QgRzIwHhcNMTMw
-			ODAxMTIwMDAwWhcNMzgwMTE1MTIwMDAwWjBlMQswCQYDVQQGEwJV
-			UzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cu
-			ZGlnaWNlcnQuY29tMSQwIgYDVQQDExtEaWdpQ2VydCBBc3N1cmVk
-			IElEIFJvb3QgRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
-			AoIBAQDZ5ygvUj82ckmIkzTz+GoeMVSAn61UQbVH35ao1K+ALbkK
-			z3X9iaV9JPrjIgwrvJUXCzO/GU1BBpAAvQxNEP4HteccbiJVMWWX
-			vdMX0h5i89vqbFCMP4QMls+3ywPgym2hFEwbid3tALBSfK+RbLE4
-			E9HpEgjAALAcKxHad3A2m67OeYfcgnDmCXRwVWmvo2ifv922ebPy
-			nXApVfSr/5Vh88lAbx3RvpO704gqu52/clpWcTs/1PPRCv4o76Pu
-			2ZmvA9OPYLfykqGxvYmJHzDNw6YuYjOuFgJ3RFrngQo8p0Quebg/
-			BLxcoIfhG69Rjs3sLPr4/m3wOnyqi+RnlTGNAgMBAAGjQjBAMA8G
-			A1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGGMB0GA1UdDgQW
-			BBTOw0q5mVXyuNtgv6l+vVa1lzan1jANBgkqhkiG9w0BAQsFAAOC
-			AQEAyqVVjOPIQW5pJ6d1Ee88hjZv0p3GeDgdaZaikmkuOGybfQTU
-			iaWxMTeKySHMq2zNixya1r9I0jJmwYrA8y8678Dj1JGG0VDjA9tz
-			d29KOVPt3ibHtX2vK0LRdWLjSisCx1BL4GnilmwORGYQRI+tBev4
-			eaymG+g3NJ1TyWGqolKvSnAWhsI6yLETcDbYz+70CjTVW0z9B5yi
-			utkBclzzTcHdDrEcDcRjvq30FPuJ7KJBDkzMyFdA0G4Dqs0MjomZ
-			mWzwPDCvON9vvKO+KSAnq3T/EyJ43pdSVR6DtVQgA+6uwE9W3jfM
-			w3+qBCe703e4YtsXfJwoIhNzbM8m9Yop5w==
+			MIIFfzCCA2egAwIBAgIMR7opRlU+FpKXsKtAMA0GCSqGSIb3DQEB
+			DAUAMEsxCzAJBgNVBAYTAkRFMQ0wCwYDVQQKDARBdG9zMS0wKwYD
+			VQQDDCRBdG9zIFRydXN0ZWRSb290IFJvb3QgQ0EgUlNBIEcyIDIw
+			MjAwHhcNMjAxMjE1MDg0MTIzWhcNNDAxMjEwMDg0MTIyWjBLMQsw
+			CQYDVQQGEwJERTENMAsGA1UECgwEQXRvczEtMCsGA1UEAwwkQXRv
+			cyBUcnVzdGVkUm9vdCBSb290IENBIFJTQSBHMiAyMDIwMIICIjAN
+			BgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAljGFSqoPMv554UOH
+			nPsjt45/DVS9x2KTd+QcNQR2owOLIu7EhN2lk25uso4JA+tRFjEX
+			qmkVGA5ndCNe6pp9tTk+PYKpa+H+qRywrVpNTHiDQYvP8h1impgE
+			nGPpq2X+SB0kZQdHPrmRLumdm38aNak0sLflcDPvSnJRtge/YD8q
+			n51U3/PXlElRA1pAqWjdEVlc+HamvFBSEO2s7JXg1INrSdoKT5mD
+			3jKDSINnlbJ+54GFPc2C98oC7W2IXQiNuDW/KmkwmbtL0UHbRaCT
+			mVGBkDYIqoq26I+zy+7lRg1ydfVJbOGify+87YSmN+7ewk85Tvae
+			8MnRmzCdSW3h2v8SEIzW5Zl7BbZ9sAnHpPiyHDmVOTP0Nc4lYnuw
+			XyDzy234bFIUZESP08ipdgflr3GZLS0EJUh2r8PnzEPyB7xKJCQ3
+			3fpulAlvTF4BtP5U7COWpV7dhv/pRirx6NzspT2vb6oOD7R1+j4I
+			uSZFT2aGTLwZuOHVNe6ChMjTqxLnzXMzYnf0F8u9NHYqBc6V5Xh5
+			S56wjfk8WDiR6l6HOMC3Qv2qTIcjrQQgsX52Qtq7tha6V8iOE/p1
+			1QhMrziRqu+P+p9JLlR8ClaxevrETi/Uo/oWitCV5Zem/8P8fA5H
+			WPN/B3sS3Fc/LeOhTVtSTDOHmagJe2x+DvLPVkKe6wUCAwEAAaNj
+			MGEwDwYDVR0TAQH/BAUwAwEB/zAfBgNVHSMEGDAWgBQgJfMH/adv
+			8ZbukRBpzJrvfchoeDAdBgNVHQ4EFgQUICXzB/2nb/GW7pEQacya
+			733IaHgwDgYDVR0PAQH/BAQDAgGGMA0GCSqGSIb3DQEBDAUAA4IC
+			AQAkK06Y8h0X7dl2JrYwM+hpRaFRS1LYejowtuQS6r+fTOAEpPY1
+			xv6hMPdThZKtVAVXX5LlKt42J557E0fJanWv/PM35wz1PQFztWlR
+			+L1Z0boL+Lq6ZCdDs3yDlYrnnhOW129KlkFJiw4grRbG96aHW4gS
+			iYuJyhLSVq8iASFG6auYP6eI3uTLKpp1Gfo5XgkF1wMyGrgXUQjH
+			AEB99L74DFn0aXZu06RYW14mc+RCVQZeeEAP0zif7yZRcHSR8Xdi
+			AejZy+uh3zkyHbtr/XH+68+l5hT9AIATxpoASLCZBemugEj7CT9R
+			FLW552BNTcovgSHuUgxletz1iUlMMJI0WIAyWbEN/yRhD+cKQtB7
+			vPiOJ0c/cJ0n2bYGPaW7y16Prg5Tx5xqbztMD6NAcKiaB87UblsH
+			otLiVLa9bzNyY61RmOGPdvFqBzgl/vZizl/bY8Jume8G3LneGRro
+			VD190nZ12V4+MkinjPKecgz4uFi4FyOlFId1WHoAgQciOWpMlKC1
+			otunLMGw8aObwEz3bXDqMZ/xrn0+cyjZod/6k/CbsPDizSUgde/i
+			fTIFyZt27su9MR75lJhLJFhWSMDeBky9pjRd7RZhY3P7GeL6W9iX
+			ddRtnmA5XpSLAizrmc5gKm4bjKdLvP025pgfZfJ/8eOPTIBGNli2
+			oWXLzhxEdQ==
 			</data>
 			<key>PayloadDescription</key>
 			<string>Adds a CA root certificate</string>
 			<key>PayloadDisplayName</key>
-			<string>DigiCert Assured ID Root G2</string>
+			<string>Atos TrustedRoot Root CA RSA G2 2020</string>
 			<key>PayloadIdentifier</key>
-			<string>com.apple.security.root.4B5229BA-072F-4363-A724-EBE4A656DB24</string>
+			<string>com.apple.security.root.2C564597-B9B4-4C6A-8277-366828A56FE2</string>
 			<key>PayloadType</key>
 			<string>com.apple.security.root</string>
 			<key>PayloadUUID</key>
-			<string>4B5229BA-072F-4363-A724-EBE4A656DB24</string>
+			<string>2C564597-B9B4-4C6A-8277-366828A56FE2</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 		</dict>
@@ -5724,6 +5737,50 @@
 		</dict>
 		<dict>
 			<key>PayloadCertificateFileName</key>
+			<string>EfazDevSSL.cer</string>
+			<key>PayloadContent</key>
+			<data>
+			MIIDpTCCAo2gAwIBAgIBATANBgkqhkiG9w0BAQsFADBWMRQwEgYD
+			VQQDDAtFZmF6RGV2IFNTTDEQMA4GA1UECgwHRWZhekRldjELMAkG
+			A1UEBhMCVVMxHzAdBgkqhkiG9w0BCQEWEHN1cHBvcnRAZWZhei5k
+			ZXYwHhcNMjQwNTE4MTcwNjEwWhcNMzgxMTIxMTcwNjEwWjBWMRQw
+			EgYDVQQDDAtFZmF6RGV2IFNTTDEQMA4GA1UECgwHRWZhekRldjEL
+			MAkGA1UEBhMCVVMxHzAdBgkqhkiG9w0BCQEWEHN1cHBvcnRAZWZh
+			ei5kZXYwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDs
+			7H4KIe5CN7iP08MrhsgeFyIz5dDGn+dSqL1bz9ujSRlWVS9OJLV8
+			SySdgyJ/iR0/u/GUGNOomvxUJgb0ke6nAl6YOrpPPjVSgcj09Myq
+			oGtEEovMV+R/QYKEPtjWR7trnw/umqVvsRv4ke+ToDK9QSYX17KJ
+			nUqxcXSytrlIgAuPVMhziBcmzyMHKSMF8I6gWXxyteUeLMUd6ZB+
+			dxl+TS74R9OKJ92Sj9tCsVGNBWJpU4jnXBEfBBWDzhhUAh4h9rfl
+			2tQI6siG4A0EDWLQJG+4GOnSIUpaz5Qod1mwDUiR+YUq0w3TkFvC
+			Y4qojC6Qx4fNf4wW484Ig74LLROHAgMBAAGjfjB8MA8GA1UdEwEB
+			/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgKkMDoGA1UdJQEB/wQwMC4G
+			CCsGAQUFBwMEBggrBgEFBQcDAgYIKwYBBQUHAwEGCCsGAQUFBwMD
+			BgRVHSUAMB0GA1UdDgQWBBTXF8nz7gJRzJdd01/pGhUW9+FCZjAN
+			BgkqhkiG9w0BAQsFAAOCAQEATtr7f4bA2fvxw+zoBJ2ZXUQEgnEB
+			V9aa22IrR+LQaY0lsBaZ0VW2mT+VohDBY5ofXGywvcgz4Ot5dTiK
+			dP/MNegJ1VIuFRq3GMQ0SjPQ6kZa1Po4t7hEGDjBhHBQ6M4STOVS
+			s2Q/iTvmkp2jHW1cwQsBIVxJZMVbfny5miM/BbOYLsLKFinPe3Tt
+			AxWlEBlxN1uXVqnxqZhepWhC9/djPwzvaUN4gg97cX16mbHoGfdh
+			wOOXEkEyTDpVP1YAT9ZGoqq7o4Bd6XOCF2aiUozfCnxVtzrGUftt
+			UweJ9EgztuqjKV5MsWOgUs5P8UKlnq4sQP7xUcHwKEq5ry5DOkeP
+			Tw==
+			</data>
+			<key>PayloadDescription</key>
+			<string>Adds a CA root certificate</string>
+			<key>PayloadDisplayName</key>
+			<string>EfazDev SSL</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.security.root.F8D2D9BD-6F72-4B70-91B0-B494C91E11D1</string>
+			<key>PayloadType</key>
+			<string>com.apple.security.root</string>
+			<key>PayloadUUID</key>
+			<string>F8D2D9BD-6F72-4B70-91B0-B494C91E11D1</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>PayloadCertificateFileName</key>
 			<string>T-TeleSec GlobalRoot Class 3.cer</string>
 			<key>PayloadContent</key>
 			<data>
@@ -6942,57 +6999,44 @@
 		</dict>
 		<dict>
 			<key>PayloadCertificateFileName</key>
-			<string>Atos TrustedRoot Root CA RSA G2 2020.cer</string>
+			<string>DigiCert Assured ID Root G2.cer</string>
 			<key>PayloadContent</key>
 			<data>
-			MIIFfzCCA2egAwIBAgIMR7opRlU+FpKXsKtAMA0GCSqGSIb3DQEB
-			DAUAMEsxCzAJBgNVBAYTAkRFMQ0wCwYDVQQKDARBdG9zMS0wKwYD
-			VQQDDCRBdG9zIFRydXN0ZWRSb290IFJvb3QgQ0EgUlNBIEcyIDIw
-			MjAwHhcNMjAxMjE1MDg0MTIzWhcNNDAxMjEwMDg0MTIyWjBLMQsw
-			CQYDVQQGEwJERTENMAsGA1UECgwEQXRvczEtMCsGA1UEAwwkQXRv
-			cyBUcnVzdGVkUm9vdCBSb290IENBIFJTQSBHMiAyMDIwMIICIjAN
-			BgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAljGFSqoPMv554UOH
-			nPsjt45/DVS9x2KTd+QcNQR2owOLIu7EhN2lk25uso4JA+tRFjEX
-			qmkVGA5ndCNe6pp9tTk+PYKpa+H+qRywrVpNTHiDQYvP8h1impgE
-			nGPpq2X+SB0kZQdHPrmRLumdm38aNak0sLflcDPvSnJRtge/YD8q
-			n51U3/PXlElRA1pAqWjdEVlc+HamvFBSEO2s7JXg1INrSdoKT5mD
-			3jKDSINnlbJ+54GFPc2C98oC7W2IXQiNuDW/KmkwmbtL0UHbRaCT
-			mVGBkDYIqoq26I+zy+7lRg1ydfVJbOGify+87YSmN+7ewk85Tvae
-			8MnRmzCdSW3h2v8SEIzW5Zl7BbZ9sAnHpPiyHDmVOTP0Nc4lYnuw
-			XyDzy234bFIUZESP08ipdgflr3GZLS0EJUh2r8PnzEPyB7xKJCQ3
-			3fpulAlvTF4BtP5U7COWpV7dhv/pRirx6NzspT2vb6oOD7R1+j4I
-			uSZFT2aGTLwZuOHVNe6ChMjTqxLnzXMzYnf0F8u9NHYqBc6V5Xh5
-			S56wjfk8WDiR6l6HOMC3Qv2qTIcjrQQgsX52Qtq7tha6V8iOE/p1
-			1QhMrziRqu+P+p9JLlR8ClaxevrETi/Uo/oWitCV5Zem/8P8fA5H
-			WPN/B3sS3Fc/LeOhTVtSTDOHmagJe2x+DvLPVkKe6wUCAwEAAaNj
-			MGEwDwYDVR0TAQH/BAUwAwEB/zAfBgNVHSMEGDAWgBQgJfMH/adv
-			8ZbukRBpzJrvfchoeDAdBgNVHQ4EFgQUICXzB/2nb/GW7pEQacya
-			733IaHgwDgYDVR0PAQH/BAQDAgGGMA0GCSqGSIb3DQEBDAUAA4IC
-			AQAkK06Y8h0X7dl2JrYwM+hpRaFRS1LYejowtuQS6r+fTOAEpPY1
-			xv6hMPdThZKtVAVXX5LlKt42J557E0fJanWv/PM35wz1PQFztWlR
-			+L1Z0boL+Lq6ZCdDs3yDlYrnnhOW129KlkFJiw4grRbG96aHW4gS
-			iYuJyhLSVq8iASFG6auYP6eI3uTLKpp1Gfo5XgkF1wMyGrgXUQjH
-			AEB99L74DFn0aXZu06RYW14mc+RCVQZeeEAP0zif7yZRcHSR8Xdi
-			AejZy+uh3zkyHbtr/XH+68+l5hT9AIATxpoASLCZBemugEj7CT9R
-			FLW552BNTcovgSHuUgxletz1iUlMMJI0WIAyWbEN/yRhD+cKQtB7
-			vPiOJ0c/cJ0n2bYGPaW7y16Prg5Tx5xqbztMD6NAcKiaB87UblsH
-			otLiVLa9bzNyY61RmOGPdvFqBzgl/vZizl/bY8Jume8G3LneGRro
-			VD190nZ12V4+MkinjPKecgz4uFi4FyOlFId1WHoAgQciOWpMlKC1
-			otunLMGw8aObwEz3bXDqMZ/xrn0+cyjZod/6k/CbsPDizSUgde/i
-			fTIFyZt27su9MR75lJhLJFhWSMDeBky9pjRd7RZhY3P7GeL6W9iX
-			ddRtnmA5XpSLAizrmc5gKm4bjKdLvP025pgfZfJ/8eOPTIBGNli2
-			oWXLzhxEdQ==
+			MIIDljCCAn6gAwIBAgIQC5McOtY5Z+pnI7/Dr5r0SzANBgkqhkiG
+			9w0BAQsFADBlMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNl
+			cnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29tMSQwIgYD
+			VQQDExtEaWdpQ2VydCBBc3N1cmVkIElEIFJvb3QgRzIwHhcNMTMw
+			ODAxMTIwMDAwWhcNMzgwMTE1MTIwMDAwWjBlMQswCQYDVQQGEwJV
+			UzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cu
+			ZGlnaWNlcnQuY29tMSQwIgYDVQQDExtEaWdpQ2VydCBBc3N1cmVk
+			IElEIFJvb3QgRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+			AoIBAQDZ5ygvUj82ckmIkzTz+GoeMVSAn61UQbVH35ao1K+ALbkK
+			z3X9iaV9JPrjIgwrvJUXCzO/GU1BBpAAvQxNEP4HteccbiJVMWWX
+			vdMX0h5i89vqbFCMP4QMls+3ywPgym2hFEwbid3tALBSfK+RbLE4
+			E9HpEgjAALAcKxHad3A2m67OeYfcgnDmCXRwVWmvo2ifv922ebPy
+			nXApVfSr/5Vh88lAbx3RvpO704gqu52/clpWcTs/1PPRCv4o76Pu
+			2ZmvA9OPYLfykqGxvYmJHzDNw6YuYjOuFgJ3RFrngQo8p0Quebg/
+			BLxcoIfhG69Rjs3sLPr4/m3wOnyqi+RnlTGNAgMBAAGjQjBAMA8G
+			A1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGGMB0GA1UdDgQW
+			BBTOw0q5mVXyuNtgv6l+vVa1lzan1jANBgkqhkiG9w0BAQsFAAOC
+			AQEAyqVVjOPIQW5pJ6d1Ee88hjZv0p3GeDgdaZaikmkuOGybfQTU
+			iaWxMTeKySHMq2zNixya1r9I0jJmwYrA8y8678Dj1JGG0VDjA9tz
+			d29KOVPt3ibHtX2vK0LRdWLjSisCx1BL4GnilmwORGYQRI+tBev4
+			eaymG+g3NJ1TyWGqolKvSnAWhsI6yLETcDbYz+70CjTVW0z9B5yi
+			utkBclzzTcHdDrEcDcRjvq30FPuJ7KJBDkzMyFdA0G4Dqs0MjomZ
+			mWzwPDCvON9vvKO+KSAnq3T/EyJ43pdSVR6DtVQgA+6uwE9W3jfM
+			w3+qBCe703e4YtsXfJwoIhNzbM8m9Yop5w==
 			</data>
 			<key>PayloadDescription</key>
 			<string>Adds a CA root certificate</string>
 			<key>PayloadDisplayName</key>
-			<string>Atos TrustedRoot Root CA RSA G2 2020</string>
+			<string>DigiCert Assured ID Root G2</string>
 			<key>PayloadIdentifier</key>
-			<string>com.apple.security.root.2C564597-B9B4-4C6A-8277-366828A56FE2</string>
+			<string>com.apple.security.root.4B5229BA-072F-4363-A724-EBE4A656DB24</string>
 			<key>PayloadType</key>
 			<string>com.apple.security.root</string>
 			<key>PayloadUUID</key>
-			<string>2C564597-B9B4-4C6A-8277-366828A56FE2</string>
+			<string>4B5229BA-072F-4363-A724-EBE4A656DB24</string>
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 		</dict>
@@ -7064,7 +7108,7 @@
 	<key>PayloadType</key>
 	<string>Configuration</string>
 	<key>PayloadUUID</key>
-	<string>7F5AFCAA-A240-4FA8-884D-D8192481E33B</string>
+	<string>CFF59D73-6695-4F07-BAF6-36FCF1641DD3</string>
 	<key>PayloadVersion</key>
 	<integer>1</integer>
 </dict>

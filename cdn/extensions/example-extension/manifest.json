@@ -20,7 +20,7 @@
     ]
   },
   "action": {
-    "default_popup": "main_popup.html",
+    "default_popup": "settings.html",
     "default_title": "Example Extension",
     "default_icon": "icon128.png"
   },
