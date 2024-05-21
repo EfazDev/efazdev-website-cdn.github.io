@@ -1,4 +1,18 @@
 var stored_css = ""
+var stored_creator_dashboard_css = ""
+var stored_devforum_css = ""
+
+function overwriteResourcesUrl(css, trusted, ismain) {
+    if (!(trusted == "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/")) {
+        css = css.replaceAll("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/", trusted)
+        if (ismain == true) {
+            css = css.replaceAll("HCo Gotham SSm", "Builder")
+        }
+        css = css.replaceAll("GothamSSm-", "")
+        css = css.replaceAll("FiraMono-Regular", "Mono")
+    }
+    return css
+}
 
 try {
     const storage = chrome.storage.sync;
@@ -8,6 +22,7 @@ try {
         var overwriteCreateDashboard = true;
         var devForum = true;
         var otherSub = true;
+        var trusted_source = "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/"; /* This is customizable by the user, but they would have to find a fitting url and would have to view hidden options (for security). */
 
         if (items["removeBuilderFont"]) {
             if (typeof (items["removeBuilderFont"]["enabled"]) == "boolean") { enabled = items["removeBuilderFont"]["enabled"] };
@@ -15,6 +30,7 @@ try {
             if (typeof (items["removeBuilderFont"]["overwriteCreateDashboard"]) == "boolean") { overwriteCreateDashboard = items["removeBuilderFont"]["overwriteCreateDashboard"] };
             if (typeof (items["removeBuilderFont"]["overwriteDevForum"]) == "boolean") { devForum = items["removeBuilderFont"]["overwriteDevForum"] };
             if (typeof (items["removeBuilderFont"]["overwriteOtherSubdomains"]) == "boolean") { otherSub = items["removeBuilderFont"]["overwriteOtherSubdomains"] };
+            if (typeof (items["removeBuilderFont"]["resourcesUrl"]) == "string") { trusted_source = items["removeBuilderFont"]["resourcesUrl"] };
         }
         if (enabled == true) {
             var tab = window.location
@@ -38,6 +54,7 @@ try {
                         function injectCSS(css) {
                             if (document.getElementById("return-roblox-gotham") == null) {
                                 if (css) {
+                                    if (!(trusted_source == "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/")) { css = css.replaceAll("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/", trusted_source); }
                                     const style = document.createElement("style")
                                     style.id = "return-roblox-gotham";
                                     style.media = "all";
@@ -47,11 +64,11 @@ try {
                             }
                         }
                         if (stored_css) {
-                            injectCSS(stored_css)
+                            injectCSS(overwriteResourcesUrl(stored_css, trusted_source, true))
                         } else {
                             fetch(chrome.runtime.getURL("change_font.css")).then(res => { return res.text() }).then(fetched => {
                                 stored_css = fetched
-                                injectCSS(fetched)
+                                injectCSS(overwriteResourcesUrl(fetched, trusted_source, true))
                             })
                         }
                     }
@@ -68,6 +85,7 @@ try {
                                     if (selector.href.includes("devforum.roblox.com")) {
                                         selector.remove()
                                         if (css) {
+                                            if (!(trusted_source == "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/")) { css = css.replaceAll("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/", trusted_source); }
                                             if (remoteStyles == true) {
                                                 const style = document.createElement("link")
                                                 style.id = "return-roblox-gotham";
@@ -98,11 +116,11 @@ try {
                             }
                         }
                         if (stored_devforum_css) {
-                            injectCSS(stored_devforum_css)
+                            injectCSS(overwriteResourcesUrl(stored_devforum_css, trusted_source))
                         } else {
                             fetch(chrome.runtime.getURL("devforum_font.css")).then(res => { return res.text() }).then(fetched => {
                                 stored_devforum_css = fetched
-                                injectCSS(fetched)
+                                injectCSS(overwriteResourcesUrl(fetched, trusted_source))
                             })
                         }
                     }
@@ -114,6 +132,7 @@ try {
                                 if (tries) {
                                     new_tries = tries
                                 }
+                                if (!(trusted_source == "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/")) { css = css.replaceAll("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/", trusted_source); }
                                 if (document.querySelector("head > style:nth-child(1)")) {
                                     var selector = document.querySelector("head > style:nth-child(1)");
                                     if (selector.sheet.cssRules[7].cssText.includes("font-face")) {
@@ -142,11 +161,11 @@ try {
                             }
                         }
                         if (stored_creator_dashboard_css) {
-                            injectCSS(stored_creator_dashboard_css)
+                            injectCSS(overwriteResourcesUrl(stored_creator_dashboard_css, trusted_source))
                         } else {
                             fetch(chrome.runtime.getURL("global_font.css")).then(res => { return res.text() }).then(fetched => {
                                 stored_creator_dashboard_css = fetched
-                                injectCSS(fetched)
+                                injectCSS(overwriteResourcesUrl(fetched, trusted_source))
                             })
                         }
                     }
@@ -158,6 +177,7 @@ try {
                                 if (tries) {
                                     new_tries = tries
                                 }
+                                if (!(trusted_source == "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/")) { css = css.replaceAll("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/", trusted_source); }
                                 if (document.querySelector("head > style:nth-child(1)")) {
                                     var selector = document.querySelector("head > style:nth-child(1)");
                                     if (selector.sheet.cssRules[7].cssText.includes("font-face")) {
@@ -186,11 +206,11 @@ try {
                             }
                         }
                         if (stored_creator_dashboard_css) {
-                            injectCSS(stored_creator_dashboard_css)
+                            injectCSS(overwriteResourcesUrl(stored_creator_dashboard_css, trusted_source))
                         } else {
                             fetch(chrome.runtime.getURL("global_font.css")).then(res => { return res.text() }).then(fetched => {
                                 stored_creator_dashboard_css = fetched
-                                injectCSS(fetched)
+                                injectCSS(overwriteResourcesUrl(fetched, trusted_source))
                             })
                         }
                     }

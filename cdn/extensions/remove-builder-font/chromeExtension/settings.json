@@ -25,6 +25,12 @@
             "text": "Change Fonts on Other Subdomains",
             "type": "checkbox",
             "default": true
+        },
+        "resourcesUrl": {
+            "text": "Font Resources URL (Make sure custom source is trusted and safe!)",
+            "type": "text",
+            "default": "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/",
+            "reset": true
         }
     }
 }

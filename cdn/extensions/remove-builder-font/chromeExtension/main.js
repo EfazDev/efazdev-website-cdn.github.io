@@ -14,6 +14,18 @@ var stored_css = "";
 var stored_creator_dashboard_css = ""
 var stored_devforum_css = ""
 
+function overwriteResourcesUrl(css, trusted, ismain) {
+    if (!(trusted == "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/")) {
+        css = css.replaceAll("https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/", trusted)
+        if (ismain == true) {
+            css = css.replaceAll("HCo Gotham SSm", "Builder")
+        }
+        css = css.replaceAll("GothamSSm-", "")
+        css = css.replaceAll("FiraMono-", "")
+    }
+    return css
+}
+
 chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
     try {
         const storage = chrome.storage.sync;
@@ -23,6 +35,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
             var overwriteCreateDashboard = true;
             var devForum = true;
             var otherSub = true;
+            var trusted_source = "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/"; /* This is customizable by the user, but they would have to find a fitting url and would have to view hidden options (for security). */
 
             if (items["removeBuilderFont"]) {
                 if (typeof (items["removeBuilderFont"]["enabled"]) == "boolean") { enabled = items["removeBuilderFont"]["enabled"] };
@@ -30,6 +43,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                 if (typeof (items["removeBuilderFont"]["overwriteCreateDashboard"]) == "boolean") { overwriteCreateDashboard = items["removeBuilderFont"]["overwriteCreateDashboard"] };
                 if (typeof (items["removeBuilderFont"]["overwriteDevForum"]) == "boolean") { devForum = items["removeBuilderFont"]["overwriteDevForum"] };
                 if (typeof (items["removeBuilderFont"]["overwriteOtherSubdomains"]) == "boolean") { otherSub = items["removeBuilderFont"]["overwriteOtherSubdomains"] };
+                if (typeof (items["removeBuilderFont"]["resourcesUrl"]) == "string") { trusted_source = items["removeBuilderFont"]["resourcesUrl"] };
             }
             if (enabled == true) {
                 if (tab.url) {
@@ -67,7 +81,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                 chrome.scripting.executeScript({
                                     target: { tabId: tabId, allFrames: true },
                                     func: injectCSS,
-                                    args: [stored_css]
+                                    args: [overwriteResourcesUrl(stored_css, trusted_source, true)]
                                 })
                             } else {
                                 fetch("change_font.css").then(res => { return res.text() }).then(fetched => {
@@ -75,7 +89,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                     chrome.scripting.executeScript({
                                         target: { tabId: tabId, allFrames: true },
                                         func: injectCSS,
-                                        args: [fetched]
+                                        args: [overwriteResourcesUrl(fetched, trusted_source, true)]
                                     })
                                 })
                             }
@@ -110,7 +124,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                 chrome.scripting.executeScript({
                                     target: { tabId: tabId, allFrames: true },
                                     func: injectCSS,
-                                    args: [stored_devforum_css, remoteStyles]
+                                    args: [overwriteResourcesUrl(stored_devforum_css, trusted_source), remoteStyles]
                                 })
                             } else {
                                 fetch("devforum_font.css").then(res => { return res.text() }).then(fetched => {
@@ -118,7 +132,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                     chrome.scripting.executeScript({
                                         target: { tabId: tabId, allFrames: true },
                                         func: injectCSS,
-                                        args: [fetched, remoteStyles]
+                                        args: [overwriteResourcesUrl(fetched, trusted_source), remoteStyles]
                                     })
                                 })
                             }
@@ -165,7 +179,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                 chrome.scripting.executeScript({
                                     target: { tabId: tabId, allFrames: true },
                                     func: injectCSS,
-                                    args: [stored_creator_dashboard_css]
+                                    args: [overwriteResourcesUrl(stored_creator_dashboard_css, trusted_source)]
                                 })
                             } else {
                                 fetch("global_font.css").then(res => { return res.text() }).then(fetched => {
@@ -173,7 +187,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                     chrome.scripting.executeScript({
                                         target: { tabId: tabId, allFrames: true },
                                         func: injectCSS,
-                                        args: [fetched]
+                                        args: [overwriteResourcesUrl(fetched, trusted_source)]
                                     })
                                 })
                             }
@@ -220,7 +234,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                 chrome.scripting.executeScript({
                                     target: { tabId: tabId, allFrames: true },
                                     func: injectCSS,
-                                    args: [stored_creator_dashboard_css]
+                                    args: [overwriteResourcesUrl(stored_creator_dashboard_css, trusted_source)]
                                 })
                             } else {
                                 fetch("global_font.css").then(res => { return res.text() }).then(fetched => {
@@ -228,7 +242,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
                                     chrome.scripting.executeScript({
                                         target: { tabId: tabId, allFrames: true },
                                         func: injectCSS,
-                                        args: [fetched]
+                                        args: [overwriteResourcesUrl(fetched, trusted_source)]
                                     })
                                 })
                             }
