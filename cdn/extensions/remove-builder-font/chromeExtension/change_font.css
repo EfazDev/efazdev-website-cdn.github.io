@@ -177,3 +177,12 @@ CSS is created based on Roblox's servers and via archive.org for old files.
 .user-name[style="font-size: medium;margin-left: 15px;font-weight: initial;display: inline-flex;flex-direction: column;justify-content: center;"] {
     font-weight: 500 !important;
 }
+
+.error-title {
+    font-weight: 500 !important;
+}
+
+.error-message {
+    font-weight: 400 !important;
+    font-size: 18px !important;
+}
