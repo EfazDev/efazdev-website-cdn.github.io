@@ -178,11 +178,11 @@ CSS is created based on Roblox's servers and via archive.org for old files.
     font-weight: 500 !important;
 }
 
-.error-title {
+.default-error-page .error-title {
     font-weight: 500 !important;
 }
 
-.error-message {
+.default-error-page .error-message {
     font-weight: 400 !important;
     font-size: 18px !important;
 }
