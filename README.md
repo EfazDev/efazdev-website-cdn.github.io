@@ -1,8 +1,8 @@
 # EfazDev Website CDN
-CDN of efaz.dev\
-
-Accessible at https://cdn.efaz.dev\
-JSON at https://cdn.efaz.dev/cdn/json/\
-
+CDN of efaz.dev<br/>
+<br/>
+Accessible at https://cdn.efaz.dev<br/>
+JSON at https://cdn.efaz.dev/cdn/json/<br/>
+<br/>
 ## API Links:
-https://api.efaz.dev/api/docs - Swagger API Docs\
+https://api.efaz.dev/api/docs - Swagger API Docs<br/>
