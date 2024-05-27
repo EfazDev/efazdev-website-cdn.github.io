@@ -32,5 +32,6 @@
             "default": "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/",
             "reset": true
         }
-    }
+    },
+    "chromeWebstoreLinkEnabled": true
 }

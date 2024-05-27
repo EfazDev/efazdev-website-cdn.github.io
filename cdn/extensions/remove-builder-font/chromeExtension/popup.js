@@ -239,6 +239,13 @@ async function loadChanges() {
                 }
                 `
             }
+
+            if (system_settings["chromeWebstoreLinkEnabled"]) {
+                document.getElementById("extensionLink").href = `https://chromewebstore.google.com/detail/extension/${chrome.runtime.id}`
+                document.getElementById("extensionLink").style = ""
+            } else {
+                document.getElementById("extensionLink").style = "display: none;"
+            }
         })
     })
 }

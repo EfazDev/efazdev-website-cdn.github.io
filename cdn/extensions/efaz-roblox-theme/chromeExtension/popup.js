@@ -50,7 +50,7 @@ async function loadChanges() {
                     if (document.getElementById(key) == null) {
                         var generated_html_element = `<label for="${key}">${val["text"]}: <input type="${val["type"]}" id="${key}" name="${key}"></label>`
                         var beforeElement = document.getElementById("reviewDetails")
-                        if (val["hidden"] == true && !(window.location.href.includes("view_hidden=true"))) {
+                        if (val["hidden"] == true && !(window.location.href.includes("resize=true"))) {
                             generated_html_element = `<label style="display: none;" for="${key}">${val["text"]}: <input type="${val["type"]}" id="${key}" name="${key}"></label>`
                         } else {
                             if (val["reset"] == true) {
@@ -238,6 +238,13 @@ async function loadChanges() {
                     overflow: hidden;
                 }
                 `
+            }
+
+            if (system_settings["chromeWebstoreLinkEnabled"]) {
+                document.getElementById("extensionLink").href = `https://chromewebstore.google.com/detail/extension/${chrome.runtime.id}`
+                document.getElementById("extensionLink").style = ""
+            } else {
+                document.getElementById("extensionLink").style = "display: none;"
             }
         })
     })
