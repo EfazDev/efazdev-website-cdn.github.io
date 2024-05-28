@@ -1,5 +1,4 @@
 # Efaz's Builder Font Remover
-<br/>
 If you want to create a custom resources URL, make sure the following files are valid in your resources folder: 
 ```
 Mono.woff 
@@ -14,7 +13,7 @@ Light.woff
 Light.woff2 
 Medium.woff 
 Medium.woff2
-```<br/>
+```
 You may try to adapt the font files to fit the Roblox website, Creator Dashboard and DevForum.
 <br/>
 Resources URL Example: https://cdn.efaz.dev/cdn/fontResourceBlahBlah/<br/>
