@@ -12,35 +12,35 @@ CSS is created based on Roblox's servers and via archive.org for old files.
 /* [Create font faces based on the files.] */
 @font-face {
     font-family: Builder;
-    src: url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Light.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Light.woff) format("woff");
+    src: url(https://cdn2.efaz.dev/cdn/builder-to-gotham/GothamSSm-Light.woff2) format("woff2"),url(https://cdn2.efaz.dev/cdn/builder-to-gotham/GothamSSm-Light.woff) format("woff");
     font-weight: 300;
     font-style: normal
 }
 
 @font-face {
     font-family: Builder;
-    src: url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Book.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Book.woff) format("woff");
+    src: url(https://cdn2.efaz.dev/cdn/builder-to-gotham/GothamSSm-Book.woff2) format("woff2"),url(https://cdn2.efaz.dev/cdn/builder-to-gotham/GothamSSm-Book.woff) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: Builder;
-    src: url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Medium.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Medium.woff) format("woff");
+    src: url(https://cdn2.efaz.dev/cdn/builder-to-gotham/GothamSSm-Medium.woff2) format("woff2"),url(https://cdn2.efaz.dev/cdn/builder-to-gotham/GothamSSm-Medium.woff) format("woff");
     font-weight: 500;
     font-style: normal
 }
 
 @font-face {
     font-family: Builder;
-    src: url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Bold.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Bold.woff) format("woff");
+    src: url(https://cdn2.efaz.dev/cdn/builder-to-gotham/GothamSSm-Bold.woff2) format("woff2"),url(https://cdn2.efaz.dev/cdn/builder-to-gotham/GothamSSm-Bold.woff) format("woff");
     font-weight: 700;
     font-style: normal
 }
 
 @font-face {
     font-family: Builder;
-    src: url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Black.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/GothamSSm-Black.woff) format("woff");
+    src: url(https://cdn.efaz.dev/cdn/builder-to-gotham/GothamSSm-Black.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/builder-to-gotham/GothamSSm-Black.woff) format("woff");
     font-weight: 800;
     font-style: normal
 }
