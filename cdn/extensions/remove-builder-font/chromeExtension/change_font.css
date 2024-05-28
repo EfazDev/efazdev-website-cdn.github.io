@@ -40,7 +40,7 @@ CSS is created based on Roblox's servers and via archive.org for old files.
 
 @font-face {
     font-family: Builder;
-    src: url(https://cdn.efaz.dev/cdn/remove-builder-font/Black.woff2) format("woff2"),url(https://cdn.efaz.dev/cdn/remove-builder-font/Black.woff) format("woff");
+    src: url(https://cdn2.efaz.dev/cdn/remove-builder-font/Black.woff2) format("woff2"),url(https://cdn2.efaz.dev/cdn/remove-builder-font/Black.woff) format("woff");
     font-weight: 800;
     font-style: normal
 }
