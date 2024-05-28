@@ -16,5 +16,7 @@ Medium.woff2
 ```
 You may try to adapt the font files to fit the Roblox website, Creator Dashboard and DevForum.
 <br/>
-Resources URL Example: https://cdn.efaz.dev/cdn/fontResourceBlahBlah/<br/>
-When Font Needed: https://cdn.efaz.dev/cdn/fontResourceBlahBlah/Medium.woff2<br/>
+
+## Example
+Resources URL: https://example.com/font-resource/<br/>
+When Font Needed: https://example.com/font-resource/Medium.woff2<br/>
