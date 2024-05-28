@@ -19,4 +19,5 @@ You may try to adapt the font files to fit the Roblox website, Creator Dashboard
 
 ## Example
 Resources URL: https://example.com/font-resource/<br/>
-When Font Needed: https://example.com/font-resource/Medium.woff2<br/>
+When a WOFF Font is needed: https://example.com/font-resource/Book.woff<br/>
+When a WOFF2 Font is needed: https://example.com/font-resource/Book.woff2<br/>
