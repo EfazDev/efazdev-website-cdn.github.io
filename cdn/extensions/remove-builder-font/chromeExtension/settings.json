@@ -29,7 +29,7 @@
         "resourcesUrl": {
             "text": "Font Resources URL (Make sure custom source is trusted and safe!)",
             "type": "text",
-            "default": "https://cdn.efaz.dev/cdn/extensions/remove-builder-font/resources/",
+            "default": "https://cdn2.efaz.dev/cdn/builder-to-gotham/",
             "reset": true
         }
     },
