@@ -15,13 +15,11 @@ var stored_creator_dashboard_css = ""
 var stored_devforum_css = ""
 
 function overwriteResourcesUrl(css, trusted, ismain) {
-    if (!(trusted == "https://cdn2.efaz.dev/cdn/builder-to-gotham/")) {
-        css = css.replaceAll("https://cdn2.efaz.dev/cdn/builder-to-gotham/", trusted)
+    css = css.replaceAll("https://cdn2.efaz.dev/cdn/remove-builder-font/", trusted)
+    if (!(trusted == "https://cdn2.efaz.dev/cdn/remove-builder-font/")) {
         if (ismain == true) {
             css = css.replaceAll("HCo Gotham SSm", "Builder")
         }
-        css = css.replaceAll("GothamSSm-", "")
-        css = css.replaceAll("FiraMono-", "")
     }
     return css
 }
@@ -35,7 +33,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, details, tab) {
             var overwriteCreateDashboard = true;
             var devForum = true;
             var otherSub = true;
-            var trusted_source = "https://cdn2.efaz.dev/cdn/builder-to-gotham/"; /* This is customizable by the user, but they would have to find a fitting url and would have to view hidden options (for security). */
+            var trusted_source = "https://cdn2.efaz.dev/cdn/remove-builder-font/"; /* This is customizable by the user, but they would have to find a fitting url and would have to view hidden options (for security). */
 
             if (items["removeBuilderFont"]) {
                 if (typeof (items["removeBuilderFont"]["enabled"]) == "boolean") { enabled = items["removeBuilderFont"]["enabled"] };
