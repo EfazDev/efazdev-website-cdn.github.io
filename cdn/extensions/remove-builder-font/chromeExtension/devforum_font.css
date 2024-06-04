@@ -15,7 +15,7 @@ CSS is created based on Roblox's servers for old files.
 @font-face { font-family: "BuilderSans"; font-weight: 500; font-style: normal; src: url("https://cdn2.efaz.dev/cdn/remove-builder-font/Medium.woff2") format("woff2"), url("https://cdn2.efaz.dev/cdn/remove-builder-font/Medium.woff") format("woff"); font-display: swap; }
 @font-face { font-family: "BuilderSans"; font-weight: 800; font-style: normal; src: url("https://cdn2.efaz.dev/cdn/remove-builder-font/Bold.woff2") format("woff2"), url("https://cdn2.efaz.dev/cdn/remove-builder-font/Bold.woff") format("woff"); font-display: swap; }
 
-/* [Overwrite Builder font-family with Gotham files.]  */
+/* [Overwrite pre-existing Builder font-faces with provided font files.]  */
 * :not(.ace-wrapper *,code,code *) {
     font-family: BuilderSans,Helvetica Neue,Helvetica,Arial,Lucida Grande,san-serif !important;
 }

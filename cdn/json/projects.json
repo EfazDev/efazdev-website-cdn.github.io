@@ -117,7 +117,7 @@
         "showInProjectsPage": true,
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
-        "description": "Chrome extension that removes the Builder font on the Roblox website and replaces it with GothamSS again!"
+        "description": "Chrome extension that removes the Builder font on the Roblox website and replaces it with the old font again!"
     },
     {
         "name": "Efaz's Roblox In-Game UGC Tracer",

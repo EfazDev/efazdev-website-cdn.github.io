@@ -4,11 +4,6 @@ var stored_devforum_css = ""
 
 function overwriteResourcesUrl(css, trusted, ismain) {
     css = css.replaceAll("https://cdn2.efaz.dev/cdn/remove-builder-font/", trusted)
-    if (!(trusted == "https://cdn2.efaz.dev/cdn/remove-builder-font/")) {
-        if (ismain == true) {
-            css = css.replaceAll("HCo Gotham SSm", "Builder")
-        }
-    }
     return css
 }
 
@@ -20,7 +15,7 @@ try {
         var overwriteCreateDashboard = true;
         var devForum = true;
         var otherSub = true;
-        var trusted_source = "https://cdn2.efaz.dev/cdn/remove-builder-font/"; /* This is customizable by the user, but they would have to find a fitting url and would have to view hidden options (for security). */
+        var trusted_source = "https://cdn2.efaz.dev/cdn/remove-builder-font/"; /* This is customizable by the user, but they would have to find a fitting url and make sure it's trusted. */
 
         if (items["removeBuilderFont"]) {
             if (typeof (items["removeBuilderFont"]["enabled"]) == "boolean") { enabled = items["removeBuilderFont"]["enabled"] };
@@ -37,9 +32,9 @@ try {
                 if (urlObj.hostname == "www.roblox.com") {
                     if (remoteStyles == true) {
                         function injectCSS() {
-                            if (document.getElementById("return-roblox-gotham") == null) {
+                            if (document.getElementById("remove-builder-font") == null) {
                                 const style = document.createElement("link")
-                                style.id = "return-roblox-gotham";
+                                style.id = "remove-builder-font";
                                 style.rel = "stylesheet";
                                 style.type = "text/css";
                                 style.media = "all";
@@ -50,11 +45,11 @@ try {
                         injectCSS()
                     } else {
                         function injectCSS(css) {
-                            if (document.getElementById("return-roblox-gotham") == null) {
+                            if (document.getElementById("remove-builder-font") == null) {
                                 if (css) {
                                     if (!(trusted_source == "https://cdn2.efaz.dev/cdn/remove-builder-font/")) { css = css.replaceAll("https://cdn2.efaz.dev/cdn/remove-builder-font/", trusted_source); }
                                     const style = document.createElement("style")
-                                    style.id = "return-roblox-gotham";
+                                    style.id = "remove-builder-font";
                                     style.media = "all";
                                     style.innerHTML = css
                                     document.head.append(style)
@@ -86,7 +81,7 @@ try {
                                             if (!(trusted_source == "https://cdn2.efaz.dev/cdn/remove-builder-font/")) { css = css.replaceAll("https://cdn2.efaz.dev/cdn/remove-builder-font/", trusted_source); }
                                             if (remoteStyles == true) {
                                                 const style = document.createElement("link")
-                                                style.id = "return-roblox-gotham";
+                                                style.id = "remove-builder-font";
                                                 style.rel = "stylesheet";
                                                 style.type = "text/css";
                                                 style.media = "all";
@@ -94,7 +89,7 @@ try {
                                                 document.head.append(style)
                                             } else {
                                                 const style = document.createElement("style")
-                                                style.id = "return-roblox-gotham";
+                                                style.id = "remove-builder-font";
                                                 style.media = "all";
                                                 style.innerHTML = css
                                                 document.head.append(style)
