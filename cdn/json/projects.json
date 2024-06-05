@@ -142,7 +142,7 @@
     {
         "name": "Efaz's Form System",
         "url": "https://www.efaz.dev/formsystem",
-        "download_url": "https://cdn.efaz.dev/cdn/other/formsexplorer.html",
+        "download_url": "https://cdn.efaz.dev/cdn/forms/",
         "discontinued": false,
         "showInProjectsPage": true,
         "buttonText": {"ProjectsPage": "Try it out!", "ProjectPage": "Try it out!"},
