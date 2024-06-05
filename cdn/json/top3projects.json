@@ -11,7 +11,7 @@
     },
     {
         "name": "EfazDev API v1",
-        "url": "https://www.efaz.dev/api-v1",
+        "url": "https://www.efaz.dev/api",
         "download_url": "https://api.efaz.dev/api/docs",
         "discontinued": false,
         "showInProjectsPage": true,
