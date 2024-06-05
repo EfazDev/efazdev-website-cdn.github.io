@@ -166,7 +166,7 @@ async function loadChanges() {
                 style.rel = "stylesheet";
                 style.type = "text/css";
                 style.media = "all";
-                style.href = "https://cdn.efaz.dev/cdn/other/htmlUI.css"
+                style.href = "https://cdn.efaz.dev/cdn/styles/htmlUI.css"
                 document.head.append(style)
             } else if (navigator.onLine == false && (window.location.href.includes("resize=true"))) {
                 document.getElementById("extens_vers").innerHTML = `${document.getElementById("extens_vers").innerHTML} | Network Offline`

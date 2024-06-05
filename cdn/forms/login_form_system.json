@@ -76,7 +76,7 @@
     ],
     "specific_settings": {
         "showRequiredText": true,
-        "custom_css": "https://cdn.efaz.dev/cdn/other/htmlUI.css",
+        "custom_css": "https://cdn.efaz.dev/cdn/styles/htmlUI.css",
         "include_cookies": true,
         "allow_second_form": true,
         "add_html_slot2": "<button type='button' id='gotoroblox' class='center' onclick='redirect_to_roblox()' style='height:40px; width:200px; background-color: #000000; font-size:15px'>Login via Roblox!</button><br><button type='button' id='sendButton' class='center' onclick='window.location.replace(atob(\"aHR0cHM6Ly9kYXNoYm9hcmQuZWZhei5kZXYvcmVzZXQtcGFzc3dvcmQ=\"))'>Open to Reset Password!</button><br>"
