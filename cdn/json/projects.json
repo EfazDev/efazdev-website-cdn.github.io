@@ -15,7 +15,7 @@
         "download_url": "https://api.efaz.dev/api/docs",
         "discontinued": false,
         "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "How to use", "ProjectPage": "Try it now!"},
+        "buttonText": {"ProjectsPage": "How to Use", "ProjectPage": "Try it now!"},
         "dateDiscontinued": "None",
         "description": "An API that can help with using Roblox or selected platform APIs!"
     },
@@ -165,7 +165,7 @@
         "download_url": "https://www.efaz.dev/discord-gg",
         "discontinued": false,
         "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "How to Do", "ProjectPage": "No Download Required"},
+        "buttonText": {"ProjectsPage": "How to Use", "ProjectPage": "No Download Required"},
         "dateDiscontinued": "None",
         "description": "A simple redirect to discord.gg"
     },
