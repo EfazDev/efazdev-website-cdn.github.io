@@ -1,5 +1,35 @@
 [
     {
+        "name": "Item Moderation Scanner",
+        "url": "https://www.efaz.dev/itemmoderation",
+        "download_url": "https://item-moderation.efaz.dev",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Discord Server", "ProjectPage": "Join Server Now!"},
+        "dateDiscontinued": "None",
+        "description": "Scan items that recently went into Roblox Moderation and be notified when they got approved or declined!"
+    },
+    {
+        "name": "EfazDev API v1",
+        "url": "https://www.efaz.dev/api",
+        "download_url": "https://api.efaz.dev/api/docs",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "How to use", "ProjectPage": "Try it now!"},
+        "dateDiscontinued": "None",
+        "description": "An API that can help with using Roblox or selected platform APIs!"
+    },
+    {
+        "name": "Efaz's Builder Font Remover",
+        "url": "https://www.efaz.dev/remove-builder-font",
+        "download_url": "https://chromewebstore.google.com/detail/efazs-builder-font-remove/hapbigglmmihgdmpficddjdmfgikalcp",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Chrome extension that removes the Builder font on the Roblox website and replaces it with the old font again!"
+    },
+    {
         "name": "Merch Code System",
         "url": "https://www.efaz.dev/merch-code-system",
         "download_url": "https://cdn.efaz.dev/cdn/downloadgithub.html?project=merch-code-system",
@@ -10,6 +40,26 @@
         "description": "A Discord Bot that allows users to redeem codes for rewards!"
     },
     {
+        "name": "hazem.gg Auto Redeemer",
+        "url": "https://www.efaz.dev/hazemggredeemer",
+        "download_url": "https://cdn.efaz.dev/cdn/js/download.html?fileName=HazemGGAutoRedeemer.js",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Auto Redeem codes you have on an array on hazem.gg!"
+    },
+    {
+        "name": "Efaz's Roblox Verified Badge Addon",
+        "url": "https://www.efaz.dev/fake-roblox-verified-badge",
+        "download_url": "https://cdn.efaz.dev/cdn/extensions/fake_verified/download.html?type=link&browser=all",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Have a Roblox Verified Badge next to your name!"
+    },
+    {
         "name": "Item Fixer",
         "url": "https://www.efaz.dev/item-fixer",
         "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=ItemFixer-v1.5.1.py",
@@ -18,6 +68,36 @@
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
         "description": "Fix Roblox UGC Items bugged and cannot be put on-sale."
+    },
+    {
+        "name": "Efaz's Cookie Destroyer",
+        "url": "https://www.efaz.dev/cookiedestroyer",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=CookieDestroyer.py",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Destroy a Roblox Cookie in just a few moments!"
+    },
+    {
+        "name": "Efaz's Roblox In-Game UGC Tracer",
+        "url": "https://www.efaz.dev/ingameugctracer",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=RobloxInGameUGCTracer.py",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Get Game IDs and Link of an In-Game Limited!"
+    },
+    {
+        "name": "Efaz's Roblox Account Bulk Verifier",
+        "url": "https://www.efaz.dev/bulkrobloxverifier",
+        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=VerifyAllRobloxAccounts.py",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Bulk Verify Roblox accounts with just a valid cookie!"
     },
     {
         "name": "Ban Service",
@@ -38,6 +118,16 @@
         "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
         "dateDiscontinued": "None",
         "description": "A Roblox Game file that allows you to convert free UGC Limiteds to paid only."
+    },
+    {
+        "name": "Twitter Verification System",
+        "url": "https://www.efaz.dev/twitterverificationsystem",
+        "download_url": "https://cdn.efaz.dev/cdn/downloadgithub.html?project=twitter-verification",
+        "discontinued": false,
+        "showInProjectsPage": true,
+        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
+        "dateDiscontinued": "None",
+        "description": "Twitter Verification System helps users to create Twitter Verification Systems using a webserver."
     },
     {
         "name": "Logger Detector",
@@ -70,96 +160,6 @@
         "description": "Detect a logger in Python scripts"
     },
     {
-        "name": "Discord Bot Login",
-        "url": "https://www.efaz.dev/discordbotlogin",
-        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=DiscordBotLogin.py",
-        "discontinued": false,
-        "showInProjectsPage": false,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Login to your Discord Bot using your Python console!"
-    },
-    {
-        "name": "hazem.gg Auto Redeemer",
-        "url": "https://www.efaz.dev/hazemggredeemer",
-        "download_url": "https://cdn.efaz.dev/cdn/js/download.html?fileName=HazemGGAutoRedeemer.js",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Auto Redeem codes you have on an array on hazem.gg!"
-    },
-    {
-        "name": "Efaz's Cookie Destroyer",
-        "url": "https://www.efaz.dev/cookiedestroyer",
-        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=CookieDestroyer.py",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Destroy a Roblox Cookie in just a few moments!"
-    },
-    {
-        "name": "Efaz's Roblox Verified Badge Addon",
-        "url": "https://www.efaz.dev/fake-roblox-verified-badge",
-        "download_url": "https://cdn.efaz.dev/cdn/js/fake_verified/download.html?type=link&browser=all",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Have a Roblox Verified Badge next to your name!"
-    },
-    {
-        "name": "Efaz's Builder Font Remover",
-        "url": "https://www.efaz.dev/remove-builder-font",
-        "download_url": "https://chromewebstore.google.com/detail/efazs-builder-font-remove/hapbigglmmihgdmpficddjdmfgikalcp",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Chrome extension that removes the Builder font on the Roblox website and replaces it with the old font again!"
-    },
-    {
-        "name": "Efaz's Roblox In-Game UGC Tracer",
-        "url": "https://www.efaz.dev/ingameugctracer",
-        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=RobloxInGameUGCTracer.py",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Get Game IDs and Link of an In-Game Limited!"
-    },
-    {
-        "name": "Efaz's Roblox Account Bulk Verifier",
-        "url": "https://www.efaz.dev/bulkrobloxverifier",
-        "download_url": "https://cdn.efaz.dev/cdn/py/download.html?fileName=VerifyAllRobloxAccounts.py",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Bulk Verify Roblox accounts with just a valid cookie!"
-    },
-    {
-        "name": "Efaz's Form System",
-        "url": "https://www.efaz.dev/formsystem",
-        "download_url": "https://cdn.efaz.dev/cdn/forms/",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Try it out!", "ProjectPage": "Try it out!"},
-        "dateDiscontinued": "None",
-        "description": "Javascript Form System that allows you to make forms and send it to API Links!"
-    },
-    {
-        "name": "Twitter Verification System",
-        "url": "https://www.efaz.dev/twitterverificationsystem",
-        "download_url": "https://cdn.efaz.dev/cdn/downloadgithub.html?project=twitter-verification",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Download Link", "ProjectPage": "Download Now!"},
-        "dateDiscontinued": "None",
-        "description": "Twitter Verification System helps users to create Twitter Verification Systems using a webserver."
-    },
-    {
         "name": "discord.gg Redirect",
         "url": "https://www.efaz.dev/discord-gg",
         "download_url": "https://www.efaz.dev/discord-gg",
@@ -170,23 +170,13 @@
         "description": "A simple redirect to discord.gg"
     },
     {
-        "name": "EfazDev API v1",
-        "url": "https://www.efaz.dev/api",
-        "download_url": "https://api.efaz.dev/api/docs",
+        "name": "Efaz's Form System",
+        "url": "https://www.efaz.dev/formsystem",
+        "download_url": "https://cdn.efaz.dev/cdn/forms/",
         "discontinued": false,
         "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "How to use", "ProjectPage": "Try it now!"},
+        "buttonText": {"ProjectsPage": "Try it out!", "ProjectPage": "Try it out!"},
         "dateDiscontinued": "None",
-        "description": "An API that can help with using Roblox or selected platform APIs!"
-    },
-    {
-        "name": "Item Moderation Scanner",
-        "url": "https://www.efaz.dev/itemmoderation",
-        "download_url": "https://item-moderation.efaz.dev",
-        "discontinued": false,
-        "showInProjectsPage": true,
-        "buttonText": {"ProjectsPage": "Discord Server", "ProjectPage": "Join Server Now!"},
-        "dateDiscontinued": "None",
-        "description": "Scan items that recently went into Roblox Moderation and be notified when they got approved or declined!"
+        "description": "Javascript Form System that allows you to make forms and send it to API Links!"
     }
 ]
