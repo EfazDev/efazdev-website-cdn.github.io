@@ -137,7 +137,7 @@ async function loadChanges() {
                     border-radius: 8px;
                     background-color: #00b1ff;
                     color: rgb(255, 255, 255);
-                    font-family: arialrounded;
+                    font-family: mainfont;
                 }
         
                 input {
@@ -150,7 +150,7 @@ async function loadChanges() {
                     color: rgb(255, 255, 255);
                     vertical-align: middle;
                     justify-content: center;
-                    font-family: arialrounded;
+                    font-family: mainfont;
                     margin-right: auto;
                 }
         

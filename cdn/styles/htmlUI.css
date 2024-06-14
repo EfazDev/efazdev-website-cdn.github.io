@@ -1,6 +1,6 @@
 @font-face {
-    font-family: arialrounded;
-    src: url("https://cdn.efaz.dev/cdn/styles/ArialRounded.ttf");
+    font-family: mainfont;
+    src: url("https://cdn.efaz.dev/cdn/styles/NunitoRounded.ttf");
     font-weight: bold;
 }
 
@@ -11,7 +11,7 @@ body {
     width: 1920px;
     height: 1080px;
     background: linear-gradient(225deg, rgba(255, 75, 0, 1) 0%, rgb(207, 207, 0) 60%, rgb(19, 193, 0) 100%);
-    font-family: arialrounded;
+    font-family: mainfont;
     color: white;
     overflow: hidden;
 }
@@ -85,7 +85,7 @@ button {
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
@@ -99,7 +99,7 @@ button[id="hide_group_main"] {
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
@@ -113,7 +113,7 @@ button[id="hide_group_roblox"] {
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
@@ -127,7 +127,7 @@ button[id="hide_group_account"] {
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
@@ -141,7 +141,7 @@ button[buy="buy_button"] {
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
@@ -155,7 +155,7 @@ button[onclick="logOut('all')"] {
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
@@ -169,7 +169,7 @@ button[onclick="logOut('this')"] {
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
@@ -183,7 +183,7 @@ button[id="hide_reporting"] {
     color: rgb(255, 255, 255);
     vertical-align: middle;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
@@ -199,7 +199,7 @@ textarea {
     margin-left: auto;
     border-radius: 8px;
     justify-content: center;
-    font-family: arialrounded;
+    font-family: mainfont;
     margin-right: auto;
 }
 
