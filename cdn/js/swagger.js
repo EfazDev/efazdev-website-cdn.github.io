@@ -33,7 +33,7 @@ function main_swagger() {
 
             var g = document.createElement('p')
             g.innerHTML = "EfazDev"
-            g.style = "margin: auto; width: 75%;"
+            g.style = "margin: auto; width: 75%; color: white;"
             d.appendChild(g)
 
             loopFinished = true

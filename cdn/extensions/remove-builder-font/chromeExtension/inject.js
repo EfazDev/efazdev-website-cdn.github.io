@@ -1,3 +1,14 @@
+/* 
+
+Efaz's Builder Font Remover
+By: EfazDev
+Page: https://www.efaz.dev/remove-builder-font
+
+inject.js:
+    - Content script that injects a stylesheet to remove the builder font
+
+*/
+
 var stored_css = ""
 var stored_creator_dashboard_css = ""
 var stored_devforum_css = ""
