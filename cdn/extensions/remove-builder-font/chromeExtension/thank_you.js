@@ -1,3 +1,14 @@
+/* 
+
+Efaz's Builder Font Remover
+By: EfazDev
+Page: https://www.efaz.dev/remove-builder-font
+
+thank_you.js:
+    - Autofill extension details in the thank_you.html file
+
+*/
+
 window.onload = function () {
     fetch("manifest.json").then(man_res => {
         return man_res.json()

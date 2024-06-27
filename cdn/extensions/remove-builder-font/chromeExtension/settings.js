@@ -1,3 +1,15 @@
+/* 
+
+Efaz's Builder Font Remover
+By: EfazDev
+Page: https://www.efaz.dev/remove-builder-font
+
+settings.js:
+    - Handle setting configurations in settings.html
+    - Save data to Chrome Storage API
+
+*/
+
 const storage = chrome.storage.sync
 var system_settings = {}
 
@@ -244,7 +256,7 @@ async function loadChanges() {
                 document.getElementById("extensionLink").href = `https://chromewebstore.google.com/detail/extension/${chrome.runtime.id}`
                 document.getElementById("extensionLink").style = ""
             } else {
-                document.getElementById("extensionLink").style = "display: none;"
+                document.getElementById("extensionLink").remove()
             }
         })
     })
